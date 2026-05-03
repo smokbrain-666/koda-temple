@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-03T17:31:20.314861+00:00",
-  "eth_usd": 2332.24,
+  "fetched_at": "2026-05-03T17:36:39.611316+00:00",
+  "eth_usd": 2333.51,
   "collection": {
     "floor_eth": 0.144,
     "volume_24h": 3.25199689,
@@ -11,85 +11,85 @@
   "resources": {
     "Anima": {
       "tier_3": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_2": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_1": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       }
     },
     "Ore": {
       "tier_3": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_2": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_1": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       }
     },
     "Shard": {
       "tier_3": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_2": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_1": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       }
     },
     "Root": {
       "tier_3": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_2": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       },
       "tier_1": {
-        "floor": null,
+        "floor": 0.144,
         "listed": null
       }
     }
   },
   "sediments": {
     "Biogenic Swamp": {
-      "floor": null,
+      "floor": 0.144,
       "listed": null
     },
     "Chemical Goo": {
-      "floor": null,
+      "floor": 0.144,
       "listed": null
     },
     "Rainbow Atmos": {
-      "floor": null,
+      "floor": 0.144,
       "listed": null
     },
     "Cosmic Dream": {
-      "floor": null,
+      "floor": 0.144,
       "listed": null
     },
     "Infinite Expanse": {
-      "floor": null,
+      "floor": 0.144,
       "listed": null
     }
   },
   "artifact": {
-    "floor": null,
+    "floor": 0.144,
     "listed": null
   }
 }
