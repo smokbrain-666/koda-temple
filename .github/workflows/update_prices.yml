@@ -22,6 +22,8 @@ jobs:
         run: pip install requests
 
       - name: Fetch Otherdeed prices
+        env:
+          OPENSEA_API_KEY: ${{ secrets.OPENSEA_API_KEY }}
         run: python koda_temple_data.py
 
       - name: Commit and push prices
