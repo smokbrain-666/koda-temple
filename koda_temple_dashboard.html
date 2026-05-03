@@ -704,42 +704,30 @@
 
 <script>
 // ─────────────────────────────────────────────────────────
-//  Koda Temple Dashboard — Data Fetcher
-//  Pulls from Reservoir API (aggregated NFT market data)
-//  No API key required for basic floor queries
+//  Koda Temple Dashboard — Data Renderer
+//  Reads from price_snapshot_latest.json (updated hourly
+//  by GitHub Actions running koda_temple_data.py).
+//  Falls back to live ETH price from CoinGecko.
 // ─────────────────────────────────────────────────────────
 
-const COLLECTION = 'otherdeed-for-otherside';
-const RESERVOIR  = 'https://api.reservoir.tools';
+const SNAPSHOT_URL  = './price_snapshot_latest.json';
 const ETH_PRICE_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd';
 
 let ethPrice = null;
 
 function fmt(eth) {
-  if (!eth) return '—';
-  return parseFloat(eth).toFixed(3) + ' ETH';
+  if (eth == null) return '—';
+  return parseFloat(eth).toFixed(3) + ' Ξ';
 }
 
 function fmtUSD(eth) {
   if (!eth || !ethPrice) return '';
-  return '$' + Math.round(eth * ethPrice).toLocaleString();
-}
-
-function fmtChange(pct) {
-  if (pct === null || pct === undefined) return '';
-  const cls = pct >= 0 ? 'change-up' : 'change-down';
-  const sign = pct >= 0 ? '▲' : '▼';
-  return `<span class="${cls}">${sign} ${Math.abs(pct).toFixed(1)}%</span>`;
+  return '≈ $' + Math.round(eth * ethPrice).toLocaleString();
 }
 
 function set(id, val) {
   const el = document.getElementById(id);
   if (el) el.textContent = val;
-}
-
-function setHTML(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.innerHTML = val;
 }
 
 async function fetchEthPrice() {
@@ -750,98 +738,91 @@ async function fetchEthPrice() {
   } catch(e) { ethPrice = null; }
 }
 
-// Fetch floor for a specific trait value using Reservoir
-async function fetchTraitFloor(traitType, traitValue) {
-  try {
-    const url = `${RESERVOIR}/collections/${COLLECTION}/attributes/explore/v5?` +
-      `attributeKey=${encodeURIComponent(traitType)}` +
-      `&attributeValue=${encodeURIComponent(traitValue)}` +
-      `&limit=1`;
-    const r = await fetch(url, { headers: { 'accept': 'application/json' } });
-    const d = await r.json();
-    return d?.attributes?.[0]?.floorAskPrice?.amount?.native ?? null;
-  } catch(e) { return null; }
-}
+function renderSnapshot(snap) {
+  const col = snap.collection || {};
+  const eth = snap.eth_usd || ethPrice;
+  if (eth) ethPrice = eth;
 
-// Fetch overall collection stats
-async function fetchCollectionStats() {
-  try {
-    const url = `${RESERVOIR}/collections/v7?id=${COLLECTION}&limit=1`;
-    const r = await fetch(url, { headers: { 'accept': 'application/json' } });
-    const d = await r.json();
-    const col = d?.collections?.[0];
-    return {
-      floor:    col?.floorAsk?.price?.amount?.native ?? null,
-      volume24: col?.volume?.['1day'] ?? null,
-      count:    col?.onSaleCount ?? null,
-    };
-  } catch(e) { return {}; }
-}
-
-async function loadData() {
-  document.getElementById('last-updated').textContent = 'Consulting the chain…';
-
-  await fetchEthPrice();
-
-  // Collection stats
-  const stats = await fetchCollectionStats();
-  set('floor-all',     fmt(stats.floor));
-  set('floor-all-usd', fmtUSD(stats.floor));
-  set('volume-24h',    stats.volume24 ? stats.volume24.toFixed(1) + ' ETH' : '—');
-  set('volume-24h-sub', stats.count ? stats.count + ' listed' : '');
-
-  // Resource tiers — Reservoir trait names match OpenSea metadata
-  const resources = ['Anima', 'Ore', 'Shard', 'Root'];
-  const resKeys   = ['anima', 'ore', 'shard', 'root'];
-
-  for (let i = 0; i < resources.length; i++) {
-    for (let tier = 3; tier >= 1; tier--) {
-      const traitType  = resources[i];   // e.g. "Anima"
-      const traitValue = String(tier);   // "3", "2", "1"
-      const id         = resKeys[i] + '-t' + tier;
-      const floor      = await fetchTraitFloor(traitType, traitValue);
-      set(id, fmt(floor));
-    }
-  }
-
-  // Tier 3 highlight (best of all T3 resources)
-  // (already shown per-resource above; show minimum T3 floor here)
-  const t3Floors = await Promise.all(
-    resources.map(r => fetchTraitFloor(r, '3'))
-  );
-  const minT3 = t3Floors.filter(Boolean).sort((a,b) => a-b)[0];
-  set('floor-t3',    fmt(minT3));
-  set('floor-t3-usd', fmtUSD(minT3));
-
-  // Sediments
-  const sediments = [
-    { id: 'sed-biogenic', trait: 'Biogenic Swamp' },
-    { id: 'sed-chemical', trait: 'Chemical Goo'   },
-    { id: 'sed-rainbow',  trait: 'Rainbow Atmos'  },
-    { id: 'sed-cosmic',   trait: 'Cosmic Dream'   },
-    { id: 'sed-infinite', trait: 'Infinite Expanse'},
-  ];
-  for (const s of sediments) {
-    const floor = await fetchTraitFloor('Sediment', s.trait);
-    set(s.id, fmt(floor));
-  }
+  // Banner stats
+  set('floor-all',      fmt(col.floor_eth));
+  set('floor-all-usd',  fmtUSD(col.floor_eth));
+  set('volume-24h',     col.volume_24h ? col.volume_24h.toFixed(1) + ' Ξ' : '—');
+  set('volume-24h-sub', col.on_sale_count ? col.on_sale_count.toLocaleString() + ' listed' : '');
 
   // Artifact
-  const artFloor  = await fetchTraitFloor('Artifact', 'Yes');
-  const baseFloor = stats.floor;
-  set('art-floor', fmt(artFloor));
-  if (artFloor && baseFloor) {
-    const premium = ((artFloor - baseFloor) / baseFloor * 100).toFixed(0);
-    set('art-premium', '+' + premium + '%');
+  const art = snap.artifact || {};
+  set('art-floor',   fmt(art.floor));
+  set('art-count',   art.listed != null ? art.listed.toLocaleString() : '—');
+  set('floor-artifact',     fmt(art.floor));
+  set('floor-artifact-usd', fmtUSD(art.floor));
+  if (art.floor && col.floor_eth) {
+    const pct = ((art.floor - col.floor_eth) / col.floor_eth * 100).toFixed(0);
+    set('art-premium', '+' + pct + '%');
+  }
+
+  // Resources
+  const resMap = { Anima: 'anima', Ore: 'ore', Shard: 'shard', Root: 'root' };
+  const resources = snap.resources || {};
+  let lowestT3 = null;
+  for (const [name, key] of Object.entries(resMap)) {
+    const tiers = resources[name] || {};
+    for (let t = 1; t <= 3; t++) {
+      const info = tiers[`tier_${t}`] || {};
+      set(`${key}-t${t}`,       fmt(info.floor));
+      set(`${key}-t${t}-count`, info.listed != null ? info.listed + ' listed' : '— listed');
+      if (t === 3 && info.floor != null) {
+        if (lowestT3 === null || info.floor < lowestT3) lowestT3 = info.floor;
+      }
+    }
+  }
+  set('floor-t3',     fmt(lowestT3));
+  set('floor-t3-usd', fmtUSD(lowestT3));
+
+  // Sediments
+  const sedMap = {
+    'sed-biogenic': 'Biogenic Swamp',
+    'sed-chemical': 'Chemical Goo',
+    'sed-rainbow':  'Rainbow Atmos',
+    'sed-cosmic':   'Cosmic Dream',
+    'sed-infinite': 'Infinite Expanse',
+  };
+  const sediments = snap.sediments || {};
+  for (const [elId, sedName] of Object.entries(sedMap)) {
+    const info = sediments[sedName] || {};
+    set(elId, fmt(info.floor));
   }
 
   // Timestamp
-  const now = new Date();
-  document.getElementById('last-updated').textContent =
-    'Last synced: ' + now.toUTCString();
+  const fetched = snap.fetched_at ? new Date(snap.fetched_at) : null;
+  const age = fetched ? Math.round((Date.now() - fetched) / 60000) : null;
+  const ageStr = age != null ? ` · ${age}m ago` : '';
+  set('last-updated', 'Last synced: ' + (fetched ? fetched.toUTCString() : 'unknown') + ageStr);
 }
 
-// Initial load + auto-refresh every 5 minutes
+function showOffline(reason) {
+  set('last-updated', '⚠ ' + reason);
+  // Leave all prices as — (they default to that in the HTML)
+}
+
+async function loadData() {
+  set('last-updated', 'Consulting the oracle…');
+
+  // Always grab fresh ETH price (CoinGecko allows CORS)
+  await fetchEthPrice();
+
+  // Try loading the snapshot JSON (served as a static file from this repo)
+  try {
+    const r = await fetch(SNAPSHOT_URL + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const snap = await r.json();
+    renderSnapshot(snap);
+  } catch(e) {
+    console.warn('Snapshot not available:', e.message);
+    showOffline('Price data updating — check back in a few minutes');
+  }
+}
+
+// Load on start, refresh every 5 minutes
 loadData();
 setInterval(loadData, 5 * 60 * 1000);
 </script>
