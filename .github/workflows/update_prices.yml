@@ -1,0 +1,42 @@
+name: Update Otherdeed Prices
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch Otherdeed prices
+        run: python koda_temple_data.py
+
+      - name: Copy snapshot to latest
+        run: |
+          LATEST=$(ls price_snapshot_*.json | sort -r | head -1)
+          if [ -n "$LATEST" ]; then
+            cp "$LATEST" price_snapshot_latest.json
+          else
+            exit 1
+          fi
+
+      - name: Commit and push prices
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "Koda Temple Oracle"
+          git add price_snapshot_latest.json price_snapshot_*.json
+          git diff --staged --quiet || git commit -m "chore: update price snapshot $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
