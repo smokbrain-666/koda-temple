@@ -1,0 +1,89 @@
+{
+  "fetched_at": "2026-05-03T17:08:46.046423+00:00",
+  "eth_usd": 2325.66,
+  "collection": {},
+  "resources": {
+    "Anima": {
+      "tier_3": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_2": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_1": {
+        "floor": null,
+        "listed": null
+      }
+    },
+    "Ore": {
+      "tier_3": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_2": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_1": {
+        "floor": null,
+        "listed": null
+      }
+    },
+    "Shard": {
+      "tier_3": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_2": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_1": {
+        "floor": null,
+        "listed": null
+      }
+    },
+    "Root": {
+      "tier_3": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_2": {
+        "floor": null,
+        "listed": null
+      },
+      "tier_1": {
+        "floor": null,
+        "listed": null
+      }
+    }
+  },
+  "sediments": {
+    "Biogenic Swamp": {
+      "floor": null,
+      "listed": null
+    },
+    "Chemical Goo": {
+      "floor": null,
+      "listed": null
+    },
+    "Rainbow Atmos": {
+      "floor": null,
+      "listed": null
+    },
+    "Cosmic Dream": {
+      "floor": null,
+      "listed": null
+    },
+    "Infinite Expanse": {
+      "floor": null,
+      "listed": null
+    }
+  },
+  "artifact": {
+    "floor": null,
+    "listed": null
+  }
+}
