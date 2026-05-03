@@ -2,8 +2,8 @@ name: Update Otherdeed Prices
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+    - cron: '0 * * * *'   # every hour on the hour
+  workflow_dispatch:        # also allow manual trigger from GitHub UI
 
 jobs:
   fetch-prices:
@@ -23,15 +23,6 @@ jobs:
 
       - name: Fetch Otherdeed prices
         run: python koda_temple_data.py
-
-      - name: Copy snapshot to latest
-        run: |
-          LATEST=$(ls price_snapshot_*.json | sort -r | head -1)
-          if [ -n "$LATEST" ]; then
-            cp "$LATEST" price_snapshot_latest.json
-          else
-            exit 1
-          fi
 
       - name: Commit and push prices
         run: |
