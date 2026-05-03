@@ -1,95 +1,95 @@
 {
-  "fetched_at": "2026-05-03T20:05:02.864746+00:00",
-  "eth_usd": 2335.78,
+  "fetched_at": "2026-05-03T23:28:16.852729+00:00",
+  "eth_usd": 2326.11,
   "collection": {
-    "floor_eth": 0.144,
-    "volume_24h": 3.25199689,
-    "volume_7d": 40.9160253679,
+    "floor_eth": 0.142,
+    "volume_24h": 8.8108998,
+    "volume_7d": 46.7789252679,
     "on_sale_count": null,
     "total_supply": null
   },
   "resources": {
     "Anima": {
       "tier_3": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_2": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_1": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       }
     },
     "Ore": {
       "tier_3": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_2": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_1": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       }
     },
     "Shard": {
       "tier_3": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_2": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_1": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       }
     },
     "Root": {
       "tier_3": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_2": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       },
       "tier_1": {
-        "floor": 0.144,
+        "floor": 0.142,
         "listed": null
       }
     }
   },
   "sediments": {
     "Biogenic Swamp": {
-      "floor": 0.144,
+      "floor": 0.142,
       "listed": null
     },
     "Chemical Goo": {
-      "floor": 0.144,
+      "floor": 0.142,
       "listed": null
     },
     "Rainbow Atmos": {
-      "floor": 0.144,
+      "floor": 0.142,
       "listed": null
     },
     "Cosmic Dream": {
-      "floor": 0.144,
+      "floor": 0.142,
       "listed": null
     },
     "Infinite Expanse": {
-      "floor": 0.144,
+      "floor": 0.142,
       "listed": null
     }
   },
   "artifact": {
-    "floor": 0.144,
+    "floor": 0.142,
     "listed": null
   }
 }
