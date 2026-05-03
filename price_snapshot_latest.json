@@ -1,7 +1,13 @@
 {
-  "fetched_at": "2026-05-03T17:08:46.046423+00:00",
-  "eth_usd": 2325.66,
-  "collection": {},
+  "fetched_at": "2026-05-03T17:31:20.314861+00:00",
+  "eth_usd": 2332.24,
+  "collection": {
+    "floor_eth": 0.144,
+    "volume_24h": 3.25199689,
+    "volume_7d": 40.9160253679,
+    "on_sale_count": null,
+    "total_supply": null
+  },
   "resources": {
     "Anima": {
       "tier_3": {
