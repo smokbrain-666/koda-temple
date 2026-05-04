@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-04T08:44:39.586321+00:00",
-  "eth_usd": 2360.35,
+  "fetched_at": "2026-05-04T09:28:02.873593+00:00",
+  "eth_usd": 2361.95,
   "collection": {
     "floor_eth": 0.141997,
     "volume_24h": 7.8248999,
@@ -9,87 +9,31 @@
     "total_supply": null
   },
   "resources": {
-    "Anima": {
-      "tier_3": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_2": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_1": {
-        "floor": 0.141997,
-        "listed": null
-      }
+    "tier_3": {
+      "floor": 0.141997,
+      "listed": null
     },
-    "Ore": {
-      "tier_3": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_2": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_1": {
-        "floor": 0.141997,
-        "listed": null
-      }
+    "tier_2": {
+      "floor": 0.141997,
+      "listed": null
     },
-    "Shard": {
-      "tier_3": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_2": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_1": {
-        "floor": 0.141997,
-        "listed": null
-      }
-    },
-    "Root": {
-      "tier_3": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_2": {
-        "floor": 0.141997,
-        "listed": null
-      },
-      "tier_1": {
-        "floor": 0.141997,
-        "listed": null
-      }
+    "tier_1": {
+      "floor": 0.141997,
+      "listed": null
     }
   },
   "sediments": {
-    "Biogenic Swamp": {
-      "floor": 0.141997,
-      "listed": null
+    "tier_3": {
+      "floor": 0.1469
     },
-    "Chemical Goo": {
-      "floor": 0.141997,
-      "listed": null
+    "tier_2": {
+      "floor": 0.141997
     },
-    "Rainbow Atmos": {
-      "floor": 0.141997,
-      "listed": null
-    },
-    "Cosmic Dream": {
-      "floor": 0.141997,
-      "listed": null
-    },
-    "Infinite Expanse": {
-      "floor": 0.141997,
-      "listed": null
+    "tier_1": {
+      "floor": 0.142
     }
   },
   "artifact": {
-    "floor": 0.141997,
-    "listed": null
+    "floor": 0.199
   }
 }
