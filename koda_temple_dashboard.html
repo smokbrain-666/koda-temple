@@ -1,6 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Koda Temple â Resource Oracle</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d1117;color:#e6edf3;font-family:system-ui,sans-serif;padding:20px}
+h1{font-size:1.4rem;font-weight:600;margin-bottom:4px;color:#58a6ff}
+.sub{font-size:.8rem;color:#8b949e;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px}
+.card h2{font-size:.95rem;font-weight:600;color:#c9d1d9;margin-bottom:12px;border-bottom:1px solid #30363d;padding-bottom:8px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #21262d}
+.row:last-child{border-bottom:none}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:10px;min-width:28px;text-align:center;margin-right:8px}
+.t5{background:#6e40c9;color:#fff}
+.t4{background:#1f6feb;color:#fff}
+.t3{background:#238636;color:#fff}
+.t2{background:#9e6a03;color:#fff}
+.t1{background:#484f58;color:#fff}
+.art{background:#b91c1c;color:#fff}
+.col{background:#0f3460;color:#fff}
+.price{font-size:.9rem;font-weight:600;color:#c9d1d9}
+.usd{font-size:.75rem;color:#8b949e;margin-left:6px}
+.prem{font-size:.7rem;padding:1px 5px;border-radius:4px;background:#122d22;color:#3fb950;margin-left:6px}
+.null{color:#484f58;font-size:.85rem}
+.refresh{font-size:.75rem;color:#8b949e;margin-top:16px}
+.err{color:#f85149;font-size:.85rem}
+</style>
+</head>
+<body>
+<h1>Koda Temple &#8212; Resource Oracle</h1>
+<div class="sub" id="ts">Loading...</div>
+<div class="grid" id="grid"></div>
+<div class="refresh" id="ref"></div>
+<script>
+var DATA_URL='https://smokbrain-666.github.io/koda-temple/price_snapshot_latest.json';
+function fe(v){return v!=null?v.toFixed(4)+' ETH':null;}
+function fu(v,u){return u&&v!=null?'~$'+(v*u).toLocaleString('en',{maximumFractionDigits:0}):null;}
+function prem(v,base){
+  if(v==null||base==null||base<=0)return '';
+  var p=Math.round(((v-base)/base)*100);
+  return p>0?'<span class="prem">+'+p+'%</span>':'';
+}
+function row(bc,label,eth,usd,base){
+  var ep=fe(eth);
+  var up=fu(eth,usd);
+  var pr=prem(eth,base);
+  var ph=ep?'<span class="price">'+ep+'</span>'+(up?'<span class="usd">'+up+'</span>':'')+pr:'<span class="null">&#8212;</span>';
+  return '<div class="row"><span><span class="badge '+bc+'">'+label+'</span></span>'+ph+'</div>';
+}
+function card(title,rows){return '<div class="card"><h2>'+title+'</h2>'+rows+'</div>';}
+async function load(){
+  var grid=document.getElementById('grid');
+  var ts=document.getElementById('ts');
+  var ref=document.getElementById('ref');
+  try{
+    var d=await fetch(DATA_URL+'?t='+Date.now()).then(function(r){return r.json();});
+    var usd=d.eth_usd;
+    var col=d.collection||{};
+    var cf=col.floor_eth;
+    var fetched=d.fetched_at?new Date(d.fetched_at).toLocaleString():'?';
+    ts.textContent='Data as of '+fetched+(usd?' | ETH $'+usd.toLocaleString():'');
+    var html='';
+    var cr='<div class="row"><span><span class="badge col">Floor</span></span>'+(cf?'<span class="price">'+fe(cf)+'</span>'+(fu(cf,usd)?'<span class="usd">'+fu(cf,usd)+'</span>':''):'<span class="null">&#8212;</span>')+'</div>';
+    if(col.volume_24h!=null)cr+='<div class="row"><span style="color:#8b949e;font-size:.8rem">24h Vol</span><span class="price">'+col.volume_24h.toFixed(1)+' ETH</span></div>';
+    if(col.volume_7d!=null)cr+='<div class="row"><span style="color:#8b949e;font-size:.8rem">7d Vol</span><span class="price">'+col.volume_7d.toFixed(1)+' ETH</span></div>';
+    html+=card('Collection',cr);
+    var res=d.resources||{};
+    html+=card('Resource Tier',
+      row('t3','T3',res.tier_3&&res.tier_3.floor,usd,cf)+
+      row('t2','T2',res.tier_2&&res.tier_2.floor,usd,cf)+
+      row('t1','T1',res.tier_1&&res.tier_1.floor,usd,cf));
+    var env=d.environments||{};
+    html+=card('Environment Tier',
+      row('t5','T5',env.tier_5&&env.tier_5.floor,usd,cf)+
+      row('t4','T4',env.tier_4&&env.tier_4.floor,usd,cf)+
+      row('t3','T3',env.tier_3&&env.tier_3.floor,usd,cf)+
+      row('t2','T2',env.tier_2&&env.tier_2.floor,usd,cf)+
+      row('t1','T1',env.tier_1&&env.tier_1.floor,usd,cf));
+    var sed=d.sediments||{};
+    html+=card('Sediment Tier',
+      row('t3','T3',sed.tier_3&&sed.tier_3.floor,usd,cf)+
+      row('t2','T2',sed.tier_2&&sed.tier_2.floor,usd,cf)+
+      row('t1','T1',sed.tier_1&&sed.tier_1.floor,usd,cf));
+    var art=d.artifact&&d.artifact.floor;
+    html+=card('Artifact / Relic',row('art','Relic',art,usd,cf));
+    grid.innerHTML=html;
+    ref.textContent='Auto-refreshes every 5 minutes';
+  }catch(e){
+    grid.innerHTML='<div class="err">Error: '+e.message+'</div>';
+    ts.textContent='Failed to fetch snapshot';
+  }
+}
+load();
+setInterval(load,5*60*1000);
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Koda Temple — Resource Oracle</title>
