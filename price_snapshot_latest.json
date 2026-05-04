@@ -1,25 +1,37 @@
 {
-  "fetched_at": "2026-05-04T09:28:02.873593+00:00",
-  "eth_usd": 2361.95,
+  "fetched_at": "2026-05-04T12:13:11.950633+00:00",
+  "eth_usd": 2335.2,
   "collection": {
-    "floor_eth": 0.141997,
-    "volume_24h": 7.8248999,
-    "volume_7d": 46.0269252679,
-    "on_sale_count": null,
-    "total_supply": null
+    "floor_eth": 0.141995,
+    "volume_24h": 7.6748999,
+    "volume_7d": 46.0269252679
   },
   "resources": {
     "tier_3": {
-      "floor": 0.141997,
-      "listed": null
+      "floor": null
     },
     "tier_2": {
-      "floor": 0.141997,
-      "listed": null
+      "floor": null
     },
     "tier_1": {
-      "floor": 0.141997,
-      "listed": null
+      "floor": null
+    }
+  },
+  "environments": {
+    "tier_5": {
+      "floor": 0.29
+    },
+    "tier_4": {
+      "floor": 0.142
+    },
+    "tier_3": {
+      "floor": 0.141997
+    },
+    "tier_2": {
+      "floor": 0.141995
+    },
+    "tier_1": {
+      "floor": 0.141996
     }
   },
   "sediments": {
@@ -27,7 +39,7 @@
       "floor": 0.1469
     },
     "tier_2": {
-      "floor": 0.141997
+      "floor": 0.141995
     },
     "tier_1": {
       "floor": 0.142
