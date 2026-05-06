@@ -256,6 +256,11 @@ body::after {
 
 /* sales orange header */
 .sales-hdr { background:#553300; }
+
+/* sale price vs floor indicators */
+.sale-up { color:#00FF66; font-size:13px; display:block; line-height:1.2; }
+.sale-dn { color:#FF4444; font-size:13px; display:block; line-height:1.2; }
+.sale-eq { color:#888;    font-size:13px; display:block; line-height:1.2; }
 </style>
 </head>
 <body>
@@ -299,18 +304,39 @@ const DATA_URL = 'https://smokbrain-666.github.io/koda-temple/price_snapshot_lat
 const DIRS = ['Western','Northern','Eastern','Southern'];
 const DS  = {Western:'W',Northern:'N',Eastern:'E',Southern:'S'};
 
-// Resource -> category mapping
+// Resource -> category mapping (74 resources per OSWiki)
 const RES_CAT = {
-  Bonestone:'ORE', Moldium:'ORE', Luster:'ORE',
-  Runa:'ROOT', Petrified:'ROOT', Lunarian:'ROOT',
-  Kinsoul:'SHARD', Whisper:'SHARD', Psychosilk:'SHARD', Nether:'SHARD',
+  // SHARD (8)
+  Bonestone:'SHARD', Brimstone:'SHARD', Kinsoul:'SHARD', Luster:'SHARD',
+  Moldium:'SHARD', Oblivion:'SHARD', Omni:'SHARD', Runa:'SHARD',
+  // ROOT (8)
+  Lumileaf:'ROOT', Lunarian:'ROOT', Nether:'ROOT', Petrified:'ROOT',
+  Psychosilk:'ROOT', Spikeweed:'ROOT', Void:'ROOT', Whisper:'ROOT',
+  // ORE (29)
+  Amberskull:'ORE', Aurelian:'ORE', Brineslime:'ORE', Bubonium:'ORE',
+  Chlorocite:'ORE', Chroma:'ORE', Claymer:'ORE', Dimensional:'ORE',
+  Entradium:'ORE', Entropy:'ORE', Geopillar:'ORE', Hollowcine:'ORE',
+  Lapidite:'ORE', Luminite:'ORE', Mallo:'ORE', Mossmoon:'ORE',
+  Nocturna:'ORE', Nucleod:'ORE', Onyx:'ORE', Phantom:'ORE',
+  Pyrum:'ORE', Ragnarock:'ORE', Shatterfrost:'ORE', Spiritseep:'ORE',
+  Stonecrop:'ORE', Tanglevine:'ORE', Tantalite:'ORE', Thermodite:'ORE',
+  Vaporhaze:'ORE',
+  // ANIMA (29)
+  Abyssia:'ANIMA', Coralia:'ANIMA', Degradia:'ANIMA', Durinia:'ANIMA',
+  Duskia:'ANIMA', 'Element 115':'ANIMA', Etheria:'ANIMA', Fortuna:'ANIMA',
+  Fossica:'ANIMA', Fragmentia:'ANIMA', Galactica:'ANIMA', Gloomia:'ANIMA',
+  Glowpod:'ANIMA', Magentia:'ANIMA', Maltosia:'ANIMA', Nebula:'ANIMA',
+  Obsilica:'ANIMA', Opalia:'ANIMA', Pricklia:'ANIMA', Prysmatica:'ANIMA',
+  Rotworth:'ANIMA', Scholara:'ANIMA', Scumbria:'ANIMA', Senticybia:'ANIMA',
+  Slaglia:'ANIMA', Slushia:'ANIMA', Sporicite:'ANIMA', Steppesalt:'ANIMA',
+  Sulfirica:'ANIMA',
 };
-const CAT_ORDER = ['ORE','ROOT','SHARD','OTHER'];
+const CAT_ORDER = ['SHARD','ROOT','ORE','ANIMA'];
 const CAT_DESC  = {
-  ORE:  'MINERAL &amp; STONE',
+  SHARD:'CRYSTAL &amp; ENERGY',
   ROOT: 'BOTANICAL &amp; EARTH',
-  SHARD:'ETHEREAL &amp; ENERGY',
-  OTHER:'UNCATEGORIZED',
+  ORE:  'MINERAL &amp; STONE',
+  ANIMA:'LIVING &amp; ORGANIC',
 };
 
 // Artifact tier display
@@ -361,6 +387,21 @@ function buildMatrixRaw(raw){
   return m;
 }
 
+// Build {name:{tier:{price_eth,ts}}} from resource_sales -- most recent sale per tier
+function buildSalesMatrix(rs){
+  const m={};
+  for(const dir of DIRS){
+    const dd=rs[dir]||{};
+    for(const [name,tiers] of Object.entries(dd)){
+      if(!m[name]) m[name]={};
+      for(const [t,sale] of Object.entries(tiers)){
+        if(!m[name][t]||sale.ts>m[name][t].ts) m[name][t]=sale;
+      }
+    }
+  }
+  return m;
+}
+
 // ---- RESOURCES tab ----
 function renderResources(data){
   const ethUsd=data.eth_usd;
@@ -373,9 +414,11 @@ function renderResources(data){
     const cd=data[col.key]||{};
     const rf=cd.resource_floors||{};
     const raw=cd.raw_traits||{};
+    const rs=cd.resource_sales||{};
     const st=cd.collection||{};
     const hasFloors=Object.keys(rf).length>0;
     const matrix=hasFloors?buildMatrix(rf):buildMatrixRaw(raw);
+    const salesMatrix=buildSalesMatrix(rs);
 
     html+=`<div class="col-section">
       <div class="col-hdr">
@@ -423,6 +466,20 @@ function renderResources(data){
             if(p!=null){
               html+=`<span class="eth-val">${fe(p)}</span>`;
               if(ethUsd) html+=`<span class="usd-val">${fu(p,ethUsd)}</span>`;
+              // sale comparison
+              const saleEntry=salesMatrix[name]?.[t];
+              if(saleEntry){
+                const sp=saleEntry.price_eth;
+                const diff=p-sp;
+                const pct=Math.abs(diff/sp*100).toFixed(1);
+                if(diff>0.0001){
+                  html+=`<span class="sale-up">&#9650; ${fe(sp)} <small>(+${pct}%)</small></span>`;
+                } else if(diff<-0.0001){
+                  html+=`<span class="sale-dn">&#9660; ${fe(sp)} <small>(-${pct}%)</small></span>`;
+                } else {
+                  html+=`<span class="sale-eq">&#9644; ${fe(sp)}</span>`;
+                }
+              }
             } else { html+=`<span class="no-data">--</span>`; }
             html+=`</td>`;
           }
@@ -524,7 +581,7 @@ function renderSales(data){
   const ethUsd=data.eth_usd;
   const COLS=[
     {key:'otherdeed',label:'OTHERDEED FOR OTHERSIDE'},
-    {key:'expanded', label:'OTHERDEED EXPANDED'},
+    {key:'expanded',label:'OTHERDEED EXPANDED'},
   ];
   let html='<div class="col-grid">';
   for(const col of COLS){
@@ -545,7 +602,7 @@ function renderSales(data){
     if(!hasRS&&!hasST){
       html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
         SALES DATA PENDING RUN #23<br>
-        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUED</span>
+        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUEED</span>
       </div>`;
     } else {
       // Resource sales by category
