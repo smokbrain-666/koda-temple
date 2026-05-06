@@ -3,9 +3,9 @@ from datetime import datetime, timezone, timedelta
 
 COLLECTIONS = [
     {"key": "otherdeed", "label": "Otherdeed for Otherside", "slug": "otherdeed",
-     "contract": "0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258"},
+     "contract": "0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258", "chain": "ethereum"},
     {"key": "expanded",  "label": "Otherdeed Expanded",      "slug": "otherdeed-expanded",
-     "contract": "0x790B2cF29Ed4F310bf7641f013C65D4560d28371"},
+     "contract": "0x790B2cF29Ed4F310bf7641f013C65D4560d28371", "chain": "apechain"},
 ]
 
 OPENSEA_API   = "https://api.opensea.io/api/v2"
@@ -42,9 +42,10 @@ def col_stats(slug):
 
 
 def cheapest(slug):
-    """Paginate ALL active listings â no cap."""
+    """Paginate ALL active listings -- no cap."""
     results = []
     cur = None
+    page_num = 0
     while True:
         params = {"limit": 50}
         if cur:
@@ -52,10 +53,13 @@ def cheapest(slug):
         try:
             r = requests.get(f"{OPENSEA_API}/listings/collection/{slug}/best",
                              headers=HDR, params=params, timeout=20)
+            print(f"  [{slug}] page {page_num}: HTTP {r.status_code}", flush=True)
             d = r.json()
-        except Exception:
+        except Exception as e:
+            print(f"  [{slug}] page {page_num}: exception {e}", flush=True)
             break
         listings = d.get("listings", [])
+        print(f"  [{slug}] page {page_num}: {len(listings)} listings, keys={list(d.keys())}", flush=True)
         for lst in listings:
             offer = lst.get("protocol_data", {}).get("parameters", {}).get("offer", [{}])
             tid   = offer[0].get("identifierOrCriteria") if offer else None
@@ -67,14 +71,16 @@ def cheapest(slug):
                 results.append((tid, p))
         cur = d.get("next")
         time.sleep(REQUEST_DELAY)
+        page_num += 1
         if not listings or not cur:
             break
+    print(f"  [{slug}] total: {len(results)} listings fetched", flush=True)
     return results
 
 
-def get_traits(contract, tid):
+def get_traits(contract, tid, chain="ethereum"):
     try:
-        r = requests.get(f"{OPENSEA_API}/chain/ethereum/contract/{contract}/nfts/{tid}",
+        r = requests.get(f"{OPENSEA_API}/chain/{chain}/contract/{contract}/nfts/{tid}",
                          headers=HDR, timeout=15)
         return r.json().get("nft", {}).get("traits", [])
     except Exception:
@@ -85,13 +91,15 @@ def scan_collection(col):
     """Returns raw_traits and resource_floors."""
     slug     = col["slug"]
     contract = col["contract"]
+    chain    = col.get("chain", "ethereum")
+    print(f"[{col['key']}] scanning listings (chain={chain})...", flush=True)
     ls = cheapest(slug)
 
     raw        = {}   # trait_type -> {value: floor_price}
     res_floors = {}   # direction  -> {resource_name: {tier: floor_price}}
 
     for _i, (tid, p) in enumerate(ls):
-        tlist = get_traits(contract, tid)
+        tlist = get_traits(contract, tid, chain)
         time.sleep(REQUEST_DELAY)
 
         token_traits = {}
@@ -121,6 +129,7 @@ def scan_sales(col, days=10):
     """Fetch last 10 days of sales; return sales_traits and resource_sales."""
     slug     = col["slug"]
     contract = col["contract"]
+    chain    = col.get("chain", "ethereum")
     cutoff   = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
 
     # Most-recent sale per token
@@ -158,7 +167,7 @@ def scan_sales(col, days=10):
     resource_sales = {}   # direction  -> {res_name: {tier: {price_eth, ts}}}
 
     for tid, sale in token_last_sale.items():
-        tlist = get_traits(contract, tid)
+        tlist = get_traits(contract, tid, chain)
         time.sleep(REQUEST_DELAY)
         token_traits = {}
         for t in tlist:
@@ -209,4 +218,4 @@ if __name__ == "__main__":
     path = os.path.join(SNAPSHOT_DIR, "price_snapshot_latest.json")
     with open(path, "w") as f:
         json.dump(snap, f, indent=2)
-    print(f"Saved {path} â {snap['fetched_at']}")
+    print(f"Saved {path} -- {snap['fetched_at']}")
