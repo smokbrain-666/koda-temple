@@ -15,8 +15,8 @@ SNAPSHOT_DIR         = "."
 REQUEST_DELAY        = 0.8          # seconds between normal requests
 INTER_COL_DELAY      = 90           # seconds to wait between collections (allow rate limit reset)
 RETRY_DELAYS         = [5, 15, 30, 60]  # backoff on 429
-MAX_TRAIT_LOOKUPS    = 50           # max trait lookups per collection (cheapest first)
-MAX_SALES_ITEMS      = 50           # max unique sold tokens to collect per collection
+MAX_TRAIT_LOOKUPS    = 300           # max trait lookups per collection (cheapest first)
+MAX_SALES_ITEMS      = 200           # max unique sold tokens to collect per collection
 DIRECTIONS           = ["Western", "Northern", "Eastern", "Southern"]
 
 HDR = {"accept": "application/json", "x-api-key": OPENSEA_KEY}
