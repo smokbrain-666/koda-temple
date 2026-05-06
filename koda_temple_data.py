@@ -8,14 +8,34 @@ COLLECTIONS = [
      "contract": "0x790B2cF29Ed4F310bf7641f013C65D4560d28371", "chain": "apechain"},
 ]
 
-OPENSEA_API   = "https://api.opensea.io/api/v2"
-COINGECKO     = "https://api.coingecko.com/api/v3"
-OPENSEA_KEY   = os.environ.get("OPENSEA_API_KEY", "")
-SNAPSHOT_DIR  = "."
-REQUEST_DELAY = 0.6
-DIRECTIONS    = ["Western", "Northern", "Eastern", "Southern"]
+OPENSEA_API          = "https://api.opensea.io/api/v2"
+COINGECKO            = "https://api.coingecko.com/api/v3"
+OPENSEA_KEY          = os.environ.get("OPENSEA_API_KEY", "")
+SNAPSHOT_DIR         = "."
+REQUEST_DELAY        = 0.8          # seconds between normal requests
+INTER_COL_DELAY      = 45           # seconds to wait between collections
+RETRY_DELAYS         = [5, 15, 30]  # backoff on 429
+DIRECTIONS           = ["Western", "Northern", "Eastern", "Southern"]
 
 HDR = {"accept": "application/json", "x-api-key": OPENSEA_KEY}
+
+
+def get_json(url, params=None, label=""):
+    """GET with automatic 429 retry and backoff."""
+    for attempt, wait in enumerate([0] + RETRY_DELAYS):
+        if wait:
+            print(f"  {label} 429 -- waiting {wait}s (attempt {attempt})...", flush=True)
+            time.sleep(wait)
+        try:
+            r = requests.get(url, headers=HDR, params=params, timeout=20)
+            if r.status_code == 429:
+                continue   # retry
+            return r.status_code, r.json()
+        except Exception as e:
+            print(f"  {label} exception: {e}", flush=True)
+            return 0, {}
+    print(f"  {label} gave up after retries", flush=True)
+    return 429, {}
 
 
 def eth_usd():
@@ -42,7 +62,7 @@ def col_stats(slug):
 
 
 def cheapest(slug):
-    """Paginate ALL active listings -- no cap."""
+    """Paginate ALL active listings -- 429-safe."""
     results = []
     cur = None
     page_num = 0
@@ -50,16 +70,13 @@ def cheapest(slug):
         params = {"limit": 50}
         if cur:
             params["next"] = cur
-        try:
-            r = requests.get(f"{OPENSEA_API}/listings/collection/{slug}/best",
-                             headers=HDR, params=params, timeout=20)
-            print(f"  [{slug}] page {page_num}: HTTP {r.status_code}", flush=True)
-            d = r.json()
-        except Exception as e:
-            print(f"  [{slug}] page {page_num}: exception {e}", flush=True)
-            break
+        status, d = get_json(
+            f"{OPENSEA_API}/listings/collection/{slug}/best",
+            params=params,
+            label=f"[{slug}] page {page_num}"
+        )
         listings = d.get("listings", [])
-        print(f"  [{slug}] page {page_num}: {len(listings)} listings, keys={list(d.keys())}", flush=True)
+        print(f"  [{slug}] page {page_num}: HTTP {status}, {len(listings)} listings, keys={list(d.keys())}", flush=True)
         for lst in listings:
             offer = lst.get("protocol_data", {}).get("parameters", {}).get("offer", [{}])
             tid   = offer[0].get("identifierOrCriteria") if offer else None
@@ -79,12 +96,12 @@ def cheapest(slug):
 
 
 def get_traits(contract, tid, chain="ethereum"):
-    try:
-        r = requests.get(f"{OPENSEA_API}/chain/{chain}/contract/{contract}/nfts/{tid}",
-                         headers=HDR, timeout=15)
-        return r.json().get("nft", {}).get("traits", [])
-    except Exception:
-        return []
+    url = f"{OPENSEA_API}/chain/{chain}/contract/{contract}/nfts/{tid}"
+    status, d = get_json(url, label=f"traits({chain},{tid[:8]})")
+    traits = d.get("nft", {}).get("traits", [])
+    if status != 200 or not traits:
+        print(f"  get_traits: HTTP {status}, traits={len(traits)}, keys={list(d.keys())[:4]}", flush=True)
+    return traits
 
 
 def scan_collection(col):
@@ -112,7 +129,6 @@ def scan_collection(col):
                 if tv not in raw[tt]:
                     raw[tt][tv] = p   # first = cheapest
 
-        # Combined resource name + tier per direction
         for d in DIRECTIONS:
             res_name = token_traits.get(f"{d} Resource")
             res_tier = token_traits.get(f"{d} Resource Tier")
@@ -120,7 +136,7 @@ def scan_collection(col):
                 res_floors.setdefault(d, {})
                 res_floors[d].setdefault(res_name, {})
                 if res_tier not in res_floors[d][res_name]:
-                    res_floors[d][res_name][res_tier] = p   # cheapest listing
+                    res_floors[d][res_name][res_tier] = p
 
     return raw, res_floors
 
@@ -132,19 +148,18 @@ def scan_sales(col, days=10):
     chain    = col.get("chain", "ethereum")
     cutoff   = int((datetime.now(timezone.utc) - timedelta(days=days)).timestamp())
 
-    # Most-recent sale per token
-    token_last_sale = {}   # tid -> {price_eth, ts}
+    token_last_sale = {}
     cur = None
+    page = 0
     while True:
         params = {"event_type": "sale", "occurred_after": cutoff, "limit": 50}
         if cur:
             params["next"] = cur
-        try:
-            r = requests.get(f"{OPENSEA_API}/events/collection/{slug}",
-                             headers=HDR, params=params, timeout=20)
-            d = r.json()
-        except Exception:
-            break
+        status, d = get_json(
+            f"{OPENSEA_API}/events/collection/{slug}",
+            params=params,
+            label=f"[{slug}] sales page {page}"
+        )
         events = d.get("asset_events", [])
         for ev in events:
             nft      = ev.get("nft", {})
@@ -159,12 +174,12 @@ def scan_sales(col, days=10):
                 token_last_sale[tid] = {"price_eth": round(price_eth, 6), "ts": ts}
         cur = d.get("next")
         time.sleep(REQUEST_DELAY)
+        page += 1
         if not events or not cur:
             break
 
-    # Trait lookup for each sold token
-    sales_traits   = {}   # trait_type -> {value: {price_eth, ts}}
-    resource_sales = {}   # direction  -> {res_name: {tier: {price_eth, ts}}}
+    sales_traits   = {}
+    resource_sales = {}
 
     for tid, sale in token_last_sale.items():
         tlist = get_traits(contract, tid, chain)
@@ -199,7 +214,10 @@ def build():
         "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S"),
         "eth_usd":    eth_usd(),
     }
-    for col in COLLECTIONS:
+    for i, col in enumerate(COLLECTIONS):
+        if i > 0:
+            print(f"--- inter-collection cooldown {INTER_COL_DELAY}s ---", flush=True)
+            time.sleep(INTER_COL_DELAY)
         stats                   = col_stats(col["slug"])
         raw, res_floors         = scan_collection(col)
         sales_traits, res_sales = scan_sales(col)
