@@ -15,6 +15,7 @@ SNAPSHOT_DIR         = "."
 REQUEST_DELAY        = 0.8          # seconds between normal requests
 INTER_COL_DELAY      = 45           # seconds to wait between collections
 RETRY_DELAYS         = [5, 15, 30]  # backoff on 429
+MAX_TRAIT_LOOKUPS    = 100          # max trait lookups per collection (cheapest first)
 DIRECTIONS           = ["Western", "Northern", "Eastern", "Southern"]
 
 HDR = {"accept": "application/json", "x-api-key": OPENSEA_KEY}
@@ -115,7 +116,7 @@ def scan_collection(col):
     raw        = {}   # trait_type -> {value: floor_price}
     res_floors = {}   # direction  -> {resource_name: {tier: floor_price}}
 
-    for _i, (tid, p) in enumerate(ls):
+    for _i, (tid, p) in enumerate(ls[:MAX_TRAIT_LOOKUPS]):
         tlist = get_traits(contract, tid, chain)
         time.sleep(REQUEST_DELAY)
 
