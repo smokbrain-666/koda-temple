@@ -9,12 +9,12 @@
 :root {
   --amber:       #FF2200;
   --amber-bright:#FF4422;
-  --amber-dim:   #AA1100
+  --amber-dim:   #AA1100;
   --red-header:  #AA0000;
   --green:       #00FF66;
   --blue:        #44AAFF;
   --white:       #FFFFFF;
-  --panel:       transparent;
+  --panel:       #060000;
   --border:      #2A0000;
   --glow-amber:  0 0 8px #FF2200, 0 0 18px rgba(255,30,0,0.5);
   --glow-green:  0 0 8px #00FF66;
@@ -52,11 +52,11 @@ body::before {
   pointer-events:none;
   z-index:0;
 }
-#hdr, #tabs, #content, #status-bar { position:relative; z-index:1; }
+#hdr, #tabs, #main-content, footer { position:relative; z-index:1; }
 
 /* ===== HEADER ===== */
 #hdr {
-  background:rgba(0,0,0,0.45);
+  background:linear-gradient(180deg,#0A0A18 0%,#000 100%);
   border-bottom:2px solid var(--amber);
   padding:8px 16px;
   display:flex;
@@ -84,7 +84,7 @@ body::before {
 
 /* ===== TICKER TAPE ===== */
 #ticker-wrap {
-  background:rgba(0,0,0,0.25);
+  background:#080000;
   border-bottom:1px solid var(--amber-dim);
   overflow:hidden;
   white-space:nowrap;
@@ -104,7 +104,7 @@ body::before {
 /* ===== TABS ===== */
 #tabs {
   display:flex;
-  background:rgba(0,0,0,0.25);
+  background:#050000;
   border-bottom:2px solid var(--amber-dim);
   position:sticky;
   top:55px;
@@ -119,10 +119,10 @@ body::before {
   border-right:1px solid #1A1A00;
   transition:all .1s;
 }
-.tab:hover { color:var(--amber); background:rgba(0,0,0,0.2); }
+.tab:hover { color:var(--amber); background:#0D0000; }
 .tab.active {
   color:var(--amber-bright);
-  background:rgba(0,0,0,0.35);
+  background:#180000;
   border-bottom:3px solid var(--amber-bright);
   text-shadow:var(--glow-amber);
 }
@@ -141,9 +141,9 @@ body::before {
 @media(max-width:920px){.col-grid{grid-template-columns:1fr;}}
 
 /* ===== COLLECTION SECTION ===== */
-.col-section { border:1px solid var(--border); background:transparent; }
+.col-section { border:1px solid var(--border); }
 .col-hdr {
-  background:transparent;
+  background:#0A0000;
   border-bottom:1px solid var(--border);
   padding:7px 14px;
   display:flex;
@@ -158,7 +158,7 @@ body::before {
 /* ===== CATEGORY BLOCK ===== */
 .cat-block { margin-bottom:1px; }
 .cat-hdr {
-  background:rgba(170,0,0,0.55);
+  background:var(--red-header);
   padding:6px 14px;
   display:flex;
   gap:14px;
@@ -178,7 +178,7 @@ body::before {
   border-collapse:collapse;
   background:var(--panel);
 }
-.mkt-table thead tr { background:rgba(0,0,0,0.2); border-bottom:1px solid var(--border); }
+.mkt-table thead tr { background:#0D0000; border-bottom:1px solid var(--border); }
 .mkt-table th {
   padding:7px 12px;
   font-size:15px;
@@ -188,8 +188,8 @@ body::before {
   text-align:left;
 }
 .mkt-table th.r { text-align:right; }
-.mkt-table tbody tr { border-bottom:1px solid rgba(255,30,0,0.15); transition:background .1s; }
-.mkt-table tbody tr:hover { background:rgba(0,0,0,0.2); }
+.mkt-table tbody tr { border-bottom:1px solid #1A1500; transition:background .1s; }
+.mkt-table tbody tr:hover { background:#0D0000; }
 .mkt-table td { padding:10px 12px; }
 
 .sym {
@@ -214,19 +214,38 @@ body::before {
 
 .eth-val { color:var(--white); font-size:23px; white-space:nowrap; text-shadow:0 0 4px rgba(255,255,255,.25); }
 .usd-val { color:#CC2200; font-size:16px; display:block; text-align:right; }
-.no-data { color:#AA4400; font-size:17px; text-align:right; }
+.no-data { color:#330000; font-size:17px; text-align:right; }
 
-/* tier badges */
+/* tier badges â T1=red(base/cheap) T2=orange(mid) T3=green(premium) */
 .tb { display:inline-block; padding:2px 8px; font-size:15px; border:1px solid; margin-right:2px; }
-.t1 { color:#44FF88; border-color:#44FF88; text-shadow:var(--glow-green); }
-.t2 { color:var(--amber); border-color:var(--amber); text-shadow:var(--glow-amber); }
-.t3 { color:#FF6644; border-color:#FF6644; text-shadow:0 0 6px #FF6644; }
+.t1 { color:#FF2200; border-color:#FF2200; text-shadow:0 0 6px #FF2200; }
+.t2 { color:#FF8800; border-color:#FF8800; text-shadow:0 0 6px #FF8800; }
+.t3 { color:#00FF66; border-color:#00FF66; text-shadow:var(--glow-green); }
+
+/* league table */
+.league-table { width:100%; border-collapse:collapse; background:var(--panel); }
+.league-table thead tr { background:#0D0000; border-bottom:2px solid var(--border); }
+.league-table th { padding:8px 14px; font-size:16px; color:#BB1100; letter-spacing:1px; font-weight:normal; text-align:left; }
+.league-table th.r { text-align:right; }
+.league-table tbody tr { border-bottom:1px solid #1A0500; transition:background .1s; }
+.league-table tbody tr:hover { background:#0D0000; }
+.league-table td { padding:10px 14px; }
+.rank-gold   { color:#FFD700; font-size:26px; font-weight:bold; text-shadow:0 0 10px #FFD700; }
+.rank-silver { color:#C0C0C0; font-size:26px; font-weight:bold; text-shadow:0 0 8px #C0C0C0; }
+.rank-bronze { color:#CD7F32; font-size:26px; font-weight:bold; text-shadow:0 0 8px #CD7F32; }
+.rank-rest   { color:#553300; font-size:24px; }
+.type-res  { color:#FF8800; border:1px solid #FF8800; padding:1px 6px; font-size:13px; }
+.type-art  { color:#CC66FF; border:1px solid #CC66FF; padding:1px 6px; font-size:13px; }
+.type-koda { color:#00CCFF; border:1px solid #00CCFF; padding:1px 6px; font-size:13px; }
+.col-badge { font-size:13px; color:#AA1100; border:1px solid #330000; padding:1px 5px; }
+.league-hdr { background:#001A00; }
+.tier-badge-sm { font-size:13px; padding:1px 5px; border:1px solid; }
 
 /* pending notice */
 .pending-notice {
   padding:5px 14px;
   font-size:13px;
-  color:#AA4400;
+  color:#330000;
   border-bottom:1px solid var(--border);
 }
 
@@ -234,7 +253,7 @@ body::before {
 #status-bar {
   position:fixed;
   bottom:0;left:0;right:0;
-  background:rgba(0,0,0,0.5);
+  background:#040000;
   border-top:1px solid var(--amber-dim);
   padding:5px 16px;
   display:flex;
@@ -263,10 +282,10 @@ body::before {
 }
 
 /* artifact purple header */
-.art-hdr { background:rgba(68,0,85,0.55); }
+.art-hdr { background:#440055; }
 
 /* sales orange header */
-.sales-hdr { background:rgba(85,51,0,0.55); }
+.sales-hdr { background:#553300; }
 
 /* sale price vs floor indicators */
 .sale-up { color:#00FF66; font-size:16px; display:block; line-height:1.4; font-weight:bold; }
@@ -297,6 +316,7 @@ body::before {
   <div class="tab active" data-tab="resources">RESOURCES</div>
   <div class="tab" data-tab="artifacts">ARTIFACTS</div>
   <div class="tab" data-tab="sales">SALES 10D</div>
+  <div class="tab" data-tab="league">&#9650; LEAGUE</div>
 </div>
 
 <!-- CONTENT -->
@@ -304,6 +324,7 @@ body::before {
   <div id="resources" class="pane active"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="artifacts" class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="sales"     class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
+  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
 </div>
 
 <!-- STATUS BAR -->
@@ -448,7 +469,13 @@ function renderResources(data){
     for(const cat of CAT_ORDER){
       const cd2=matrix[cat];
       if(!cd2||!Object.keys(cd2).length) continue;
-      const names=Object.keys(cd2).sort();
+      // Sort by cheapest floor price (T1 first, fallback to any tier), then alpha
+      const names=Object.keys(cd2).sort((a,b)=>{
+        const ta=cd2[a].tiers, tb=cd2[b].tiers;
+        const pa=ta['1']??ta['2']??ta['3']??Math.min(...Object.values(ta).filter(v=>v!=null));
+        const pb=tb['1']??tb['2']??tb['3']??Math.min(...Object.values(tb).filter(v=>v!=null));
+        return (pa||999)-(pb||999);
+      });
       html+=`<div class="cat-block">
         <div class="cat-hdr">
           <span class="cat-title">${cat}</span>
@@ -480,16 +507,16 @@ function renderResources(data){
             if(p!=null){
               html+=`<span class="eth-val">${fe(p)}</span>`;
               if(ethUsd) html+=`<span class="usd-val">${fu(p,ethUsd)}</span>`;
-              // sale comparison
+              // sale comparison: floor vs last sale shows market direction
               const saleEntry=salesMatrix[name]?.[t];
               if(saleEntry){
                 const sp=saleEntry.price_eth;
                 const diff=p-sp;
                 const pct=Math.abs(diff/sp*100).toFixed(1);
                 if(diff>0.0001){
-                  html+=`<span class="sale-up">&#9650; ${fe(sp)} +${pct}%</span>`;
+                  html+=`<span class="sale-up">&#9650; ${fe(sp)} (+${pct}%)</span>`;
                 } else if(diff<-0.0001){
-                  html+=`<span class="sale-dn">&#9660; ${fe(sp)} -${pct}%</span>`;
+                  html+=`<span class="sale-dn">&#9660; ${fe(sp)} (-${pct}%)</span>`;
                 } else {
                   html+=`<span class="sale-eq">&#9644; ${fe(sp)}</span>`;
                 }
@@ -528,6 +555,7 @@ function renderArtifacts(data){
     const cd=data[col.key]||{};
     const raw=cd.raw_traits||{};
     const st=cd.collection||{};
+    // Sales data has last-sale prices; raw_traits has floor prices if artifact was in cheapest 50 listed
     const artSales=(cd.sales_traits||{})['Artifact']||{};
     const artFloors=raw['Artifact']||{};
     const allNames=new Set([...Object.keys(artSales),...Object.keys(artFloors)]);
@@ -542,11 +570,12 @@ function renderArtifacts(data){
     if(!allNames.size){
       html+=`<div style="padding:24px;text-align:center;color:#333;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
     } else {
+      // Build combined list
       const rows=[];
       for(const name of allNames){
-        const s=artSales[name];
-        const f=artFloors[name];
-        rows.push({name,saleP:s?.price_eth??null,floorP:f??null});
+        const s=artSales[name];   // {price_eth, ts}
+        const f=artFloors[name];  // number or null
+        rows.push({name, saleP:s?.price_eth??null, floorP:f??null});
       }
       rows.sort((a,b)=>{
         const pa=a.saleP??a.floorP??999;
@@ -566,16 +595,17 @@ function renderArtifacts(data){
           <th class="r">CHG</th>
           <th class="r">USD</th>
         </tr></thead><tbody>`;
-
       for(const {name,saleP,floorP} of rows){
+        // Change indicator: floor vs last sale
         let chgHtml='<span class="chg-eq">&#9644;</span>';
         if(floorP!=null&&saleP!=null){
           const diff=floorP-saleP;
           const pct=Math.abs(diff/saleP*100).toFixed(1);
-          if(diff>0.0001)       chgHtml=`<span class="chg-up">&#9650; +${pct}%</span>`;
+          if(diff>0.0001)      chgHtml=`<span class="chg-up">&#9650; +${pct}%</span>`;
           else if(diff<-0.0001) chgHtml=`<span class="chg-dn">&#9660; -${pct}%</span>`;
-        } else if(!floorP&&saleP!=null){ chgHtml='<span class="chg-eq">NO LIST</span>'; }
-          else if(floorP!=null&&!saleP){ chgHtml='<span class="chg-eq">NO SALE</span>'; }
+        } else if(floorP==null&&saleP!=null){ chgHtml='<span class="chg-eq">NO LIST</span>'; }
+          else if(floorP!=null&&saleP==null){ chgHtml='<span class="chg-eq">NO SALE</span>'; }
+
         const dispP=floorP??saleP;
         html+=`<tr>
           <td class="sym" style="font-size:18px">${name.toUpperCase()}</td>
@@ -587,6 +617,7 @@ function renderArtifacts(data){
       }
       html+=`</tbody></table></div>`;
 
+      // Also show KODA if present in sales
       const kodaSales=(cd.sales_traits||{})['Koda'];
       if(kodaSales){
         html+=`<div class="cat-block">
@@ -597,7 +628,8 @@ function renderArtifacts(data){
           <table class="mkt-table"><thead><tr>
             <th>TYPE</th><th class="r">LAST SALE</th><th class="r">USD</th>
           </tr></thead><tbody>`;
-        for(const [name,s] of Object.entries(kodaSales).sort((a,b)=>a[1].price_eth-b[1].price_eth)){
+        const kodaRows=Object.entries(kodaSales).sort((a,b)=>a[1].price_eth-b[1].price_eth);
+        for(const [name,s] of kodaRows){
           html+=`<tr>
             <td class="sym" style="font-size:18px">${name.toUpperCase()}</td>
             <td class="r"><span class="eth-val">${fe(s.price_eth)}</span></td>
@@ -630,7 +662,7 @@ function renderSales(data){
     html+=`<div class="col-section">
       <div class="col-hdr">
         <span class="col-name">${col.label}</span>
-        <span class="col-stat">LAST 10 DAYS</span>
+        <span class="col-stat">LAST_10 DAYS</span>
       </div>`;
 
     const hasRS=Object.keys(resSales).length>0;
@@ -639,7 +671,7 @@ function renderSales(data){
     if(!hasRS&&!hasST){
       html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
         NO SALES DATA IN WINDOW<br>
-        <span style="font-size:14px;color:#222">NO SALES RECORDED IN LAST 10 DAYS</span>
+        <span style="font-size:14px;color:#222">NO SALES RECORDED IN LAST [10 DAYS</span>
       </div>`;
     } else {
       // Resource sales by category
@@ -704,6 +736,127 @@ function renderSales(data){
   }
   html+=`</div>`;
   document.getElementById('sales').innerHTML=html;
+}
+
+// ---- LEAGUE tab ----
+function renderLeague(data){
+  const ethUsd=data.eth_usd;
+  const entries=[];
+
+  const TIER_CLS={'1':'t1','2':'t2','3':'t3'};
+
+  for(const [colKey,colShort] of [['otherdeed','OD'],['expanded','ODE']]){
+    const cd=data[colKey]||{};
+    const salesT=cd.sales_traits||{};
+    const resSales=cd.resource_sales||{};
+
+    // Resources â per tier entry
+    for(const dir of DIRS){
+      for(const [name,tiers] of Object.entries(resSales[dir]||{})){
+        const cat=RES_CAT[name]||'OTHER';
+        for(const [tier,sale] of Object.entries(tiers)){
+          // dedupe: keep highest price entry for same name+tier+col
+          const key=colKey+'|res|'+name+'|'+tier;
+          const ex=entries.find(e=>e._key===key);
+          if(!ex) entries.push({_key:key,name:name.toUpperCase(),type:'RES',cat,tier,col:colShort,price:sale.price_eth,ts:sale.ts});
+          else if(sale.price_eth>ex.price){ ex.price=sale.price_eth; ex.ts=sale.ts; }
+        }
+      }
+    }
+    // Artifacts
+    for(const [name,sale] of Object.entries(salesT['Artifact']||{})){
+      const key=colKey+'|art|'+name;
+      const ex=entries.find(e=>e._key===key);
+      if(!ex) entries.push({_key:key,name:name.toUpperCase(),type:'ART',cat:'ARTIFACT',tier:null,col:colShort,price:sale.price_eth,ts:sale.ts});
+      else if(sale.price_eth>ex.price){ ex.price=sale.price_eth; ex.ts=sale.ts; }
+    }
+    // Koda
+    for(const [name,sale] of Object.entries(salesT['Koda']||{})){
+      const key=colKey+'|koda|'+name;
+      const ex=entries.find(e=>e._key===key);
+      if(!ex) entries.push({_key:key,name:name.toUpperCase(),type:'KODA',cat:'KODA',tier:null,col:colShort,price:sale.price_eth,ts:sale.ts});
+      else if(sale.price_eth>ex.price){ ex.price=sale.price_eth; ex.ts=sale.ts; }
+    }
+  }
+
+  entries.sort((a,b)=>b.price-a.price);
+  const top=entries.slice(0,20);
+
+  if(!top.length){
+    document.getElementById('league').innerHTML=`<div style="padding:60px;text-align:center;color:#333;font-size:20px">NO SALES DATA AVAILABLE</div>`;
+    return;
+  }
+
+  function rankHtml(i){
+    if(i===0) return `<span class="rank-gold">#1</span>`;
+    if(i===1) return `<span class="rank-silver">#2</span>`;
+    if(i===2) return `<span class="rank-bronze">#3</span>`;
+    return `<span class="rank-rest">#${i+1}</span>`;
+  }
+  function typeHtml(t){
+    if(t==='RES')  return `<span class="type-res">RES</span>`;
+    if(t==='ART')  return `<span class="type-art">ART</span>`;
+    return `<span class="type-koda">KODA</span>`;
+  }
+  function tierHtml(tier){
+    if(!tier) return '';
+    const cls=TIER_CLS[tier]||'';
+    return `<span class="tier-badge-sm ${cls}" style="border-color:currentColor">T${tier}</span>`;
+  }
+  function timeAgo(ts){
+    if(!ts) return '--';
+    const s=Math.floor(Date.now()/1000)-ts;
+    if(s<3600) return Math.floor(s/60)+'m ago';
+    if(s<86400) return Math.floor(s/3600)+'h ago';
+    return Math.floor(s/86400)+'d ago';
+  }
+
+  let html=`
+  <div style="padding:0 0 6px">
+    <div class="cat-hdr league-hdr" style="border-bottom:2px solid #00FF66;padding:10px 18px;display:flex;gap:14px;align-items:baseline">
+      <span class="cat-title" style="color:#00FF66;text-shadow:var(--glow-green)">&#9650; TOP ${top.length} SALES</span>
+      <span class="cat-sub" style="color:rgba(0,255,102,.55)">BOTH COLLECTIONS &nbsp;// LAST 10 DAYS &nbsp;// RANKED BY PRICE</span>
+    </div>
+    <table class="league-table">
+      <thead><tr>
+        <th style="width:50px">RNK</th>
+        <th>ITEM</th>
+        <th>TYPE</th>
+        <th>CAT</th>
+        <th>TIER</th>
+        <th>COL</th>
+        <th class="r">PRICE</th>
+        <th class="r">USD</th>
+        <th class="r">SOLD</th>
+      </tr></thead>
+      <tbody>`;
+
+  for(let i=0;i<top.length;i++){
+    const e=top[i];
+    const rowStyle=i<3?'border-bottom:1px solid #1A0500;background:#0A0500':'';
+    html+=`<tr style="${rowStyle}">
+      <td>${rankHtml(i)}</td>
+      <td class="sym" style="font-size:${i<3?'22px':'19px'}">${e.name}</td>
+      <td>${typeHtml(e.type)}</td>
+      <td style="color:var(--amber-dim);font-size:14px">${e.cat}</td>
+      <td>${tierHtml(e.tier)}</td>
+      <td><span class="col-badge">${e.col}</span></td>
+      <td class="r"><span class="eth-val" style="font-size:${i<3?'22px':'19px'}">${fe(e.price)}</span></td>
+      <td class="r">${ethUsd?`<span class="eth-val" style="font-size:16px;color:#AA6600">${fu(e.price,ethUsd)}</span>`:''}</td>
+      <td class="r" style="color:#444;font-size:14px">${timeAgo(e.ts)}</td>
+    </tr>`;
+  }
+
+  html+=`</tbody></table>
+  </div>
+  <div style="padding:8px 18px;font-size:14px;color:#330000;border-top:1px solid #1A0000">
+    &#9650; TIER GUIDE: <span class="tb t1" style="font-size:12px">T1</span> BASE &nbsp;
+    <span class="tb t2" style="font-size:12px">T2</span> MID &nbsp;
+    <span class="tb t3" style="font-size:12px">T3</span> PREMIUM &nbsp;&mdash;&nbsp;
+    ENVIRONMENT TIER DRIVES RESOURCE VALUE: HIGHER ENV = HIGHER DEMAND
+  </div>`;
+
+  document.getElementById('league').innerHTML=html;
 }
 
 // ---- TICKER ----
@@ -780,6 +933,7 @@ async function load(){
     renderResources(d);
     renderArtifacts(d);
     renderSales(d);
+    renderLeague(d);
     buildTicker(d);
     document.getElementById('status-msg').textContent='MARKET DATA LIVE  //  AUTO-REFRESH 60MIN';
   } catch(e){
