@@ -1,8 +1,9 @@
 """
 Koda Temple — Resource Oracle Data Fetcher
 ==========================================
-Pulls live Otherdeed floor prices for ALL traits from the OpenSea v2 API.
-Paginates through ALL active listings, looks up each token's traits, builds floor map.
+Pulls live floor prices for ALL traits from the OpenSea v2 API.
+Covers two collections: Otherdeed for Otherside + Otherdeed Expanded.
+Paginates through ALL active listings per collection.
 
 HOW TO RUN:
   OPENSEA_API_KEY=your_key_here python koda_temple_data.py
@@ -18,15 +19,26 @@ except ImportError:
   subprocess.check_call([sys.executable,"-m","pip","install","requests"])
   import requests
 
-COLLECTION_SLUG="otherdeed"
-CONTRACT="0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258"
 OPENSEA_API="https://api.opensea.io/api/v2"
 COINGECKO="https://api.coingecko.com/api/v3"
 OPENSEA_KEY=os.environ.get("OPENSEA_API_KEY","")
 SNAPSHOT_DIR="."
 REQUEST_DELAY=0.6
-# 0 = paginate through ALL active listings (no cap)
-SCAN_LISTINGS=0
+
+COLLECTIONS=[
+  {
+    "key":"otherdeed",
+    "label":"Otherdeed for Otherside",
+    "slug":"otherdeed",
+    "contract":"0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258",
+  },
+  {
+    "key":"expanded",
+    "label":"Otherdeed Expanded",
+    "slug":"otherdeed-expanded",
+    "contract":"0x790B2cF29Ed4F310bf7641f013C65D4560d28371",
+  },
+]
 
 def hdrs():
   h={"accept":"application/json"}
@@ -43,9 +55,9 @@ def eth_price():
     return r.json().get("ethereum",{}).get("usd")
   except Exception as e: print(f"  [warn] ETH price: {e}"); return None
 
-def col_stats():
+def col_stats(slug):
   try:
-    r=requests.get(f"{OPENSEA_API}/collections/{COLLECTION_SLUG}/stats",headers=hdrs(),timeout=15)
+    r=requests.get(f"{OPENSEA_API}/collections/{slug}/stats",headers=hdrs(),timeout=15)
     if not r.ok: print(f"  [warn] stats {r.status_code}"); return {}
     d=r.json(); tot=d.get("total",{})
     v24=v7=None
@@ -55,15 +67,14 @@ def col_stats():
     return {"floor_eth":tot.get("floor_price"),"volume_24h":v24,"volume_7d":v7}
   except Exception as e: print(f"  [warn] col stats: {e}"); return {}
 
-def cheapest(limit=0):
-  """Paginate all active listings. limit=0 means no cap (fetch everything)."""
+def cheapest(slug):
+  """Paginate all active listings for a collection."""
   results=[]; cur=None
   while True:
-    if limit and len(results)>=limit: break
     params={"limit":50}
     if cur: params["next"]=cur
     try:
-      r=requests.get(f"{OPENSEA_API}/listings/collection/{COLLECTION_SLUG}/best",headers=hdrs(),params=params,timeout=20)
+      r=requests.get(f"{OPENSEA_API}/listings/collection/{slug}/best",headers=hdrs(),params=params,timeout=20)
       if not r.ok: print(f"  [warn] listings {r.status_code}"); break
       d=r.json()
       for lst in d.get("listings",[]):
@@ -76,74 +87,45 @@ def cheapest(limit=0):
       if not d.get("listings") or not cur: break
     except Exception as e: print(f"  [warn] listings error: {e}"); break
     time.sleep(REQUEST_DELAY)
-  return results if not limit else results[:limit]
+  return results
 
-def traits(tid):
+def traits(contract,tid):
   try:
-    r=requests.get(f"{OPENSEA_API}/chain/ethereum/contract/{CONTRACT}/nfts/{tid}",headers=hdrs(),timeout=15)
+    r=requests.get(f"{OPENSEA_API}/chain/ethereum/contract/{contract}/nfts/{tid}",headers=hdrs(),timeout=15)
     if not r.ok: return []
     return r.json().get("nft",{}).get("traits",[])
   except: return []
 
-def scan():
-  label="all" if not SCAN_LISTINGS else str(SCAN_LISTINGS)
-  print(f"\n  Scanning {label} active listings for ALL trait floors...")
-  ls=cheapest(SCAN_LISTINGS)
-  print(f"  Retrieved {len(ls)} listings")
+def scan_collection(col):
+  slug=col["slug"]; contract=col["contract"]; label=col["label"]
+  print(f"\n  [{label}] Scanning all active listings...")
+  ls=cheapest(slug)
+  print(f"  [{label}] Retrieved {len(ls)} listings")
   fl={}
   for i,(tid,p) in enumerate(ls):
-    if i%25==0: print(f"  Fetching traits {i}/{len(ls)} ...")
-    for t in traits(tid):
+    if i%25==0: print(f"  [{label}] Fetching traits {i}/{len(ls)} ...")
+    for t in traits(contract,tid):
       tt=t.get("trait_type",""); tv=str(t.get("value",""))
       if tt and tv:
         fl.setdefault(tt,{})
         if tv not in fl[tt]: fl[tt][tv]=p
     time.sleep(REQUEST_DELAY)
-  print(f"  Trait types found: {', '.join(sorted(fl.keys()))}")
+  print(f"  [{label}] Trait types: {', '.join(sorted(fl.keys()))}")
   return fl
 
 def build():
   if not OPENSEA_KEY: print("\n  WARNING: No OPENSEA_API_KEY set.")
-  sn={"fetched_at":datetime.now(timezone.utc).isoformat(),"eth_usd":None,
-      "collection":{},"resources":{},"environments":{},"sediments":{},
-      "artifact":{},"raw_traits":{}}
+  sn={"fetched_at":datetime.now(timezone.utc).isoformat(),"eth_usd":None}
   print("\n  Fetching ETH/USD...")
   sn["eth_usd"]=eth_price()
   if sn["eth_usd"]: print(f"  ETH/USD: ${sn['eth_usd']:,.0f}")
-  print("\n  Fetching collection stats...")
-  sn["collection"]=col_stats()
-  cf=sn["collection"].get("floor_eth")
-  if cf: print(f"  Floor: {cf:.4f} ETH")
-  f=scan()
-  # Store the full raw trait floor map (all trait types and values)
-  sn["raw_traits"]=f
-  # Also keep structured summaries for backwards compat
-  print("\n  —— Resource Tier ——")
-  for t in [3,2,1]:
-    v=f.get("Resource Tier",{}).get(str(t))
-    print(f"  T{t}: {f'{v:.4f} ETH' if v else 'n/a'}")
-    sn["resources"][f"tier_{t}"]={"floor":v}
-  print("\n  —— Environment Tier ——")
-  for t in [5,4,3,2,1]:
-    v=f.get("Environment Tier",{}).get(str(t))
-    print(f"  T{t}: {f'{v:.4f} ETH' if v else 'n/a'}")
-    sn["environments"][f"tier_{t}"]={"floor":v}
-  print("\n  —— Sediment Tier ——")
-  for t in [3,2,1]:
-    v=f.get("Sediment Tier",{}).get(str(t))
-    print(f"  T{t}: {f'{v:.4f} ETH' if v else 'n/a'}")
-    sn["sediments"][f"tier_{t}"]={"floor":v}
-  print("\n  —— Artifact ——")
-  art=min([v for k,v in f.get("Artifact",{}).items() if k and k.lower() not in("","none","null")],default=None)
-  sn["artifact"]={"floor":art}
-  if art: print(f"  Floor: {art:.4f} ETH")
-  # Print all other trait types for reference
-  skip={"Resource Tier","Environment Tier","Sediment Tier","Artifact"}
-  print("\n  —— All other trait types ——")
-  for tt in sorted(f.keys()):
-    if tt in skip: continue
-    vals=sorted(f[tt].items(),key=lambda x:x[1])
-    print(f"  {tt}: {len(vals)} values, cheapest={vals[0][1]:.4f} ETH ({vals[0][0]})" if vals else f"  {tt}: empty")
+  for col in COLLECTIONS:
+    key=col["key"]; slug=col["slug"]
+    print(f"\n  Fetching stats for {col['label']}...")
+    stats=col_stats(slug)
+    if stats.get("floor_eth"): print(f"  Floor: {stats['floor_eth']:.4f} ETH")
+    raw=scan_collection(col)
+    sn[key]={"collection":stats,"raw_traits":raw}
   return sn
 
 def save(sn):
