@@ -7,23 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
 :root {
-  --amber:       #FFB300;
-  --amber-bright:#FFD740;
-  --amber-dim:   #AA7700
+  --amber:       #FF2200;
+  --amber-bright:#FF4422;
+  --amber-dim:   #AA1100
   --red-header:  #AA0000;
   --green:       #00FF66;
   --blue:        #44AAFF;
   --white:       #FFFFFF;
-  --panel:       #060600;
-  --border:      #2A2200;
-  --glow-amber:  0 0 8px #FFB300, 0 0 18px rgba(255,140,0,0.4);
+  --panel:       #060000;
+  --border:      #2A0000;
+  --glow-amber:  0 0 8px #FF2200, 0 0 18px rgba(255,30,0,0.5);
   --glow-green:  0 0 8px #00FF66;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 
 body {
-  background: #000;
+  background: #000 url('kodaq_bg.jpg') center center / cover no-repeat fixed;
   color: var(--amber);
   font-family: 'VT323', 'Courier New', monospace;
   font-size: 20px;
@@ -36,12 +36,23 @@ body::after {
   position:fixed;
   top:0;left:0;right:0;
   height:3px;
-  background:linear-gradient(transparent,rgba(255,180,0,.07),transparent);
+  background:linear-gradient(transparent,rgba(255,30,0,.07),transparent);
   animation:scan 10s linear infinite;
   pointer-events:none;
   z-index:9999;
 }
 @keyframes scan { 0%{top:-10px} 100%{top:100vh} }
+
+/* dark overlay so text stays readable */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,0.72);
+  pointer-events:none;
+  z-index:0;
+}
+#hdr, #tabs, #content, #status-bar { position:relative; z-index:1; }
 
 /* ===== HEADER ===== */
 #hdr {
@@ -65,7 +76,7 @@ body::after {
   display:flex;
   gap:20px;
   font-size:18px;
-  color:#CC9900;
+  color:#CC1100;
   white-space:nowrap;
 }
 #eth-price { color:var(--amber-bright); text-shadow:var(--glow-amber); }
@@ -73,7 +84,7 @@ body::after {
 
 /* ===== TICKER TAPE ===== */
 #ticker-wrap {
-  background:#080800;
+  background:#080000;
   border-bottom:1px solid var(--amber-dim);
   overflow:hidden;
   white-space:nowrap;
@@ -93,7 +104,7 @@ body::after {
 /* ===== TABS ===== */
 #tabs {
   display:flex;
-  background:#050500;
+  background:#050000;
   border-bottom:2px solid var(--amber-dim);
   position:sticky;
   top:55px;
@@ -108,10 +119,10 @@ body::after {
   border-right:1px solid #1A1A00;
   transition:all .1s;
 }
-.tab:hover { color:var(--amber); background:#0D0D00; }
+.tab:hover { color:var(--amber); background:#0D0000; }
 .tab.active {
   color:var(--amber-bright);
-  background:#181400;
+  background:#180000;
   border-bottom:3px solid var(--amber-bright);
   text-shadow:var(--glow-amber);
 }
@@ -132,7 +143,7 @@ body::after {
 /* ===== COLLECTION SECTION ===== */
 .col-section { border:1px solid var(--border); }
 .col-hdr {
-  background:#0A0A00;
+  background:#0A0000;
   border-bottom:1px solid var(--border);
   padding:7px 14px;
   display:flex;
@@ -141,7 +152,7 @@ body::after {
   align-items:center;
 }
 .col-name { font-size:19px; color:var(--amber-bright); letter-spacing:2px; text-shadow:var(--glow-amber); }
-.col-stat { font-size:16px; color:#BB9900; }
+.col-stat { font-size:16px; color:#BB1100; }
 .col-stat .v { color:var(--white); font-size:18px; }
 
 /* ===== CATEGORY BLOCK ===== */
@@ -157,9 +168,9 @@ body::after {
   font-size:26px;
   color:var(--amber-bright);
   letter-spacing:4px;
-  text-shadow:0 0 8px rgba(255,200,0,.6);
+  text-shadow:0 0 8px rgba(255,50,0,.6);
 }
-.cat-sub { font-size:15px; color:rgba(255,210,0,.70); letter-spacing:1px; }
+.cat-sub { font-size:15px; color:rgba(255,50,0,.70); letter-spacing:1px; }
 
 /* ===== MARKET TABLE ===== */
 .mkt-table {
@@ -167,25 +178,25 @@ body::after {
   border-collapse:collapse;
   background:var(--panel);
 }
-.mkt-table thead tr { background:#0D0D00; border-bottom:1px solid var(--border); }
+.mkt-table thead tr { background:#0D0000; border-bottom:1px solid var(--border); }
 .mkt-table th {
   padding:7px 12px;
   font-size:15px;
-  color:#BB9900;
+  color:#BB1100;
   letter-spacing:1px;
   font-weight:normal;
   text-align:left;
 }
 .mkt-table th.r { text-align:right; }
-.mkt-table tbody tr { border-bottom:1px solid #1A1500; transition:background .1s; }
-.mkt-table tbody tr:hover { background:#0D0A00; }
+.mkt-table tbody tr { border-bottom:1px solid #1A0000; transition:background .1s; }
+.mkt-table tbody tr:hover { background:#0D0000; }
 .mkt-table td { padding:10px 12px; }
 
 .sym {
   color:var(--amber-bright);
   font-size:23px;
   letter-spacing:2px;
-  text-shadow:0 0 5px rgba(255,180,0,.35);
+  text-shadow:0 0 5px rgba(255,50,0,.35);
 }
 .dirs { display:flex; gap:3px; flex-wrap:wrap; }
 .dir-tag {
@@ -202,8 +213,8 @@ body::after {
 .t3c { text-align:right; }
 
 .eth-val { color:var(--white); font-size:23px; white-space:nowrap; text-shadow:0 0 4px rgba(255,255,255,.25); }
-.usd-val { color:#CCAA00; font-size:16px; display:block; text-align:right; }
-.no-data { color:#3A3300; font-size:17px; text-align:right; }
+.usd-val { color:#CC2200; font-size:16px; display:block; text-align:right; }
+.no-data { color:#330000; font-size:17px; text-align:right; }
 
 /* tier badges */
 .tb { display:inline-block; padding:2px 8px; font-size:15px; border:1px solid; margin-right:2px; }
@@ -215,7 +226,7 @@ body::after {
 .pending-notice {
   padding:5px 14px;
   font-size:13px;
-  color:#443300;
+  color:#330000;
   border-bottom:1px solid var(--border);
 }
 
@@ -223,13 +234,13 @@ body::after {
 #status-bar {
   position:fixed;
   bottom:0;left:0;right:0;
-  background:#040400;
+  background:#040000;
   border-top:1px solid var(--amber-dim);
   padding:5px 16px;
   display:flex;
   justify-content:space-between;
   font-size:16px;
-  color:#AA8800;
+  color:#AA1100;
   z-index:200;
 }
 #live-dot {
