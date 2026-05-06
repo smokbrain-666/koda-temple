@@ -269,9 +269,12 @@ body::before {
 .sales-hdr { background:rgba(85,51,0,0.55); }
 
 /* sale price vs floor indicators */
-.sale-up { color:#00FF66; font-size:15px; display:block; line-height:1.3; }
-.sale-dn { color:#FF5555; font-size:15px; display:block; line-height:1.3; }
-.sale-eq { color:#999;    font-size:15px; display:block; line-height:1.3; }
+.sale-up { color:#00FF66; font-size:16px; display:block; line-height:1.4; font-weight:bold; }
+.sale-dn { color:#FF4444; font-size:16px; display:block; line-height:1.4; font-weight:bold; }
+.sale-eq { color:#888;    font-size:15px; display:block; line-height:1.4; }
+.chg-up  { color:#00FF66; font-size:18px; display:inline-block; }
+.chg-dn  { color:#FF4444; font-size:18px; display:inline-block; }
+.chg-eq  { color:#888;    font-size:15px; display:inline-block; }
 </style>
 </head>
 <body>
@@ -484,9 +487,9 @@ function renderResources(data){
                 const diff=p-sp;
                 const pct=Math.abs(diff/sp*100).toFixed(1);
                 if(diff>0.0001){
-                  html+=`<span class="sale-up">&#9650; ${fe(sp)} <small>(+${pct}%)</small></span>`;
+                  html+=`<span class="sale-up">&#9650; ${fe(sp)} +${pct}%</span>`;
                 } else if(diff<-0.0001){
-                  html+=`<span class="sale-dn">&#9660; ${fe(sp)} <small>(-${pct}%)</small></span>`;
+                  html+=`<span class="sale-dn">&#9660; ${fe(sp)} -${pct}%</span>`;
                 } else {
                   html+=`<span class="sale-eq">&#9644; ${fe(sp)}</span>`;
                 }
@@ -525,61 +528,84 @@ function renderArtifacts(data){
     const cd=data[col.key]||{};
     const raw=cd.raw_traits||{};
     const st=cd.collection||{};
-    const arts=raw['Artifact']||{};
-    const artTiers=raw['Artifact Tier']||{};
+    const artSales=(cd.sales_traits||{})['Artifact']||{};
+    const artFloors=raw['Artifact']||{};
+    const allNames=new Set([...Object.keys(artSales),...Object.keys(artFloors)]);
 
     html+=`<div class="col-section">
       <div class="col-hdr">
         <span class="col-name">${col.label}</span>
         <span class="col-stat">FLOOR <span class="v">${st.floor_eth?st.floor_eth.toFixed(4)+' &#926;':'---'}</span></span>
+        <span class="col-stat">ARTIFACTS <span class="v">${allNames.size||'---'}</span></span>
       </div>`;
 
-    // By tier
-    if(Object.keys(artTiers).length){
-      html+=`<div class="cat-block">
-        <div class="cat-hdr art-hdr">
-          <span class="cat-title">BY TIER</span>
-          <span class="cat-sub">TIER FLOOR PRICES</span>
-        </div>
-        <table class="mkt-table"><thead><tr>
-          <th>TIER</th><th class="r">FLOOR &#926;</th><th class="r">USD</th>
-        </tr></thead><tbody>`;
-      for(const tier of ART_TIERS){
-        const p=artTiers[tier];
-        if(p==null) continue;
-        html+=`<tr>
-          <td><span class="tb ${ART_TIER_CLS[tier]||''}">${ART_TIER_LBL[tier]||tier}</span>
-          <span class="sym" style="font-size:18px">${tier.toUpperCase()}</span></td>
-          <td class="r"><span class="eth-val">${fe(p)}</span></td>
-          <td class="r">`;
-        if(ethUsd) html+=`<span class="eth-val" style="font-size:17px">${fu(p,ethUsd)}</span>`;
-        html+=`</td></tr>`;
+    if(!allNames.size){
+      html+=`<div style="padding:24px;text-align:center;color:#333;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
+    } else {
+      const rows=[];
+      for(const name of allNames){
+        const s=artSales[name];
+        const f=artFloors[name];
+        rows.push({name,saleP:s?.price_eth??null,floorP:f??null});
       }
-      html+=`</tbody></table></div>`;
-    }
+      rows.sort((a,b)=>{
+        const pa=a.saleP??a.floorP??999;
+        const pb=b.saleP??b.floorP??999;
+        return pa-pb;
+      });
 
-    // By name
-    if(Object.keys(arts).length){
-      const sorted=Object.entries(arts).sort((a,b)=>a[1]-b[1]);
       html+=`<div class="cat-block">
         <div class="cat-hdr art-hdr">
           <span class="cat-title">ALL ARTIFACTS</span>
-          <span class="cat-sub">${sorted.length} TYPES &nbsp;// SORTED BY FLOOR</span>
+          <span class="cat-sub">${rows.length} TYPES &nbsp;// LAST SALE + FLOOR</span>
         </div>
         <table class="mkt-table"><thead><tr>
-          <th>ARTIFACT</th><th class="r">FLOOR &#926;</th><th class="r">USD</th>
+          <th>ARTIFACT</th>
+          <th class="r">LAST SALE</th>
+          <th class="r">FLOOR</th>
+          <th class="r">CHG</th>
+          <th class="r">USD</th>
         </tr></thead><tbody>`;
-      for(const [name,p] of sorted){
+
+      for(const {name,saleP,floorP} of rows){
+        let chgHtml='<span class="chg-eq">&#9644;</span>';
+        if(floorP!=null&&saleP!=null){
+          const diff=floorP-saleP;
+          const pct=Math.abs(diff/saleP*100).toFixed(1);
+          if(diff>0.0001)       chgHtml=`<span class="chg-up">&#9650; +${pct}%</span>`;
+          else if(diff<-0.0001) chgHtml=`<span class="chg-dn">&#9660; -${pct}%</span>`;
+        } else if(!floorP&&saleP!=null){ chgHtml='<span class="chg-eq">NO LIST</span>'; }
+          else if(floorP!=null&&!saleP){ chgHtml='<span class="chg-eq">NO SALE</span>'; }
+        const dispP=floorP??saleP;
         html+=`<tr>
-          <td class="sym">${name.toUpperCase()}</td>
-          <td class="r"><span class="eth-val">${fe(p)}</span></td>
-          <td class="r">`;
-        if(ethUsd) html+=`<span class="eth-val" style="font-size:17px">${fu(p,ethUsd)}</span>`;
-        html+=`</td></tr>`;
+          <td class="sym" style="font-size:18px">${name.toUpperCase()}</td>
+          <td class="r">${saleP!=null?`<span class="eth-val">${fe(saleP)}</span>`:'<span class="no-data">--</span>'}</td>
+          <td class="r">${floorP!=null?`<span class="eth-val">${fe(floorP)}</span>`:'<span class="no-data">--</span>'}</td>
+          <td class="r">${chgHtml}</td>
+          <td class="r">${dispP!=null&&ethUsd?`<span class="eth-val" style="font-size:17px">${fu(dispP,ethUsd)}</span>`:''}</td>
+        </tr>`;
       }
       html+=`</tbody></table></div>`;
-    } else {
-      html+=`<div style="padding:24px;text-align:center;color:#333;font-size:18px">NO ARTIFACT DATA</div>`;
+
+      const kodaSales=(cd.sales_traits||{})['Koda'];
+      if(kodaSales){
+        html+=`<div class="cat-block">
+          <div class="cat-hdr art-hdr">
+            <span class="cat-title">KODA</span>
+            <span class="cat-sub">LAST SALE PRICES</span>
+          </div>
+          <table class="mkt-table"><thead><tr>
+            <th>TYPE</th><th class="r">LAST SALE</th><th class="r">USD</th>
+          </tr></thead><tbody>`;
+        for(const [name,s] of Object.entries(kodaSales).sort((a,b)=>a[1].price_eth-b[1].price_eth)){
+          html+=`<tr>
+            <td class="sym" style="font-size:18px">${name.toUpperCase()}</td>
+            <td class="r"><span class="eth-val">${fe(s.price_eth)}</span></td>
+            <td class="r">${ethUsd?`<span class="eth-val" style="font-size:17px">${fu(s.price_eth,ethUsd)}</span>`:''}</td>
+          </tr>`;
+        }
+        html+=`</tbody></table></div>`;
+      }
     }
     html+=`</div>`;
   }
@@ -612,8 +638,8 @@ function renderSales(data){
 
     if(!hasRS&&!hasST){
       html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
-        SALES DATA PENDING RUN #23<br>
-        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUED</span>
+        NO SALES DATA IN WINDOW<br>
+        <span style="font-size:14px;color:#222">NO SALES RECORDED IN LAST 10 DAYS</span>
       </div>`;
     } else {
       // Resource sales by category
