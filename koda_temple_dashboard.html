@@ -6,134 +6,145 @@
 <title>Koda Temple &#8212; Resource Oracle</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d1117;color:#e6edf3;font-family:system-ui,sans-serif;padding:20px}
-h1{font-size:1.4rem;font-weight:600;margin-bottom:4px;color:#58a6ff}
-.sub{font-size:.8rem;color:#8b949e;margin-bottom:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px}
-.card h2{font-size:.95rem;font-weight:600;color:#c9d1d9;margin-bottom:12px;border-bottom:1px solid #30363d;padding-bottom:8px}
-.row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid #21262d}
+body{background:#0d1117;color:#e6edf3;font-family:system-ui,sans-serif}
+.header{padding:16px 20px 12px;border-bottom:1px solid #21262d}
+h1{font-size:1.3rem;font-weight:600;color:#58a6ff}
+.sub{font-size:.8rem;color:#8b949e;margin-top:3px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0;height:calc(100vh - 62px)}
+.col-panel{overflow-y:auto;padding:16px;border-right:1px solid #21262d}
+.col-panel:last-child{border-right:none}
+.col-title{font-size:.95rem;font-weight:700;color:#58a6ff;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #30363d;display:flex;justify-content:space-between;align-items:center}
+.col-floor{font-size:.85rem;color:#3fb950;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-bottom:16px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px}
+.card h2{font-size:.9rem;font-weight:600;color:#c9d1d9;margin-bottom:10px;border-bottom:1px solid #30363d;padding-bottom:6px}
+.row{display:flex;align-items:center;justify-content:space-between;padding:4px 0;border-bottom:1px solid #21262d}
 .row:last-child{border-bottom:none}
-.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:10px;min-width:28px;text-align:center;margin-right:8px}
+.badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 6px;border-radius:8px;min-width:26px;text-align:center;margin-right:6px}
 .t5{background:#6e40c9;color:#fff}
 .t4{background:#1f6feb;color:#fff}
 .t3{background:#238636;color:#fff}
 .t2{background:#9e6a03;color:#fff}
 .t1{background:#484f58;color:#fff}
 .art{background:#b91c1c;color:#fff}
-.col{background:#0f3460;color:#fff}
+.col-b{background:#0f3460;color:#fff}
 .res{background:#0e4429;color:#3fb950}
-.price{font-size:.85rem;font-weight:600;color:#c9d1d9}
-.usd{font-size:.72rem;color:#8b949e;margin-left:5px}
-.prem{font-size:.68rem;padding:1px 4px;border-radius:3px;background:#122d22;color:#3fb950;margin-left:5px}
-.null{color:#484f58;font-size:.8rem}
-.refresh{font-size:.75rem;color:#8b949e;margin-top:16px}
-.err{color:#f85149;font-size:.85rem}
-.lbl{font-size:.8rem;color:#8b949e;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.price{font-size:.82rem;font-weight:600;color:#c9d1d9}
+.usd{font-size:.7rem;color:#8b949e;margin-left:4px}
+.prem{font-size:.65rem;padding:1px 4px;border-radius:3px;background:#122d22;color:#3fb950;margin-left:4px}
+.prem.neg{background:#2d1212;color:#f85149}
+.refresh{color:#8b949e;font-size:.75rem;margin-top:8px}
+.err{color:#f85149;font-size:.85rem;padding:20px}
+.stat-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #21262d;font-size:.8rem}
+.stat-row:last-child{border-bottom:none}
+.stat-label{color:#8b949e}
+.stat-val{color:#c9d1d9;font-weight:600}
 </style>
 </head>
 <body>
-<h1>Koda Temple &#8212; Resource Oracle</h1>
-<div class="sub" id="ts">Loading...</div>
-<div class="grid" id="grid"></div>
-<div class="refresh" id="ref"></div>
+<div class="header">
+  <h1>Koda Temple &#8212; Resource Oracle</h1>
+  <div class="sub" id="ts">Loading...</div>
+</div>
+<div class="cols">
+  <div class="col-panel" id="col-otherdeed"></div>
+  <div class="col-panel" id="col-expanded"></div>
+</div>
 <script>
 var DATA_URL='https://smokbrain-666.github.io/koda-temple/price_snapshot_latest.json';
-function fe(v){return v!=null?v.toFixed(4)+' ETH':null;}
-function fu(v,u){return u&&v!=null?'~$'+(v*u).toLocaleString('en',{maximumFractionDigits:0}):null;}
-function prem(v,base){
-  if(v==null||base==null||base<=0)return '';
-  var p=Math.round(((v-base)/base)*100);
-  return p>0?'<span class="prem">+'+p+'%</span>':(p<0?'<span class="prem" style="background:#2d1217;color:#f85149">'+p+'%</span>':'');
-}
-function row(bc,label,eth,usd,base,isText){
-  var ep=fe(eth);
-  var up=fu(eth,usd);
-  var pr=prem(eth,base);
-  var lh=isText?'<span class="lbl">'+label+'</span>':'<span><span class="badge '+bc+'">'+label+'</span></span>';
-  var ph=ep?'<span class="price">'+ep+'</span>'+(up?'<span class="usd">'+up+'</span>':'')+pr:'<span class="null">&#8212;</span>';
-  return '<div class="row">'+lh+ph+'</div>';
-}
-function card(title,rows){return '<div class="card"><h2>'+title+'</h2>'+rows+'</div>';}
 
-function traitCard(title,traitData,usd,base){
-  if(!traitData||!Object.keys(traitData).length)return '';
-  var entries=Object.entries(traitData).sort(function(a,b){return (a[1]||999)-(b[1]||999);});
-  var rows=entries.map(function(e){return row('res',e[0],e[1],usd,base,true);}).join('');
-  return card(title,rows);
+function fmt(v,d){return v!=null?v.toFixed(d!=null?d:4):'--'}
+function prem(v,cf){
+  if(v==null||cf==null||cf===0) return '';
+  var p=Math.round((v-cf)/cf*100);
+  var cls=p>=0?'':'neg';
+  return '<span class="prem '+cls+'">'+(p>=0?'+':'')+p+'%</span>';
 }
 
-async function load(){
-  var grid=document.getElementById('grid');
-  var ts=document.getElementById('ts');
-  var ref=document.getElementById('ref');
-  try{
-    var d=await fetch(DATA_URL+'?t='+Date.now()).then(function(r){return r.json();});
-    var usd=d.eth_usd;
-    var col=d.collection||{};
-    var cf=col.floor_eth;
-    var fetched=d.fetched_at?new Date(d.fetched_at).toLocaleString():'?';
-    ts.textContent='Data as of '+fetched+(usd?' | ETH $'+usd.toLocaleString():'');
-    var html='';
+function traitCard(title,data,usd,cf,badgeFn){
+  var entries=Object.entries(data).filter(function(e){
+    return e[0]&&e[0].toLowerCase()!=='none'&&e[0].toLowerCase()!=='null'&&e[1]!=null;
+  }).sort(function(a,b){return a[1]-b[1];});
+  if(!entries.length) return '';
+  var rows=entries.map(function(e){
+    var badge=badgeFn?badgeFn(e[0]):'';
+    var u=usd?'<span class="usd">~$'+Math.round(e[1]*usd)+'</span>':'';
+    var pr=prem(e[1],cf);
+    return '<div class="row">'+badge+'<span class="price">'+fmt(e[1])+' ETH</span>'+u+pr+'</div>';
+  }).join('');
+  return '<div class="card"><h2>'+title+'</h2>'+rows+'</div>';
+}
 
-    // Collection
-    var cr='<div class="row"><span><span class="badge col">Floor</span></span>'
-      +(cf?'<span class="price">'+fe(cf)+'</span>'+(fu(cf,usd)?'<span class="usd">'+fu(cf,usd)+'</span>':''):'<span class="null">&#8212;</span>')+'</div>';
-    if(col.volume_24h!=null)cr+='<div class="row"><span class="lbl">24h Volume</span><span class="price">'+col.volume_24h.toFixed(1)+' ETH</span></div>';
-    if(col.volume_7d!=null)cr+='<div class="row"><span class="lbl">7d Volume</span><span class="price">'+col.volume_7d.toFixed(1)+' ETH</span></div>';
-    html+=card('Collection',cr);
+function tierBadge(prefix){
+  return function(v){
+    var n=parseInt(v)||0;
+    return '<span class="badge t'+n+'">'+prefix+v+'</span>';
+  };
+}
 
-    // Resource Tier
-    var res=d.resources||{};
-    html+=card('Resource Tier',
-      row('t3','T3',res.tier_3&&res.tier_3.floor,usd,cf)+
-      row('t2','T2',res.tier_2&&res.tier_2.floor,usd,cf)+
-      row('t1','T1',res.tier_1&&res.tier_1.floor,usd,cf));
+function renderCollection(key,label,data,usd,el){
+  var col=data.collection||{};
+  var raw=data.raw_traits||{};
+  var cf=col.floor_eth;
+  var html='<div class="col-title"><span>'+label+'</span>';
+  if(cf) html+='<span class="col-floor">'+fmt(cf,4)+' ETH</span>';
+  html+='</div>';
 
-    // Environment Tier
-    var env=d.environments||{};
-    html+=card('Environment Tier',
-      row('t5','T5',env.tier_5&&env.tier_5.floor,usd,cf)+
-      row('t4','T4',env.tier_4&&env.tier_4.floor,usd,cf)+
-      row('t3','T3',env.tier_3&&env.tier_3.floor,usd,cf)+
-      row('t2','T2',env.tier_2&&env.tier_2.floor,usd,cf)+
-      row('t1','T1',env.tier_1&&env.tier_1.floor,usd,cf));
+  // Stats card
+  html+='<div class="grid"><div class="card"><h2>Collection</h2>';
+  html+='<div class="stat-row"><span class="stat-label">Floor</span><span class="stat-val">'+(cf?fmt(cf,4)+' ETH':'--')+'</span></div>';
+  if(usd&&cf) html+='<div class="stat-row"><span class="stat-label">Floor USD</span><span class="stat-val">~$'+Math.round(cf*usd)+'</span></div>';
+  if(col.volume_24h!=null) html+='<div class="stat-row"><span class="stat-label">24h Volume</span><span class="stat-val">'+fmt(col.volume_24h,2)+' ETH</span></div>';
+  if(col.volume_7d!=null) html+='<div class="stat-row"><span class="stat-label">7d Volume</span><span class="stat-val">'+fmt(col.volume_7d,1)+' ETH</span></div>';
+  html+='</div>';
 
-    // Sediment Tier
-    var sed=d.sediments||{};
-    html+=card('Sediment Tier',
-      row('t3','T3',sed.tier_3&&sed.tier_3.floor,usd,cf)+
-      row('t2','T2',sed.tier_2&&sed.tier_2.floor,usd,cf)+
-      row('t1','T1',sed.tier_1&&sed.tier_1.floor,usd,cf));
-
-    // Artifact
-    var art=d.artifact&&d.artifact.floor;
-    html+=card('Artifact / Relic',row('art','Relic',art,usd,cf));
-
-    // All raw trait types from the scan (the good stuff)
-    var raw=d.raw_traits||{};
-    var skip={'Resource Tier':1,'Environment Tier':1,'Sediment Tier':1,'Artifact':1};
-    var traitTypes=Object.keys(raw).filter(function(k){return !skip[k];}).sort();
-    traitTypes.forEach(function(tt){
-      var data=raw[tt];
-      if(!data||!Object.keys(data).length)return;
-      // Filter out null/none values
-      var clean={};
-      Object.keys(data).forEach(function(k){
-        if(k&&k.toLowerCase()!=='none'&&k.toLowerCase()!=='null'&&data[k]!=null)clean[k]=data[k];
-      });
-      if(Object.keys(clean).length)html+=traitCard(tt,clean,usd,cf);
-    });
-
-    grid.innerHTML=html;
-    ref.textContent='Auto-refreshes every 5 minutes. Floors from cheapest 200 listings scan.';
-  }catch(e){
-    grid.innerHTML='<div class="err">Error: '+e.message+'</div>';
-    ts.textContent='Failed to fetch snapshot';
+  // Fixed trait type cards
+  var envT=raw['Environment Tier'];
+  if(envT) html+=traitCard('Environment Tier',envT,usd,cf,tierBadge('T'));
+  var sedT=raw['Sediment Tier'];
+  if(sedT) html+=traitCard('Sediment Tier',sedT,usd,cf,tierBadge('T'));
+  var art=raw['Artifact'];
+  if(art){
+    var artClean={};
+    Object.keys(art).forEach(function(k){if(k&&k.toLowerCase()!='none'&&k.toLowerCase()!='null')artClean[k]=art[k];});
+    if(Object.keys(artClean).length) html+=traitCard('Artifact',artClean,usd,cf,function(){return '<span class="badge art">Relic</span>';});
   }
+  html+='</div>';
+
+  // Dynamic cards for all other trait types
+  var skip={'Environment Tier':1,'Sediment Tier':1,'Artifact':1,'Plot':1};
+  var types=Object.keys(raw).filter(function(k){return !skip[k];}).sort();
+  if(types.length){
+    html+='<div class="grid">';
+    types.forEach(function(tt){
+      var badgeFn=null;
+      if(tt.indexOf('Tier')>=0) badgeFn=tierBadge('T');
+      html+=traitCard(tt,raw[tt],usd,cf,badgeFn);
+    });
+    html+='</div>';
+  }
+  el.innerHTML=html;
 }
-load();
-setInterval(load,5*60*1000);
+
+fetch(DATA_URL+'?t='+Date.now())
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var usd=d.eth_usd;
+    var ts=d.fetched_at?new Date(d.fetched_at).toLocaleString():'unknown';
+    document.getElementById('ts').textContent='Data as of '+ts+(usd?' | ETH $'+usd.toLocaleString():'');
+    var colDefs=[
+      {key:'otherdeed',label:'Otherdeed for Otherside',el:document.getElementById('col-otherdeed')},
+      {key:'expanded',label:'Otherdeed Expanded',el:document.getElementById('col-expanded')},
+    ];
+    colDefs.forEach(function(c){
+      var data=d[c.key];
+      if(data) renderCollection(c.key,c.label,data,usd,c.el);
+      else c.el.innerHTML='<div class="err">No data for '+c.label+'</div>';
+    });
+  })
+  .catch(function(e){
+    document.getElementById('col-otherdeed').innerHTML='<div class="err">Failed to load: '+e+'</div>';
+  });
 </script>
 </body>
 </html>
