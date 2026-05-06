@@ -1,8 +1,8 @@
 {
-  "fetched_at": "2026-05-06T06:34:29.573411+00:00",
-  "eth_usd": 2365.66,
+  "fetched_at": "2026-05-06T06:49:52.950899+00:00",
+  "eth_usd": 2369.31,
   "collection": {
-    "floor_eth": 0.134,
+    "floor_eth": 0.133998,
     "volume_24h": 1.502,
     "volume_7d": 33.03358749
   },
@@ -28,7 +28,7 @@
       "floor": 0.134
     },
     "tier_2": {
-      "floor": 0.134996
+      "floor": 0.133999
     },
     "tier_1": {
       "floor": 0.134
@@ -39,7 +39,7 @@
       "floor": 0.1469
     },
     "tier_2": {
-      "floor": 0.134996
+      "floor": 0.133999
     },
     "tier_1": {
       "floor": 0.134
@@ -50,10 +50,10 @@
   },
   "raw_traits": {
     "Plot": {
+      "85145": 0.133999,
+      "94580": 0.133999,
       "51326": 0.134,
       "54458": 0.134,
-      "85145": 0.134996,
-      "94580": 0.134996,
       "45618": 0.134997,
       "68649": 0.135,
       "53035": 0.138,
@@ -127,7 +127,6 @@
       "11416": 0.39,
       "59074": 0.39,
       "53255": 0.39,
-      "90876": 0.4,
       "68885": 0.4,
       "82353": 0.44,
       "90936": 0.48,
@@ -174,29 +173,60 @@
       "85007": 2.75,
       "31565": 2.85,
       "81528": 3.0,
-      "92329": 3.0
+      "92329": 3.0,
+      "63074": 3.0,
+      "47058": 3.25,
+      "91930": 3.5,
+      "24842": 3.8,
+      "26053": 3.9,
+      "51802": 4.375,
+      "55617": 4.5,
+      "98994": 5.0,
+      "77886": 5.5,
+      "801": 5.5556,
+      "82442": 5.88,
+      "13504": 6.0,
+      "22807": 6.25,
+      "73791": 6.97,
+      "28071": 7.77,
+      "52457": 9.0,
+      "59554": 9.0,
+      "92015": 9.0,
+      "19513": 9.9,
+      "85078": 9.95,
+      "82479": 10.0,
+      "68542": 11.0,
+      "80966": 12.0,
+      "82447": 13.5,
+      "82581": 17.975,
+      "97723": 24.52,
+      "90269": 25.0,
+      "67277": 34.0,
+      "80517": 44.0,
+      "47602": 55.0,
+      "90168": 99.0
     },
     "Category": {
+      "Harsh": 0.133999,
+      "Spirit": 0.133999,
       "Decay": 0.134,
-      "Spirit": 0.134,
-      "Harsh": 0.134996,
       "Growth": 0.134997,
       "Volcanic": 0.138,
       "Psychedelic": 0.138,
       "Mineral": 0.194698
     },
     "Sediment": {
+      "Rainbow Atmos": 0.133999,
+      "Cosmic Dream": 0.133999,
       "Infinite Expanse": 0.134,
-      "Rainbow Atmos": 0.134996,
-      "Cosmic Dream": 0.134996,
       "Chemical Goo": 0.16,
       "Biogenic Swamp": 0.312
     },
     "Environment": {
+      "Glacia": 0.133999,
+      "Veldan": 0.133999,
       "Bog": 0.134,
       "Steppes": 0.134,
-      "Glacia": 0.134996,
-      "Veldan": 0.134996,
       "Mycelium": 0.134997,
       "Sulfuric": 0.138,
       "Sludge": 0.138,
@@ -222,21 +252,24 @@
       "Acid": 0.5051,
       "Luster": 0.66
     },
+    "Obelisk Piece": {
+      "First Trip": 0.133999
+    },
     "Sediment Tier": {
+      "2": 0.133999,
       "1": 0.134,
-      "2": 0.134996,
       "3": 0.1469
     },
     "Environment Tier": {
+      "2": 0.133999,
       "1": 0.134,
       "3": 0.134,
-      "2": 0.134996,
       "4": 0.138,
       "5": 0.29
     },
     "Western Resource": {
+      "Luster": 0.133999,
       "Runa": 0.134,
-      "Luster": 0.134996,
       "Psychosilk": 0.134997,
       "Moldium": 0.138,
       "Kinsoul": 0.145,
@@ -250,11 +283,16 @@
       "Oblivion": 0.355,
       "Brineslime": 0.39,
       "Petrified": 0.4848,
-      "Etheria": 0.5
+      "Etheria": 0.5,
+      "Spiritseep": 3.0,
+      "Lumileaf": 6.25,
+      "Steppesalt": 9.0,
+      "Brimstone": 9.95,
+      "Lapidite": 11.0
     },
     "Northern Resource": {
+      "Kinsoul": 0.133999,
       "Petrified": 0.134,
-      "Kinsoul": 0.134996,
       "Lunarian": 0.138,
       "Moldium": 0.138,
       "Whisper": 0.138,
@@ -269,15 +307,16 @@
       "Scumbria": 1.03,
       "Slaglia": 2.0,
       "Duskia": 2.05,
-      "Psychosilk": 2.5
+      "Psychosilk": 2.5,
+      "Shatterfrost": 5.88
     },
     "Western Resource Tier": {
+      "2": 0.133999,
       "1": 0.134,
-      "2": 0.134996,
       "3": 0.1989
     },
     "Northern Resource Tier": {
-      "1": 0.134,
+      "1": 0.133999,
       "3": 0.138,
       "2": 0.198
     },
@@ -302,15 +341,15 @@
       "Duskia": 0.9,
       "Senticybia": 1.69,
       "Thermodite": 2.0,
-      "Spikeweed": 2.85
+      "Spikeweed": 2.85,
+      "Abyssia": 9.0,
+      "Steppesalt": 9.0,
+      "Glowpod": 9.0
     },
     "Eastern Resource Tier": {
       "2": 0.134,
       "1": 0.135,
       "3": 0.17
-    },
-    "Obelisk Piece": {
-      "First Trip": 0.134996
     },
     "Southern Resource": {
       "Nether": 0.134997,
@@ -327,7 +366,8 @@
       "Spikeweed": 0.216798,
       "Duskia": 0.234,
       "Runa": 0.269,
-      "Bonestone": 0.35
+      "Bonestone": 0.35,
+      "Galactica": 5.5556
     },
     "Southern Resource Tier": {
       "1": 0.134997,
@@ -353,11 +393,20 @@
       "Rugged Shovel": 1.5,
       "Ancient Coin": 1.56,
       "Rugged Axe": 1.9,
-      "Forged Pickaxe": 2.1
+      "Forged Pickaxe": 2.1,
+      "Rugged Pickaxe": 3.25,
+      "Fairy in a Jar": 4.375,
+      "Toto": 6.0,
+      "Jar of Koda Farts": 7.77,
+      "Koda Shovel": 25.0
     },
     "Koda": {
       "9610": 2.0,
-      "7120": 2.49
+      "7120": 2.49,
+      "9947": 55.0
+    },
+    "Goliath Kills": {
+      "0": 4.375
     }
   }
 }
