@@ -103,7 +103,7 @@ def scan():
 
 def build():
     if not OPENSEA_KEY: print("\n  WARNING: No OPENSEA_API_KEY set.")
-    sn={"fetched_at":datetime.now(timezone.utc).isoformat(),"eth_usd":Nole,
+    sn={"fetched_at":datetime.now(timezone.utc).isoformat(),"eth_usd":None,
         "collection":{},"resources":{},"environments":{},"sediments":{},
         "artifact":{},"raw_traits":{}}
 
