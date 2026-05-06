@@ -26,7 +26,7 @@ body {
   background: #000;
   color: var(--amber);
   font-family: 'VT323', 'Courier New', monospace;
-  font-size: 18px;
+  font-size: 20px;
   overflow-x: hidden;
 }
 
@@ -64,8 +64,8 @@ body::after {
 #hdr-meta {
   display:flex;
   gap:20px;
-  font-size:16px;
-  color:var(--amber-dim);
+  font-size:18px;
+  color:#CC9900;
   white-space:nowrap;
 }
 #eth-price { color:var(--amber-bright); text-shadow:var(--glow-amber); }
@@ -82,7 +82,7 @@ body::after {
 #ticker-inner {
   display:inline-block;
   animation:scroll 80s linear infinite;
-  font-size:15px;
+  font-size:17px;
 }
 @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .ti { display:inline-block; margin:0 28px; }
@@ -140,9 +140,9 @@ body::after {
   gap:14px;
   align-items:center;
 }
-.col-name { font-size:17px; color:var(--amber); letter-spacing:2px; }
-.col-stat { font-size:14px; color:var(--amber-dim); }
-.col-stat .v { color:var(--white); }
+.col-name { font-size:19px; color:var(--amber-bright); letter-spacing:2px; text-shadow:var(--glow-amber); }
+.col-stat { font-size:16px; color:#BB9900; }
+.col-stat .v { color:var(--white); font-size:18px; }
 
 /* ===== CATEGORY BLOCK ===== */
 .cat-block { margin-bottom:1px; }
@@ -154,12 +154,12 @@ body::after {
   align-items:baseline;
 }
 .cat-title {
-  font-size:24px;
+  font-size:26px;
   color:var(--amber-bright);
   letter-spacing:4px;
-  text-shadow:0 0 6px rgba(255,200,0,.5);
+  text-shadow:0 0 8px rgba(255,200,0,.6);
 }
-.cat-sub { font-size:13px; color:rgba(255,200,0,.55); letter-spacing:1px; }
+.cat-sub { font-size:15px; color:rgba(255,210,0,.70); letter-spacing:1px; }
 
 /* ===== MARKET TABLE ===== */
 .mkt-table {
@@ -169,21 +169,21 @@ body::after {
 }
 .mkt-table thead tr { background:#0D0D00; border-bottom:1px solid var(--border); }
 .mkt-table th {
-  padding:5px 10px;
-  font-size:13px;
-  color:var(--amber-dim);
+  padding:7px 12px;
+  font-size:15px;
+  color:#BB9900;
   letter-spacing:1px;
   font-weight:normal;
   text-align:left;
 }
 .mkt-table th.r { text-align:right; }
-.mkt-table tbody tr { border-bottom:1px solid #100D00; transition:background .1s; }
-.mkt-table tbody tr:hover { background:#0A0900; }
-.mkt-table td { padding:8px 10px; }
+.mkt-table tbody tr { border-bottom:1px solid #1A1500; transition:background .1s; }
+.mkt-table tbody tr:hover { background:#0D0A00; }
+.mkt-table td { padding:10px 12px; }
 
 .sym {
   color:var(--amber-bright);
-  font-size:21px;
+  font-size:23px;
   letter-spacing:2px;
   text-shadow:0 0 5px rgba(255,180,0,.35);
 }
@@ -201,12 +201,12 @@ body::after {
 .t2c { text-align:right; }
 .t3c { text-align:right; }
 
-.eth-val { color:var(--white); font-size:19px; white-space:nowrap; }
-.usd-val { color:#665500; font-size:13px; display:block; text-align:right; }
-.no-data { color:#2A2200; font-size:15px; text-align:right; }
+.eth-val { color:var(--white); font-size:23px; white-space:nowrap; text-shadow:0 0 4px rgba(255,255,255,.25); }
+.usd-val { color:#CCAA00; font-size:16px; display:block; text-align:right; }
+.no-data { color:#3A3300; font-size:17px; text-align:right; }
 
 /* tier badges */
-.tb { display:inline-block; padding:1px 6px; font-size:13px; border:1px solid; margin-right:2px; }
+.tb { display:inline-block; padding:2px 8px; font-size:15px; border:1px solid; margin-right:2px; }
 .t1 { color:#44FF88; border-color:#44FF88; text-shadow:var(--glow-green); }
 .t2 { color:var(--amber); border-color:var(--amber); text-shadow:var(--glow-amber); }
 .t3 { color:#FF6644; border-color:#FF6644; text-shadow:0 0 6px #FF6644; }
@@ -225,11 +225,11 @@ body::after {
   bottom:0;left:0;right:0;
   background:#040400;
   border-top:1px solid var(--amber-dim);
-  padding:4px 16px;
+  padding:5px 16px;
   display:flex;
   justify-content:space-between;
-  font-size:13px;
-  color:var(--amber-dim);
+  font-size:16px;
+  color:#AA8800;
   z-index:200;
 }
 #live-dot {
@@ -246,8 +246,8 @@ body::after {
 .loading {
   text-align:center;
   padding:60px;
-  color:var(--amber-dim);
-  font-size:22px;
+  color:var(--amber);
+  font-size:26px;
   animation:blink 1s step-end infinite;
 }
 
@@ -258,9 +258,9 @@ body::after {
 .sales-hdr { background:#553300; }
 
 /* sale price vs floor indicators */
-.sale-up { color:#00FF66; font-size:13px; display:block; line-height:1.2; }
-.sale-dn { color:#FF4444; font-size:13px; display:block; line-height:1.2; }
-.sale-eq { color:#888;    font-size:13px; display:block; line-height:1.2; }
+.sale-up { color:#00FF66; font-size:15px; display:block; line-height:1.3; }
+.sale-dn { color:#FF5555; font-size:15px; display:block; line-height:1.3; }
+.sale-eq { color:#999;    font-size:15px; display:block; line-height:1.3; }
 </style>
 </head>
 <body>
@@ -581,7 +581,7 @@ function renderSales(data){
   const ethUsd=data.eth_usd;
   const COLS=[
     {key:'otherdeed',label:'OTHERDEED FOR OTHERSIDE'},
-    {key:'expanded',label:'OTHERDEED EXPANDED'},
+    {key:'expanded', label:'OTHERDEED EXPANDED'},
   ];
   let html='<div class="col-grid">';
   for(const col of COLS){
@@ -602,7 +602,7 @@ function renderSales(data){
     if(!hasRS&&!hasST){
       html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
         SALES DATA PENDING RUN #23<br>
-        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUEED</span>
+        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUED</span>
       </div>`;
     } else {
       // Resource sales by category
