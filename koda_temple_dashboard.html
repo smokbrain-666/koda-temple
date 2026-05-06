@@ -11,346 +11,701 @@
   /* ââ Header ââ */
   #header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;
     border-bottom:1px solid #21262d;background:#161b22;position:sticky;top:0;z-index:10}
-  #header h1{font-size:15px;font-weight:600;color:#e6edf3;letter-spacing:.3px}
-  #meta{font-size:11px;color:#8b949e}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KODA EXCHANGE</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+:root {
+  --amber:       #FFB300;
+  --amber-bright:#FFD740;
+  --amber-dim:   #AA7700;
+  --red-header:  #AA0000;
+  --green:       #00FF66;
+  --blue:        #44AAFF;
+  --white:       #FFFFFF;
+  --panel:       #060600;
+  --border:      #2A2200;
+  --glow-amber:  0 0 8px #FFB300, 0 0 18px rgba(255,140,0,0.4);
+  --glow-green:  0 0 8px #00FF66;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 
-  /* ââ Tabs ââ */
-  #tabs{display:flex;border-bottom:1px solid #21262d;background:#161b22;padding:0 16px}
-  .tab{padding:8px 18px;cursor:pointer;font-size:12px;font-weight:500;color:#8b949e;
-    border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
-  .tab.active{color:#e6edf3;border-bottom-color:#f78166}
-  .tab:hover:not(.active){color:#c9d1d9}
+body {
+  background: #000;
+  color: var(--amber);
+  font-family: 'VT323', 'Courier New', monospace;
+  font-size: 18px;
+  overflow-x: hidden;
+}
 
-  /* ââ Body / Columns ââ */
-  .tab-pane{display:none}
-  .tab-pane.active{display:grid;grid-template-columns:1fr 1fr;height:calc(100vh - 86px)}
-  .col-panel{overflow-y:auto;padding:14px 16px;border-right:1px solid #21262d}
-  .col-panel:last-child{border-right:none}
+/* faint scan-line sweep */
+body::after {
+  content:'';
+  position:fixed;
+  top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(transparent,rgba(255,180,0,.07),transparent);
+  animation:scan 10s linear infinite;
+  pointer-events:none;
+  z-index:9999;
+}
+@keyframes scan { 0%{top:-10px} 100%{top:100vh} }
 
-  /* ââ Collection header ââ */
-  .col-head{margin-bottom:14px}
-  .col-title{font-size:13px;font-weight:600;color:#e6edf3;margin-bottom:6px}
-  .col-stats{display:flex;gap:18px;font-size:11px;color:#8b949e}
-  .col-stats span b{color:#c9d1d9}
+/* ===== HEADER ===== */
+#hdr {
+  background:linear-gradient(180deg,#0A0A18 0%,#000 100%);
+  border-bottom:2px solid var(--amber);
+  padding:8px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:200;
+}
+#hdr-logo {
+  font-size:30px;
+  letter-spacing:5px;
+  color:var(--amber-bright);
+  text-shadow:var(--glow-amber);
+}
+#hdr-meta {
+  display:flex;
+  gap:20px;
+  font-size:16px;
+  color:var(--amber-dim);
+  white-space:nowrap;
+}
+#eth-price { color:var(--amber-bright); text-shadow:var(--glow-amber); }
+#clock     { color:var(--white); }
 
-  /* ââ Section ââ */
-  .section{margin-bottom:18px}
-  .section-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;
-    color:#8b949e;padding:4px 0 6px;border-bottom:1px solid #21262d;margin-bottom:6px}
+/* ===== TICKER TAPE ===== */
+#ticker-wrap {
+  background:#080800;
+  border-bottom:1px solid var(--amber-dim);
+  overflow:hidden;
+  white-space:nowrap;
+  padding:5px 0;
+}
+#ticker-inner {
+  display:inline-block;
+  animation:scroll 80s linear infinite;
+  font-size:15px;
+}
+@keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.ti { display:inline-block; margin:0 28px; }
+.ti-name { color:var(--amber-bright); letter-spacing:1px; }
+.ti-price { color:var(--white); margin-left:6px; }
+.ti-sep { color:#444; margin:0 8px; }
 
-  /* ââ Stock-tracker row ââ */
-  .row{display:flex;align-items:center;gap:6px;padding:5px 6px;border-radius:4px;
-    border-bottom:1px solid #161b22;transition:background .1s}
-  .row:hover{background:#161b22}
-  .row-name{flex:1;color:#c9d1d9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .row-price{font-family:monospace;font-size:12px;color:#e6edf3;white-space:nowrap}
-  .row-usd{font-size:11px;color:#8b949e;white-space:nowrap}
-  .row-pct{font-size:11px;white-space:nowrap;min-width:52px;text-align:right}
-  .pct-pos{color:#3fb950}
-  .pct-neg{color:#f85149}
-  .pct-neu{color:#8b949e}
+/* ===== TABS ===== */
+#tabs {
+  display:flex;
+  background:#050500;
+  border-bottom:2px solid var(--amber-dim);
+  position:sticky;
+  top:55px;
+  z-index:199;
+}
+.tab {
+  padding:10px 30px;
+  cursor:pointer;
+  color:var(--amber-dim);
+  font-size:20px;
+  letter-spacing:3px;
+  border-right:1px solid #1A1A00;
+  transition:all .1s;
+}
+.tab:hover { color:var(--amber); background:#0D0D00; }
+.tab.active {
+  color:var(--amber-bright);
+  background:#181400;
+  border-bottom:3px solid var(--amber-bright);
+  text-shadow:var(--glow-amber);
+}
 
-  /* ââ Tier / env badges ââ */
-  .badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700;
-    letter-spacing:.3px;white-space:nowrap}
-  .t1{background:#1f3a2d;color:#3fb950}
-  .t2{background:#2a2a1a;color:#d4a017}
-  .t3{background:#3a1a1a;color:#f85149}
-  .t4{background:#1a1a3a;color:#79c0ff}
-  .t5{background:#2a1a3a;color:#d2a8ff}
-  .env-badge{background:#0d2340;color:#58a6ff}
-  .artifact-badge{background:#2a1f3a;color:#d2a8ff}
-  .no-data{color:#484f58;font-size:11px;padding:6px 0;font-style:italic}
+/* ===== CONTENT ===== */
+#content { padding:12px 12px 50px; }
+.pane { display:none; }
+.pane.active { display:block; }
 
-  /* ââ Sales tab: discrepancy section ââ */
-  .disc-row{display:grid;grid-template-columns:1fr repeat(4,auto);gap:6px;
-    align-items:center;padding:5px 6px;border-bottom:1px solid #161b22;border-radius:4px}
-  .disc-row:hover{background:#161b22}
-  .disc-dir{font-size:10px;color:#8b949e;text-align:center}
+/* ===== 2-COL GRID ===== */
+.col-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+@media(max-width:920px){.col-grid{grid-template-columns:1fr;}}
 
-  /* ââ Scrollbar ââ */
-  ::-webkit-scrollbar{width:5px}
-  ::-webkit-scrollbar-track{background:#0d1117}
-  ::-webkit-scrollbar-thumb{background:#30363d;border-radius:3px}
+/* ===== COLLECTION SECTION ===== */
+.col-section { border:1px solid var(--border); }
+.col-hdr {
+  background:#0A0A00;
+  border-bottom:1px solid var(--border);
+  padding:7px 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  align-items:center;
+}
+.col-name { font-size:17px; color:var(--amber); letter-spacing:2px; }
+.col-stat { font-size:14px; color:var(--amber-dim); }
+.col-stat .v { color:var(--white); }
+
+/* ===== CATEGORY BLOCK ===== */
+.cat-block { margin-bottom:1px; }
+.cat-hdr {
+  background:var(--red-header);
+  padding:6px 14px;
+  display:flex;
+  gap:14px;
+  align-items:baseline;
+}
+.cat-title {
+  font-size:24px;
+  color:var(--amber-bright);
+  letter-spacing:4px;
+  text-shadow:0 0 6px rgba(255,200,0,.5);
+}
+.cat-sub { font-size:13px; color:rgba(255,200,0,.55); letter-spacing:1px; }
+
+/* ===== MARKET TABLE ===== */
+.mkt-table {
+  width:100%;
+  border-collapse:collapse;
+  background:var(--panel);
+}
+.mkt-table thead tr { background:#0D0D00; border-bottom:1px solid var(--border); }
+.mkt-table th {
+  padding:5px 10px;
+  font-size:13px;
+  color:var(--amber-dim);
+  letter-spacing:1px;
+  font-weight:normal;
+  text-align:left;
+}
+.mkt-table th.r { text-align:right; }
+.mkt-table tbody tr { border-bottom:1px solid #100D00; transition:background .1s; }
+.mkt-table tbody tr:hover { background:#0A0900; }
+.mkt-table td { padding:8px 10px; }
+
+.sym {
+  color:var(--amber-bright);
+  font-size:21px;
+  letter-spacing:2px;
+  text-shadow:0 0 5px rgba(255,180,0,.35);
+}
+.dirs { display:flex; gap:3px; flex-wrap:wrap; }
+.dir-tag {
+  font-size:11px;
+  padding:1px 5px;
+  border:1px solid var(--blue);
+  color:var(--blue);
+  opacity:.7;
+}
+
+/* tier columns */
+.t1c { text-align:right; }
+.t2c { text-align:right; }
+.t3c { text-align:right; }
+
+.eth-val { color:var(--white); font-size:19px; white-space:nowrap; }
+.usd-val { color:#665500; font-size:13px; display:block; text-align:right; }
+.no-data { color:#2A2200; font-size:15px; text-align:right; }
+
+/* tier badges */
+.tb { display:inline-block; padding:1px 6px; font-size:13px; border:1px solid; margin-right:2px; }
+.t1 { color:#44FF88; border-color:#44FF88; text-shadow:var(--glow-green); }
+.t2 { color:var(--amber); border-color:var(--amber); text-shadow:var(--glow-amber); }
+.t3 { color:#FF6644; border-color:#FF6644; text-shadow:0 0 6px #FF6644; }
+
+/* pending notice */
+.pending-notice {
+  padding:5px 14px;
+  font-size:13px;
+  color:#443300;
+  border-bottom:1px solid var(--border);
+}
+
+/* ===== STATUS BAR ===== */
+#status-bar {
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:#040400;
+  border-top:1px solid var(--amber-dim);
+  padding:4px 16px;
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  color:var(--amber-dim);
+  z-index:200;
+}
+#live-dot {
+  display:inline-block;
+  width:7px;height:7px;
+  background:var(--green);
+  border-radius:50%;
+  margin-right:5px;
+  animation:blink 1.8s ease-in-out infinite;
+  box-shadow:var(--glow-green);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.loading {
+  text-align:center;
+  padding:60px;
+  color:var(--amber-dim);
+  font-size:22px;
+  animation:blink 1s step-end infinite;
+}
+
+/* artifact purple header */
+.art-hdr { background:#440055; }
+
+/* sales orange header */
+.sales-hdr { background:#553300; }
 </style>
 </head>
 <body>
 
-<div id="header">
-  <h1>â© Koda Temple</h1>
-  <div id="meta">loadingâ¦</div>
+<!-- HEADER -->
+<div id="hdr">
+  <div id="hdr-logo">&#9961; KODA EXCHANGE</div>
+  <div id="hdr-meta">
+    <span>ETH <span id="eth-price">---</span></span>
+    <span id="clock">--:--:-- UTC</span>
+    <span id="updated-at">---</span>
+  </div>
 </div>
 
+<!-- TICKER -->
+<div id="ticker-wrap"><div id="ticker-inner">LOADING MARKET DATA...</div></div>
+
+<!-- TABS -->
 <div id="tabs">
-  <div class="tab active" data-tab="resources">Resources</div>
-  <div class="tab" data-tab="artifacts">Artifacts</div>
-  <div class="tab" data-tab="sales">Sales (10d)</div>
+  <div class="tab active" data-tab="resources">RESOURCES</div>
+  <div class="tab" data-tab="artifacts">ARTIFACTS</div>
+  <div class="tab" data-tab="sales">SALES 10D</div>
 </div>
 
-<div id="resources" class="tab-pane active">
-  <div class="col-panel" id="res-otherdeed"></div>
-  <div class="col-panel" id="res-expanded"></div>
+<!-- CONTENT -->
+<div id="content">
+  <div id="resources" class="pane active"><div class="loading">FETCHING MARKET DATA...</div></div>
+  <div id="artifacts" class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
+  <div id="sales"     class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
 </div>
-<div id="artifacts" class="tab-pane">
-  <div class="col-panel" id="art-otherdeed"></div>
-  <div class="col-panel" id="art-expanded"></div>
-</div>
-<div id="sales" class="tab-pane">
-  <div class="col-panel" id="sales-otherdeed"></div>
-  <div class="col-panel" id="sales-expanded"></div>
+
+<!-- STATUS BAR -->
+<div id="status-bar">
+  <span><span id="live-dot"></span>LIVE</span>
+  <span id="status-msg">CONNECTING TO OTHERSIDE MARKETS...</span>
+  <span>KODA TEMPLE EXCHANGE v2.1</span>
 </div>
 
 <script>
 const DATA_URL = 'https://smokbrain-666.github.io/koda-temple/price_snapshot_latest.json';
-const DIRECTIONS = ['Western','Northern','Eastern','Southern'];
-const TIER_ORDER = ['1','2','3','4','5'];
+const DIRS = ['Western','Northern','Eastern','Southern'];
+const DS  = {Western:'W',Northern:'N',Eastern:'E',Southern:'S'};
 
-/* ââ Tabs ââ */
-document.querySelectorAll('.tab').forEach(t => {
-  t.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-    document.querySelectorAll('.tab-pane').forEach(x => x.classList.remove('active'));
+// Resource -> category mapping
+const RES_CAT = {
+  Bonestone:'ORE', Moldium:'ORE', Luster:'ORE',
+  Runa:'ROOT', Petrified:'ROOT', Lunarian:'ROOT',
+  Kinsoul:'SHARD', Whisper:'SHARD', Psychosilk:'SHARD', Nether:'SHARD',
+};
+const CAT_ORDER = ['ORE','ROOT','SHARD','OTHER'];
+const CAT_DESC  = {
+  ORE:  'MINERAL &amp; STONE',
+  ROOT: 'BOTANICAL &amp; EARTH',
+  SHARD:'ETHEREAL &amp; ENERGY',
+  OTHER:'UNCATEGORIZED',
+};
+
+// Artifact tier display
+const ART_TIERS = ['Artefact','Relic','Mythic'];
+const ART_TIER_CLS = {Artefact:'t1',Relic:'t2',Mythic:'t3'};
+const ART_TIER_LBL = {Artefact:'T1',Relic:'T2',Mythic:'T3'};
+
+// ---- helpers ----
+function fe(p){ return p==null?null:p.toFixed(4)+' &#926;'; }
+function fu(p,r){
+  if(p==null||r==null) return null;
+  const v=p*r;
+  return v>=1000?'$'+(v/1000).toFixed(1)+'K':'$'+v.toFixed(0);
+}
+
+// Build {cat:{name:{tiers:{t:price},dirs:Set}}} from resource_floors
+function buildMatrix(rf){
+  const m={};
+  for(const dir of DIRS){
+    const dd=rf[dir]||{};
+    for(const [name,tiers] of Object.entries(dd)){
+      const cat=RES_CAT[name]||'OTHER';
+      if(!m[cat]) m[cat]={};
+      if(!m[cat][name]) m[cat][name]={tiers:{},dirs:new Set()};
+      m[cat][name].dirs.add(DS[dir]);
+      for(const [t,p] of Object.entries(tiers)){
+        if(m[cat][name].tiers[t]==null||p<m[cat][name].tiers[t])
+          m[cat][name].tiers[t]=p;
+      }
+    }
+  }
+  return m;
+}
+
+// Fallback from raw_traits when no resource_floors
+function buildMatrixRaw(raw){
+  const m={};
+  for(const dir of DIRS){
+    const dd=raw[dir+' Resource']||{};
+    for(const [name,price] of Object.entries(dd)){
+      const cat=RES_CAT[name]||'OTHER';
+      if(!m[cat]) m[cat]={};
+      if(!m[cat][name]) m[cat][name]={tiers:{'?':price},dirs:new Set()};
+      else if(price<m[cat][name].tiers['?']) m[cat][name].tiers['?']=price;
+      m[cat][name].dirs.add(DS[dir]);
+    }
+  }
+  return m;
+}
+
+// ---- RESOURCES tab ----
+function renderResources(data){
+  const ethUsd=data.eth_usd;
+  const COLS=[
+    {key:'otherdeed',label:'OTHERDEED FOR OTHERSIDE'},
+    {key:'expanded', label:'OTHERDEED EXPANDED'},
+  ];
+  let html='<div class="col-grid">';
+  for(const col of COLS){
+    const cd=data[col.key]||{};
+    const rf=cd.resource_floors||{};
+    const raw=cd.raw_traits||{};
+    const st=cd.collection||{};
+    const hasFloors=Object.keys(rf).length>0;
+    const matrix=hasFloors?buildMatrix(rf):buildMatrixRaw(raw);
+
+    html+=`<div class="col-section">
+      <div class="col-hdr">
+        <span class="col-name">${col.label}</span>
+        <span class="col-stat">FLOOR <span class="v">${st.floor_eth?st.floor_eth.toFixed(4)+' &#926;':'---'}</span></span>
+        <span class="col-stat">LISTED <span class="v">${st.listed??'---'}</span></span>
+      </div>`;
+
+    if(!hasFloors){
+      html+=`<div class="pending-notice">// TIER DATA PENDING &mdash; SHOWING BEST FLOOR PRICES</div>`;
+    }
+
+    for(const cat of CAT_ORDER){
+      const cd2=matrix[cat];
+      if(!cd2||!Object.keys(cd2).length) continue;
+      const names=Object.keys(cd2).sort();
+      html+=`<div class="cat-block">
+        <div class="cat-hdr">
+          <span class="cat-title">${cat}</span>
+          <span class="cat-sub">${CAT_DESC[cat]} &nbsp;// ${names.length} RESOURCES</span>
+        </div>
+        <table class="mkt-table"><thead><tr>
+          <th>SYMBOL</th><th>DIRS</th>`;
+      if(hasFloors){
+        html+=`<th class="r"><span class="tb t1">T1</span></th>
+               <th class="r"><span class="tb t2">T2</span></th>
+               <th class="r"><span class="tb t3">T3</span></th>`;
+      } else {
+        html+=`<th class="r">FLOOR</th>`;
+      }
+      html+=`</tr></thead><tbody>`;
+
+      for(const name of names){
+        const e=cd2[name];
+        html+=`<tr><td class="sym">${name.toUpperCase()}</td>
+          <td><div class="dirs">`;
+        for(const d of [...e.dirs].sort())
+          html+=`<span class="dir-tag">${d}</span>`;
+        html+=`</div></td>`;
+
+        if(hasFloors){
+          for(const t of ['1','2','3']){
+            const p=e.tiers[t];
+            html+=`<td class="${t==='1'?'t1c':t==='2'?'t2c':'t3c'}">`;
+            if(p!=null){
+              html+=`<span class="eth-val">${fe(p)}</span>`;
+              if(ethUsd) html+=`<span class="usd-val">${fu(p,ethUsd)}</span>`;
+            } else { html+=`<span class="no-data">--</span>`; }
+            html+=`</td>`;
+          }
+        } else {
+          const p=e.tiers['?'];
+          html+=`<td>`;
+          if(p!=null){
+            html+=`<span class="eth-val">${fe(p)}</span>`;
+            if(ethUsd) html+=`<span class="usd-val">${fu(p,ethUsd)}</span>`;
+          } else { html+=`<span class="no-data">--</span>`; }
+          html+=`</td>`;
+        }
+        html+=`</tr>`;
+      }
+      html+=`</tbody></table></div>`;
+    }
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  document.getElementById('resources').innerHTML=html;
+}
+
+// ---- ARTIFACTS tab ----
+function renderArtifacts(data){
+  const ethUsd=data.eth_usd;
+  const COLS=[
+    {key:'otherdeed',label:'OTHERDEED FOR OTHERSIDE'},
+    {key:'expanded', label:'OTHERDEED EXPANDED'},
+  ];
+  let html='<div class="col-grid">';
+  for(const col of COLS){
+    const cd=data[col.key]||{};
+    const raw=cd.raw_traits||{};
+    const st=cd.collection||{};
+    const arts=raw['Artifact']||{};
+    const artTiers=raw['Artifact Tier']||{};
+
+    html+=`<div class="col-section">
+      <div class="col-hdr">
+        <span class="col-name">${col.label}</span>
+        <span class="col-stat">FLOOR <span class="v">${st.floor_eth?st.floor_eth.toFixed(4)+' &#926;':'---'}</span></span>
+      </div>`;
+
+    // By tier
+    if(Object.keys(artTiers).length){
+      html+=`<div class="cat-block">
+        <div class="cat-hdr art-hdr">
+          <span class="cat-title">BY TIER</span>
+          <span class="cat-sub">TIER FLOOR PRICES</span>
+        </div>
+        <table class="mkt-table"><thead><tr>
+          <th>TIER</th><th class="r">FLOOR &#926;</th><th class="r">USD</th>
+        </tr></thead><tbody>`;
+      for(const tier of ART_TIERS){
+        const p=artTiers[tier];
+        if(p==null) continue;
+        html+=`<tr>
+          <td><span class="tb ${ART_TIER_CLS[tier]||''}">${ART_TIER_LBL[tier]||tier}</span>
+          <span class="sym" style="font-size:18px">${tier.toUpperCase()}</span></td>
+          <td class="r"><span class="eth-val">${fe(p)}</span></td>
+          <td class="r">`;
+        if(ethUsd) html+=`<span class="eth-val" style="font-size:17px">${fu(p,ethUsd)}</span>`;
+        html+=`</td></tr>`;
+      }
+      html+=`</tbody></table></div>`;
+    }
+
+    // By name
+    if(Object.keys(arts).length){
+      const sorted=Object.entries(arts).sort((a,b)=>a[1]-b[1]);
+      html+=`<div class="cat-block">
+        <div class="cat-hdr art-hdr">
+          <span class="cat-title">ALL ARTIFACTS</span>
+          <span class="cat-sub">${sorted.length} TYPES &nbsp;// SORTED BY FLOOR</span>
+        </div>
+        <table class="mkt-table"><thead><tr>
+          <th>ARTIFACT</th><th class="r">FLOOR &#926;</th><th class="r">USD</th>
+        </tr></thead><tbody>`;
+      for(const [name,p] of sorted){
+        html+=`<tr>
+          <td class="sym">${name.toUpperCase()}</td>
+          <td class="r"><span class="eth-val">${fe(p)}</span></td>
+          <td class="r">`;
+        if(ethUsd) html+=`<span class="eth-val" style="font-size:17px">${fu(p,ethUsd)}</span>`;
+        html+=`</td></tr>`;
+      }
+      html+=`</tbody></table></div>`;
+    } else {
+      html+=`<div style="padding:24px;text-align:center;color:#333;font-size:18px">NO ARTIFACT DATA</div>`;
+    }
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  document.getElementById('artifacts').innerHTML=html;
+}
+
+// ---- SALES tab ----
+function renderSales(data){
+  const ethUsd=data.eth_usd;
+  const COLS=[
+    {key:'otherdeed',label:'OTHERDEED FOR OTHERSIDE'},
+    {key:'expanded', label:'OTHERDEED EXPANDED'},
+  ];
+  let html='<div class="col-grid">';
+  for(const col of COLS){
+    const cd=data[col.key]||{};
+    const st=cd.collection||{};
+    const salesT=cd.sales_traits||{};
+    const resSales=cd.resource_sales||{};
+
+    html+=`<div class="col-section">
+      <div class="col-hdr">
+        <span class="col-name">${col.label}</span>
+        <span class="col-stat">LAST 10 DAYS</span>
+      </div>`;
+
+    const hasRS=Object.keys(resSales).length>0;
+    const hasST=Object.keys(salesT).length>0;
+
+    if(!hasRS&&!hasST){
+      html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
+        SALES DATA PENDING RUN #23<br>
+        <span style="font-size:14px;color:#222">FIRST FULL RUN WITH NEW SCRIPT QUEUED</span>
+      </div>`;
+    } else {
+      // Resource sales by category
+      if(hasRS){
+        const matrix=buildMatrix(resSales);
+        html+=`<div class="cat-block">
+          <div class="cat-hdr sales-hdr">
+            <span class="cat-title">RESOURCE SALES</span>
+            <span class="cat-sub">LAST SOLD PRICE &nbsp;// 10D</span>
+          </div>
+          <table class="mkt-table"><thead><tr>
+            <th>SYMBOL</th><th>CAT</th>
+            <th class="r"><span class="tb t1">T1</span></th>
+            <th class="r"><span class="tb t2">T2</span></th>
+            <th class="r"><span class="tb t3">T3</span></th>
+          </tr></thead><tbody>`;
+        for(const cat of CAT_ORDER){
+          const cd2=matrix[cat];
+          if(!cd2) continue;
+          for(const [name,e] of Object.entries(cd2).sort()){
+            html+=`<tr><td class="sym">${name.toUpperCase()}</td>
+              <td style="color:var(--amber-dim);font-size:13px">${cat}</td>`;
+            for(const t of ['1','2','3']){
+              const entry=e.tiers[t];
+              html+=`<td class="r">`;
+              if(entry!=null){
+                const p=typeof entry==='object'?entry.price_eth:entry;
+                html+=`<span class="eth-val">${fe(p)}</span>`;
+                if(ethUsd) html+=`<span class="usd-val">${fu(p,ethUsd)}</span>`;
+              } else { html+=`<span class="no-data">--</span>`; }
+              html+=`</td>`;
+            }
+            html+=`</tr>`;
+          }
+        }
+        html+=`</tbody></table></div>`;
+      }
+
+      // Artifact sales
+      if(hasST&&salesT['Artifact']){
+        const sorted=Object.entries(salesT['Artifact']).sort((a,b)=>a[1].price_eth-b[1].price_eth);
+        html+=`<div class="cat-block">
+          <div class="cat-hdr sales-hdr">
+            <span class="cat-title">ARTIFACT SALES</span>
+            <span class="cat-sub">LAST SOLD PRICE &nbsp;// 10D</span>
+          </div>
+          <table class="mkt-table"><thead><tr>
+            <th>ARTIFACT</th><th class="r">LAST SALE</th><th class="r">USD</th>
+          </tr></thead><tbody>`;
+        for(const [name,s] of sorted){
+          html+=`<tr>
+            <td class="sym">${name.toUpperCase()}</td>
+            <td class="r"><span class="eth-val">${fe(s.price_eth)}</span></td>
+            <td class="r">`;
+          if(ethUsd) html+=`<span class="eth-val" style="font-size:17px">${fu(s.price_eth,ethUsd)}</span>`;
+          html+=`</td></tr>`;
+        }
+        html+=`</tbody></table></div>`;
+      }
+    }
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  document.getElementById('sales').innerHTML=html;
+}
+
+// ---- TICKER ----
+function buildTicker(data){
+  const items=[];
+  for(const colKey of ['otherdeed','expanded']){
+    const cd=data[colKey]||{};
+    const rf=cd.resource_floors||{};
+    const raw=cd.raw_traits||{};
+    const st=cd.collection||{};
+    const short=colKey==='otherdeed'?'OD':'ODE';
+    if(st.floor_eth) items.push([short+' FLOOR', st.floor_eth]);
+    const hasFloors=Object.keys(rf).length>0;
+    if(hasFloors){
+      for(const dir of DIRS){
+        for(const [name,tiers] of Object.entries(rf[dir]||{})){
+          const minP=Math.min(...Object.values(tiers));
+          items.push([name.toUpperCase().substring(0,8), minP]);
+        }
+      }
+    } else {
+      for(const dir of DIRS){
+        for(const [name,p] of Object.entries(raw[dir+' Resource']||{})){
+          items.push([name.toUpperCase().substring(0,8), p]);
+        }
+      }
+    }
+    // Artifacts
+    for(const [name,p] of Object.entries(raw['Artifact']||{})){
+      items.push(['ART:'+name.substring(0,6).toUpperCase(), p]);
+    }
+  }
+  const el=document.getElementById('ticker-inner');
+  if(!items.length){ el.innerHTML='LOADING MARKET DATA...'; return; }
+  // dedupe
+  const seen=new Set();
+  const uniq=items.filter(([n])=>{ if(seen.has(n)) return false; seen.add(n); return true; });
+  let html='';
+  for(const [name,p] of uniq){
+    html+=`<span class="ti"><span class="ti-name">${name}</span><span class="ti-price">${p.toFixed(4)} &#926;</span></span><span class="ti-sep">&#9679;</span>`;
+  }
+  el.innerHTML=html+html; // duplicate for seamless loop
+}
+
+// ---- CLOCK ----
+function tick(){
+  const n=new Date();
+  const h=String(n.getUTCHours()).padStart(2,'0');
+  const m=String(n.getUTCMinutes()).padStart(2,'0');
+  const s=String(n.getUTCSeconds()).padStart(2,'0');
+  document.getElementById('clock').textContent=h+':'+m+':'+s+' UTC';
+}
+setInterval(tick,1000); tick();
+
+// ---- TABS ----
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.pane').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     document.getElementById(t.dataset.tab).classList.add('active');
   });
 });
 
-/* ââ Helpers ââ */
-function fmt(eth){ return eth != null ? eth.toFixed(4) : 'â'; }
-function usd(eth, rate){ return eth != null && rate ? '$'+(eth*rate).toFixed(0) : ''; }
-function pctBadge(eth, floor){
-  if(eth == null || !floor) return '<span class="pct-neu">â</span>';
-  const p = ((eth/floor)-1)*100;
-  const cls = p > 0.5 ? 'pct-pos' : p < -0.5 ? 'pct-neg' : 'pct-neu';
-  const sign = p >= 0 ? '+' : '';
-  return `<span class="${cls}">${sign}${p.toFixed(0)}%</span>`;
+// ---- LOAD ----
+async function load(){
+  document.getElementById('status-msg').textContent='FETCHING MARKET DATA...';
+  try{
+    const r=await fetch(DATA_URL+'?t='+Date.now());
+    const d=await r.json();
+    const eu=d.eth_usd;
+    if(eu) document.getElementById('eth-price').textContent='$'+eu.toLocaleString();
+    if(d.fetched_at) document.getElementById('updated-at').textContent='UPD: '+d.fetched_at.replace('T',' ')+'Z';
+    renderResources(d);
+    renderArtifacts(d);
+    renderSales(d);
+    buildTicker(d);
+    document.getElementById('status-msg').textContent='MARKET DATA LIVE  //  AUTO-REFRESH 60MIN';
+  } catch(e){
+    document.getElementById('status-msg').textContent='ERR: '+e.message;
+  }
 }
-function tierBadge(t){
-  const n = String(t).replace(/[^0-9]/g,'');
-  const cls = ['t1','t2','t3','t4','t5'][parseInt(n)-1] || 't1';
-  return `<span class="badge ${cls}">T${n}</span>`;
-}
-function row(name, badge, eth, rate, floor, extra){
-  return `<div class="row">
-    <span class="row-name">${name}</span>
-    ${badge}
-    <span class="row-price">${fmt(eth)} Î</span>
-    <span class="row-usd">${usd(eth,rate)}</span>
-    ${pctBadge(eth, floor)}
-    ${extra||''}
-  </div>`;
-}
-function section(title, html){
-  return `<div class="section"><div class="section-title">${title}</div>${html||'<div class="no-data">No data</div>'}</div>`;
-}
-
-/* ââ Resources tab ââ */
-function renderResources(key, label, data, rate, el){
-  const col   = data.collection || {};
-  const floor = col.floor_eth;
-  const rf    = data.resource_floors || {};
-  const raw   = data.raw_traits || {};
-
-  let html = colHeader(label, col, rate);
-
-  // Environment Tier
-  const envTier = raw['Environment Tier'] || {};
-  let envHtml = '';
-  Object.entries(envTier).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([name, eth])=>{
-    envHtml += row(name, `<span class="badge env-badge">ENV</span>`, eth, rate, floor);
-  });
-  html += section('Environment Tier', envHtml);
-
-  // Per-direction resource sections
-  DIRECTIONS.forEach(dir => {
-    const dirData = rf[dir] || {};
-    if(!Object.keys(dirData).length) return;
-    let dirHtml = '';
-    // Sort resources alphabetically, tiers numerically
-    Object.entries(dirData).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([resName, tiers])=>{
-      TIER_ORDER.forEach(t => {
-        if(tiers[t] != null){
-          dirHtml += row(resName, tierBadge(t), tiers[t], rate, floor);
-        }
-      });
-    });
-    html += section(`${dir} Resources`, dirHtml);
-  });
-
-  el.innerHTML = html;
-}
-
-/* ââ Artifacts tab ââ */
-function renderArtifacts(key, label, data, rate, el){
-  const col   = data.collection || {};
-  const floor = col.floor_eth;
-  const raw   = data.raw_traits || {};
-
-  let html = colHeader(label, col, rate);
-
-  // Artifact (relic names)
-  const artifacts = raw['Artifact'] || {};
-  let artHtml = '';
-  Object.entries(artifacts).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([name, eth])=>{
-    artHtml += row(name, `<span class="badge artifact-badge">Relic</span>`, eth, rate, floor);
-  });
-  html += section('Artifacts', artHtml);
-
-  // Artifact Tier
-  const artTier = raw['Artifact Tier'] || {};
-  let atHtml = '';
-  TIER_ORDER.forEach(t => {
-    if(artTier[t] != null){
-      atHtml += row(`Artifact Tier ${t}`, tierBadge(t), artTier[t], rate, floor);
-    }
-  });
-  html += section('Artifact Tier', atHtml);
-
-  el.innerHTML = html;
-}
-
-/* ââ Sales tab ââ */
-function renderSales(key, label, data, rate, el){
-  const col         = data.collection || {};
-  const floor       = col.floor_eth;
-  const st          = data.sales_traits || {};
-  const rs          = data.resource_sales || {};
-
-  let html = colHeader(label, col, rate);
-
-  // Environment Tier sales
-  const envS = st['Environment Tier'] || {};
-  let envHtml = '';
-  Object.entries(envS).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([name,s])=>{
-    envHtml += row(name, `<span class="badge env-badge">ENV</span>`, s.price_eth, rate, floor, tsLabel(s.ts));
-  });
-  html += section('Environment Tier â Last Sold', envHtml);
-
-  // Artifact sales
-  const artS = st['Artifact'] || {};
-  let artHtml = '';
-  Object.entries(artS).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([name,s])=>{
-    artHtml += row(name, `<span class="badge artifact-badge">Relic</span>`, s.price_eth, rate, floor, tsLabel(s.ts));
-  });
-  html += section('Artifacts â Last Sold', artHtml);
-
-  // Resource sales per direction
-  DIRECTIONS.forEach(dir => {
-    const dirData = rs[dir] || {};
-    if(!Object.keys(dirData).length) return;
-    let dirHtml = '';
-    Object.entries(dirData).sort((a,b)=>a[0].localeCompare(b[0])).forEach(([resName, tiers])=>{
-      TIER_ORDER.forEach(t => {
-        const s = tiers[t];
-        if(s){
-          dirHtml += row(resName, tierBadge(t), s.price_eth, rate, floor, tsLabel(s.ts));
-        }
-      });
-    });
-    html += section(`${dir} Resources â Last Sold`, dirHtml);
-  });
-
-  el.innerHTML = html;
-}
-
-/* ââ Discrepancy panel (Sales tab, full-width bottom) ââ */
-function renderDiscrepancies(snap, rate){
-  // Find resource names that appear in multiple directions with different tiers/prices
-  // across both collections
-  const collections = [
-    {key:'otherdeed', label:'OD', data: snap.otherdeed || {}},
-    {key:'expanded',  label:'EX', data: snap.expanded  || {}},
-  ];
-  // Build: resName -> [{dir, tier, price_eth, col}]
-  const map = {};
-  collections.forEach(c => {
-    const rs = c.data.resource_floors || {};
-    DIRECTIONS.forEach(dir => {
-      const dirData = rs[dir] || {};
-      Object.entries(dirData).forEach(([resName, tiers])=>{
-        TIER_ORDER.forEach(t => {
-          if(tiers[t] != null){
-            if(!map[resName]) map[resName] = [];
-            map[resName].push({dir, tier:t, price:tiers[t], col:c.label});
-          }
-        });
-      });
-    });
-  });
-  // Only show names with multiple entries (potential discrepancies)
-  const disc = Object.entries(map).filter(([,v])=>v.length>1).sort((a,b)=>a[0].localeCompare(b[0]));
-  if(!disc.length) return '';
-  let html = '<div class="section-title" style="margin:14px 16px 6px">Territory Discrepancies</div>';
-  disc.forEach(([resName, entries])=>{
-    html += `<div style="padding:4px 16px 2px;font-size:11px;color:#8b949e">${resName}</div>`;
-    entries.forEach(e => {
-      const usdStr = rate ? ' <span style="color:#8b949e;font-size:11px">$'+(e.price*rate).toFixed(0)+'</span>' : '';
-      html += `<div class="row" style="margin:0 8px">
-        <span class="row-name" style="color:#8b949e">${e.col} Â· ${e.dir}</span>
-        ${tierBadge(e.tier)}
-        <span class="row-price">${fmt(e.price)} Î</span>${usdStr}
-      </div>`;
-    });
-  });
-  return html;
-}
-
-/* ââ Shared helpers ââ */
-function colHeader(label, col, rate){
-  const f = col.floor_eth;
-  const fUsd = f && rate ? ` Â· $${(f*rate).toFixed(0)}` : '';
-  return `<div class="col-head">
-    <div class="col-title">${label}</div>
-    <div class="col-stats">
-      <span>Floor <b>${fmt(f)} Î${fUsd}</b></span>
-      <span>Listed <b>${col.listed ?? 'â'}</b></span>
-      <span>Owners <b>${col.num_owners ?? 'â'}</b></span>
-    </div>
-  </div>`;
-}
-function tsLabel(ts){
-  if(!ts) return '';
-  const d = new Date(ts*1000);
-  const diff = Math.round((Date.now()-d)/3600000);
-  const label = diff < 24 ? `${diff}h ago` : `${Math.round(diff/24)}d ago`;
-  return `<span style="font-size:10px;color:#484f58">${label}</span>`;
-}
-
-/* ââ Main ââ */
-fetch(DATA_URL)
-  .then(r => r.json())
-  .then(snap => {
-    const rate = snap.eth_usd;
-    const ts   = snap.fetched_at;
-    document.getElementById('meta').textContent =
-      `Updated ${ts} UTC${rate ? ' Â· $'+rate.toLocaleString()+'/ETH' : ''}`;
-
-    const od = snap.otherdeed || {};
-    const ex = snap.expanded  || {};
-
-    renderResources('otherdeed', 'Otherdeed for Otherside', od, rate, document.getElementById('res-otherdeed'));
-    renderResources('expanded',  'Otherdeed Expanded',      ex, rate, document.getElementById('res-expanded'));
-
-    renderArtifacts('otherdeed', 'Otherdeed for Otherside', od, rate, document.getElementById('art-otherdeed'));
-    renderArtifacts('expanded',  'Otherdeed Expanded',      ex, rate, document.getElementById('art-expanded'));
-
-    renderSales('otherdeed', 'Otherdeed for Otherside', od, rate, document.getElementById('sales-otherdeed'));
-    renderSales('expanded',  'Otherdeed Expanded',      ex, rate, document.getElementById('sales-expanded'));
-
-    // Append discrepancy panel to sales pane (spanning both columns)
-    const disc = renderDiscrepancies(snap, rate);
-    if(disc){
-      const salesPane = document.getElementById('sales');
-      const discDiv = document.createElement('div');
-      discDiv.style.cssText = 'grid-column:1/-1;overflow-y:auto;border-top:1px solid #30363d;padding-bottom:20px';
-      discDiv.innerHTML = disc;
-      salesPane.appendChild(discDiv);
-    }
-  })
-  .catch(e => {
-    document.getElementById('meta').textContent = 'Error loading data';
-    console.error(e);
-  });
+load();
+setInterval(load, 60*60*1000);
 </script>
 </body>
 </html>
