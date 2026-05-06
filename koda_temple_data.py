@@ -5,7 +5,7 @@ COLLECTIONS = [
     {"key": "otherdeed", "label": "Otherdeed for Otherside", "slug": "otherdeed",
      "contract": "0x34d85c9CDeB23FA97cb08333b511ac86E1C4E258", "chain": "ethereum"},
     {"key": "expanded",  "label": "Otherdeed Expanded",      "slug": "otherdeed-expanded",
-     "contract": "0x790B2cF29Ed4F310bf7641f013C65D4560d28371", "chain": "apechain"},
+     "contract": "0x790B2cF29Ed4F310bf7641f013C65D4560d28371", "chain": "ethereum"},
 ]
 
 OPENSEA_API          = "https://api.opensea.io/api/v2"
