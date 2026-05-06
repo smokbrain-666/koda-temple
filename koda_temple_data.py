@@ -13,10 +13,10 @@ COINGECKO            = "https://api.coingecko.com/api/v3"
 OPENSEA_KEY          = os.environ.get("OPENSEA_API_KEY", "")
 SNAPSHOT_DIR         = "."
 REQUEST_DELAY        = 0.8          # seconds between normal requests
-INTER_COL_DELAY      = 45           # seconds to wait between collections
-RETRY_DELAYS         = [5, 15, 30]  # backoff on 429
-MAX_TRAIT_LOOKUPS    = 300          # max trait lookups per collection (cheapest first)
-MAX_SALES_ITEMS      = 300          # max unique sold tokens to collect per collection
+INTER_COL_DELAY      = 90           # seconds to wait between collections (allow rate limit reset)
+RETRY_DELAYS         = [5, 15, 30, 60]  # backoff on 429
+MAX_TRAIT_LOOKUPS    = 50           # max trait lookups per collection (cheapest first)
+MAX_SALES_ITEMS      = 50           # max unique sold tokens to collect per collection
 DIRECTIONS           = ["Western", "Northern", "Eastern", "Southern"]
 
 HDR = {"accept": "application/json", "x-api-key": OPENSEA_KEY}
