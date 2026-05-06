@@ -63,12 +63,15 @@ def col_stats(slug):
         return {}
 
 
-def cheapest(slug):
-    """Paginate ALL active listings -- 429-safe."""
+def cheapest(slug, max_results=None):
+    """Paginate listings -- 429-safe. Stops early once max_results reached."""
     results = []
     cur = None
     page_num = 0
+    debug_printed = False
     while True:
+        if max_results and len(results) >= max_results:
+            break
         params = {"limit": 50}
         if cur:
             params["next"] = cur
@@ -81,12 +84,22 @@ def cheapest(slug):
         print(f"  [{slug}] page {page_num}: HTTP {status}, {len(listings)} listings, keys={list(d.keys())}", flush=True)
         for lst in listings:
             offer = lst.get("protocol_data", {}).get("parameters", {}).get("offer", [{}])
-            tid   = offer[0].get("identifierOrCriteria") if offer else None
+            # identifierOrCriteria is the real token ID for item-specific listings (itemType 2/3)
+            # For criteria-based (itemType 4/5) it is a hash -- fall back to nft.identifier
+            raw_tid = offer[0].get("identifierOrCriteria") if offer else None
+            item_type = offer[0].get("itemType", 2) if offer else 2
+            if item_type in (4, 5) or raw_tid in (None, "0", 0):
+                raw_tid = lst.get("nft", {}).get("identifier") or lst.get("asset", {}).get("token_id")
+            tid = str(raw_tid) if raw_tid is not None else None
+            if not debug_printed and tid:
+                offer_summary = {k: offer[0].get(k) for k in ("itemType","identifierOrCriteria","token")} if offer else {}
+                print(f"  [{slug}] first listing offer={offer_summary} nft_id={lst.get('nft',{}).get('identifier')} tid={tid}", flush=True)
+                debug_printed = True
             price_data = lst.get("price", {}).get("current", {})
             decimals   = int(price_data.get("decimals", 18))
             value      = int(price_data.get("value", 0))
             p = value / (10 ** decimals)
-            if tid:
+            if tid and p > 0:
                 results.append((tid, p))
         cur = d.get("next")
         time.sleep(REQUEST_DELAY)
@@ -112,7 +125,7 @@ def scan_collection(col):
     contract = col["contract"]
     chain    = col.get("chain", "ethereum")
     print(f"[{col['key']}] scanning listings (chain={chain})...", flush=True)
-    ls = cheapest(slug)
+    ls = cheapest(slug, max_results=MAX_TRAIT_LOOKUPS)
 
     raw        = {}   # trait_type -> {value: floor_price}
     res_floors = {}   # direction  -> {resource_name: {tier: floor_price}}
