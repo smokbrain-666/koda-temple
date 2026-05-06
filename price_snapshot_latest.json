@@ -1,29 +1,29 @@
 {
-  "fetched_at": "2026-05-06T15:36:25",
-  "eth_usd": 2359.96,
+  "fetched_at": "2026-05-06T17:20:38",
+  "eth_usd": 2353.6,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.133996,
+      "floor_eth": 0.129999,
       "volume_eth": 606258.4183630473,
-      "num_owners": 14001,
+      "num_owners": 14002,
       "listed": null
     },
     "raw_traits": {
       "Plot": {
+        "53035": 0.13,
+        "85433": 0.13,
+        "98306": 0.13,
+        "85145": 0.132889,
+        "94580": 0.132889,
+        "46815": 0.13289,
+        "45618": 0.133888,
         "59516": 0.133998,
-        "85145": 0.133999,
-        "94580": 0.133999,
         "51326": 0.134,
         "54458": 0.134,
-        "45618": 0.134997,
         "68649": 0.135,
-        "53035": 0.138,
-        "85433": 0.138,
         "78476": 0.138,
-        "98306": 0.138,
         "82015": 0.138,
         "45901": 0.1398,
-        "56017": 0.145,
         "95721": 0.1469,
         "73533": 0.1469,
         "60150": 0.1469,
@@ -38,40 +38,38 @@
         "86851": 0.1799,
         "80591": 0.1821,
         "86282": 0.185,
+        "56017": 0.1888,
         "52197": 0.194698,
         "92525": 0.198,
         "95244": 0.1989,
-        "95245": 0.1989,
-        "95513": 0.1989,
-        "19023": 0.199,
-        "45748": 0.199
+        "95245": 0.1989
       },
       "Category": {
-        "Volcanic": 0.133998,
-        "Harsh": 0.133999,
-        "Spirit": 0.133999,
-        "Decay": 0.134,
-        "Growth": 0.134997,
+        "Volcanic": 0.13,
+        "Decay": 0.13,
+        "Harsh": 0.132889,
+        "Spirit": 0.132889,
+        "Growth": 0.133888,
         "Psychedelic": 0.138,
         "Mineral": 0.194698
       },
       "Sediment": {
-        "Infinite Expanse": 0.133998,
-        "Rainbow Atmos": 0.133999,
-        "Cosmic Dream": 0.133999,
+        "Infinite Expanse": 0.13,
+        "Rainbow Atmos": 0.13,
+        "Cosmic Dream": 0.13,
         "Chemical Goo": 0.16
       },
       "Environment": {
-        "Sulfuric": 0.133998,
-        "Glacia": 0.133999,
-        "Veldan": 0.133999,
-        "Bog": 0.134,
+        "Sulfuric": 0.13,
+        "Bog": 0.13,
+        "Glacia": 0.132889,
+        "Veldan": 0.132889,
+        "Splinter": 0.13289,
+        "Mycelium": 0.133888,
         "Steppes": 0.134,
-        "Mycelium": 0.134997,
         "Sludge": 0.138,
-        "Molten": 0.145,
+        "Molten": 0.1469,
         "Crimson": 0.1469,
-        "Splinter": 0.14847,
         "Shadow": 0.16,
         "Ruins": 0.1688,
         "Sky": 0.17,
@@ -80,65 +78,65 @@
         "Spires": 0.194698,
         "Mystic": 0.1989
       },
+      "Obelisk Piece": {
+        "First Trip": 0.13
+      },
       "Sediment Tier": {
-        "1": 0.133998,
-        "2": 0.133999,
+        "1": 0.13,
+        "2": 0.132889,
         "3": 0.1469
       },
+      "Environment Tier": {
+        "4": 0.13,
+        "2": 0.13,
+        "1": 0.13,
+        "3": 0.134
+      },
+      "Northern Resource": {
+        "Lunarian": 0.13,
+        "Whisper": 0.13,
+        "Kinsoul": 0.132889,
+        "Petrified": 0.134,
+        "Moldium": 0.138,
+        "Nether": 0.1799
+      },
+      "Northern Resource Tier": {
+        "1": 0.13,
+        "3": 0.138,
+        "2": 0.198
+      },
+      "Western Resource": {
+        "Moldium": 0.13,
+        "Luster": 0.132889,
+        "Psychosilk": 0.133888,
+        "Lunarian": 0.133998,
+        "Runa": 0.134,
+        "Kinsoul": 0.1888
+      },
+      "Western Resource Tier": {
+        "2": 0.13,
+        "1": 0.133888,
+        "3": 0.1989
+      },
       "Eastern Resource": {
+        "Spikeweed": 0.13289,
+        "Whisper": 0.133888,
         "Nether": 0.133998,
         "Bonestone": 0.134,
-        "Whisper": 0.134997,
         "Luster": 0.135,
         "Moldium": 0.1398,
         "Lunarian": 0.1469,
         "Kinsoul": 0.14847,
         "Oblivion": 0.16,
-        "Psychosilk": 0.1688,
-        "Runa": 0.199
-      },
-      "Environment Tier": {
-        "2": 0.133998,
-        "1": 0.134,
-        "3": 0.134,
-        "4": 0.138
-      },
-      "Western Resource": {
-        "Lunarian": 0.133998,
-        "Luster": 0.133999,
-        "Runa": 0.134,
-        "Psychosilk": 0.134997,
-        "Moldium": 0.138,
-        "Kinsoul": 0.145
+        "Psychosilk": 0.1688
       },
       "Eastern Resource Tier": {
-        "2": 0.133998,
+        "2": 0.13289,
         "1": 0.135,
         "3": 0.17
       },
-      "Western Resource Tier": {
-        "2": 0.133998,
-        "1": 0.134,
-        "3": 0.1989
-      },
-      "Obelisk Piece": {
-        "First Trip": 0.133999
-      },
-      "Northern Resource": {
-        "Kinsoul": 0.133999,
-        "Petrified": 0.134,
-        "Lunarian": 0.138,
-        "Moldium": 0.138,
-        "Whisper": 0.138,
-        "Nether": 0.1799
-      },
-      "Northern Resource Tier": {
-        "1": 0.133999,
-        "3": 0.138,
-        "2": 0.198
-      },
       "Southern Resource": {
-        "Nether": 0.134997,
+        "Nether": 0.133888,
         "Kinsoul": 0.135,
         "Psychosilk": 0.138,
         "Whisper": 0.1469,
@@ -146,50 +144,70 @@
         "Luster": 0.1799,
         "Oblivion": 0.194698,
         "Brimstone": 0.198,
-        "Petrified": 0.1989,
-        "Moldium": 0.1989
+        "Petrified": 0.1989
       },
       "Southern Resource Tier": {
-        "1": 0.134997,
+        "1": 0.133888,
         "2": 0.135,
         "3": 0.168396
-      },
-      "Artifact": {
-        "Rugged Hammer": 0.199,
-        "Sticky Cauldron": 0.199
       }
     },
     "resource_floors": {
+      "Northern": {
+        "Lunarian": {
+          "1": 0.13,
+          "2": 0.1989
+        },
+        "Whisper": {
+          "1": 0.13
+        },
+        "Kinsoul": {
+          "1": 0.132889
+        },
+        "Petrified": {
+          "1": 0.134
+        },
+        "Moldium": {
+          "3": 0.138,
+          "2": 0.198
+        },
+        "Nether": {
+          "1": 0.1799
+        }
+      },
       "Western": {
+        "Moldium": {
+          "2": 0.13
+        },
+        "Luster": {
+          "2": 0.132889
+        },
+        "Psychosilk": {
+          "1": 0.133888
+        },
         "Lunarian": {
           "2": 0.133998,
           "3": 0.1989
         },
-        "Luster": {
-          "2": 0.133999
-        },
         "Runa": {
           "1": 0.134
         },
-        "Psychosilk": {
-          "1": 0.134997
-        },
-        "Moldium": {
-          "2": 0.138
-        },
         "Kinsoul": {
-          "1": 0.145
+          "1": 0.1888
         }
       },
       "Eastern": {
+        "Spikeweed": {
+          "2": 0.13289
+        },
+        "Whisper": {
+          "2": 0.133888
+        },
         "Nether": {
           "2": 0.133998
         },
         "Bonestone": {
           "2": 0.134
-        },
-        "Whisper": {
-          "2": 0.134997
         },
         "Luster": {
           "1": 0.135,
@@ -211,40 +229,15 @@
         "Psychosilk": {
           "1": 0.1688,
           "3": 0.185
-        },
-        "Runa": {
-          "1": 0.199
-        }
-      },
-      "Northern": {
-        "Kinsoul": {
-          "1": 0.133999
-        },
-        "Petrified": {
-          "1": 0.134
-        },
-        "Lunarian": {
-          "1": 0.138,
-          "2": 0.1989
-        },
-        "Moldium": {
-          "3": 0.138,
-          "2": 0.198
-        },
-        "Whisper": {
-          "1": 0.138
-        },
-        "Nether": {
-          "1": 0.1799
         }
       },
       "Southern": {
         "Nether": {
-          "1": 0.134997
+          "1": 0.133888
         },
         "Kinsoul": {
           "2": 0.135,
-          "1": 0.145
+          "1": 0.1888
         },
         "Psychosilk": {
           "1": 0.138
@@ -265,9 +258,6 @@
           "1": 0.198
         },
         "Petrified": {
-          "1": 0.1989
-        },
-        "Moldium": {
           "1": 0.1989
         }
       }
@@ -1568,7 +1558,7 @@
   "expanded": {
     "collection": {
       "floor_eth": 0.126799876,
-      "volume_eth": 18377.052577647777,
+      "volume_eth": 18377.18587764778,
       "num_owners": 12127,
       "listed": null
     },
