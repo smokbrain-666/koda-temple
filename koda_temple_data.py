@@ -16,7 +16,7 @@ REQUEST_DELAY        = 0.8          # seconds between normal requests
 INTER_COL_DELAY      = 45           # seconds to wait between collections
 RETRY_DELAYS         = [5, 15, 30]  # backoff on 429
 MAX_TRAIT_LOOKUPS    = 300          # max trait lookups per collection (cheapest first)
-MAX_SALES_PAGES      = 300          # max sales event pages per collection (50 events each)
+MAX_SALES_ITEMS      = 300          # max unique sold tokens to collect per collection
 DIRECTIONS           = ["Western", "Northern", "Eastern", "Southern"]
 
 HDR = {"accept": "application/json", "x-api-key": OPENSEA_KEY}
@@ -177,7 +177,7 @@ def scan_sales(col, days=10):
         cur = d.get("next")
         time.sleep(REQUEST_DELAY)
         page += 1
-        if not events or not cur or page >= MAX_SALES_PAGES:
+        if not events or not cur or len(token_last_sale) >= MAX_SALES_ITEMS:
             break
 
     sales_traits   = {}
