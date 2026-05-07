@@ -294,6 +294,103 @@ body::before {
 .chg-up  { color:#00FF44; font-size:18px; display:inline-block; text-shadow:0 0 8px #00FF44; }
 .chg-dn  { color:#FF5555; font-size:18px; display:inline-block; text-shadow:0 0 8px #FF5555; }
 .chg-eq  { color:#666;    font-size:15px; display:inline-block; }
+
+/* === KODAQ DASHBOARD VISUAL OVERRIDES (custom request 2026-05-07) === */
+:root {
+  --neon-blue:    #00CCFF;
+  --neon-green:   #00FF14;
+  --blood-red:    #B00000;
+  --bright-yellow:#FFE600;
+  --pure-white:   #FFFFFF;
+  --glow-white:   0 0 6px #FFFFFF, 0 0 14px rgba(255,255,255,0.85), 0 0 26px rgba(255,255,255,0.55);
+  --glow-blue:    0 0 6px #00CCFF, 0 0 14px rgba(0,200,255,0.8),  0 0 26px rgba(0,200,255,0.5);
+  --glow-green-x: 0 0 6px #00FF14, 0 0 14px rgba(0,255,20,0.85),  0 0 26px rgba(0,255,20,0.5);
+  --glow-red-x:   0 0 6px #B00000, 0 0 14px rgba(176,0,0,0.9),    0 0 26px rgba(176,0,0,0.55);
+  --glow-yellow-x:0 0 6px #FFE600, 0 0 14px rgba(255,230,0,0.85), 0 0 28px rgba(255,230,0,0.55);
+}
+/* KODAQ logo: bigger, bolder, centered, white glow */
+#hdr { text-align: center !important; }
+#hdr-logo {
+  font-size: 72px !important;
+  font-weight: 900 !important;
+  letter-spacing: 14px !important;
+  text-align: center !important;
+  width: 100% !important;
+  display: block !important;
+  margin: 0 auto !important;
+  color: #FFFFFF !important;
+  text-shadow: var(--glow-white) !important;
+}
+/* Resource + artifact NAMES = bright white glowing */
+.col-name, .sym, .cat-title, .type-res, .type-art, .type-koda {
+  color: var(--pure-white) !important;
+  text-shadow: var(--glow-white) !important;
+  font-weight: 700 !important;
+}
+/* Tabs + page section titles = neon blue */
+.tab, .col-hdr, .league-hdr, .art-hdr, .sales-hdr, .cat-hdr, .col-badge, .cat-sub {
+  color: var(--neon-blue) !important;
+  text-shadow: var(--glow-blue) !important;
+  font-weight: 700 !important;
+}
+.tab.active {
+  color: var(--neon-blue) !important;
+  text-shadow: var(--glow-blue) !important;
+  border-bottom: 2px solid var(--neon-blue) !important;
+}
+/* Floor + chart price data = neon blue */
+.eth-val, .usd-val, .col-stat, .ti-price, .t1c, .t2c, .t3c {
+  color: var(--neon-blue) !important;
+  text-shadow: var(--glow-blue) !important;
+}
+/* LEAGUE table: top 3 = bright yellow, rest = white */
+.rank-gold, .rank-silver, .rank-bronze {
+  color: var(--bright-yellow) !important;
+  text-shadow: var(--glow-yellow-x) !important;
+  font-weight: 900 !important;
+}
+.rank-rest {
+  color: var(--pure-white) !important;
+  text-shadow: var(--glow-white) !important;
+  font-weight: 700 !important;
+}
+/* Percentage moves: up = neon green, down = blood red */
+.sale-up, .chg-up {
+  color: var(--neon-green) !important;
+  text-shadow: var(--glow-green-x) !important;
+  font-weight: 700 !important;
+}
+.sale-dn, .chg-dn {
+  color: var(--blood-red) !important;
+  text-shadow: var(--glow-red-x) !important;
+  font-weight: 700 !important;
+}
+.sale-eq, .chg-eq { color: rgba(255,255,255,0.65) !important; }
+/* Animated up-arrow for league movers (only in league section) */
+@keyframes lm-bounce { 0%,100% { transform: translateY(0); opacity:1; } 50% { transform: translateY(-5px); opacity:.65; } }
+@keyframes lm-pulse  { 0%,100% { text-shadow: var(--glow-green-x); } 50% { text-shadow: 0 0 12px #00FF14, 0 0 28px rgba(0,255,20,0.9), 0 0 42px rgba(0,255,20,0.65); } }
+.league-table .league-mover-up::before,
+.league-mover-up::before {
+  content: "\25B2";
+  display: inline-block;
+  color: var(--neon-green);
+  font-size: 0.95em;
+  margin-right: 8px;
+  text-shadow: var(--glow-green-x);
+  animation: lm-bounce 0.85s ease-in-out infinite, lm-pulse 1.2s ease-in-out infinite;
+}
+.league-table .league-mover-down::before,
+.league-mover-down::before {
+  content: "\25BC";
+  display: inline-block;
+  color: var(--blood-red);
+  font-size: 0.95em;
+  margin-right: 8px;
+  text-shadow: var(--glow-red-x);
+}
+/* Slightly lighter overlay so the kodaq_bg.jpg shows behind the bright text */
+body::after { background: rgba(0,0,0,0.45) !important; }
+/* === END OVERRIDES === */
 </style>
 </head>
 <body>
