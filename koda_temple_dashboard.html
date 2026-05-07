@@ -9,8 +9,8 @@
 :root {
   --amber:       #FF2200;
   --amber-bright:#FF4422;
-  --amber-dim:   #AA1100;
-  --red-header:  #AA0000;
+  --amber-dim:   #DD2200;
+  --red-header:  #CC0000;
   --green:       #00FF66;
   --blue:        #44AAFF;
   --white:       #FFFFFF;
@@ -48,7 +48,7 @@ body::before {
   content:'';
   position:fixed;
   inset:0;
-  background: rgba(0,0,0,0.72);
+  background: rgba(0,0,0,0.60);
   pointer-events:none;
   z-index:0;
 }
@@ -76,7 +76,7 @@ body::before {
   display:flex;
   gap:20px;
   font-size:18px;
-  color:#CC1100;
+  color:#FF3300;
   white-space:nowrap;
 }
 #eth-price { color:var(--amber-bright); text-shadow:var(--glow-amber); }
@@ -152,7 +152,7 @@ body::before {
   align-items:center;
 }
 .col-name { font-size:19px; color:var(--amber-bright); letter-spacing:2px; text-shadow:var(--glow-amber); }
-.col-stat { font-size:16px; color:#BB1100; }
+.col-stat { font-size:16px; color:#FF3300; }
 .col-stat .v { color:var(--white); font-size:18px; }
 
 /* ===== CATEGORY BLOCK ===== */
@@ -170,7 +170,7 @@ body::before {
   letter-spacing:4px;
   text-shadow:0 0 8px rgba(255,50,0,.6);
 }
-.cat-sub { font-size:15px; color:rgba(255,50,0,.70); letter-spacing:1px; }
+.cat-sub { font-size:15px; color:rgba(255,80,0,.95); letter-spacing:1px; }
 
 /* ===== MARKET TABLE ===== */
 .mkt-table {
@@ -182,7 +182,7 @@ body::before {
 .mkt-table th {
   padding:7px 12px;
   font-size:15px;
-  color:#BB1100;
+  color:#FF3300;
   letter-spacing:1px;
   font-weight:normal;
   text-align:left;
@@ -212,9 +212,9 @@ body::before {
 .t2c { text-align:right; }
 .t3c { text-align:right; }
 
-.eth-val { color:var(--white); font-size:23px; white-space:nowrap; text-shadow:0 0 4px rgba(255,255,255,.25); }
-.usd-val { color:#CC2200; font-size:16px; display:block; text-align:right; }
-.no-data { color:#330000; font-size:17px; text-align:right; }
+.eth-val { color:var(--amber-bright); font-size:23px; white-space:nowrap; text-shadow:var(--glow-amber); }
+.usd-val { color:#FF5500; font-size:16px; display:block; text-align:right; }
+.no-data { color:#FF4400; font-size:17px; text-align:right; }
 
 /* tier badges â T1=red(base/cheap) T2=orange(mid) T3=green(premium) */
 .tb { display:inline-block; padding:2px 8px; font-size:15px; border:1px solid; margin-right:2px; }
@@ -225,7 +225,7 @@ body::before {
 /* league table */
 .league-table { width:100%; border-collapse:collapse; background:var(--panel); }
 .league-table thead tr { background:#0D0000; border-bottom:2px solid var(--border); }
-.league-table th { padding:8px 14px; font-size:16px; color:#BB1100; letter-spacing:1px; font-weight:normal; text-align:left; }
+.league-table th { padding:8px 14px; font-size:16px; color:#FF3300; letter-spacing:1px; font-weight:normal; text-align:left; }
 .league-table th.r { text-align:right; }
 .league-table tbody tr { border-bottom:1px solid #1A0500; transition:background .1s; }
 .league-table tbody tr:hover { background:#0D0000; }
@@ -233,11 +233,11 @@ body::before {
 .rank-gold   { color:#FFD700; font-size:26px; font-weight:bold; text-shadow:0 0 10px #FFD700; }
 .rank-silver { color:#C0C0C0; font-size:26px; font-weight:bold; text-shadow:0 0 8px #C0C0C0; }
 .rank-bronze { color:#CD7F32; font-size:26px; font-weight:bold; text-shadow:0 0 8px #CD7F32; }
-.rank-rest   { color:#553300; font-size:24px; }
+.rank-rest   { color:#FF4400; font-size:24px; }
 .type-res  { color:#FF8800; border:1px solid #FF8800; padding:1px 6px; font-size:13px; }
 .type-art  { color:#CC66FF; border:1px solid #CC66FF; padding:1px 6px; font-size:13px; }
 .type-koda { color:#00CCFF; border:1px solid #00CCFF; padding:1px 6px; font-size:13px; }
-.col-badge { font-size:13px; color:#AA1100; border:1px solid #330000; padding:1px 5px; }
+.col-badge { font-size:13px; color:#FF3300; border:1px solid #882200; padding:1px 5px; }
 .league-hdr { background:#001A00; }
 .tier-badge-sm { font-size:13px; padding:1px 5px; border:1px solid; }
 
@@ -245,7 +245,7 @@ body::before {
 .pending-notice {
   padding:5px 14px;
   font-size:13px;
-  color:#330000;
+  color:#FF4400;
   border-bottom:1px solid var(--border);
 }
 
@@ -259,7 +259,7 @@ body::before {
   display:flex;
   justify-content:space-between;
   font-size:16px;
-  color:#AA1100;
+  color:#FF3300;
   z-index:200;
 }
 #live-dot {
@@ -568,7 +568,7 @@ function renderArtifacts(data){
       </div>`;
 
     if(!allNames.size){
-      html+=`<div style="padding:24px;text-align:center;color:#333;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
+      html+=`<div style="padding:24px;text-align:center;color:#FF3300;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
     } else {
       // Build combined list
       const rows=[];
@@ -670,9 +670,9 @@ function renderSales(data){
     const hasST=Object.keys(salesT).length>0;
 
     if(!hasRS&&!hasST){
-      html+=`<div style="padding:30px;text-align:center;color:#333;font-size:18px">
+      html+=`<div style="padding:30px;text-align:center;color:#FF3300;font-size:18px">
         NO SALES DATA IN WINDOW<br>
-        <span style="font-size:14px;color:#222">NO SALES RECORDED IN LAST 10 DAYS</span>
+        <span style="font-size:14px;color:#FF4400">NO SALES RECORDED IN LAST 10 DAYS</span>
       </div>`;
     } else {
       // Resource sales by category
@@ -784,7 +784,7 @@ function renderLeague(data){
   const top=entries.slice(0,20);
 
   if(!top.length){
-    document.getElementById('league').innerHTML=`<div style="padding:60px;text-align:center;color:#333;font-size:20px">NO SALES DATA AVAILABLE</div>`;
+    document.getElementById('league').innerHTML=`<div style="padding:60px;text-align:center;color:#FF3300;font-size:20px">NO SALES DATA AVAILABLE</div>`;
     return;
   }
 
@@ -839,18 +839,18 @@ function renderLeague(data){
       <td>${rankHtml(i)}</td>
       <td class="sym" style="font-size:${i<3?'22px':'19px'}">${e.name}</td>
       <td>${typeHtml(e.type)}</td>
-      <td style="color:var(--amber-dim);font-size:14px">${e.cat}</td>
+      <td style="color:#FF5500;font-size:14px">${e.cat}</td>
       <td>${tierHtml(e.tier)}</td>
       <td><span class="col-badge">${e.col}</span></td>
       <td class="r"><span class="eth-val" style="font-size:${i<3?'22px':'19px'}">${fe(e.price)}</span></td>
-      <td class="r">${ethUsd?`<span class="eth-val" style="font-size:16px;color:#AA6600">${fu(e.price,ethUsd)}</span>`:''}</td>
-      <td class="r" style="color:#444;font-size:14px">${timeAgo(e.ts)}</td>
+      <td class="r">${ethUsd?`<span class="usd-val" style="font-size:16px;display:inline">${fu(e.price,ethUsd)}</span>`:''}</td>
+      <td class="r" style="color:#FF4400;font-size:14px">${timeAgo(e.ts)}</td>
     </tr>`;
   }
 
   html+=`</tbody></table>
   </div>
-  <div style="padding:8px 18px;font-size:14px;color:#330000;border-top:1px solid #1A0000">
+  <div style="padding:8px 18px;font-size:14px;color:#FF4400;border-top:1px solid #551100">
     &#9650; TIER GUIDE: <span class="tb t1" style="font-size:12px">T1</span> BASE &nbsp;
     <span class="tb t2" style="font-size:12px">T2</span> MID &nbsp;
     <span class="tb t3" style="font-size:12px">T3</span> PREMIUM &nbsp;&mdash;&nbsp;
