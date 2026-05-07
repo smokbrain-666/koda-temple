@@ -7,16 +7,16 @@
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
 :root {
-  --amber:       #FF2200;
-  --amber-bright:#FF4422;
-  --amber-dim:   #DD2200;
-  --red-header:  #CC0000;
+  --amber:       #FF7700;
+  --amber-bright:#FFAA44;
+  --amber-dim:   #FF5500;
+  --red-header:  #FF2200;
   --green:       #00FF66;
   --blue:        #44AAFF;
   --white:       #FFFFFF;
   --panel:       #060000;
   --border:      #2A0000;
-  --glow-amber:  0 0 8px #FF2200, 0 0 18px rgba(255,30,0,0.5);
+  --glow-amber:  0 0 8px #FF7700, 0 0 18px rgba(255,120,0,0.6);
   --glow-green:  0 0 8px #00FF66;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -76,7 +76,7 @@ body::before {
   display:flex;
   gap:20px;
   font-size:18px;
-  color:#FF3300;
+  color:#FF8800;
   white-space:nowrap;
 }
 #eth-price { color:var(--amber-bright); text-shadow:var(--glow-amber); }
@@ -152,7 +152,7 @@ body::before {
   align-items:center;
 }
 .col-name { font-size:19px; color:var(--amber-bright); letter-spacing:2px; text-shadow:var(--glow-amber); }
-.col-stat { font-size:16px; color:#FF3300; }
+.col-stat { font-size:16px; color:#FF8800; }
 .col-stat .v { color:var(--white); font-size:18px; }
 
 /* ===== CATEGORY BLOCK ===== */
@@ -168,9 +168,9 @@ body::before {
   font-size:26px;
   color:var(--amber-bright);
   letter-spacing:4px;
-  text-shadow:0 0 8px rgba(255,50,0,.6);
+  text-shadow:0 0 8px rgba(255,150,0,.8);
 }
-.cat-sub { font-size:15px; color:rgba(255,80,0,.95); letter-spacing:1px; }
+.cat-sub { font-size:15px; color:rgba(255,170,0,1); letter-spacing:1px; }
 
 /* ===== MARKET TABLE ===== */
 .mkt-table {
@@ -182,7 +182,7 @@ body::before {
 .mkt-table th {
   padding:7px 12px;
   font-size:15px;
-  color:#FF3300;
+  color:#FF9900;
   letter-spacing:1px;
   font-weight:normal;
   text-align:left;
@@ -196,7 +196,7 @@ body::before {
   color:var(--amber-bright);
   font-size:23px;
   letter-spacing:2px;
-  text-shadow:0 0 5px rgba(255,50,0,.35);
+  text-shadow:0 0 5px rgba(255,150,0,.6);
 }
 .dirs { display:flex; gap:3px; flex-wrap:wrap; }
 .dir-tag {
@@ -213,19 +213,19 @@ body::before {
 .t3c { text-align:right; }
 
 .eth-val { color:var(--amber-bright); font-size:23px; white-space:nowrap; text-shadow:var(--glow-amber); }
-.usd-val { color:#FF5500; font-size:16px; display:block; text-align:right; }
-.no-data { color:#FF4400; font-size:17px; text-align:right; }
+.usd-val { color:#FFAA00; font-size:16px; display:block; text-align:right; }
+.no-data { color:#FF9900; font-size:17px; text-align:right; }
 
 /* tier badges â T1=red(base/cheap) T2=orange(mid) T3=green(premium) */
 .tb { display:inline-block; padding:2px 8px; font-size:15px; border:1px solid; margin-right:2px; }
-.t1 { color:#FF2200; border-color:#FF2200; text-shadow:0 0 6px #FF2200; }
+.t1 { color:#FF5500; border-color:#FF5500; text-shadow:0 0 6px #FF5500; }
 .t2 { color:#FF8800; border-color:#FF8800; text-shadow:0 0 6px #FF8800; }
 .t3 { color:#00FF66; border-color:#00FF66; text-shadow:var(--glow-green); }
 
 /* league table */
 .league-table { width:100%; border-collapse:collapse; background:var(--panel); }
 .league-table thead tr { background:#0D0000; border-bottom:2px solid var(--border); }
-.league-table th { padding:8px 14px; font-size:16px; color:#FF3300; letter-spacing:1px; font-weight:normal; text-align:left; }
+.league-table th { padding:8px 14px; font-size:16px; color:#FF9900; letter-spacing:1px; font-weight:normal; text-align:left; }
 .league-table th.r { text-align:right; }
 .league-table tbody tr { border-bottom:1px solid #1A0500; transition:background .1s; }
 .league-table tbody tr:hover { background:#0D0000; }
@@ -233,11 +233,11 @@ body::before {
 .rank-gold   { color:#FFD700; font-size:26px; font-weight:bold; text-shadow:0 0 10px #FFD700; }
 .rank-silver { color:#C0C0C0; font-size:26px; font-weight:bold; text-shadow:0 0 8px #C0C0C0; }
 .rank-bronze { color:#CD7F32; font-size:26px; font-weight:bold; text-shadow:0 0 8px #CD7F32; }
-.rank-rest   { color:#FF4400; font-size:24px; }
-.type-res  { color:#FF8800; border:1px solid #FF8800; padding:1px 6px; font-size:13px; }
+.rank-rest   { color:#FF9900; font-size:24px; }
+.type-res  { color:#FFAA00; border:1px solid #FFAA00; padding:1px 6px; font-size:13px; }
 .type-art  { color:#CC66FF; border:1px solid #CC66FF; padding:1px 6px; font-size:13px; }
 .type-koda { color:#00CCFF; border:1px solid #00CCFF; padding:1px 6px; font-size:13px; }
-.col-badge { font-size:13px; color:#FF3300; border:1px solid #882200; padding:1px 5px; }
+.col-badge { font-size:13px; color:#FF8800; border:1px solid #AA4400; padding:1px 5px; }
 .league-hdr { background:#001A00; }
 .tier-badge-sm { font-size:13px; padding:1px 5px; border:1px solid; }
 
@@ -245,7 +245,7 @@ body::before {
 .pending-notice {
   padding:5px 14px;
   font-size:13px;
-  color:#FF4400;
+  color:#FF9900;
   border-bottom:1px solid var(--border);
 }
 
@@ -259,7 +259,7 @@ body::before {
   display:flex;
   justify-content:space-between;
   font-size:16px;
-  color:#FF3300;
+  color:#FF8800;
   z-index:200;
 }
 #live-dot {
@@ -289,10 +289,10 @@ body::before {
 
 /* sale price vs floor indicators */
 .sale-up { color:#00FF44; font-size:16px; display:block; line-height:1.4; font-weight:bold; text-shadow:0 0 8px #00FF44, 0 0 2px #00FF44; }
-.sale-dn { color:#FF2200; font-size:16px; display:block; line-height:1.4; font-weight:bold; text-shadow:0 0 8px #FF2200, 0 0 2px #FF2200; }
-.sale-eq { color:#666;    font-size:15px; display:block; line-height:1.4; }
+.sale-dn { color:#FF5555; font-size:16px; display:block; line-height:1.4; font-weight:bold; text-shadow:0 0 8px #FF5555, 0 0 2px #FF5555; }
+.sale-eq { color:#999;    font-size:15px; display:block; line-height:1.4; }
 .chg-up  { color:#00FF44; font-size:18px; display:inline-block; text-shadow:0 0 8px #00FF44; }
-.chg-dn  { color:#FF2200; font-size:18px; display:inline-block; text-shadow:0 0 8px #FF2200; }
+.chg-dn  { color:#FF5555; font-size:18px; display:inline-block; text-shadow:0 0 8px #FF5555; }
 .chg-eq  { color:#666;    font-size:15px; display:inline-block; }
 </style>
 </head>
@@ -568,7 +568,7 @@ function renderArtifacts(data){
       </div>`;
 
     if(!allNames.size){
-      html+=`<div style="padding:24px;text-align:center;color:#FF3300;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
+      html+=`<div style="padding:24px;text-align:center;color:#FF9900;font-size:18px">NO ARTIFACT DATA IN WINDOW</div>`;
     } else {
       // Build combined list
       const rows=[];
@@ -670,9 +670,9 @@ function renderSales(data){
     const hasST=Object.keys(salesT).length>0;
 
     if(!hasRS&&!hasST){
-      html+=`<div style="padding:30px;text-align:center;color:#FF3300;font-size:18px">
+      html+=`<div style="padding:30px;text-align:center;color:#FF9900;font-size:18px">
         NO SALES DATA IN WINDOW<br>
-        <span style="font-size:14px;color:#FF4400">NO SALES RECORDED IN LAST 10 DAYS</span>
+        <span style="font-size:14px;color:#FFBB00">NO SALES RECORDED IN LAST 10 DAYS</span>
       </div>`;
     } else {
       // Resource sales by category
@@ -784,7 +784,7 @@ function renderLeague(data){
   const top=entries.slice(0,20);
 
   if(!top.length){
-    document.getElementById('league').innerHTML=`<div style="padding:60px;text-align:center;color:#FF3300;font-size:20px">NO SALES DATA AVAILABLE</div>`;
+    document.getElementById('league').innerHTML<`<div style="padding:60px;text-align:center;color:#FF9900;font-size:20px">NO SALES DATA AVAILABLE</div>`;
     return;
   }
 
@@ -839,18 +839,18 @@ function renderLeague(data){
       <td>${rankHtml(i)}</td>
       <td class="sym" style="font-size:${i<3?'22px':'19px'}">${e.name}</td>
       <td>${typeHtml(e.type)}</td>
-      <td style="color:#FF5500;font-size:14px">${e.cat}</td>
+      <td style="color:#FFAA00;font-size:14px">${e.cat}</td>
       <td>${tierHtml(e.tier)}</td>
       <td><span class="col-badge">${e.col}</span></td>
       <td class="r"><span class="eth-val" style="font-size:${i<3?'22px':'19px'}">${fe(e.price)}</span></td>
       <td class="r">${ethUsd?`<span class="usd-val" style="font-size:16px;display:inline">${fu(e.price,ethUsd)}</span>`:''}</td>
-      <td class="r" style="color:#FF4400;font-size:14px">${timeAgo(e.ts)}</td>
+      <td class="r" style="color:#FF9900;font-size:14px">${timeAgo(e.ts)}</td>
     </tr>`;
   }
 
   html+=`</tbody></table>
   </div>
-  <div style="padding:8px 18px;font-size:14px;color:#FF4400;border-top:1px solid #551100">
+  <div style="padding:8px 18px;font-size:14px;color:#FF9900;border-top:1px solid #551100">
     &#9650; TIER GUIDE: <span class="tb t1" style="font-size:12px">T1</span> BASE &nbsp;
     <span class="tb t2" style="font-size:12px">T2</span> MID &nbsp;
     <span class="tb t3" style="font-size:12px">T3</span> PREMIUM &nbsp;&mdash;&nbsp;
