@@ -1528,7 +1528,7 @@ function renderArtifacts(data) {
   }
   var od = buildPanel('otherdeed', 'OTHERDEED FOR OTHERSIDE');
   var ode = buildPanel('expanded', 'OTHERDEED EXPANDED');
-  el.innerHTML = '<div class="col-grid">' + od + ode + '</div>';
+  el.innerHTML = (window.__investFAQHTML||'') + '<div class="col-grid">' + od + ode + '</div>';
 }
 /* === end artifacts v2 === */
 
@@ -1803,7 +1803,7 @@ function renderInvest(data) {
     html += '</ul></div>';
     var div = document.createElement('div');
     div.innerHTML = html;
-    iEl.insertBefore(div.firstChild, iEl.firstChild);
+    window.__investFAQHTML = html; iEl.insertBefore(div.firstChild, iEl.firstChild);
   }
 
   function tick() {
