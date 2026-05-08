@@ -1243,7 +1243,100 @@ table.invest-v1 td .col-name {
   color: #FFFFFF; margin: 8px 0;
 }
 /* === END v12 === */
-style>
+st
+
+/* === KODAQ v13 — section boxes, ticker arrows, district compass === */
+
+/* Each category section wrapped in a colored box */
+.res-cat-section {
+  border: 3px solid;
+  padding: 12px 14px 14px 14px !important;
+  margin: 12px 8px 18px 8px !important;
+  background: rgba(0,0,0,0.55);
+  box-shadow: 4px 4px 0 #000;
+}
+.res-cat-section.res-cat-ORE { border-color: #FFAA00; box-shadow: 4px 4px 0 #000, inset 0 0 22px rgba(255,170,0,0.10); }
+.res-cat-section.res-cat-SHARD { border-color: #00FFFF; box-shadow: 4px 4px 0 #000, inset 0 0 22px rgba(0,255,255,0.10); }
+.res-cat-section.res-cat-ROOT  { border-color: #00FF66; box-shadow: 4px 4px 0 #000, inset 0 0 22px rgba(0,255,102,0.10); }
+.res-cat-section.res-cat-ANIMA { border-color: #DD66FF; box-shadow: 4px 4px 0 #000, inset 0 0 22px rgba(221,102,255,0.10); }
+
+/* Cards inside inherit category color border */
+.res-cat-section.res-cat-ORE .res-card-v2   { border-color: #FFAA00 !important; border-left-color: #FFAA00 !important; }
+.res-cat-section.res-cat-SHARD .res-card-v2 { border-color: #00FFFF !important; border-left-color: #00FFFF !important; }
+.res-cat-section.res-cat-ROOT .res-card-v2  { border-color: #00FF66 !important; border-left-color: #00FF66 !important; }
+.res-cat-section.res-cat-ANIMA .res-card-v2 { border-color: #DD66FF !important; border-left-color: #DD66FF !important; }
+
+/* Top header: cyan box (data summary) */
+.res-summary-hdr { border-color: #00E1FF !important; }
+
+/* DISTRICT COMPASS panel */
+.district-compass {
+  border: 3px solid #FFE600;
+  background: linear-gradient(135deg, rgba(0,0,0,0.78), rgba(20,15,0,0.78));
+  padding: 12px 16px 14px 16px;
+  margin: 12px 8px 14px 8px;
+  box-shadow: 4px 4px 0 #000, inset 0 0 24px rgba(255,230,0,0.08);
+}
+.district-compass .dc-title {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 14px !important;
+  letter-spacing: 2.5px; color: #FFE600; margin-bottom: 10px;
+  text-shadow: 2px 2px 0 #000;
+}
+.district-compass .dc-sub {
+  font-size: 12px !important; letter-spacing: 1.5px; color: #FFFFFF; opacity: 0.85; margin-left: 10px;
+  font-family: 'VT323',monospace;
+}
+.dc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.dc-cell {
+  border: 2px solid;
+  background: rgba(0,0,0,0.55);
+  padding: 10px 10px 12px 10px;
+  position: relative;
+  box-shadow: 3px 3px 0 #000;
+}
+.dc-cell.dc-N { border-color: #00CCFF; }
+.dc-cell.dc-S { border-color: #FF8800; }
+.dc-cell.dc-E { border-color: #FFE600; }
+.dc-cell.dc-W { border-color: #2BFF66; }
+.dc-cell .dc-dir {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 14px !important;
+  letter-spacing: 3px; margin-bottom: 5px;
+  text-shadow: 2px 2px 0 #000; padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+}
+.dc-cell.dc-N .dc-dir { color: #00CCFF; }
+.dc-cell.dc-S .dc-dir { color: #FF8800; }
+.dc-cell.dc-E .dc-dir { color: #FFE600; }
+.dc-cell.dc-W .dc-dir { color: #2BFF66; }
+.dc-cell .dc-row { display: flex; justify-content: space-between; font-family:'VT323',monospace; font-size: 13px !important; padding: 1px 0; color: #FFFFFF; text-shadow: 1px 1px 0 #000; }
+.dc-cell .dc-row .dc-key { color: rgba(255,255,255,0.65); font-size: 10px !important; letter-spacing: 1px; font-family: 'Press Start 2P','VT323',monospace; }
+.dc-cell .dc-row .dc-val { color: #FFFFFF; font-weight: 900; }
+.dc-cell .dc-bar {
+  height: 6px; background: rgba(255,255,255,0.10); margin-top: 6px; position: relative;
+  border: 1px solid rgba(255,255,255,0.20);
+}
+.dc-cell .dc-bar-fill {
+  height: 100%; background: currentColor; box-shadow: 0 0 6px currentColor;
+}
+.dc-cell .dc-dom-badge {
+  position: absolute; top: -10px; right: 6px;
+  background: #FFE600; color: #000 !important;
+  padding: 2px 6px; font-size: 9px !important;
+  font-family: 'Press Start 2P','VT323',monospace;
+  border: 2px solid #000; box-shadow: 2px 2px 0 #000;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: none !important;
+}
+
+/* Ticker entries — pixel arrow + colored % */
+.ti-pct-up { color: #2BFF66 !important; font-weight: 900; padding: 0 4px; text-shadow: 1px 1px 0 #000; }
+.ti-pct-dn { color: #FF1A33 !important; font-weight: 900; padding: 0 4px; text-shadow: 1px 1px 0 #000; }
+.ti-pct-flat { color: rgba(255,255,255,0.7) !important; padding: 0 4px; }
+.ti { padding: 0 6px; }
+
+/* === END v13 === */
+yle>
   </style>
   </head>
 <body>
@@ -3026,6 +3119,286 @@ function renderInvest(data) {
   });
 })();
 /* === END v12 JS === */
+
+
+/* === KODAQ v13 — ticker with %, league filter, district compass, section class === */
+(function() {
+
+  // 1. Build "current floors map" from data — name (uppercase) -> minimum floor across all (dir, tier)
+  function buildFloorsMap(data) {
+    var fm = {};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rf = data[coll] && data[coll].resource_floors;
+      if (!rf) return;
+      Object.keys(rf).forEach(function(dir){
+        var dirData = rf[dir] || {};
+        Object.keys(dirData).forEach(function(rname){
+          var key = rname.toUpperCase();
+          var tiers = dirData[rname] || {};
+          Object.keys(tiers).forEach(function(t){
+            var p = tiers[t];
+            if (typeof p === 'number' && p > 0) {
+              if (!fm[key] || p < fm[key]) fm[key] = p;
+            }
+          });
+        });
+      });
+      // Artifacts: raw_traits.Artifact
+      var rt = data[coll] && data[coll].raw_traits && data[coll].raw_traits.Artifact;
+      if (rt) {
+        Object.keys(rt).forEach(function(name){
+          var p = rt[name];
+          if (typeof p === 'number' && p > 0) {
+            var key = name.toUpperCase();
+            if (!fm[key] || p < fm[key]) fm[key] = p;
+          }
+        });
+      }
+    });
+    return fm;
+  }
+
+  // 2. Override the ticker rebuild to show NAME ▲/▼ %
+  function rebuildTickerV13() {
+    var data = window.__lastData;
+    if (!data) return;
+    var activeTab = document.querySelector('.tab.active')?.dataset?.tab || 'resources';
+    var fm = buildFloorsMap(data);
+    var entries = [];
+    function pushSale(name, v) {
+      if (!v || typeof v !== 'object' || typeof v.price_eth !== 'number') return;
+      var key = String(name).toUpperCase();
+      var floor = fm[key];
+      var pct = (floor && floor > 0) ? ((v.price_eth - floor) / floor * 100) : null;
+      entries.push({name: key, price: v.price_eth, ts: v.ts || 0, pct: pct});
+    }
+    if (activeTab === 'artifacts') {
+      ['otherdeed','expanded'].forEach(function(c){
+        var st = data[c] && data[c].sales_traits && data[c].sales_traits.Artifact;
+        if (!st) return;
+        Object.keys(st).forEach(function(k){ pushSale(k, st[k]); });
+      });
+    } else {
+      var resCats = ['Eastern Resource','Western Resource','Northern Resource','Southern Resource'];
+      ['otherdeed','expanded'].forEach(function(c){
+        var st = data[c] && data[c].sales_traits;
+        if (!st) return;
+        resCats.forEach(function(cat){
+          var sub = st[cat] || {};
+          Object.keys(sub).forEach(function(k){ pushSale(k, sub[k]); });
+        });
+      });
+    }
+    entries.sort(function(a,b){ return b.ts - a.ts; });
+    entries = entries.slice(0, 28);
+    if (!entries.length) return;
+    function buildHtml() {
+      return entries.map(function(e){
+        var pctHtml;
+        if (e.pct === null) {
+          pctHtml = '<span class="ti-pct-flat">\u2014</span>';
+        } else if (e.pct > 0.5) {
+          pctHtml = '<span class="ti-pct-up">\u25B2 +' + e.pct.toFixed(1) + '%</span>';
+        } else if (e.pct < -0.5) {
+          pctHtml = '<span class="ti-pct-dn">\u25BC ' + e.pct.toFixed(1) + '%</span>';
+        } else {
+          pctHtml = '<span class="ti-pct-flat">\u2014</span>';
+        }
+        return '<span class="ti"><span class="ti-name">' + e.name + '</span> ' + pctHtml + '</span>';
+      }).join('<span class="ti-sep">\u25CF</span>');
+    }
+    var html = buildHtml();
+    var inner = document.getElementById('ticker-inner');
+    if (inner) inner.innerHTML = html + '<span class="ti-sep">\u25CF</span>' + html;
+  }
+
+  // 3. Patch renderLeague (when invoked) to filter to Resources + Artifacts only
+  // We do this by post-processing the league pane's table rows
+  function filterLeagueRows() {
+    var lg = document.getElementById('league');
+    if (!lg) return;
+    var allowedCats = /^(Eastern|Western|Northern|Southern) Resource$|^Artifact$/;
+    lg.querySelectorAll('table.league-table tbody tr').forEach(function(tr){
+      var catSpan = tr.querySelector('.cat-name');
+      if (!catSpan) return;
+      // Get raw cat from text - might include "+N" suffix for multi-cat groups
+      var catText = catSpan.textContent.trim();
+      var primaryCat = catText.split(' +')[0];
+      // Also check the type badge to distinguish Plot vs others
+      var typeBadge = tr.querySelector('.col-badge.type-plot, .col-badge.type-koda, .col-badge.type-trait, .col-badge.type-misc');
+      if (typeBadge) { tr.style.display = 'none'; return; }
+      if (!allowedCats.test(primaryCat) && !/Resource|Artifact/.test(primaryCat)) {
+        tr.style.display = 'none';
+      } else {
+        tr.style.display = '';
+      }
+    });
+    // Re-rank visible rows
+    var visibleRows = [...lg.querySelectorAll('table.league-table tbody tr')].filter(function(tr){
+      return tr.style.display !== 'none';
+    });
+    visibleRows.forEach(function(tr, i){
+      var rankSpan = tr.querySelector('[class*="rank-"]');
+      if (rankSpan) {
+        var newRank = i + 1;
+        rankSpan.textContent = '#' + newRank;
+        rankSpan.classList.remove('rank-gold','rank-silver','rank-bronze','rank-rest');
+        if (newRank === 1) rankSpan.classList.add('rank-gold');
+        else if (newRank === 2) rankSpan.classList.add('rank-silver');
+        else if (newRank === 3) rankSpan.classList.add('rank-bronze');
+        else rankSpan.classList.add('rank-rest');
+      }
+    });
+  }
+
+  // 4. Tag .res-cat-section with res-cat-{CAT} class so CSS box can color it
+  function tagSections() {
+    var sections = document.querySelectorAll('#resources .res-cat-section');
+    sections.forEach(function(sec){
+      var hdr = sec.querySelector('.res-cat-header');
+      if (!hdr) return;
+      var cat = (hdr.textContent || '').trim();
+      sec.classList.remove('res-cat-ORE','res-cat-SHARD','res-cat-ROOT','res-cat-ANIMA');
+      if (cat) sec.classList.add('res-cat-' + cat);
+    });
+  }
+
+  // 5. Build & render District Compass panel
+  function buildDistrictStats(data) {
+    var dirs = ['North','East','South','West'];
+    var stats = {};
+    dirs.forEach(function(d){ stats[d] = {totalVol: 0, salesCount: 0, sumFloor: 0, floorCount: 0, uniqueRes: new Set(), maxTier1: 0}; });
+    var dirMap = {'Northern':'North','Southern':'South','Eastern':'East','Western':'West'};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rs = data[coll] && data[coll].resource_sales;
+      var rf = data[coll] && data[coll].resource_floors;
+      if (rs) {
+        Object.keys(rs).forEach(function(dirRaw){
+          var d = dirMap[dirRaw];
+          if (!d) return;
+          var dirData = rs[dirRaw] || {};
+          Object.keys(dirData).forEach(function(rname){
+            var tiers = dirData[rname] || {};
+            Object.keys(tiers).forEach(function(t){
+              var v = tiers[t];
+              if (v && typeof v === 'object' && typeof v.price_eth === 'number') {
+                stats[d].totalVol += v.price_eth;
+                stats[d].salesCount++;
+              }
+            });
+          });
+        });
+      }
+      if (rf) {
+        Object.keys(rf).forEach(function(dirRaw){
+          var d = dirMap[dirRaw];
+          if (!d) return;
+          var dirData = rf[dirRaw] || {};
+          Object.keys(dirData).forEach(function(rname){
+            stats[d].uniqueRes.add(rname);
+            var tiers = dirData[rname] || {};
+            Object.keys(tiers).forEach(function(t){
+              var p = tiers[t];
+              if (typeof p === 'number' && p > 0) {
+                stats[d].sumFloor += p;
+                stats[d].floorCount++;
+                if (t === '1' && p > stats[d].maxTier1) stats[d].maxTier1 = p;
+              }
+            });
+          });
+        });
+      }
+    });
+    var rows = dirs.map(function(d){
+      var s = stats[d];
+      return {
+        dir: d,
+        totalVol: s.totalVol,
+        salesCount: s.salesCount,
+        avgFloor: s.floorCount ? s.sumFloor / s.floorCount : 0,
+        uniqueRes: s.uniqueRes.size,
+        maxTier1: s.maxTier1
+      };
+    });
+    return rows;
+  }
+  function renderDistrictCompass(data) {
+    var resEl = document.getElementById('resources');
+    if (!resEl) return;
+    var prior = resEl.querySelector('.district-compass');
+    if (prior) prior.remove();
+    var rows = buildDistrictStats(data);
+    var maxVol = Math.max.apply(null, rows.map(function(r){return r.totalVol;}));
+    var dominant = rows.slice().sort(function(a,b){return b.totalVol - a.totalVol;})[0]?.dir;
+    var ethUsd = data.eth_usd || 0;
+    function fmtUsd(v){ return v>=1000?'$'+(v/1000).toFixed(1)+'K':'$'+Math.round(v); }
+    var html = '<div class="district-compass">';
+    html += '<div class="dc-title">DISTRICT COMPASS \u2014 RESOURCE FLOW BY DIRECTION <span class="dc-sub">// 10D VOLUME // FLOOR DEPTH // RESOURCE COUNT</span></div>';
+    html += '<div class="dc-grid">';
+    rows.forEach(function(r){
+      var ltr = r.dir.charAt(0);
+      var pct = maxVol ? (r.totalVol / maxVol * 100) : 0;
+      var domBadge = (r.dir === dominant && r.totalVol > 0) ? '<span class="dc-dom-badge">TOP</span>' : '';
+      html += '<div class="dc-cell dc-'+ltr+'">' + domBadge;
+      html += '<div class="dc-dir">'+r.dir.toUpperCase()+' \u2014 '+ltr+'</div>';
+      html += '<div class="dc-row"><span class="dc-key">10D VOL</span><span class="dc-val">'+r.totalVol.toFixed(4)+' \u039E</span></div>';
+      html += '<div class="dc-row"><span class="dc-key">USD</span><span class="dc-val">'+fmtUsd(r.totalVol*ethUsd)+'</span></div>';
+      html += '<div class="dc-row"><span class="dc-key">SALES</span><span class="dc-val">'+r.salesCount+'</span></div>';
+      html += '<div class="dc-row"><span class="dc-key">AVG FLOOR</span><span class="dc-val">'+r.avgFloor.toFixed(4)+' \u039E</span></div>';
+      html += '<div class="dc-row"><span class="dc-key">RESOURCES</span><span class="dc-val">'+r.uniqueRes+'</span></div>';
+      html += '<div class="dc-bar"><div class="dc-bar-fill" style="width:'+pct.toFixed(1)+'%"></div></div>';
+      html += '</div>';
+    });
+    html += '</div></div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    // Insert after the .res-summary if present, else first child
+    var sumEl = resEl.querySelector('.res-summary-hdr');
+    if (sumEl && sumEl.parentNode) {
+      // Insert AFTER the .res-summary header but inside .res-summary container
+      var resSum = resEl.querySelector('.res-summary');
+      if (resSum) {
+        var firstSection = resSum.querySelector('.res-cat-section');
+        if (firstSection) resSum.insertBefore(div.firstChild, firstSection);
+        else resSum.appendChild(div.firstChild);
+      } else {
+        resEl.insertBefore(div.firstChild, resEl.firstChild);
+      }
+    } else {
+      resEl.insertBefore(div.firstChild, resEl.firstChild);
+    }
+  }
+
+  function tick() {
+    var data = window.__lastData;
+    if (!data) {
+      fetch('price_snapshot_latest.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(d){
+        window.__lastData = d;
+        rebuildTickerV13();
+        tagSections();
+        renderDistrictCompass(d);
+        filterLeagueRows();
+      }).catch(function(){});
+    } else {
+      rebuildTickerV13();
+      tagSections();
+      renderDistrictCompass(data);
+      filterLeagueRows();
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1500); });
+  else setTimeout(tick, 1500);
+  setTimeout(tick, 3500);
+  setTimeout(tick, 6000);
+  setInterval(tick, 60*1000);
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(tick, 100);
+    setTimeout(tick, 600);
+  });
+})();
+/* === END v13 JS === */
 
 </script>
 </body>
