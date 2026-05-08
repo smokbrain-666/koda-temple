@@ -1352,6 +1352,27 @@ yl
 .district-compass { border-width: 3px !important; border-style: solid !important; }
 /* === END v13.1 === */
 e>
+
+/* === KODAQ v14 — STRATA tab styling === */
+#strata { padding: 8px 0; }
+#strata .strata-header {
+  border: 3px solid #FFAA00;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(40,20,0,0.85));
+  margin: 6px 8px 14px 8px;
+  padding: 10px 14px;
+  box-shadow: 4px 4px 0 #000;
+}
+#strata .strata-header .sh-title {
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 14px !important; letter-spacing: 3px;
+  color: #FFAA00; text-shadow: 2px 2px 0 #000;
+}
+#strata .strata-header .sh-sub {
+  font-family: 'VT323',monospace; font-size: 13px !important; letter-spacing: 1.5px;
+  color: #FFFFFF; opacity: 0.9; margin-left: 12px; text-shadow: 1px 1px 0 #000;
+}
+/* === END v14 === */
+
   </style>
   </head>
 <body>
@@ -1374,7 +1395,7 @@ e>
   <div class="tab active" data-tab="resources">RESOURCES</div>
   <div class="tab" data-tab="artifacts">ARTIFACTS</div>
   <div class="tab" data-tab="sales">SALES 10D</div>
-  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ PAYLOAD</div><div class="tab" data-tab="log">? LOG</div>
+  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ PAYLOAD</div><div class="tab" data-tab="log">? LOG</div><div class="tab" data-tab="strata">▤ STRATA</div>
 </div>
 
 <!-- CONTENT -->
@@ -1382,7 +1403,7 @@ e>
   <div id="resources" class="pane active"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="artifacts" class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="sales"     class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
-  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div><div id="invest"  class="pane"></div><div id="log" class="pane"></div>
+  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div><div id="invest"  class="pane"></div><div id="log" class="pane"></div><div id="strata" class="pane"></div>
 </div>
 
 <!-- STATUS BAR -->
@@ -3418,6 +3439,58 @@ function renderInvest(data) {
   });
 })();
 /* === END v13 JS === */
+
+
+/* === KODAQ v14 — move tier grid to STRATA tab === */
+(function() {
+  function ensureStrataHeader() {
+    var st = document.getElementById('strata');
+    if (!st) return;
+    if (st.querySelector('.strata-header')) return;
+    var h = document.createElement('div');
+    h.className = 'strata-header';
+    h.innerHTML = '<span class="sh-title">▤ STRATA — TIER GRID BY DIRECTION</span><span class="sh-sub">// FLOOR + LAST SALE PER (T1/T2/T3) × (E/N/S/W) FOR BOTH COLLECTIONS</span>';
+    st.insertBefore(h, st.firstChild);
+  }
+  function moveLegacyToStrata() {
+    var resEl = document.getElementById('resources');
+    var stEl = document.getElementById('strata');
+    if (!resEl || !stEl) return;
+    ensureStrataHeader();
+    // Move all direct children of #resources EXCEPT the .res-summary container
+    var moved = 0;
+    Array.prototype.slice.call(resEl.children).forEach(function(ch) {
+      if (!ch.classList.contains('res-summary')) {
+        stEl.appendChild(ch);
+        moved++;
+      }
+    });
+    return moved;
+  }
+  function tick() {
+    moveLegacyToStrata();
+    ensureStrataHeader();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1700); });
+  else setTimeout(tick, 1700);
+  setTimeout(tick, 3500);
+  setTimeout(tick, 6000);
+  setInterval(tick, 30*1000);
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(tick, 100);
+    setTimeout(tick, 600);
+    setTimeout(tick, 1500);
+  });
+  // Also watch resources mutation - if renderResources rewrites, move again
+  setTimeout(function(){
+    var resEl = document.getElementById('resources');
+    if (!resEl) return;
+    new MutationObserver(function(){ setTimeout(tick, 200); }).observe(resEl, {childList: true, subtree: false});
+  }, 2500);
+})();
+/* === END v14 JS === */
 
 </script>
 </body>
