@@ -1047,6 +1047,64 @@ table tr { border-bottom: 1px solid #FF003C !important; }
 
 /* === END v10 === */
 >
+
+
+/* === KODAQ v11 — brightness reset, cat-header white, stacked artifact names, hide SALES === */
+
+/* 1. Strip ALL filter brightness so every label matches the bright text */
+*, .res-summary-hdr, .res-summary-sub, .col-name, .sym, .cat-title, .cat-sub,
+.col-hdr, .league-hdr, .art-hdr, .sales-hdr, .cat-hdr, .col-badge,
+.ti-name, .ti-sep, .ti-price, th, .dir-tag, .tab,
+.t1c, .t2c, .t3c, .tier-badge-sm,
+.no-data, .pending-notice, .cat-name,
+.col-stat, .eth-val, .usd-val, #hdr-meta, #hdr-meta span,
+.sale-up, .sale-dn, .chg-up, .chg-dn, .sale-eq, .chg-eq,
+.lg-total, .lg-count, .lg-count *,
+.rank-gold, .rank-silver, .rank-bronze, .rank-rest,
+.res-card-name, .res-card-vol, .res-card-usd, .res-card-meta, .res-card-median,
+.res-cat-stats {
+  filter: none !important;
+}
+
+/* 2. Resource overview header bright white */
+.res-summary-hdr {
+  color: #FFFFFF !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+/* 3. Category section button labels: WHITE text on neon bg, with hard dark stroke */
+.res-cat-header,
+.res-cat-header.cat-SHARD,
+.res-cat-header.cat-ROOT,
+.res-cat-header.cat-ORE,
+.res-cat-header.cat-ANIMA {
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 2px 2px 0 #000 !important;
+  -webkit-text-stroke: 0.4px #000 !important;
+}
+
+/* 4. Artifact name in left column: bigger + stacked support */
+table.art-v2 td .col-name,
+table.invest-v1 td .col-name {
+  font-size: 16px !important;
+  line-height: 1.1;
+  white-space: normal;
+  display: inline-block;
+}
+.art-name-stacked {
+  display: inline-flex !important;
+  flex-direction: column;
+  font-size: 16px !important;
+  line-height: 1.05;
+  letter-spacing: 1.5px;
+}
+.art-name-stacked > span { display: block; font-size: 16px !important; }
+
+/* 5. Hide SALES 10D tab + pane (kept rendered behind the scenes for now) */
+.tab[data-tab="sales"], #sales { display: none !important; }
+
+/* === END v11 === */
 </style>
   </head>
 <body>
@@ -2463,6 +2521,54 @@ function renderInvest(data) {
   });
 })();
 /* === END v10 JS === */
+
+
+/* === KODAQ v11 — DOM polish: stack 2-word artifact names + brightness reset === */
+(function() {
+  function nameStackHtml(name) {
+    if (!name) return '';
+    var words = String(name).trim().split(/\s+/);
+    if (words.length === 2) {
+      return '<span class="col-name art-name-stacked"><span>' + words[0] + '</span><span>' + words[1] + '</span></span>';
+    }
+    return null; // fall through, keep existing single-line
+  }
+  function applyStacking() {
+    // Walk through artifacts and PAYLOAD tabs and stack 2-word names
+    var roots = [document.getElementById('artifacts'), document.getElementById('invest')];
+    roots.forEach(function(root) {
+      if (!root) return;
+      root.querySelectorAll('.col-name').forEach(function(el) {
+        if (el.classList.contains('art-name-stacked')) return;
+        // Skip if already has child element (already stacked)
+        if (el.children.length > 0) return;
+        var raw = el.textContent.trim();
+        var stacked = nameStackHtml(raw);
+        if (stacked) {
+          el.outerHTML = stacked;
+        }
+      });
+    });
+  }
+  function tick() {
+    applyStacking();
+    // Force-reset filter brightness on common dim culprits
+    var sels = ['.res-summary-hdr','.res-cat-stats','.res-card-name','.res-cat-header','.col-name','.cat-title','.col-hdr'];
+    sels.forEach(function(s) {
+      document.querySelectorAll(s).forEach(function(el){ el.style.filter = 'none'; });
+    });
+  }
+  setTimeout(tick, 1500);
+  setTimeout(tick, 3500);
+  setInterval(tick, 30*1000);
+  document.addEventListener('click', function(e) {
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(tick, 100);
+    setTimeout(tick, 600);
+  });
+})();
+/* === END v11 JS === */
 
 </script>
 </body>
