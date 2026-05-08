@@ -1,3 +1,9 @@
+<!-- ====================================================================
+     KODAQ MOTHER VERSION — 2026-05-08 — v16/v17
+     This is the canonical reference build. To restore:
+     1) git tag mother-v1
+     2) git checkout mother-v1 -- koda_temple_dashboard.html
+     ==================================================================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1503,7 +1509,84 @@ body #resources .res-card-v2 .rcv-discount.disc-prem { color: #FF1A33 !important
 body #resources .res-card-v2 .rcv-discount.disc-fair { color: #FFE600 !important; background: rgba(255,230,0,0.10) !important; }
 body #resources .res-card-v2 .rank-pill { color: #FFE600 !important; }
 /* === END v16 === */
-tyle>
+ty
+
+/* === KODAQ v17 — Tier Matrix + Mother Version === */
+.tier-matrix {
+  border: 3px solid #FFE600;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,15,0,0.85));
+  margin: 12px 18px 16px 18px;
+  padding: 12px 16px 14px 16px;
+  box-shadow: 4px 4px 0 #000;
+}
+.tm-title {
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 14px !important; letter-spacing: 2.5px;
+  color: #FFE600; text-shadow: 2px 2px 0 #000;
+  margin-bottom: 4px;
+}
+.tm-sub {
+  font-family: 'VT323',monospace; font-size: 13px !important;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.85);
+  margin-bottom: 12px; text-shadow: 1px 1px 0 #000;
+}
+.tm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.tm-col {
+  border: 2px solid;
+  padding: 9px 11px 11px 11px;
+  background: rgba(0,0,0,0.55);
+  box-shadow: 3px 3px 0 #000;
+}
+.tm-col.tm-env { border-color: #00CCFF; }
+.tm-col.tm-sed { border-color: #DD66FF; }
+.tm-col.tm-res { border-color: #FFAA00; }
+.tm-col-title {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 11px !important;
+  letter-spacing: 1.5px; margin-bottom: 4px;
+  text-shadow: 2px 2px 0 #000; padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+}
+.tm-col.tm-env .tm-col-title { color: #00CCFF; }
+.tm-col.tm-sed .tm-col-title { color: #DD66FF; }
+.tm-col.tm-res .tm-col-title { color: #FFAA00; }
+.tm-col-sub {
+  font-family: 'VT323',monospace; font-size: 11px !important; letter-spacing: 1px;
+  color: rgba(255,255,255,0.7); margin-bottom: 6px;
+}
+.tm-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 3px 0; border-bottom: 1px dashed rgba(255,255,255,0.15);
+  font-family: 'VT323',monospace;
+}
+.tm-row:last-child { border-bottom: 0; }
+.tm-tier {
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 11px !important; letter-spacing: 1.5px;
+  padding: 2px 6px; border: 1px solid currentColor; min-width: 26px;
+  text-align: center; text-shadow: 1px 1px 0 #000;
+}
+.tm-tier.tier-low  { color: rgba(255,255,255,0.65); }
+.tm-tier.tier-mid  { color: #FFE600; }
+.tm-tier.tier-high { color: #2BFF66; }
+.tm-floor {
+  font-family: 'VT323',monospace; font-size: 14px !important;
+  color: #FFFFFF; font-weight: 900; text-shadow: 1px 1px 0 #000;
+}
+.tm-prem {
+  font-family: 'VT323',monospace; font-size: 12px !important;
+  text-shadow: 1px 1px 0 #000; margin-left: 6px; padding: 1px 5px;
+  border: 1px solid currentColor;
+}
+.tm-prem.prem-pos { color: #2BFF66; background: rgba(43,255,102,0.10); }
+.tm-prem.prem-neg { color: #FF1A33; background: rgba(255,26,51,0.10); }
+.tm-key {
+  background: rgba(0,0,0,0.5); border-left: 3px solid currentColor;
+  padding: 6px 10px; margin-top: 10px; font-family: 'VT323',monospace;
+  font-size: 12px !important; color: #FFFFFF; text-shadow: 1px 1px 0 #000;
+}
+.tm-key strong { color: #FFE600; }
+/* === END v17 === */
+le>
   </style>
   </head>
 <body>
@@ -3705,6 +3788,128 @@ function renderInvest(data) {
   });
 })();
 /* === END v16 JS === */
+
+
+/* === KODAQ v17 — Tier Matrix in PAYLOAD === */
+(function() {
+  function fmtEth(v) { return (v||0).toFixed(4) + ' \u039E'; }
+  function fmtPct(v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + '%'; }
+
+  function buildTierMatrix(data) {
+    if (!data) return null;
+    var od = data.otherdeed || {};
+    var rt = od.raw_traits || {};
+    var st = od.sales_traits || {};
+
+    function tierData(catName) {
+      var raw = rt[catName] || {};
+      var sales = st[catName] || {};
+      var rows = [];
+      Object.keys(raw).forEach(function(t){
+        var floor = typeof raw[t] === 'number' ? raw[t] : null;
+        var sale = sales[t] && typeof sales[t] === 'object' ? sales[t].price_eth : null;
+        rows.push({tier: t, floor: floor, lastSale: sale});
+      });
+      rows.sort(function(a,b){ return parseInt(a.tier)-parseInt(b.tier); });
+      // Compute premium of each tier vs median floor of all tiers
+      var floors = rows.map(function(r){return r.floor;}).filter(function(x){return typeof x === 'number';});
+      var med = floors.length ? floors.slice().sort(function(a,b){return a-b;})[Math.floor(floors.length/2)] : 0;
+      rows.forEach(function(r){ r.premium = (r.floor && med) ? (r.floor - med)/med * 100 : 0; });
+      return rows;
+    }
+    return {
+      env: tierData('Environment Tier'),
+      sed: tierData('Sediment Tier'),
+      res: {
+        E: tierData('Eastern Resource Tier'),
+        W: tierData('Western Resource Tier'),
+        N: tierData('Northern Resource Tier'),
+        S: tierData('Southern Resource Tier')
+      }
+    };
+  }
+
+  function tierClass(tier, max) {
+    var t = parseInt(tier);
+    if (t === max) return 'tier-high';
+    if (t === 1) return 'tier-low';
+    return 'tier-mid';
+  }
+
+  function buildTierRowHtml(rows, maxTier, prefix) {
+    return rows.map(function(r){
+      var cls = tierClass(r.tier, maxTier);
+      var prem = '';
+      if (r.premium !== undefined && Math.abs(r.premium) > 0.5) {
+        prem = '<span class="tm-prem '+(r.premium>0?'prem-pos':'prem-neg')+'">'+fmtPct(r.premium)+'</span>';
+      }
+      var pre = prefix ? prefix + ' ' : '';
+      return '<div class="tm-row"><span class="tm-tier '+cls+'">'+pre+'T'+r.tier+'</span> <span class="tm-floor">'+fmtEth(r.floor)+'</span>'+prem+'</div>';
+    }).join('');
+  }
+
+  function renderTierMatrix(data) {
+    var iEl = document.getElementById('invest');
+    if (!iEl) return;
+    var prior = iEl.querySelector('.tier-matrix');
+    if (prior) prior.remove();
+    var m = buildTierMatrix(data);
+    if (!m) return;
+    var html = '<div class="tier-matrix">';
+    html += '<div class="tm-title">TIER MATRIX // PROPERTY GRADE FRAMEWORK</div>';
+    html += '<div class="tm-sub">Each Otherdeed has 3 tiered attributes that drive resource yield + land value. Higher tier = higher quality + bigger premium.</div>';
+    html += '<div class="tm-grid">';
+    // ENV column
+    html += '<div class="tm-col tm-env">';
+    html += '<div class="tm-col-title">ENVIRONMENT TIER \u2014 LAND SIZE</div>';
+    html += '<div class="tm-col-sub">T1 = smallest deed \u2192 T5 = largest land</div>';
+    html += buildTierRowHtml(m.env, 5);
+    html += '</div>';
+    // SEDIMENT column
+    html += '<div class="tm-col tm-sed">';
+    html += '<div class="tm-col-title">SEDIMENT TIER \u2014 GROUND QUALITY</div>';
+    html += '<div class="tm-col-sub">T1 = poor terrain \u2192 T3 = best mining base</div>';
+    html += buildTierRowHtml(m.sed, 3);
+    html += '</div>';
+    // RESOURCE column - merge all 4 directions
+    html += '<div class="tm-col tm-res">';
+    html += '<div class="tm-col-title">RESOURCE TIER \u2014 YIELD QUALITY</div>';
+    html += '<div class="tm-col-sub">T1 = common res \u2192 T3 = rarest yield</div>';
+    Object.keys(m.res).forEach(function(dir){
+      html += buildTierRowHtml(m.res[dir], 3, dir);
+    });
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="tm-key"><strong>HOW TO USE:</strong> Compare a listing\u2019s 3 tiers to these benchmarks. Same-tier listings with discount vs floor/last-sale = property comp opportunity. <strong>T3+T5+T3</strong> is best-grade investment; <strong>T1+T1+T1</strong> is bottom-grade entry.</div>';
+    html += '</div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    // Insert at top of invest, but AFTER thesis if it exists
+    var thesis = iEl.querySelector('.payload-thesis');
+    if (thesis) {
+      thesis.parentNode.insertBefore(div.firstChild, thesis.nextSibling);
+    } else {
+      iEl.insertBefore(div.firstChild, iEl.firstChild);
+    }
+  }
+
+  function tick() {
+    var data = window.__lastData;
+    if (data) renderTierMatrix(data);
+    else fetch('price_snapshot_latest.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(d){window.__lastData = d; renderTierMatrix(d);}).catch(function(){});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1900); });
+  else setTimeout(tick, 1900);
+  setTimeout(tick, 4000);
+  setInterval(tick, 5*60*1000);
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('[data-tab="invest"]')) {
+      setTimeout(tick, 200);
+      setTimeout(tick, 800);
+    }
+  });
+})();
+/* === END v17 JS === */
 
 </script>
 </body>
