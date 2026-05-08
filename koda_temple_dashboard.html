@@ -603,6 +603,39 @@ th {
 
 
 
+
+/* === KODAQ v6 invest tab + artifacts floor-primary === */
+.art-floor-big {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 1px !important;
+}
+.art-floor-usd {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  opacity: 0.95;
+  margin-top: 1px;
+}
+.art-vs-cell { font-size: 14px; font-weight: 700; }
+.art-vs-cell .chg-up, .art-vs-cell .chg-dn, .art-vs-cell .chg-eq { font-size: 14px; }
+table.art-v2 td, table.art-v2 th { padding: 6px 12px; }
+table.invest-v1 td, table.invest-v1 th { padding: 6px 10px; }
+.invest-panel { padding: 8px 4px; }
+.invest-panel .art-hdr {
+  background: linear-gradient(90deg, rgba(181,123,255,0.18) 0%, rgba(0,225,255,0.10) 100%);
+  padding: 10px 14px;
+  border-left: 3px solid #B57BFF;
+}
+table.invest-v1 tbody tr:hover {
+  background: linear-gradient(90deg, rgba(0,225,255,0.05), rgba(181,123,255,0.05));
+}
+table.invest-v1 tbody tr {
+  border-bottom: 1px solid rgba(181,123,255,0.18);
+}
+.invest-panel .col-name { font-size: 18px; }
+/* === END v6 === */
+
 </style>
 </head>
 <body>
@@ -625,7 +658,7 @@ th {
   <div class="tab active" data-tab="resources">RESOURCES</div>
   <div class="tab" data-tab="artifacts">ARTIFACTS</div>
   <div class="tab" data-tab="sales">SALES 10D</div>
-  <div class="tab" data-tab="league">&#9650; LEAGUE</div>
+  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ INVEST</div>
 </div>
 
 <!-- CONTENT -->
@@ -633,7 +666,7 @@ th {
   <div id="resources" class="pane active"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="artifacts" class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="sales"     class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
-  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
+  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div><div id="invest" class="pane"></div></div>
 </div>
 
 <!-- STATUS BAR -->
@@ -1253,7 +1286,7 @@ async function load(){
 load();
 setInterval(load, 60*60*1000);
 
-/* === KODAQ league v2: group sales by ts (bulk-tx wallet purchases) === */
+/* === KODAQ league v3: groups by tx, prefers non-Plot names === */
 function renderLeague(data) {
   var el = document.getElementById('league');
   if (!el) return;
@@ -1263,11 +1296,10 @@ function renderLeague(data) {
     if (cat === 'Artifact') return 'art';
     if (cat === 'Koda') return 'koda';
     if (cat === 'Plot') return 'plot';
-    if (/Resource/.test(cat)) return 'res';
-    if (cat === 'Goliath Kills' || cat === 'Obelisk Piece') return 'misc';
+    if (/Resource/.test(cat) && !/Tier/.test(cat)) return 'res';
     return 'trait';
   }
-  var TYPE_LABEL = {res:'RES', art:'ART', koda:'KODA', plot:'PLOT', trait:'TRT', misc:'OBJ'};
+  var TYPE_LABEL = {res:'RES', art:'ART', koda:'KODA', plot:'PLOT', trait:'TRT'};
   var all = [];
   ['otherdeed','expanded'].forEach(function(c) {
     if (!data[c] || !data[c].sales_traits) return;
@@ -1290,10 +1322,19 @@ function renderLeague(data) {
   var rows = Object.keys(groups).map(function(k) {
     var g = groups[k];
     g.items.sort(function(a,b){ return b.price - a.price; });
+    // Pick rep: prefer non-Plot named item (artifact/resource/koda) over numeric token IDs
+    var named = null;
+    for (var i = 0; i < g.items.length; i++) {
+      var it = g.items[i];
+      if (it.cat !== 'Plot' && !/^\d+$/.test(String(it.name)) && it.name && it.name.length > 1) {
+        named = it; break;
+      }
+    }
+    var rep = named || g.items[0];
     var totalEth = g.items.reduce(function(s,i){ return s + i.price; }, 0);
     var cats = []; var seen = {};
     g.items.forEach(function(i){ if (!seen[i.cat]) { seen[i.cat] = 1; cats.push(i.cat); } });
-    return {ts: g.ts, coll: g.coll, rep: g.items[0], count: g.items.length, totalEth: totalEth, cats: cats};
+    return {ts: g.ts, coll: g.coll, rep: rep, count: g.items.length, totalEth: totalEth, cats: cats};
   });
   rows.sort(function(a,b){ return b.totalEth - a.totalEth; });
   var top = rows.slice(0, 20);
@@ -1304,6 +1345,12 @@ function renderLeague(data) {
     if (sec < 3600) return Math.floor(sec/60) + 'm ago';
     if (sec < 86400) return Math.floor(sec/3600) + 'h ago';
     return Math.floor(sec/86400) + 'd ago';
+  }
+  function repDisplay(rep) {
+    // If non-numeric name, return as-is. If Plot+numeric, prefix.
+    if (rep.cat === 'Plot' && /^\d+$/.test(String(rep.name))) return 'Plot #' + rep.name;
+    if (/^\d+$/.test(String(rep.name))) return rep.cat + ' #' + rep.name;
+    return rep.name;
   }
   var html = '<div class="league-table-wrap" style="padding:12px 18px;">';
   html += '<div class="league-hdr" style="font-size:22px;padding:14px 16px;letter-spacing:3px;">';
@@ -1323,9 +1370,10 @@ function renderLeague(data) {
     var usd = usdNum >= 1000 ? '$' + (usdNum/1000).toFixed(1) + 'K' : '$' + usdNum.toFixed(0);
     var catLabel = g.cats.length > 1 ? g.cats[0] + ' +' + (g.cats.length-1) : (g.cats[0] || '');
     var countBadge = g.count > 1 ? ('<span class="lg-count">x' + g.count + '</span>') : '';
+    var displayName = repDisplay(g.rep);
     html += '<tr>';
     html += '<td><span class="' + rankCls + '">#' + rank + '</span></td>';
-    html += '<td><span class="col-name">' + g.rep.name + '</span>' + countBadge + '</td>';
+    html += '<td><span class="col-name">' + displayName + '</span>' + countBadge + '</td>';
     html += '<td><span class="col-badge type-' + g.rep.type + '">' + (TYPE_LABEL[g.rep.type]||'OBJ') + '</span></td>';
     html += '<td><span class="cat-name">' + catLabel + '</span></td>';
     html += '<td><span class="lg-total">' + g.count + ' ITEM' + (g.count>1?'S':'') + '</span></td>';
@@ -1339,8 +1387,196 @@ function renderLeague(data) {
   html += '</tbody></table></div>';
   el.innerHTML = html;
 }
-/* === end league v2 === */
+/* === end league v3 === */
 
-</script>
+/* === KODAQ artifacts v2: floor-primary stacked layout, sorted low->high === */
+function renderArtifacts(data) {
+  var el = document.getElementById('artifacts');
+  if (!el) return;
+  var ethUsd = (data && data.eth_usd) || 0;
+  function fmtUsd(v) { return v >= 1000 ? '$' + (v/1000).toFixed(1) + 'K' : '$' + Math.round(v); }
+  function buildPanel(coll, label) {
+    var d = data[coll] || {};
+    var raw = (d.raw_traits && d.raw_traits.Artifact) || {};
+    var sales = (d.sales_traits && d.sales_traits.Artifact) || {};
+    var floorEth = (d.collection && d.collection.floor_eth) || 0;
+    var rows = Object.keys(raw).map(function(name) {
+      var floor = raw[name];
+      var sale = sales[name];
+      return {
+        name: name,
+        floor: floor,
+        floorUsd: floor * ethUsd,
+        lastSale: sale && typeof sale === 'object' ? sale.price_eth : null,
+        lastSaleTs: sale && typeof sale === 'object' ? sale.ts : null
+      };
+    }).sort(function(a, b) { return a.floor - b.floor; });
+    var html = '<div class="art-panel">';
+    html += '<div class="col-hdr"><span class="col-name">' + label + '</span> ';
+    html += '<span class="col-stat">FLOOR ' + floorEth.toFixed(4) + ' \u039E</span> ';
+    html += '<span class="col-stat">ARTIFACTS ' + rows.length + '</span></div>';
+    html += '<div class="art-hdr">ALL ARTIFACTS <span class="cat-sub">' + rows.length + ' TYPES // SORTED BY FLOOR LOW \u2192 HIGH</span></div>';
+    html += '<table class="mkt-table art-v2"><thead><tr>';
+    html += '<th>ARTIFACT</th><th class="r">FLOOR</th><th class="r">VS LAST SALE</th>';
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(r) {
+      var saleCell = '<span class="no-data">--</span>';
+      if (r.lastSale) {
+        var diff = r.floor - r.lastSale;
+        var pct = (diff / r.floor) * 100;
+        var cls, arrow, sign;
+        if (pct > 0.5) { cls = 'chg-up'; arrow = '\u25B2'; sign = '+'; }
+        else if (pct < -0.5) { cls = 'chg-dn'; arrow = '\u25BC'; sign = ''; }
+        else { cls = 'chg-eq'; arrow = '\u2014'; sign = ''; }
+        saleCell = '<span class="' + cls + '">' + arrow + ' ' + r.lastSale.toFixed(4) + ' \u039E (' + sign + pct.toFixed(1) + '%)</span>';
+      }
+      html += '<tr>';
+      html += '<td><span class="col-name">' + r.name + '</span></td>';
+      html += '<td class="r"><div class="eth-val art-floor-big">' + r.floor.toFixed(4) + ' \u039E</div>';
+      html += '<div class="usd-val art-floor-usd">' + fmtUsd(r.floorUsd) + '</div></td>';
+      html += '<td class="r art-vs-cell">' + saleCell + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    return html;
+  }
+  var od = buildPanel('otherdeed', 'OTHERDEED FOR OTHERSIDE');
+  var ode = buildPanel('expanded', 'OTHERDEED EXPANDED');
+  el.innerHTML = '<div class="col-grid">' + od + ode + '</div>';
+}
+/* === end artifacts v2 === */
+
+/* === KODAQ INVEST analyzer v1 === */
+function renderInvest(data) {
+  var el = document.getElementById('invest');
+  if (!el) return;
+  var ethUsd = (data && data.eth_usd) || 0;
+  function fmtUsd(v) { return v >= 1000 ? '$' + (v/1000).toFixed(1) + 'K' : '$' + Math.round(v); }
+  function ago(ts) {
+    if (!ts) return '--';
+    var sec = Math.floor(Date.now()/1000) - ts;
+    if (sec < 3600) return Math.floor(sec/60) + 'm';
+    if (sec < 86400) return Math.floor(sec/3600) + 'h';
+    return Math.floor(sec/86400) + 'd';
+  }
+  function scoreOf(floor, lastSale, depth, salesCount) {
+    var discount = lastSale ? Math.max(0, (lastSale - floor) / lastSale * 100) : 0;
+    var scarcity = 100 / (1 + depth) * 5;
+    var liquidity = Math.min(20, salesCount * 4);
+    var affordability = Math.max(0, 100 - floor * 50);
+    return discount * 0.45 + scarcity * 0.20 + liquidity * 0.20 + affordability * 0.15;
+  }
+  function buildPanel(coll, label) {
+    var d = data[coll] || {};
+    var raw = d.raw_traits || {};
+    var sales = d.sales_traits || {};
+    var resourceFloors = d.resource_floors || {};
+    var rows = [];
+    // RESOURCES: aggregate across direction x tier
+    var resByName = {};
+    Object.keys(resourceFloors).forEach(function(direction) {
+      var dirData = resourceFloors[direction] || {};
+      Object.keys(dirData).forEach(function(resName) {
+        var tiers = dirData[resName] || {};
+        Object.keys(tiers).forEach(function(tier) {
+          var price = tiers[tier];
+          if (typeof price !== 'number') return;
+          if (!resByName[resName]) resByName[resName] = {floors: [], dirs: {}, tiers: {}};
+          resByName[resName].floors.push(price);
+          resByName[resName].dirs[direction] = 1;
+          resByName[resName].tiers[tier] = 1;
+        });
+      });
+    });
+    Object.keys(resByName).forEach(function(name) {
+      var r = resByName[name];
+      var floor = Math.min.apply(null, r.floors);
+      var depth = r.floors.length;
+      // Last sale across all 4 resource directions
+      var lastSale = null, lastSaleTs = null, salesCount = 0;
+      ['Eastern Resource','Western Resource','Northern Resource','Southern Resource'].forEach(function(cat) {
+        var s = sales[cat] && sales[cat][name];
+        if (s && typeof s === 'object' && typeof s.price_eth === 'number') {
+          if (!lastSaleTs || s.ts > lastSaleTs) { lastSale = s.price_eth; lastSaleTs = s.ts; }
+          salesCount++;
+        }
+      });
+      rows.push({type:'RES', name:name, floor:floor, depth:depth, lastSale:lastSale, lastSaleTs:lastSaleTs, salesCount:salesCount, score: scoreOf(floor, lastSale, depth, salesCount)});
+    });
+    // ARTIFACTS: each has one floor entry
+    var artifacts = raw.Artifact || {};
+    var artifactSales = sales.Artifact || {};
+    Object.keys(artifacts).forEach(function(name) {
+      var floor = artifacts[name];
+      if (typeof floor !== 'number') return;
+      var s = artifactSales[name];
+      var lastSale = s && typeof s === 'object' ? s.price_eth : null;
+      var lastSaleTs = s && typeof s === 'object' ? s.ts : null;
+      var salesCount = lastSale ? 1 : 0;
+      rows.push({type:'ART', name:name, floor:floor, depth:1, lastSale:lastSale, lastSaleTs:lastSaleTs, salesCount:salesCount, score: scoreOf(floor, lastSale, 1, salesCount)});
+    });
+    rows.sort(function(a,b){ return b.score - a.score; });
+    var html = '<div class="invest-panel">';
+    html += '<div class="col-hdr"><span class="col-name">' + label + '</span> ';
+    html += '<span class="col-stat">' + rows.length + ' ASSETS</span></div>';
+    html += '<div class="art-hdr">INVEST OPPORTUNITIES <span class="cat-sub">RANKED BY OPPORTUNITY SCORE // LOW SUPPLY + DISCOUNT VS LAST SALE + LIQUIDITY</span></div>';
+    html += '<table class="mkt-table invest-v1"><thead><tr>';
+    html += '<th>RNK</th><th>ASSET</th><th>TYPE</th><th class="r">SUPPLY</th><th class="r">FLOOR</th><th class="r">VS LAST SALE</th><th class="r">SCORE</th>';
+    html += '</tr></thead><tbody>';
+    rows.forEach(function(r, i) {
+      var rank = i + 1;
+      var rankCls = 'rank-rest';
+      if (rank <= 3) rankCls = 'rank-gold';
+      else if (rank <= 5) rankCls = 'rank-silver';
+      else if (rank <= 10) rankCls = 'rank-bronze';
+      var saleCell = '<span class="no-data">no recent sale</span>';
+      if (r.lastSale) {
+        var diff = r.floor - r.lastSale;
+        var pct = (diff / r.floor) * 100;
+        var cls, arrow, sign;
+        if (pct > 0.5) { cls = 'chg-up'; arrow = '\u25B2'; sign = '+'; }
+        else if (pct < -0.5) { cls = 'chg-dn'; arrow = '\u25BC'; sign = ''; }
+        else { cls = 'chg-eq'; arrow = '\u2014'; sign = ''; }
+        saleCell = '<span class="' + cls + '">' + arrow + ' ' + r.lastSale.toFixed(4) + ' \u039E (' + sign + pct.toFixed(1) + '%)</span> <span class="usd-val" style="font-size:0.85em">' + ago(r.lastSaleTs) + '</span>';
+      }
+      var typeBadge = '<span class="col-badge type-' + (r.type==='RES'?'res':'art') + '">' + r.type + '</span>';
+      var scoreCls = r.score >= 50 ? 'sale-up' : r.score >= 25 ? 'eth-val' : 'no-data';
+      html += '<tr>';
+      html += '<td><span class="' + rankCls + '">#' + rank + '</span></td>';
+      html += '<td><span class="col-name">' + r.name + '</span></td>';
+      html += '<td>' + typeBadge + '</td>';
+      html += '<td class="r"><span class="lg-total">' + r.depth + (r.depth > 1 ? ' listings' : ' listing') + '</span></td>';
+      html += '<td class="r"><div class="eth-val art-floor-big">' + r.floor.toFixed(4) + ' \u039E</div>';
+      html += '<div class="usd-val art-floor-usd">' + fmtUsd(r.floor * ethUsd) + '</div></td>';
+      html += '<td class="r">' + saleCell + '</td>';
+      html += '<td class="r"><span class="' + scoreCls + '">' + r.score.toFixed(1) + '</span></td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table></div>';
+    return html;
+  }
+  var od = buildPanel('otherdeed', 'OTHERDEED FOR OTHERSIDE');
+  var ode = buildPanel('expanded', 'OTHERDEED EXPANDED');
+  el.innerHTML = '<div class="col-grid">' + od + ode + '</div>';
+}
+/* INVEST auto-init: fetch data + render even if existing load() doesn't know about us */
+(function() {
+  function tryInit() {
+    var el = document.getElementById('invest');
+    if (!el) return;
+    fetch('price_snapshot_latest.json?cb=' + Date.now()).then(function(r){return r.json();}).then(function(d){
+      window.__lastData = d;
+      try { renderInvest(d); } catch(e) {}
+    }).catch(function(){});
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tryInit, 800); });
+  else setTimeout(tryInit, 800);
+  document.addEventListener('click', function(e) {
+    var t = e.target && e.target.closest && e.target.closest('[data-tab="invest"]');
+    if (t) setTimeout(tryInit, 50);
+  });
+  setInterval(tryInit, 5 * 60 * 1000);
+})();
+/* === end INVEST analyzer v1 === *//script>
 </body>
 </html>
