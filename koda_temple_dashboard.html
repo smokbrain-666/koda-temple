@@ -962,7 +962,91 @@ table.art-v2 .art-vs-cell .chg-up, table.art-v2 .art-vs-cell .chg-dn, table.art-
 .faq-metric { display: block; margin-bottom: 4px; color: #FFFFFF; }
 .faq-metric strong { color: #FFFFFF !important; font-weight: 900; }
 /* === END v9 === */
-le>
+le
+
+/* === KODAQ v10 — universal 11.5px + all-white + neon ticker + pulsing cats === */
+@keyframes neon-pulse-cat {
+  0%, 100% { filter: brightness(1.0); box-shadow: 4px 4px 0 #000, inset 0 -4px 0 rgba(0,0,0,0.30), inset 0 4px 0 rgba(255,255,255,0.20), 0 0 4px currentColor; }
+  50%      { filter: brightness(1.35); box-shadow: 4px 4px 0 #000, inset 0 -4px 0 rgba(0,0,0,0.30), inset 0 4px 0 rgba(255,255,255,0.20), 0 0 22px currentColor, 0 0 36px currentColor; }
+}
+
+/* 1. UNIVERSAL: all fonts 11.5px, all text WHITE */
+* {
+  font-size: 11.5px !important;
+  color: #FFFFFF !important;
+}
+
+/* KODAQ logo - keep big */
+#hdr-logo {
+  font-size: 56px !important;
+  letter-spacing: 6px !important;
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 2px 2px 0 #B57BFF !important;
+}
+
+/* Tab nav slightly bigger so it stays clickable */
+.tab { font-size: 11.5px !important; padding: 8px 14px !important; }
+
+/* 2. PERCENTAGE EXCEPTIONS - bright neon */
+.sale-up, .chg-up, .pix-up,
+table.invest-v1 .chg-up, table.invest-v1 .chg-dn,
+table.art-v2 .art-vs-cell .chg-up, .res-24h-up {
+  color: #2BFF66 !important;
+}
+.sale-dn, .chg-dn, .pix-dn,
+table.art-v2 .art-vs-cell .chg-dn,
+.res-24h-dn {
+  color: #FF1A33 !important;
+}
+.sale-up, .chg-up, .pix-up, .res-24h-up { text-shadow: 1px 1px 0 #000 !important; }
+.sale-dn, .chg-dn, .pix-dn, .res-24h-dn { text-shadow: 1px 1px 0 #000 !important; }
+.pix-up, .pix-dn { color: inherit; }
+.pix-up { color: #2BFF66 !important; }
+.pix-dn { color: #FF1A33 !important; }
+
+/* 3. RESOURCE CATEGORY EXCEPTIONS - brighter neon + pulse on category buttons */
+.cat-SHARD, .cat-SHARD .res-card-name { color: #00FFFF !important; text-shadow: 1px 1px 0 #000, 0 0 4px #00FFFF !important; }
+.cat-ROOT, .cat-ROOT .res-card-name   { color: #00FF66 !important; text-shadow: 1px 1px 0 #000, 0 0 4px #00FF66 !important; }
+.cat-ORE, .cat-ORE .res-card-name     { color: #FFAA00 !important; text-shadow: 1px 1px 0 #000, 0 0 4px #FFAA00 !important; }
+.cat-ANIMA, .cat-ANIMA .res-card-name { color: #DD66FF !important; text-shadow: 1px 1px 0 #000, 0 0 4px #DD66FF !important; }
+
+/* Category section header buttons - pulse animation, much brighter */
+.res-cat-header.cat-SHARD { background: #00FFFF !important; color: #000000 !important; animation: neon-pulse-cat 1.4s ease-in-out infinite; border-color: #000 !important; }
+.res-cat-header.cat-ROOT  { background: #00FF66 !important; color: #000000 !important; animation: neon-pulse-cat 1.4s ease-in-out infinite; border-color: #000 !important; }
+.res-cat-header.cat-ORE   { background: #FFAA00 !important; color: #000000 !important; animation: neon-pulse-cat 1.4s ease-in-out infinite; border-color: #000 !important; }
+.res-cat-header.cat-ANIMA { background: #DD66FF !important; color: #000000 !important; animation: neon-pulse-cat 1.4s ease-in-out infinite; border-color: #000 !important; }
+
+/* 4. TICKER (banner) - neon red, slow */
+#ticker-wrap, #hdr-ticker, .ticker-wrap {
+  background: rgba(35,0,8,0.92) !important;
+  border-top: 2px solid #FF003C !important;
+  border-bottom: 2px solid #FF003C !important;
+}
+#ticker-inner { animation-duration: 240s !important; }
+.ti-name { color: #FFFFFF !important; font-weight: 900 !important; text-shadow: 1px 1px 0 #000 !important; font-family: 'Press Start 2P','VT323',monospace !important; }
+.ti-price { color: #FFFFFF !important; font-weight: 900 !important; text-shadow: 1px 1px 0 #000 !important; }
+.ti-sep { color: #FF003C !important; text-shadow: 1px 1px 0 #000 !important; padding: 0 8px; }
+
+/* 5. ALL LINES NEON RED */
+#hdr, #tabs, .tab, table, table tr, table td, table th,
+hr, .col-section, .pane, .col-grid, .cat-block,
+.res-card, .res-summary, .res-summary-hdr, .res-cat-section,
+.invest-faq, table.invest-v1, table.art-v2, table.mkt-table {
+  border-color: #FF003C !important;
+}
+table tr { border-bottom: 1px solid #FF003C !important; }
+.res-card { border-color: #FF003C !important; border-left-color: #FF003C !important; }
+/* But keep cat color on left border for cards */
+.res-card.cat-SHARD { border-left-color: #00FFFF !important; }
+.res-card.cat-ROOT  { border-left-color: #00FF66 !important; }
+.res-card.cat-ORE   { border-left-color: #FFAA00 !important; }
+.res-card.cat-ANIMA { border-left-color: #DD66FF !important; }
+
+/* Tab active - white underline */
+.tab.active { border-bottom: 2px solid #FFFFFF !important; }
+
+/* === END v10 === */
+>
 </style>
   </head>
 <body>
@@ -2306,6 +2390,79 @@ function renderInvest(data) {
   });
 })();
 /* === END v8 === */
+
+
+/* === KODAQ v10 — tab-aware ticker (resources / artifacts) === */
+(function() {
+  function rebuildTicker() {
+    var data = window.__lastData;
+    if (!data) return;
+    var activeTabEl = document.querySelector('.tab.active');
+    var activeTab = activeTabEl && activeTabEl.dataset ? activeTabEl.dataset.tab : 'resources';
+    var entries = [];
+    function pushSale(name, v, coll) {
+      if (!v || typeof v !== 'object' || typeof v.price_eth !== 'number') return;
+      entries.push({name: name, price: v.price_eth, ts: v.ts || 0, coll: coll});
+    }
+    if (activeTab === 'artifacts') {
+      ['otherdeed','expanded'].forEach(function(c){
+        var st = data[c] && data[c].sales_traits && data[c].sales_traits.Artifact;
+        if (!st) return;
+        Object.keys(st).forEach(function(k){ pushSale(k, st[k], c); });
+      });
+    } else if (activeTab === 'resources' || activeTab === 'sales') {
+      var resCats = ['Eastern Resource','Western Resource','Northern Resource','Southern Resource'];
+      ['otherdeed','expanded'].forEach(function(c){
+        var st = data[c] && data[c].sales_traits;
+        if (!st) return;
+        resCats.forEach(function(cat){
+          var sub = st[cat] || {};
+          Object.keys(sub).forEach(function(k){ pushSale(k, sub[k], c); });
+        });
+      });
+    } else {
+      // league/invest tabs - keep latest mixed (artifacts + resources)
+      ['otherdeed','expanded'].forEach(function(c){
+        var st = data[c] && data[c].sales_traits;
+        if (!st) return;
+        Object.keys(st).forEach(function(cat){
+          if (cat === 'Plot') return;
+          var sub = st[cat] || {};
+          Object.keys(sub).forEach(function(k){ pushSale(k, sub[k], c); });
+        });
+      });
+    }
+    entries.sort(function(a,b){ return b.ts - a.ts; });
+    entries = entries.slice(0, 28);
+    if (!entries.length) return;
+    function buildHtml() {
+      return entries.map(function(e){
+        return '<span class="ti"><span class="ti-name">' + String(e.name).toUpperCase() + '</span> <span class="ti-price">' + e.price.toFixed(4) + ' \u039E</span></span>';
+      }).join('<span class="ti-sep">\u25CF</span>');
+    }
+    var html = buildHtml();
+    var inner = document.getElementById('ticker-inner');
+    if (inner) inner.innerHTML = html + '<span class="ti-sep">\u25CF</span>' + html;
+  }
+  // ensure data is loaded
+  function ensureDataThenBuild() {
+    if (window.__lastData) { rebuildTicker(); return; }
+    fetch('price_snapshot_latest.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(d){
+      window.__lastData = d;
+      rebuildTicker();
+    }).catch(function(){});
+  }
+  setTimeout(ensureDataThenBuild, 1500);
+  setTimeout(ensureDataThenBuild, 3500);
+  setInterval(ensureDataThenBuild, 60*1000);
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(rebuildTicker, 80);
+    setTimeout(rebuildTicker, 400);
+  });
+})();
+/* === END v10 JS === */
 
 </script>
 </body>
