@@ -1474,7 +1474,36 @@ body #resources .res-card-v2 .rcv-velocity {
   color: #FFFFFF !important;
 }
 /* === END v15.1 === */
-/style>
+/s
+
+/* === KODAQ v16 — fully bright cards === */
+body #resources .res-card-v2,
+body #resources .res-card-v2 *,
+body #resources .res-card-v2 .rcv-name,
+body #resources .res-card-v2 .rcv-floor,
+body #resources .res-card-v2 .rcv-vwap,
+body #resources .res-card-v2 .rcv-floor-lbl,
+body #resources .res-card-v2 .rcv-vwap-lbl,
+body #resources .res-card-v2 .rcv-vel-lbl,
+body #resources .res-card-v2 .rcv-velocity,
+body #resources .res-card-v2 .rcv-stats-row {
+  color: #FFFFFF !important;
+  filter: none !important;
+  opacity: 1 !important;
+  -webkit-text-stroke: 0 !important;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000 !important;
+}
+/* Re-apply colored exceptions inside cards */
+body #resources .res-card-v2 .pix-up,
+body #resources .res-card-v2 .rcv-stats-row .pix-up { color: #2BFF66 !important; }
+body #resources .res-card-v2 .pix-dn,
+body #resources .res-card-v2 .rcv-stats-row .pix-dn { color: #FF1A33 !important; }
+body #resources .res-card-v2 .rcv-discount.disc-buy { color: #2BFF66 !important; background: rgba(43,255,102,0.10) !important; }
+body #resources .res-card-v2 .rcv-discount.disc-prem { color: #FF1A33 !important; background: rgba(255,26,51,0.10) !important; }
+body #resources .res-card-v2 .rcv-discount.disc-fair { color: #FFE600 !important; background: rgba(255,230,0,0.10) !important; }
+body #resources .res-card-v2 .rank-pill { color: #FFE600 !important; }
+/* === END v16 === */
+tyle>
   </style>
   </head>
 <body>
@@ -3617,6 +3646,65 @@ function renderInvest(data) {
   });
 })();
 /* === END v15.1 JS === */
+
+
+/* === KODAQ v16 — compass to bottom + tab reorder + JS-force white === */
+(function() {
+  function moveCompassToBottom() {
+    var resEl = document.getElementById('resources');
+    if (!resEl) return;
+    var compass = resEl.querySelector('.district-compass');
+    var resSummary = resEl.querySelector('.res-summary');
+    if (compass && resSummary && compass.parentNode === resSummary) {
+      // Only move if not already at the end
+      if (resSummary.lastElementChild !== compass) {
+        resSummary.appendChild(compass);
+      }
+    } else if (compass && resSummary) {
+      resSummary.appendChild(compass);
+    }
+  }
+  function reorderTabs() {
+    var tabsContainer = document.querySelectorAll('.tab')[0]?.parentNode;
+    if (!tabsContainer) return;
+    var byTab = {};
+    tabsContainer.querySelectorAll('.tab').forEach(function(t){ byTab[t.dataset.tab] = t; });
+    var order = ['resources','strata','artifacts','league','invest','log'];
+    order.forEach(function(name){
+      if (byTab[name]) tabsContainer.appendChild(byTab[name]);
+    });
+  }
+  function whitenCards() {
+    document.querySelectorAll('#resources .res-card-v2').forEach(function(card){
+      card.querySelectorAll('*').forEach(function(child){
+        // Skip elements that need to keep colored states
+        if (child.classList.contains('pix-up') || child.classList.contains('pix-dn') || 
+            child.classList.contains('rank-pill') ||
+            child.classList.contains('rcv-discount')) return;
+        child.style.setProperty('color', '#FFFFFF', 'important');
+        child.style.setProperty('opacity', '1', 'important');
+        child.style.setProperty('filter', 'none', 'important');
+      });
+    });
+  }
+  function tick() {
+    moveCompassToBottom();
+    reorderTabs();
+    whitenCards();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1800); });
+  else setTimeout(tick, 1800);
+  setTimeout(tick, 3500);
+  setTimeout(tick, 6000);
+  setInterval(tick, 30*1000);
+  document.addEventListener('click', function(e){
+    if (e.target && e.target.closest && e.target.closest('[data-tab]')) {
+      setTimeout(tick, 200);
+      setTimeout(tick, 800);
+    }
+  });
+})();
+/* === END v16 JS === */
 
 </script>
 </body>
