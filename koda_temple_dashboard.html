@@ -3217,26 +3217,19 @@ function renderInvest(data) {
   function filterLeagueRows() {
     var lg = document.getElementById('league');
     if (!lg) return;
-    var allowedCats = /^(Eastern|Western|Northern|Southern) Resource$|^Artifact$/;
-    lg.querySelectorAll('table.league-table tbody tr').forEach(function(tr){
-      var catSpan = tr.querySelector('.cat-name');
-      if (!catSpan) return;
-      // Get raw cat from text - might include "+N" suffix for multi-cat groups
-      var catText = catSpan.textContent.trim();
-      var primaryCat = catText.split(' +')[0];
-      // Also check the type badge to distinguish Plot vs others
-      var typeBadge = tr.querySelector('.col-badge.type-plot, .col-badge.type-koda, .col-badge.type-trait, .col-badge.type-misc');
-      if (typeBadge) { tr.style.display = 'none'; return; }
-      if (!allowedCats.test(primaryCat) && !/Resource|Artifact/.test(primaryCat)) {
-        tr.style.display = 'none';
-      } else {
-        tr.style.display = '';
+    var keepTypes = {res: 1, art: 1};
+    var rows = [...lg.querySelectorAll('table.league-table tbody tr')];
+    rows.forEach(function(tr){
+      var badge = tr.querySelector('.col-badge[class*="type-"]');
+      var keep = false;
+      if (badge) {
+        badge.classList.forEach(function(c){
+          if (c.indexOf('type-')===0 && keepTypes[c.slice(5)]) keep = true;
+        });
       }
+      tr.style.display = keep ? '' : 'none';
     });
-    // Re-rank visible rows
-    var visibleRows = [...lg.querySelectorAll('table.league-table tbody tr')].filter(function(tr){
-      return tr.style.display !== 'none';
-    });
+    var visibleRows = rows.filter(function(tr){ return tr.style.display !== 'none'; });
     visibleRows.forEach(function(tr, i){
       var rankSpan = tr.querySelector('[class*="rank-"]');
       if (rankSpan) {
