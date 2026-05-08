@@ -721,7 +721,248 @@ table.invest-v1 tbody tr {
 .invest-faq strong { color: #FFE600; text-shadow: 0 0 3px #FFE600, 0 0 6px rgba(255,230,0,0.7); -webkit-text-stroke: 0.3px currentColor; }
 .invest-faq .faq-q { color: #B57BFF; text-shadow: 0 0 3px #B57BFF; }
 /* === END v7 === */
-/style>
+/s
+
+/* === KODAQ v8 PIXEL-ARCADE UI (no blur, sharp pixels, category buttons) === */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* Disable all blur on text-shadows globally + pixel rendering */
+* { -webkit-font-smoothing: none !important; -moz-osx-font-smoothing: auto !important; image-rendering: pixelated; }
+html, body { font-smooth: never; }
+
+/* Override v3-v7 multi-layer glows with crisp 1-2px hard-edge shadows (no blur) */
+#hdr-logo, .col-name, .sym, .cat-title, .type-res, .type-art, .type-koda,
+.tab, .col-hdr, .league-hdr, .art-hdr, .sales-hdr, .cat-hdr, .col-badge, .cat-sub,
+.ti-name, .ti-sep, th, .dir-tag, .dirs span, .dirs > *,
+.eth-val, .usd-val, .col-stat, .ti-price, #hdr-meta, #hdr-meta span,
+.sale-up, .sale-dn, .chg-up, .chg-dn, .sale-eq, .chg-eq,
+.rank-gold, .rank-silver, .rank-bronze, .rank-rest,
+.lg-total, .lg-count, .res-card-vol, .res-card-usd,
+.res-24h-up, .res-24h-dn, .res-24h-flat, .res-card-meta {
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000 !important;
+}
+/* Specifically remove the cosmic glow halos */
+#hdr-logo {
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 2px 2px 0 #B57BFF !important;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 56px !important;
+  letter-spacing: 6px !important;
+  animation: none !important;
+}
+.col-name, .sym, .cat-title { color: #FFFFFF !important; }
+
+/* RESOURCE SUMMARY redesign — category-grouped sections */
+.res-summary { padding: 0 !important; background: transparent !important; border: 0 !important; box-shadow: none !important; }
+.res-summary-hdr {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 14px !important;
+  letter-spacing: 2px !important;
+  color: #FFFFFF !important;
+  background: linear-gradient(180deg, #1a0830 0%, #050015 100%);
+  border: 2px solid #B57BFF;
+  padding: 10px 14px !important;
+  margin: 8px 8px 14px 8px !important;
+  text-shadow: 2px 2px 0 #000 !important;
+  box-shadow: 4px 4px 0 #000, inset 2px 2px 0 rgba(255,255,255,0.10);
+}
+.res-summary-sub {
+  font-family: 'VT323', monospace !important;
+  font-size: 14px !important; letter-spacing: 1.5px !important;
+  color: #00E1FF !important;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+.res-cat-section { margin: 0 8px 16px 8px; }
+.res-cat-header {
+  display: inline-block;
+  padding: 8px 18px;
+  font-family: 'Press Start 2P', 'VT323', monospace;
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: #FFFFFF;
+  text-shadow: 2px 2px 0 #000 !important;
+  margin-bottom: 8px;
+  box-shadow: 4px 4px 0 #000, inset 0 -4px 0 rgba(0,0,0,0.30), inset 0 4px 0 rgba(255,255,255,0.20);
+  -webkit-text-stroke: 0 !important;
+  border: 2px solid #000;
+}
+.res-cat-header.cat-SHARD { background: #00CCFF; }
+.res-cat-header.cat-ROOT  { background: #2BFF66; color: #FFFFFF; }
+.res-cat-header.cat-ORE   { background: #FF8800; }
+.res-cat-header.cat-ANIMA { background: #B57BFF; }
+.res-cat-stats {
+  display: inline-block;
+  margin-left: 12px;
+  font-family: 'VT323', monospace;
+  font-size: 16px; letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 1px 1px 0 #000 !important;
+  vertical-align: middle;
+}
+.res-cards {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+  gap: 6px !important;
+}
+.res-card {
+  border: 2px solid #000 !important;
+  border-left-width: 5px !important;
+  background: rgba(8,4,20,0.70) !important;
+  box-shadow: 3px 3px 0 #000 !important;
+  border-radius: 0 !important;
+  padding: 7px 10px !important;
+}
+.res-card-name {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+  color: #FFFFFF !important;
+  -webkit-text-stroke: 0 !important;
+  margin-bottom: 4px !important;
+  filter: none !important;
+}
+.res-card-vol { font-family: 'VT323', monospace !important; font-size: 18px !important; }
+.res-card-usd { font-family: 'VT323', monospace !important; }
+.res-card-meta { font-family: 'VT323', monospace !important; }
+
+/* Pixel arrow up / down - no box, just chunky text-only */
+.pix-up { color: #2BFF66 !important; font-size: 16px !important; text-shadow: 1px 1px 0 #000 !important; -webkit-text-stroke: 0 !important; }
+.pix-dn { color: #FF1A33 !important; font-size: 16px !important; text-shadow: 1px 1px 0 #000 !important; -webkit-text-stroke: 0 !important; }
+.pix-flat { color: rgba(255,255,255,0.55) !important; font-size: 16px !important; }
+
+/* "NONE LISTED" placeholder styling */
+.none-listed {
+  color: rgba(255,255,255,0.55) !important;
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 10px !important;
+  letter-spacing: 1.5px !important;
+  text-shadow: 1px 1px 0 #000 !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Crisper tab labels - pixel buttons */
+.tab {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Resource/artifact name in main tables - white pixel */
+table.mkt-table .col-name {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 1.5px !important;
+  color: #FFFFFF !important;
+  -webkit-text-stroke: 0 !important;
+}
+.cat-title {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 16px !important;
+  letter-spacing: 3px !important;
+  -webkit-text-stroke: 0 !important;
+}
+.sym {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 1.5px !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* INVEST FAQ - keep cyan border but pixel font */
+.invest-faq h3 {
+  font-family: 'Press Start 2P', 'VT323', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 2px !important;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+.invest-faq, .invest-faq li, .invest-faq strong, .invest-faq .faq-q {
+  text-shadow: 1px 1px 0 #000 !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Numbers and data in pixel-y mono */
+.eth-val, .usd-val, .col-stat, .ti-price, .lg-total, .lg-count, #hdr-meta span {
+  font-family: 'VT323', monospace !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Disable previous heavy text-stroke on resource names */
+.cat-SHARD, .cat-ROOT, .cat-ORE, .cat-ANIMA { -webkit-text-stroke: 0 !important; }
+
+/* Median price label */
+.res-card-median {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  color: #FFE600;
+  text-shadow: 1px 1px 0 #000 !important;
+  margin-top: 1px;
+  display: block;
+}
+.res-card-median-label { color: rgba(255,255,255,0.6); font-size: 10px; letter-spacing: 1px; margin-right: 4px; }
+
+/* === END v8 === */
+ty
+
+/* === KODAQ v9 polish: FAQ bottom + bright, font-size match, PAYLOAD === */
+/* Match VS LAST SALE font size to FLOOR */
+.art-vs-cell, .art-vs-cell .chg-up, .art-vs-cell .chg-dn, .art-vs-cell .chg-eq,
+table.invest-v1 .chg-up, table.invest-v1 .chg-dn, table.invest-v1 .chg-eq,
+table.invest-v1 td .pix-up, table.invest-v1 td .pix-dn {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+}
+table.invest-v1 .art-floor-big { font-size: 22px !important; }
+table.art-v2 .art-vs-cell .chg-up, table.art-v2 .art-vs-cell .chg-dn, table.art-v2 .art-vs-cell .chg-eq {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+}
+/* FAQ — bottom-positioned, brighter, with confidence pill colors */
+.invest-faq {
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  border: 2px solid #00E1FF !important;
+  border-left: 5px solid #00E1FF !important;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(8,4,30,0.85)) !important;
+  margin: 24px 18px 16px 18px !important;
+  box-shadow: 4px 4px 0 #000 !important;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+.invest-faq h3 {
+  color: #FFE600 !important;
+  text-shadow: 2px 2px 0 #000 !important;
+  font-size: 14px !important;
+  letter-spacing: 2px !important;
+}
+.invest-faq strong { color: #2BFF66 !important; text-shadow: 1px 1px 0 #000 !important; -webkit-text-stroke: 0 !important; }
+.invest-faq .faq-q { color: #00E1FF !important; text-shadow: 1px 1px 0 #000 !important; }
+.invest-faq li { color: #FFFFFF !important; }
+.faq-conf {
+  display: inline-block;
+  padding: 2px 7px;
+  margin-left: 6px;
+  border: 2px solid;
+  font-size: 10px;
+  font-family: 'Press Start 2P','VT323',monospace;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  text-shadow: 1px 1px 0 #000 !important;
+}
+.faq-conf-high { color: #2BFF66; border-color: #2BFF66; background: rgba(43,255,102,0.12); }
+.faq-conf-med  { color: #FFE600; border-color: #FFE600; background: rgba(255,230,0,0.12); }
+.faq-conf-low  { color: #FF8800; border-color: #FF8800; background: rgba(255,136,0,0.12); }
+.faq-conf-mixed{ color: #00E1FF; border-color: #00E1FF; background: rgba(0,225,255,0.12); }
+.faq-data-section { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,225,255,0.4); }
+.faq-data-section h4 {
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #00E1FF;
+  margin-bottom: 6px;
+  text-shadow: 2px 2px 0 #000 !important;
+}
+.faq-metric { display: block; margin-bottom: 4px; color: #FFFFFF; }
+.faq-metric strong { color: #FFFFFF !important; font-weight: 900; }
+/* === END v9 === */
+le>
 </style>
   </head>
 <body>
@@ -744,7 +985,7 @@ table.invest-v1 tbody tr {
   <div class="tab active" data-tab="resources">RESOURCES</div>
   <div class="tab" data-tab="artifacts">ARTIFACTS</div>
   <div class="tab" data-tab="sales">SALES 10D</div>
-  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ INVEST</div>
+  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ PAYLOAD</div>
 </div>
 
 <!-- CONTENT -->
@@ -1605,7 +1846,7 @@ function renderInvest(data) {
     var html = '<div class="invest-panel">';
     html += '<div class="col-hdr"><span class="col-name">' + label + '</span> ';
     html += '<span class="col-stat">' + rows.length + ' ASSETS</span></div>';
-    html += '<div class="art-hdr">INVEST OPPORTUNITIES <span class="cat-sub">RANKED BY OPPORTUNITY SCORE // LOW SUPPLY + DISCOUNT VS LAST SALE + LIQUIDITY</span></div>';
+    html += '<div class="art-hdr">PAYLOAD OPPORTUNITIES <span class="cat-sub">RANKED BY OPPORTUNITY SCORE // LOW SUPPLY + DISCOUNT VS LAST SALE + LIQUIDITY</span></div>';
     html += '<table class="mkt-table invest-v1"><thead><tr>';
     html += '<th>RNK</th><th>ASSET</th><th>TYPE</th><th class="r">SUPPLY</th><th class="r">FLOOR</th><th class="r">VS LAST SALE</th><th class="r">SCORE</th>';
     html += '</tr></thead><tbody>';
@@ -1643,7 +1884,7 @@ function renderInvest(data) {
   }
   var od = buildPanel('otherdeed', 'OTHERDEED FOR OTHERSIDE');
   var ode = buildPanel('expanded', 'OTHERDEED EXPANDED');
-  el.innerHTML = (window.__investFAQHTML||'') + '<div class="col-grid">' + od + ode + '</div>';
+  el.innerHTML = '<div class="col-grid">' + od + ode + '</div>' + (window.__investFAQHTML||'');
 }
 /* INVEST auto-init: fetch data + render even if existing load() doesn't know about us */
 (function() {
@@ -1793,17 +2034,27 @@ function renderInvest(data) {
     if (!iEl) return;
     if (iEl.querySelector('.invest-faq')) return;
     var html = '<div class="invest-faq">';
-    html += '<h3>HOW THIS RANKING WORKS // FAQ</h3>';
+    html += '<h3>PAYLOAD SCORING // FAQ</h3>';
     html += '<ul>';
-    html += '<li><span class="faq-q">How is the SCORE calculated?</span> Composite of <strong>45% discount vs last sale</strong> + <strong>20% scarcity</strong> (fewer listings = higher) + <strong>20% liquidity</strong> (recent sale activity) + <strong>15% affordability</strong> (lower absolute floor). Higher score = better entry opportunity.</li>';
-    html += '<li><span class="faq-q">Are listing counts accurate?</span> Sort of. <strong>"1 listing"</strong> means we tracked one floor entry across all granular slots (collection \u00D7 direction \u00D7 tier for resources, or single entry for artifacts). The marketplace likely has <em>more</em> listings above the floor \u2014 we only record the cheapest visible per slot from the scrape.</li>';
-    html += '<li><span class="faq-q">Can the same item appear twice?</span> An asset name can appear once in <strong>OD</strong> (left panel) and once in <strong>ODE</strong> (right panel) \u2014 those are two distinct collections, both legitimate. Within a single panel, names are unique (we aggregate across direction \u00D7 tier into one row per resource).</li>';
-    html += '<li><span class="faq-q">"1 listing" \u2014 does only one of these exist?</span> No. The number reflects how many <strong>granular price slots</strong> we recorded (e.g. one "Eastern T2" entry). Multiple sellers can be listing the same resource type \u2014 the scraper only records the cheapest visible per slot, not the entire order book.</li>';
-    html += '<li><span class="faq-q">Why a NEGATIVE %% on top "buy" picks?</span> Negative VS LAST SALE means the floor dropped vs the most recent sale (bearish in the short term, but creates a buying discount). Our scoring rewards big discounts because they suggest you can buy below what someone recently paid.</li>';
-    html += '</ul></div>';
+    html += '<li><span class="faq-q">How is the SCORE calculated?</span> Composite of <strong>45% discount vs last sale</strong> + <strong>20% scarcity</strong> + <strong>20% liquidity</strong> + <strong>15% affordability</strong>. Higher score = better entry opportunity.</li>';
+    html += '<li><span class="faq-q">Are listing counts accurate?</span> "1 listing" means we tracked one floor entry across all granular slots. The marketplace likely has more listings above the floor.</li>';
+    html += '<li><span class="faq-q">Can the same item appear twice?</span> Yes between OD and ODE \u2014 those are two distinct collections. Within a single panel, names are unique.</li>';
+    html += '<li><span class="faq-q">"1 listing" \u2014 does only one of these exist?</span> No. Multiple sellers can be listing the same resource type \u2014 the scraper only records the cheapest visible per slot.</li>';
+    html += '<li><span class="faq-q">Why a NEGATIVE %% on top "buy" picks?</span> Floor dropped vs the most recent sale (creates a buying discount).</li>';
+    html += '</ul>';
+    html += '<div class="faq-data-section"><h4>DATA CONFIDENCE PER METRIC</h4>';
+    html += '<span class="faq-metric"><strong>FLOOR PRICE</strong> <span class="faq-conf faq-conf-high">HIGH</span> Current marketplace minimum, scraped fresh per slot.</span>';
+    html += '<span class="faq-metric"><strong>LAST SALE</strong> <span class="faq-conf faq-conf-high">HIGH</span> On-chain transaction price + timestamp; only the most recent per slot is stored.</span>';
+    html += '<span class="faq-metric"><strong>VS LAST SALE %%</strong> <span class="faq-conf faq-conf-med">MED</span> Accuracy depends on how recent the last sale is (older = staler signal).</span>';
+    html += '<span class="faq-metric"><strong>SUPPLY (LISTINGS)</strong> <span class="faq-conf faq-conf-low">LOW-MED</span> Reflects granular slots tracked, not full marketplace order book depth.</span>';
+    html += '<span class="faq-metric"><strong>10D VOLUME</strong> <span class="faq-conf faq-conf-med">MED</span> Sum of latest sale per slot in last 10 days; outliers >5x median trimmed.</span>';
+    html += '<span class="faq-metric"><strong>24H DIRECTION</strong> <span class="faq-conf faq-conf-mixed">MIXED</span> Computed when both 24h + prior sales exist; otherwise falls back to floor vs last-sale.</span>';
+    html += '<span class="faq-metric"><strong>SCORE</strong> <span class="faq-conf faq-conf-med">MED</span> Composite \u2014 only as good as inputs above.</span>';
+    html += '</div>';
+    html += '</div>';
     var div = document.createElement('div');
     div.innerHTML = html;
-    window.__investFAQHTML = html; iEl.insertBefore(div.firstChild, iEl.firstChild);
+    window.__investFAQHTML = html; iEl.appendChild(div.firstChild);
   }
 
   function tick() {
@@ -1829,6 +2080,232 @@ function renderInvest(data) {
   });
 })();
 /* === END v7 === */
+
+
+/* === KODAQ v8 — category-grouped summary, median + outlier filter, NONE LISTED === */
+(function() {
+  var RESOURCE_CAT = {
+    'SHARD':  ['KINSOUL','RUNA','LUSTER','MOLDIUM','OBLIVION','BRIMSTONE','BONESTONE','OMNI'],
+    'ROOT':   ['PSYCHOSILK','NETHER','LUNARIAN','WHISPER','PETRIFIED','LUMILEAF','SPIKEWEED'],
+    'ORE':    ['HOLLOWCINE','BRINESLIME','CLAYMER','ONYX','SHATTERFROST','LUMINITE','THERMODITE','ENTRADIUM','SPIRITSEEP','BUBONIUM','VAPORHAZE','PYRUM','TANTALITE','LAPIDITE','CHROMA'],
+    'ANIMA':  ['SULFIRICA','DUSKIA','MAGENTIA','NEBULA','SLAGLIA','FOSSICA','ETHERIA','SCUMBRIA','GLOOMIA','SENTICYBIA','ABYSSIA','STEPPESALT','GLOWPOD','FORTUNA']
+  };
+  var CAT_ORDER = ['ORE','SHARD','ROOT','ANIMA'];
+  function nameToCat(name) {
+    var u = String(name||'').toUpperCase();
+    for (var k in RESOURCE_CAT) if (RESOURCE_CAT[k].indexOf(u) >= 0) return k;
+    return 'OTHER';
+  }
+  function median(arr) {
+    if (!arr.length) return 0;
+    var s = arr.slice().sort(function(a,b){return a-b;});
+    var m = Math.floor(s.length/2);
+    return s.length % 2 ? s[m] : (s[m-1]+s[m])/2;
+  }
+  function trimOutliers(sales) {
+    if (sales.length < 3) return sales;
+    var prices = sales.map(function(s){return s.price;});
+    var med = median(prices);
+    if (!med) return sales;
+    // Reject sales > 5x median (likely bundled with plot/koda) and < 0.005 ETH (likely error/zero floor)
+    return sales.filter(function(s){ return s.price <= med * 5 && s.price >= 0.005; });
+  }
+  function fmtUsd(v) { return v >= 1000 ? '$' + (v/1000).toFixed(1) + 'K' : '$' + Math.round(v); }
+  function fmtEth(v) { return v.toFixed(4) + ' \u039E'; }
+
+  function buildResourceSummary(data) {
+    if (!data) return null;
+    var ethUsd = data.eth_usd || 0;
+    var nowSec = Math.floor(Date.now()/1000);
+    var tenDayAgo = nowSec - 10*86400;
+    var oneDayAgo = nowSec - 86400;
+    var agg = {};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rs = data[coll] && data[coll].resource_sales;
+      if (!rs) return;
+      Object.keys(rs).forEach(function(direction){
+        var dirData = rs[direction] || {};
+        Object.keys(dirData).forEach(function(rname){
+          var tiers = dirData[rname] || {};
+          Object.keys(tiers).forEach(function(tier){
+            var v = tiers[tier];
+            if (!v || typeof v !== 'object' || typeof v.price_eth !== 'number') return;
+            var key = rname.toUpperCase();
+            if (!agg[key]) agg[key] = {name: rname, sales: [], cat: nameToCat(rname)};
+            if (v.ts >= tenDayAgo) agg[key].sales.push({price: v.price_eth, ts: v.ts});
+          });
+        });
+      });
+    });
+    var currentFloors = {};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rf = data[coll] && data[coll].resource_floors;
+      if (!rf) return;
+      Object.keys(rf).forEach(function(direction){
+        var dirData = rf[direction] || {};
+        Object.keys(dirData).forEach(function(rname){
+          var tiers = dirData[rname] || {};
+          var minPrice = Infinity;
+          Object.keys(tiers).forEach(function(tier){
+            var p = tiers[tier];
+            if (typeof p === 'number' && p > 0 && p < minPrice) minPrice = p;
+          });
+          var key = rname.toUpperCase();
+          if (minPrice !== Infinity) {
+            if (!currentFloors[key] || minPrice < currentFloors[key]) currentFloors[key] = minPrice;
+          }
+        });
+      });
+    });
+    var rows = Object.keys(agg).map(function(key){
+      var a = agg[key];
+      var rawCount = a.sales.length;
+      var clean = trimOutliers(a.sales);
+      var trimmedCount = rawCount - clean.length;
+      var totalVol = clean.reduce(function(s,x){return s + x.price;},0);
+      var prices = clean.map(function(s){return s.price;});
+      var med = median(prices);
+      var sales24h = clean.filter(function(x){return x.ts >= oneDayAgo;});
+      var salesPrior = clean.filter(function(x){return x.ts < oneDayAgo;});
+      var dir = 'flat';
+      var dirPct = 0;
+      if (sales24h.length > 0 && salesPrior.length > 0) {
+        var avg24h = sales24h.reduce(function(s,x){return s+x.price;},0) / sales24h.length;
+        var avgPrior = salesPrior.reduce(function(s,x){return s+x.price;},0) / salesPrior.length;
+        dirPct = (avg24h - avgPrior) / avgPrior * 100;
+        if (dirPct > 0.5) dir = 'up'; else if (dirPct < -0.5) dir = 'dn';
+      } else if (clean.length > 0 && currentFloors[key]) {
+        clean.sort(function(x,y){return y.ts - x.ts;});
+        var lastSale = clean[0].price;
+        var floor = currentFloors[key];
+        dirPct = (floor - lastSale) / floor * 100;
+        if (dirPct > 0.5) dir = 'up'; else if (dirPct < -0.5) dir = 'dn';
+      }
+      return {
+        name: a.name.toUpperCase(),
+        cat: a.cat,
+        totalVol: totalVol,
+        median: med,
+        salesCount: clean.length,
+        rawCount: rawCount,
+        outliersTrimmed: trimmedCount,
+        dir: dir,
+        dirPct: dirPct,
+        usingFallback: sales24h.length === 0 || salesPrior.length === 0
+      };
+    });
+    rows.sort(function(a,b){ return b.totalVol - a.totalVol; });
+    return {rows: rows, ethUsd: ethUsd, totalVolEth: rows.reduce(function(s,r){return s+r.totalVol;},0), totalSales: rows.reduce(function(s,r){return s+r.salesCount;},0)};
+  }
+
+  function pixDir(dir, dirPct) {
+    if (dir === 'up') return '<span class="pix-up">\u25B2 +' + (Math.abs(dirPct).toFixed(1)) + '%</span>';
+    if (dir === 'dn') return '<span class="pix-dn">\u25BC -' + (Math.abs(dirPct).toFixed(1)) + '%</span>';
+    return '<span class="pix-flat">\u2014</span>';
+  }
+
+  function renderResourceSummaryDOM(data) {
+    var resEl = document.getElementById('resources');
+    if (!resEl) return;
+    var summary = buildResourceSummary(data);
+    if (!summary) return;
+    var prior = resEl.querySelector('.res-summary');
+    if (prior) prior.remove();
+    // Group rows by category
+    var byCat = {};
+    CAT_ORDER.forEach(function(c){ byCat[c] = []; });
+    summary.rows.forEach(function(r){ if (byCat[r.cat]) byCat[r.cat].push(r); });
+    var html = '<div class="res-summary">';
+    html += '<div class="res-summary-hdr">RESOURCE OVERVIEW \u2014 10D <span class="res-summary-sub">// '+summary.totalSales+' SALES // '+fmtEth(summary.totalVolEth)+' // '+fmtUsd(summary.totalVolEth*summary.ethUsd)+' // OUTLIERS TRIMMED (>5x MEDIAN)</span></div>';
+    CAT_ORDER.forEach(function(cat){
+      var items = byCat[cat] || [];
+      if (!items.length) return;
+      var catVol = items.reduce(function(s,x){return s+x.totalVol;},0);
+      var catSales = items.reduce(function(s,x){return s+x.salesCount;},0);
+      html += '<div class="res-cat-section">';
+      html += '<div class="res-cat-header cat-'+cat+'">'+cat+'</div>';
+      html += '<span class="res-cat-stats">// '+items.length+' RESOURCES // '+fmtEth(catVol)+' // '+fmtUsd(catVol*summary.ethUsd)+' // '+catSales+' SALES</span>';
+      html += '<div class="res-cards">';
+      items.forEach(function(r){
+        html += '<div class="res-card cat-'+r.cat+'">';
+        html += '<div class="res-card-name">'+r.name+'</div>';
+        if (r.salesCount === 0) {
+          html += '<div class="res-card-row"><span class="none-listed">NONE LISTED</span></div>';
+        } else {
+          html += '<div class="res-card-row"><span class="res-card-vol">'+fmtEth(r.totalVol)+'</span>'+pixDir(r.dir, r.dirPct)+'</div>';
+          html += '<div class="res-card-row"><span class="res-card-usd">'+fmtUsd(r.totalVol*summary.ethUsd)+'</span><span class="res-card-meta">'+r.salesCount+' sale'+(r.salesCount===1?'':'s')+(r.outliersTrimmed?' / '+r.outliersTrimmed+' trimmed':'')+'</span></div>';
+          if (r.median > 0) html += '<span class="res-card-median"><span class="res-card-median-label">AVG/SALE</span>'+fmtEth(r.median)+'</span>';
+        }
+        html += '</div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    resEl.insertBefore(div.firstChild, resEl.firstChild);
+  }
+
+  function renderInvestFAQDOM() {
+    var iEl = document.getElementById('invest');
+    if (!iEl) return;
+    if (iEl.querySelector('.invest-faq')) return;
+    var html = '<div class="invest-faq">';
+    html += '<h3>HOW THIS RANKING WORKS // FAQ</h3>';
+    html += '<ul>';
+    html += '<li><span class="faq-q">How is the SCORE calculated?</span> Composite of <strong>45% discount vs last sale</strong> + <strong>20% scarcity</strong> + <strong>20% liquidity</strong> + <strong>15% affordability</strong>. Higher score = better entry opportunity.</li>';
+    html += '<li><span class="faq-q">Are listing counts accurate?</span> "1 listing" means we tracked one floor entry across all granular slots. The marketplace likely has more listings above the floor.</li>';
+    html += '<li><span class="faq-q">Can the same item appear twice?</span> Yes between OD and ODE \u2014 those are two distinct collections. Within a single panel, names are unique.</li>';
+    html += '<li><span class="faq-q">"1 listing" \u2014 does only one of these exist?</span> No. Multiple sellers can be listing the same resource type \u2014 the scraper only records the cheapest visible per slot.</li>';
+    html += '<li><span class="faq-q">Why a NEGATIVE %% on top "buy" picks?</span> Floor dropped vs the most recent sale (creates a buying discount).</li>';
+    html += '</ul></div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    window.__investFAQHTML = html;
+    iEl.insertBefore(div.firstChild, iEl.firstChild);
+  }
+
+  // Convert any "no recent sale" / "--" / "no data" placeholders in INVEST and ARTIFACTS to NONE LISTED
+  function noneListPolish() {
+    var roots = [document.getElementById('invest'), document.getElementById('artifacts')];
+    roots.forEach(function(root){
+      if (!root) return;
+      // replace literal text spans
+      root.querySelectorAll('.no-data').forEach(function(el){
+        if (!/NONE LISTED/.test(el.textContent)) {
+          el.classList.add('none-listed');
+          el.textContent = 'NONE LISTED';
+        }
+      });
+    });
+  }
+
+  function tick() {
+    if (!window.__lastData) {
+      fetch('price_snapshot_latest.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(d){
+        window.__lastData = d;
+        renderResourceSummaryDOM(d);
+        noneListPolish();
+      }).catch(function(){});
+    } else {
+      renderResourceSummaryDOM(window.__lastData);
+    }
+    renderInvestFAQDOM();
+    noneListPolish();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1100); });
+  else setTimeout(tick, 1100);
+  setTimeout(tick, 2500);
+  setTimeout(tick, 4500);
+  setInterval(tick, 60*1000);
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(tick, 50);
+    setTimeout(tick, 400);
+  });
+})();
+/* === END v8 === */
 
 </script>
 </body>
