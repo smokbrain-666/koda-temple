@@ -1105,7 +1105,145 @@ table.invest-v1 td .col-name {
 .tab[data-tab="sales"], #sales { display: none !important; }
 
 /* === END v11 === */
-</style>
+</
+
+/* === KODAQ v12 — commodities + LOG + investment-grade PAYLOAD === */
+
+/* Resource card v2 — floor primary, VWAP secondary, discount + velocity */
+.res-card-v2 {
+  border: 2px solid #FF003C;
+  border-left-width: 5px;
+  background: rgba(8,4,20,0.78);
+  box-shadow: 3px 3px 0 #000;
+  padding: 8px 11px 10px 11px;
+  border-radius: 0;
+  position: relative;
+}
+.res-card-v2.cat-SHARD { border-left-color: #00FFFF; }
+.res-card-v2.cat-ROOT  { border-left-color: #00FF66; }
+.res-card-v2.cat-ORE   { border-left-color: #FFAA00; }
+.res-card-v2.cat-ANIMA { border-left-color: #DD66FF; }
+
+.res-card-v2 .rank-pill {
+  position: absolute; top: 4px; right: 6px;
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 10px !important; padding: 2px 6px;
+  background: #000; border: 1px solid currentColor;
+  letter-spacing: 1px; color: #FFE600;
+}
+.res-card-v2 .rcv-name {
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 12px !important; letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+.res-card-v2 .rcv-floor {
+  font-family: 'VT323',monospace; font-weight: 900;
+  font-size: 22px !important; color: #FFFFFF;
+  display: block; line-height: 1.0;
+  text-shadow: 1px 1px 0 #000;
+}
+.res-card-v2 .rcv-floor-lbl, .res-card-v2 .rcv-vwap-lbl, .res-card-v2 .rcv-vel-lbl {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 9px !important;
+  letter-spacing: 1.5px; color: rgba(255,255,255,0.55); display: block; margin-top: 4px;
+}
+.res-card-v2 .rcv-vwap {
+  font-family: 'VT323',monospace; font-size: 16px !important; color: #FFE600; font-weight: 700;
+  text-shadow: 1px 1px 0 #000;
+}
+.res-card-v2 .rcv-discount {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 13px !important;
+  font-weight: 900; padding: 3px 6px; display: inline-block;
+  border: 1px solid currentColor; margin-top: 4px;
+  text-shadow: 1px 1px 0 #000;
+}
+.rcv-discount.disc-buy { color: #2BFF66; background: rgba(43,255,102,0.10); }
+.rcv-discount.disc-prem { color: #FF1A33; background: rgba(255,26,51,0.10); }
+.rcv-discount.disc-fair { color: #FFE600; background: rgba(255,230,0,0.10); }
+.res-card-v2 .rcv-stats-row {
+  display: flex; justify-content: space-between; margin-top: 5px;
+  font-family: 'VT323',monospace; font-size: 12px !important;
+}
+.res-card-v2 .rcv-velocity { color: #00E1FF; }
+.res-card-v2 .rcv-24h {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 11px !important;
+  font-weight: 900; padding: 2px 5px; border: 1px solid currentColor;
+}
+
+/* PAYLOAD investment grade pills */
+.grade-pill {
+  display: inline-block; padding: 2px 7px;
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 11px !important;
+  letter-spacing: 1px; font-weight: 900;
+  border: 2px solid currentColor;
+  text-shadow: 1px 1px 0 #000;
+}
+.grade-A { color: #2BFF66; background: rgba(43,255,102,0.18); }
+.grade-B { color: #00E1FF; background: rgba(0,225,255,0.18); }
+.grade-C { color: #FFE600; background: rgba(255,230,0,0.15); }
+.grade-D { color: #FF8800; background: rgba(255,136,0,0.15); }
+.grade-F { color: #FF1A33; background: rgba(255,26,51,0.15); }
+
+/* PAYLOAD — investment thesis section */
+.payload-thesis {
+  border: 2px solid #00E1FF;
+  border-left-width: 5px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(8,4,30,0.85));
+  padding: 8px 14px;
+  margin: 6px 8px 12px 8px;
+  font-family: 'VT323',monospace;
+  box-shadow: 4px 4px 0 #000;
+}
+.payload-thesis .pt-title {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 12px !important;
+  color: #00E1FF; letter-spacing: 2px; margin-bottom: 6px;
+  text-shadow: 2px 2px 0 #000;
+}
+.payload-thesis .pt-line { color: #FFFFFF; font-size: 13px !important; line-height: 1.5; text-shadow: 1px 1px 0 #000; }
+.payload-thesis .pt-line strong { color: #FFE600; }
+
+/* LOG tab styling — clean documentation feel */
+.log-section {
+  border: 2px solid #FF003C;
+  border-left-width: 5px;
+  background: rgba(0,0,0,0.78);
+  padding: 14px 18px;
+  margin: 12px 18px;
+  box-shadow: 4px 4px 0 #000;
+}
+.log-section h3 {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 13px !important;
+  letter-spacing: 2px; color: #FFFFFF;
+  text-shadow: 2px 2px 0 #000;
+  margin-bottom: 10px; padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,0,60,0.5);
+}
+.log-section h4 {
+  font-family: 'Press Start 2P','VT323',monospace; font-size: 11px !important;
+  letter-spacing: 1.5px; color: #00E1FF;
+  margin: 12px 0 5px 0;
+  text-shadow: 1px 1px 0 #000;
+}
+.log-section p, .log-section li {
+  color: #FFFFFF !important; font-family: 'VT323',monospace;
+  font-size: 14px !important; line-height: 1.6;
+  text-shadow: 1px 1px 0 #000;
+}
+.log-section strong { color: #FFE600 !important; }
+.log-section em { color: #2BFF66 !important; font-style: normal; }
+.log-section code, .log-section .glossary-term {
+  color: #00E1FF !important;
+  font-family: 'Press Start 2P','VT323',monospace;
+  font-size: 12px !important;
+  padding: 1px 6px; border: 1px solid rgba(0,225,255,0.4);
+}
+.log-section ul { margin: 4px 0 8px 18px; }
+.log-section .log-formula {
+  background: rgba(0,225,255,0.08); border-left: 3px solid #00E1FF;
+  padding: 8px 12px; font-family: 'VT323',monospace; font-size: 14px !important;
+  color: #FFFFFF; margin: 8px 0;
+}
+/* === END v12 === */
+style>
   </head>
 <body>
 
@@ -1127,7 +1265,7 @@ table.invest-v1 td .col-name {
   <div class="tab active" data-tab="resources">RESOURCES</div>
   <div class="tab" data-tab="artifacts">ARTIFACTS</div>
   <div class="tab" data-tab="sales">SALES 10D</div>
-  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ PAYLOAD</div>
+  <div class="tab" data-tab="league">&#9650; LEAGUE</div><div class="tab" data-tab="invest">$ PAYLOAD</div><div class="tab" data-tab="log">? LOG</div>
 </div>
 
 <!-- CONTENT -->
@@ -1135,7 +1273,7 @@ table.invest-v1 td .col-name {
   <div id="resources" class="pane active"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="artifacts" class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
   <div id="sales"     class="pane"><div class="loading">FETCHING MARKET DATA...</div></div>
-  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div><div id="invest"  class="pane"></div>
+  <div id="league"    class="pane"><div class="loading">FETCHING MARKET DATA...</div></div><div id="invest"  class="pane"></div><div id="log" class="pane"></div>
 </div>
 
 <!-- STATUS BAR -->
@@ -2569,6 +2707,324 @@ function renderInvest(data) {
   });
 })();
 /* === END v11 JS === */
+
+
+/* === KODAQ v12 — commodities-grade resource cards + LOG tab + PAYLOAD investment thesis === */
+(function() {
+  var RESOURCE_CAT = {
+    'SHARD':  ['KINSOUL','RUNA','LUSTER','MOLDIUM','OBLIVION','BRIMSTONE','BONESTONE','OMNI'],
+    'ROOT':   ['PSYCHOSILK','NETHER','LUNARIAN','WHISPER','PETRIFIED','LUMILEAF','SPIKEWEED'],
+    'ORE':    ['HOLLOWCINE','BRINESLIME','CLAYMER','ONYX','SHATTERFROST','LUMINITE','THERMODITE','ENTRADIUM','SPIRITSEEP','BUBONIUM','VAPORHAZE','PYRUM','TANTALITE','LAPIDITE','CHROMA'],
+    'ANIMA':  ['SULFIRICA','DUSKIA','MAGENTIA','NEBULA','SLAGLIA','FOSSICA','ETHERIA','SCUMBRIA','GLOOMIA','SENTICYBIA','ABYSSIA','STEPPESALT','GLOWPOD','FORTUNA']
+  };
+  var CAT_ORDER = ['ORE','SHARD','ROOT','ANIMA'];
+  function nameToCat(n) { var u=String(n||'').toUpperCase(); for (var k in RESOURCE_CAT) if (RESOURCE_CAT[k].indexOf(u)>=0) return k; return 'OTHER'; }
+  function median(a){ if(!a.length)return 0;var s=a.slice().sort(function(x,y){return x-y;});var m=Math.floor(s.length/2);return s.length%2?s[m]:(s[m-1]+s[m])/2; }
+  function trimOutliers(sales){ if(sales.length<3)return sales;var p=sales.map(function(s){return s.price;});var m=median(p);if(!m)return sales;return sales.filter(function(s){return s.price<=m*5 && s.price>=0.005;}); }
+  function fmtUsd(v){ return v>=1000?'$'+(v/1000).toFixed(1)+'K':'$'+Math.round(v); }
+  function fmtEth(v){ return v.toFixed(4)+' \u039E'; }
+
+  function buildResourceData(data) {
+    if (!data) return null;
+    var ethUsd = data.eth_usd || 0;
+    var nowSec = Math.floor(Date.now()/1000);
+    var tenDayAgo = nowSec - 10*86400;
+    var oneDayAgo = nowSec - 86400;
+    var agg = {};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rs = data[coll] && data[coll].resource_sales;
+      if (!rs) return;
+      Object.keys(rs).forEach(function(direction){
+        var dirData = rs[direction] || {};
+        Object.keys(dirData).forEach(function(rname){
+          var tiers = dirData[rname] || {};
+          Object.keys(tiers).forEach(function(tier){
+            var v = tiers[tier];
+            if (!v || typeof v !== 'object' || typeof v.price_eth !== 'number') return;
+            var key = rname.toUpperCase();
+            if (!agg[key]) agg[key] = {name: rname, sales: [], cat: nameToCat(rname)};
+            if (v.ts >= tenDayAgo) agg[key].sales.push({price: v.price_eth, ts: v.ts});
+          });
+        });
+      });
+    });
+    var currentFloors = {};
+    ['otherdeed','expanded'].forEach(function(coll){
+      var rf = data[coll] && data[coll].resource_floors;
+      if (!rf) return;
+      Object.keys(rf).forEach(function(direction){
+        var dirData = rf[direction] || {};
+        Object.keys(dirData).forEach(function(rname){
+          var tiers = dirData[rname] || {};
+          var minPrice = Infinity;
+          Object.keys(tiers).forEach(function(tier){
+            var p = tiers[tier];
+            if (typeof p === 'number' && p > 0 && p < minPrice) minPrice = p;
+          });
+          var key = rname.toUpperCase();
+          if (minPrice !== Infinity) {
+            if (!currentFloors[key] || minPrice < currentFloors[key]) currentFloors[key] = minPrice;
+          }
+        });
+      });
+    });
+    // Aggregate: VWAP = totalVol/salesCount (per-sale weighted avg).
+    // Also compute per-cat median floor for comparable.
+    var rows = Object.keys(agg).map(function(key){
+      var a = agg[key];
+      var clean = trimOutliers(a.sales);
+      var totalVol = clean.reduce(function(s,x){return s+x.price;},0);
+      var prices = clean.map(function(s){return s.price;});
+      var vwap = clean.length ? totalVol / clean.length : 0;
+      var med = median(prices);
+      var floor = currentFloors[key] || 0;
+      var discountVsVwap = (vwap && floor) ? (floor - vwap) / vwap * 100 : null;
+      var velocity = clean.length / 10; // sales/day over 10d
+      var sales24h = clean.filter(function(x){return x.ts >= oneDayAgo;});
+      var salesPrior = clean.filter(function(x){return x.ts < oneDayAgo;});
+      var dir = 'flat'; var dirPct = 0;
+      if (sales24h.length>0 && salesPrior.length>0) {
+        var avg24h = sales24h.reduce(function(s,x){return s+x.price;},0)/sales24h.length;
+        var avgPrior = salesPrior.reduce(function(s,x){return s+x.price;},0)/salesPrior.length;
+        dirPct = (avg24h - avgPrior)/avgPrior*100;
+        if (dirPct > 0.5) dir='up'; else if (dirPct < -0.5) dir='dn';
+      } else if (clean.length>0 && floor) {
+        clean.sort(function(x,y){return y.ts-x.ts;});
+        dirPct = (floor - clean[0].price)/floor*100;
+        if (dirPct > 0.5) dir='up'; else if (dirPct < -0.5) dir='dn';
+      }
+      // Investment score: rewards (a) discount vs VWAP, (b) high velocity (liquidity), (c) momentum
+      var discountSignal = discountVsVwap !== null ? Math.max(0, -discountVsVwap) : 0;
+      var velSignal = Math.log(1 + velocity * 10) * 8;
+      var momSignal = (dir==='up'? 5 : dir==='dn'? -3 : 0);
+      var score = discountSignal * 0.5 + velSignal + momSignal;
+      return {
+        name: a.name.toUpperCase(), cat: a.cat,
+        floor: floor, vwap: vwap, median: med,
+        totalVol: totalVol, salesCount: clean.length, velocity: velocity,
+        discountVsVwap: discountVsVwap,
+        dir: dir, dirPct: dirPct,
+        score: score, ethUsd: ethUsd
+      };
+    });
+    return {rows: rows, ethUsd: ethUsd};
+  }
+
+  function discountClass(dvw) {
+    if (dvw === null || isNaN(dvw)) return 'disc-fair';
+    if (dvw <= -10) return 'disc-buy';     // floor more than 10% below VWAP -> buy
+    if (dvw >= 10)  return 'disc-prem';    // floor more than 10% above VWAP -> premium
+    return 'disc-fair';
+  }
+  function discountLabel(dvw) {
+    if (dvw === null || isNaN(dvw)) return 'NO DATA';
+    if (dvw < 0) return 'BUY ' + (-dvw).toFixed(1) + '% < VWAP';
+    if (dvw > 0) return 'PREM +' + dvw.toFixed(1) + '% > VWAP';
+    return 'AT FAIR';
+  }
+
+  function renderResourceSummaryV2(data) {
+    var resEl = document.getElementById('resources');
+    if (!resEl) return;
+    var pack = buildResourceData(data);
+    if (!pack) return;
+    var rows = pack.rows;
+    var ethUsd = pack.ethUsd;
+    // Group + rank within category by score desc
+    var byCat = {};
+    CAT_ORDER.forEach(function(c){ byCat[c] = []; });
+    rows.forEach(function(r){ if (byCat[r.cat]) byCat[r.cat].push(r); });
+    Object.keys(byCat).forEach(function(c){ byCat[c].sort(function(a,b){return b.score - a.score;}); });
+    var prior = resEl.querySelector('.res-summary');
+    if (prior) prior.remove();
+    var totalVol = rows.reduce(function(s,r){return s+r.totalVol;},0);
+    var totalSales = rows.reduce(function(s,r){return s+r.salesCount;},0);
+    var html = '<div class="res-summary">';
+    html += '<div class="res-summary-hdr">RESOURCE OVERVIEW \u2014 10D <span class="res-summary-sub">// '+totalSales+' SALES // '+fmtEth(totalVol)+' // '+fmtUsd(totalVol*ethUsd)+' // RANKED IN-CATEGORY BY COMMODITIES SCORE</span></div>';
+    CAT_ORDER.forEach(function(cat){
+      var items = byCat[cat] || [];
+      if (!items.length) return;
+      var catVol = items.reduce(function(s,x){return s+x.totalVol;},0);
+      var catSales = items.reduce(function(s,x){return s+x.salesCount;},0);
+      html += '<div class="res-cat-section">';
+      html += '<div class="res-cat-header cat-'+cat+'">'+cat+'</div>';
+      html += '<span class="res-cat-stats">// '+items.length+' RESOURCES // '+fmtEth(catVol)+' // '+fmtUsd(catVol*ethUsd)+' // '+catSales+' SALES</span>';
+      html += '<div class="res-cards">';
+      items.forEach(function(r, i){
+        var rank = i+1;
+        var dirArrow = r.dir==='up'?'\u25B2':r.dir==='dn'?'\u25BC':'\u2014';
+        var dirCls = r.dir==='up'?'pix-up':r.dir==='dn'?'pix-dn':'pix-flat';
+        var dirSign = r.dirPct > 0 ? '+' : '';
+        html += '<div class="res-card-v2 cat-'+r.cat+'">';
+        html += '<span class="rank-pill">#'+rank+'</span>';
+        html += '<div class="rcv-name cat-'+r.cat+'">'+r.name+'</div>';
+        if (r.salesCount === 0 && !r.floor) {
+          html += '<div class="none-listed">NONE LISTED</div>';
+        } else {
+          html += '<span class="rcv-floor-lbl">FLOOR</span>';
+          html += '<span class="rcv-floor">'+(r.floor?fmtEth(r.floor):'\u2014')+'</span>';
+          if (r.vwap) {
+            html += '<span class="rcv-vwap-lbl">VWAP 10D</span>';
+            html += '<span class="rcv-vwap">'+fmtEth(r.vwap)+'</span>';
+          }
+          if (r.discountVsVwap !== null && r.floor && r.vwap) {
+            html += '<div><span class="rcv-discount '+discountClass(r.discountVsVwap)+'">'+discountLabel(r.discountVsVwap)+'</span></div>';
+          }
+          html += '<div class="rcv-stats-row">';
+          html += '<span class="rcv-velocity">'+r.velocity.toFixed(2)+' sales/day</span>';
+          if (r.salesCount > 0) html += '<span class="'+dirCls+'">'+dirArrow+' '+(r.dirPct?(dirSign+r.dirPct.toFixed(1)+'%'):'\u2014')+'</span>';
+          html += '</div>';
+        }
+        html += '</div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    resEl.insertBefore(div.firstChild, resEl.firstChild);
+  }
+
+  // PAYLOAD: bolt on investment thesis + grade column
+  function gradeAsset(r) {
+    // r = {floor, lastSale, salesCount, dir, score}
+    if (!r.lastSale) return {grade:'D', label:'STALE'};
+    var disc = (r.lastSale - r.floor) / r.lastSale * 100;
+    var liquid = r.salesCount > 0;
+    if (disc >= 20 && liquid && r.score >= 60) return {grade:'A', label:'STRONG BUY'};
+    if (disc >= 10 && liquid && r.score >= 35) return {grade:'B', label:'BUY'};
+    if (disc >= 0)                             return {grade:'C', label:'HOLD/WATCH'};
+    if (disc >= -15)                           return {grade:'D', label:'PREMIUM'};
+    return {grade:'F', label:'OVER-PRICED'};
+  }
+  function renderPayloadThesis() {
+    var iEl = document.getElementById('invest');
+    if (!iEl) return;
+    if (iEl.querySelector('.payload-thesis')) return;
+    var html = '<div class="payload-thesis">';
+    html += '<div class="pt-title">INVESTMENT THESIS \u2014 OTHERDEED RESOURCES</div>';
+    html += '<div class="pt-line">Each row is treated as a <strong>property comp</strong>: ENTRY (current floor) vs FAIR VALUE (last comparable sale) gives the discount/premium. <strong>STRONG BUY</strong> assets show floor below recent comp, with confirmed liquidity. Use <strong>SCORE</strong> to compare relative attractiveness across listings.</div>';
+    html += '<div class="pt-line">Grades: <span class="grade-pill grade-A">A</span> 20%+ discount + liquid &nbsp; <span class="grade-pill grade-B">B</span> 10-20% disc &nbsp; <span class="grade-pill grade-C">C</span> at fair &nbsp; <span class="grade-pill grade-D">D</span> stale/premium &nbsp; <span class="grade-pill grade-F">F</span> over-priced</div>';
+    html += '</div>';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    iEl.insertBefore(div.firstChild, iEl.firstChild);
+  }
+  function applyPayloadGrades() {
+    var iEl = document.getElementById('invest');
+    if (!iEl) return;
+    iEl.querySelectorAll('table.invest-v1 tbody tr').forEach(function(tr){
+      if (tr.querySelector('.grade-pill')) return;
+      // find existing cells: rnk, asset, type, supply, floor, vs last sale, score
+      var floorCell = tr.children[4];
+      var vsCell = tr.children[5];
+      var scoreCell = tr.children[6];
+      if (!scoreCell) return;
+      var floorText = floorCell?.textContent || '';
+      var floorMatch = floorText.match(/(\d+\.\d+)/);
+      var vsText = vsCell?.textContent || '';
+      var vsMatch = vsText.match(/(\d+\.\d+)/);
+      var pctMatch = vsText.match(/([+-]?\d+\.\d+)%/);
+      var scoreVal = parseFloat(scoreCell.textContent) || 0;
+      var floor = floorMatch ? parseFloat(floorMatch[1]) : 0;
+      var lastSale = vsMatch ? parseFloat(vsMatch[1]) : null;
+      var hasUp = !!vsCell?.querySelector('.chg-up');
+      var hasDn = !!vsCell?.querySelector('.chg-dn');
+      var grade = gradeAsset({floor: floor, lastSale: lastSale, salesCount: lastSale?1:0, dir: hasUp?'up':hasDn?'dn':'flat', score: scoreVal});
+      // Inject a grade pill into score cell
+      scoreCell.innerHTML = scoreCell.innerHTML + ' <span class="grade-pill grade-'+grade.grade+'" title="'+grade.label+'">'+grade.grade+'</span>';
+    });
+  }
+
+  // LOG tab content
+  function renderLog() {
+    var lEl = document.getElementById('log');
+    if (!lEl) return;
+    if (lEl.querySelector('.log-section')) return;
+    var html = '';
+    html += '<div class="log-section"><h3>HOW TO READ THIS DASHBOARD</h3>';
+    html += '<p>The KODAQ dashboard tracks Otherdeed (OD) and Otherdeed Expanded (ODE) resource and artifact markets. Data is pulled from on-chain marketplace events and refreshed throughout the day.</p>';
+    html += '<h4>TABS</h4>';
+    html += '<ul>';
+    html += '<li><strong>RESOURCES</strong> \u2014 the floor table for each tier (T1/T2/T3) across all 4 directions (E/N/S/W) for both collections, plus a category-grouped overview ranking each resource within ORE / SHARD / ROOT / ANIMA.</li>';
+    html += '<li><strong>ARTIFACTS</strong> \u2014 every artifact type sorted by floor low \u2192 high. Floor on the left, comparable last-sale on the right with discount/premium %.</li>';
+    html += '<li><strong>LEAGUE</strong> \u2014 top 20 wallet purchases in the last ~30 days, grouped by transaction (so a 30-plot bulk buy is one row, not 30). Ranked by total ETH paid.</li>';
+    html += '<li><strong>PAYLOAD</strong> \u2014 investment-grade ranking. Combines discount vs last sale, listing scarcity, liquidity (sale activity), and absolute floor affordability into a single SCORE. Higher = better entry.</li>';
+    html += '<li><strong>LOG</strong> \u2014 you are here. The how-to.</li>';
+    html += '</ul>';
+    html += '</div>';
+    html += '<div class="log-section"><h3>GLOSSARY</h3>';
+    html += '<p><span class="glossary-term">FLOOR</span> The minimum currently-listed price for an asset \u2014 your immediate entry cost. Refreshes per scrape cycle.</p>';
+    html += '<p><span class="glossary-term">LAST SALE</span> The most recent on-chain sale price for that asset (or comparable slot). Used as a proxy for "what someone was willing to pay."</p>';
+    html += '<p><span class="glossary-term">VS LAST SALE %</span> Computed as <em>(floor \u2212 last_sale) / floor \u00D7 100</em>. Negative = floor below last sale (buying discount). Positive = floor above last sale (asking premium).</p>';
+    html += '<p><span class="glossary-term">VWAP</span> Volume-Weighted Average Price over the trailing 10 days, after outlier trimming. The closest thing to a "fair value" we can derive purely from market data.</p>';
+    html += '<p><span class="glossary-term">DISCOUNT vs VWAP</span> <em>(floor \u2212 vwap) / vwap \u00D7 100</em>. The commodities-market signal: a negative reading means the current entry price is below the trailing fair value \u2014 a buy signal if liquidity confirms the activity is real.</p>';
+    html += '<p><span class="glossary-term">VOLUME 10D</span> Sum of all sale prices in the last 10 days, in ETH \u2014 the trading throughput.</p>';
+    html += '<p><span class="glossary-term">SALES / DAY (VELOCITY)</span> Sales count divided by 10 \u2014 the speed of the market. High velocity = liquid, easy to enter and exit. Low = thin, prone to slippage.</p>';
+    html += '<p><span class="glossary-term">AVG/SALE (median)</span> The median of the 10D sales after outlier trimming \u2014 a more robust "what most people paid" than VWAP because it ignores extremes.</p>';
+    html += '<p><span class="glossary-term">SCORE</span> Composite investment ranking. <em>45% discount + 20% scarcity + 20% liquidity + 15% affordability</em>.</p>';
+    html += '<p><span class="glossary-term">GRADE</span> Property-style letter grade derived from SCORE + discount + liquidity. <strong>A</strong> = strong buy, <strong>B</strong> = buy, <strong>C</strong> = hold/watch, <strong>D</strong> = premium, <strong>F</strong> = over-priced.</p>';
+    html += '<p><span class="glossary-term">TIER (T1/T2/T3)</span> Rarity tier of the resource trait. T1 is the rarest (typically priciest) within a region.</p>';
+    html += '<p><span class="glossary-term">DIRECTION (E/N/S/W)</span> The deed direction the resource is found in. Each combination has its own granular floor.</p>';
+    html += '</div>';
+    html += '<div class="log-section"><h3>HOW TO READ A RESOURCE CARD</h3>';
+    html += '<p>Each card on the RESOURCES overview shows the same five things every time, top to bottom:</p>';
+    html += '<ul>';
+    html += '<li><strong>NAME</strong> in the category color (ORE = orange, SHARD = cyan, ROOT = green, ANIMA = purple).</li>';
+    html += '<li><strong>FLOOR</strong> \u2014 your entry price right now.</li>';
+    html += '<li><strong>VWAP 10D</strong> in yellow \u2014 the volume-weighted average over the last 10 days.</li>';
+    html += '<li><strong>DISCOUNT vs VWAP</strong> in colored pill \u2014 GREEN = below fair (BUY), YELLOW = at fair, RED = above fair (PREMIUM).</li>';
+    html += '<li><strong>SALES/DAY + 24H direction</strong> at the bottom \u2014 liquidity + short-term momentum.</li>';
+    html += '</ul>';
+    html += '<p>Cards are <strong>ranked within their category</strong> by composite score. The #1 card in each section is the most attractive entry given current data.</p>';
+    html += '</div>';
+    html += '<div class="log-section"><h3>METHODOLOGY</h3>';
+    html += '<h4>Outlier trimming</h4><p>Resource sales over <strong>5\u00D7 the median</strong> for that resource are excluded from VWAP/volume calculations. These are typically bundled-sale artifacts (someone paid a high plot price that included the resource trait). Cards label the trimmed count e.g. <code>17 sales / 1 trimmed</code>.</p>';
+    html += '<h4>Bullish / bearish convention</h4><p>We use <em>list price</em> (floor) as the base for percentage moves. A negative reading means the market is currently listing below recent paid prices \u2014 a discount. A positive reading means sellers are asking more than recent comps.</p>';
+    html += '<h4>League tx grouping</h4><p>Wallet bulk purchases share a timestamp on-chain. We group sales within the same collection by <code>ts</code>; one row per transaction with a count badge.</p>';
+    html += '<h4>Ticker</h4><p>The red banner shows the latest sales for the active tab \u2014 resources on RESOURCES, artifacts on ARTIFACTS. Sorted newest first. Slow-scrolls so you can read it.</p>';
+    html += '</div>';
+    html += '<div class="log-section"><h3>DATA CONFIDENCE</h3>';
+    html += '<p>Each metric carries different reliability:</p>';
+    html += '<ul>';
+    html += '<li><strong>FLOOR</strong> <span class="grade-pill grade-A">HIGH</span> Pulled fresh per scrape cycle.</li>';
+    html += '<li><strong>LAST SALE</strong> <span class="grade-pill grade-A">HIGH</span> On-chain event; immutable.</li>';
+    html += '<li><strong>VWAP / VOLUME</strong> <span class="grade-pill grade-B">MED-HIGH</span> Aggregated from 10D event data after outlier trim.</li>';
+    html += '<li><strong>SUPPLY / LISTING COUNT</strong> <span class="grade-pill grade-D">LOW-MED</span> Granular slot count, not the full marketplace order book.</li>';
+    html += '<li><strong>24H DIRECTION</strong> <span class="grade-pill grade-C">MIXED</span> Falls back to floor-vs-last-sale when 24h sample is sparse.</li>';
+    html += '<li><strong>SCORE / GRADE</strong> <span class="grade-pill grade-B">MED-HIGH</span> Composite \u2014 only as good as inputs above.</li>';
+    html += '</ul>';
+    html += '<p style="margin-top:10px;color:rgba(255,255,255,0.7) !important;">This dashboard is informational. None of it is financial advice. Always verify on-chain before placing capital.</p>';
+    html += '</div>';
+    lEl.innerHTML = html;
+  }
+
+  function tick() {
+    if (!window.__lastData) {
+      fetch('price_snapshot_latest.json?cb='+Date.now()).then(function(r){return r.json();}).then(function(d){
+        window.__lastData = d;
+        renderResourceSummaryV2(d);
+      }).catch(function(){});
+    } else {
+      renderResourceSummaryV2(window.__lastData);
+    }
+    renderPayloadThesis();
+    applyPayloadGrades();
+    renderLog();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ setTimeout(tick, 1300); });
+  else setTimeout(tick, 1300);
+  setTimeout(tick, 3000);
+  setTimeout(tick, 5000);
+  setInterval(tick, 60*1000);
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('[data-tab]');
+    if (!t) return;
+    setTimeout(tick, 100);
+    setTimeout(tick, 600);
+  });
+})();
+/* === END v12 JS === */
 
 </script>
 </body>
