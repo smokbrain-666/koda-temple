@@ -295,66 +295,81 @@ body::before {
 .chg-dn  { color:#FF5555; font-size:18px; display:inline-block; text-shadow:0 0 8px #FF5555; }
 .chg-eq  { color:#666;    font-size:15px; display:inline-block; }
 
-/* === KODAQ DASHBOARD VISUAL OVERRIDES (custom request 2026-05-07) === */
+/* === KODAQ DASHBOARD VISUAL OVERRIDES (v2 cosmic 2026-05-08) === */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 :root {
-  --neon-blue:    #00CCFF;
-  --neon-green:   #00FF14;
-  --blood-red:    #B00000;
+  --neon-blue:    #00E1FF;
+  --neon-cyan:    #00FFE1;
+  --neon-green:   #2BFF66;
+  --blood-red:    #C40000;
   --bright-yellow:#FFE600;
   --pure-white:   #FFFFFF;
-  --glow-white:   0 0 6px #FFFFFF, 0 0 14px rgba(255,255,255,0.85), 0 0 26px rgba(255,255,255,0.55);
-  --glow-blue:    0 0 6px #00CCFF, 0 0 14px rgba(0,200,255,0.8),  0 0 26px rgba(0,200,255,0.5);
-  --glow-green-x: 0 0 6px #00FF14, 0 0 14px rgba(0,255,20,0.85),  0 0 26px rgba(0,255,20,0.5);
-  --glow-red-x:   0 0 6px #B00000, 0 0 14px rgba(176,0,0,0.9),    0 0 26px rgba(176,0,0,0.55);
-  --glow-yellow-x:0 0 6px #FFE600, 0 0 14px rgba(255,230,0,0.85), 0 0 28px rgba(255,230,0,0.55);
+  --cosmic-purple:#B57BFF;
+  --hot-magenta:  #FF3CE0;
+  --glow-white:   0 0 8px #FFFFFF, 0 0 18px rgba(255,255,255,0.95), 0 0 32px rgba(255,255,255,0.65);
+  --glow-blue:    0 0 8px #00E1FF, 0 0 18px rgba(0,225,255,0.95), 0 0 32px rgba(0,225,255,0.6), 0 0 50px rgba(181,123,255,0.4);
+  --glow-green-x: 0 0 8px #2BFF66, 0 0 18px rgba(43,255,102,0.9),  0 0 32px rgba(43,255,102,0.55);
+  --glow-red-x:   0 0 8px #C40000, 0 0 18px rgba(196,0,0,0.95),    0 0 32px rgba(196,0,0,0.6);
+  --glow-yellow-x:0 0 8px #FFE600, 0 0 18px rgba(255,230,0,0.95),  0 0 32px rgba(255,230,0,0.6);
+  --glow-cosmic:  0 0 8px #B57BFF, 0 0 22px rgba(181,123,255,0.85),0 0 36px rgba(255,60,224,0.5);
 }
-/* KODAQ logo: bigger, bolder, centered, white glow */
-#hdr { text-align: center !important; }
+@keyframes kodaq-pulse {
+  0%, 100% { text-shadow: var(--glow-white), 0 0 50px rgba(181,123,255,0.5); }
+  50% { text-shadow: 0 0 14px #FFFFFF, 0 0 30px rgba(255,255,255,1), 0 0 60px rgba(181,123,255,0.85), 0 0 90px rgba(255,60,224,0.55); }
+}
+@keyframes holo-shimmer {
+  0%, 100% { filter: brightness(1.0); }
+  50% { filter: brightness(1.18); }
+}
+#hdr { text-align: center !important; position: relative; }
 #hdr-logo {
-  font-size: 72px !important;
+  font-family: 'Orbitron', 'VT323', monospace !important;
+  font-size: 76px !important;
   font-weight: 900 !important;
-  letter-spacing: 14px !important;
+  letter-spacing: 16px !important;
   text-align: center !important;
   width: 100% !important;
   display: block !important;
   margin: 0 auto !important;
   color: #FFFFFF !important;
-  text-shadow: var(--glow-white) !important;
+  text-shadow: var(--glow-white), 0 0 50px rgba(181,123,255,0.5) !important;
+  animation: kodaq-pulse 3.5s ease-in-out infinite !important;
 }
-/* Resource + artifact NAMES = bright white glowing */
 .col-name, .sym, .cat-title, .type-res, .type-art, .type-koda {
   color: var(--pure-white) !important;
   text-shadow: var(--glow-white) !important;
   font-weight: 700 !important;
+  filter: brightness(1.05);
 }
-/* Tabs + page section titles = neon blue */
 .tab, .col-hdr, .league-hdr, .art-hdr, .sales-hdr, .cat-hdr, .col-badge, .cat-sub {
   color: var(--neon-blue) !important;
   text-shadow: var(--glow-blue) !important;
   font-weight: 700 !important;
+  font-family: 'Orbitron', 'VT323', monospace !important;
+  letter-spacing: 2px !important;
 }
 .tab.active {
-  color: var(--neon-blue) !important;
-  text-shadow: var(--glow-blue) !important;
+  color: #FFFFFF !important;
+  text-shadow: var(--glow-blue), var(--glow-cosmic) !important;
   border-bottom: 2px solid var(--neon-blue) !important;
+  background: linear-gradient(180deg, rgba(0,225,255,0.10) 0%, rgba(181,123,255,0.10) 100%) !important;
 }
-/* Floor + chart price data = neon blue */
 .eth-val, .usd-val, .col-stat, .ti-price, .t1c, .t2c, .t3c {
   color: var(--neon-blue) !important;
   text-shadow: var(--glow-blue) !important;
+  font-weight: 700 !important;
 }
-/* LEAGUE table: top 3 = bright yellow, rest = white */
 .rank-gold, .rank-silver, .rank-bronze {
   color: var(--bright-yellow) !important;
   text-shadow: var(--glow-yellow-x) !important;
   font-weight: 900 !important;
+  font-family: 'Orbitron', 'VT323', monospace !important;
 }
 .rank-rest {
   color: var(--pure-white) !important;
   text-shadow: var(--glow-white) !important;
   font-weight: 700 !important;
 }
-/* Percentage moves: up = neon green, down = blood red */
 .sale-up, .chg-up {
   color: var(--neon-green) !important;
   text-shadow: var(--glow-green-x) !important;
@@ -365,31 +380,46 @@ body::before {
   text-shadow: var(--glow-red-x) !important;
   font-weight: 700 !important;
 }
-.sale-eq, .chg-eq { color: rgba(255,255,255,0.65) !important; }
-/* Animated up-arrow for league movers (only in league section) */
-@keyframes lm-bounce { 0%,100% { transform: translateY(0); opacity:1; } 50% { transform: translateY(-5px); opacity:.65; } }
-@keyframes lm-pulse  { 0%,100% { text-shadow: var(--glow-green-x); } 50% { text-shadow: 0 0 12px #00FF14, 0 0 28px rgba(0,255,20,0.9), 0 0 42px rgba(0,255,20,0.65); } }
-.league-table .league-mover-up::before,
+.sale-eq, .chg-eq { color: rgba(255,255,255,0.7) !important; }
+@keyframes lm-bounce { 0%,100% { transform: translateY(0); opacity:1; } 50% { transform: translateY(-6px); opacity:.7; } }
+@keyframes lm-pulse  { 0%,100% { text-shadow: var(--glow-green-x); } 50% { text-shadow: 0 0 14px #2BFF66, 0 0 30px rgba(43,255,102,0.95), 0 0 46px rgba(43,255,102,0.7); } }
 .league-mover-up::before {
-  content: "\25B2";
-  display: inline-block;
-  color: var(--neon-green);
-  font-size: 0.95em;
-  margin-right: 8px;
-  text-shadow: var(--glow-green-x);
+  content: "\25B2"; display: inline-block; color: var(--neon-green); font-size: 0.95em;
+  margin-right: 8px; text-shadow: var(--glow-green-x);
   animation: lm-bounce 0.85s ease-in-out infinite, lm-pulse 1.2s ease-in-out infinite;
 }
-.league-table .league-mover-down::before,
 .league-mover-down::before {
-  content: "\25BC";
-  display: inline-block;
-  color: var(--blood-red);
-  font-size: 0.95em;
-  margin-right: 8px;
-  text-shadow: var(--glow-red-x);
+  content: "\25BC"; display: inline-block; color: var(--blood-red); font-size: 0.95em;
+  margin-right: 8px; text-shadow: var(--glow-red-x);
 }
-/* Slightly lighter overlay so the kodaq_bg.jpg shows behind the bright text */
-body::after { background: rgba(0,0,0,0.45) !important; }
+body::after {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(181,123,255,0.18), transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(255,60,224,0.12), transparent 60%),
+    rgba(8,4,20,0.40) !important;
+}
+.cat-block, .cat-hdr { border-color: rgba(181,123,255,0.45) !important; }
+.lg-count {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 9px;
+  font-size: 0.78em;
+  color: #FFFFFF !important;
+  background: linear-gradient(135deg, #B57BFF 0%, #00E1FF 100%);
+  border-radius: 10px;
+  font-weight: 700;
+  text-shadow: none !important;
+  letter-spacing: 1px;
+  box-shadow: 0 0 12px rgba(181,123,255,0.7);
+  font-family: 'Orbitron', 'VT323', monospace;
+}
+.lg-total {
+  color: var(--cosmic-purple) !important;
+  text-shadow: var(--glow-cosmic) !important;
+  font-weight: 700 !important;
+  font-size: 0.88em;
+}
+.cat-name { color: var(--cosmic-purple) !important; text-shadow: var(--glow-cosmic) !important; font-weight: 700 !important; }
 /* === END OVERRIDES === */
 </style>
 </head>
@@ -1040,6 +1070,95 @@ async function load(){
 }
 load();
 setInterval(load, 60*60*1000);
+
+/* === KODAQ league v2: group sales by ts (bulk-tx wallet purchases) === */
+function renderLeague(data) {
+  var el = document.getElementById('league');
+  if (!el) return;
+  var ethUsd = (data && data.eth_usd) || 0;
+  var COL_LABEL = {otherdeed: 'OD', expanded: 'ODE'};
+  function catType(cat) {
+    if (cat === 'Artifact') return 'art';
+    if (cat === 'Koda') return 'koda';
+    if (cat === 'Plot') return 'plot';
+    if (/Resource/.test(cat)) return 'res';
+    if (cat === 'Goliath Kills' || cat === 'Obelisk Piece') return 'misc';
+    return 'trait';
+  }
+  var TYPE_LABEL = {res:'RES', art:'ART', koda:'KODA', plot:'PLOT', trait:'TRT', misc:'OBJ'};
+  var all = [];
+  ['otherdeed','expanded'].forEach(function(c) {
+    if (!data[c] || !data[c].sales_traits) return;
+    var st = data[c].sales_traits;
+    Object.keys(st).forEach(function(cat) {
+      Object.keys(st[cat]).forEach(function(item) {
+        var v = st[cat][item];
+        if (!v || typeof v !== 'object' || typeof v.price_eth !== 'number') return;
+        all.push({coll: COL_LABEL[c], cat: cat, name: item, type: catType(cat), price: v.price_eth, ts: v.ts || 0});
+      });
+    });
+  });
+  // Group by ts within same collection (single-tx wallet bulk purchases share a ts)
+  var groups = {};
+  all.forEach(function(s) {
+    var k = s.ts + '|' + s.coll;
+    if (!groups[k]) groups[k] = {ts: s.ts, coll: s.coll, items: []};
+    groups[k].items.push(s);
+  });
+  var rows = Object.keys(groups).map(function(k) {
+    var g = groups[k];
+    g.items.sort(function(a,b){ return b.price - a.price; });
+    var totalEth = g.items.reduce(function(s,i){ return s + i.price; }, 0);
+    var cats = []; var seen = {};
+    g.items.forEach(function(i){ if (!seen[i.cat]) { seen[i.cat] = 1; cats.push(i.cat); } });
+    return {ts: g.ts, coll: g.coll, rep: g.items[0], count: g.items.length, totalEth: totalEth, cats: cats};
+  });
+  rows.sort(function(a,b){ return b.totalEth - a.totalEth; });
+  var top = rows.slice(0, 20);
+  function ago(ts) {
+    if (!ts) return '--';
+    var sec = Math.floor(Date.now()/1000) - ts;
+    if (sec < 60) return sec + 's ago';
+    if (sec < 3600) return Math.floor(sec/60) + 'm ago';
+    if (sec < 86400) return Math.floor(sec/3600) + 'h ago';
+    return Math.floor(sec/86400) + 'd ago';
+  }
+  var html = '<div class="league-table-wrap" style="padding:12px 18px;">';
+  html += '<div class="league-hdr" style="font-size:22px;padding:14px 16px;letter-spacing:3px;">';
+  html += '\u25B2 TOP 20 WALLET PURCHASES <span class="cat-sub" style="font-size:14px;">// GROUPED BY TX // BOTH COLLECTIONS // RANKED BY TOTAL ETH</span>';
+  html += '</div>';
+  html += '<table class="mkt-table league-table" style="width:100%;"><thead><tr>';
+  html += '<th>RNK</th><th>ITEM</th><th>TYPE</th><th>CAT</th><th>BULK</th><th>COL</th>';
+  html += '<th class="r">TOP PRICE</th><th class="r">TOTAL ETH</th><th class="r">USD</th><th class="r">SOLD</th>';
+  html += '</tr></thead><tbody>';
+  top.forEach(function(g, i) {
+    var rank = i+1;
+    var rankCls = 'rank-rest';
+    if (rank===1) rankCls='rank-gold';
+    else if (rank===2) rankCls='rank-silver';
+    else if (rank===3) rankCls='rank-bronze';
+    var usdNum = g.totalEth * ethUsd;
+    var usd = usdNum >= 1000 ? '$' + (usdNum/1000).toFixed(1) + 'K' : '$' + usdNum.toFixed(0);
+    var catLabel = g.cats.length > 1 ? g.cats[0] + ' +' + (g.cats.length-1) : (g.cats[0] || '');
+    var countBadge = g.count > 1 ? ('<span class="lg-count">x' + g.count + '</span>') : '';
+    html += '<tr>';
+    html += '<td><span class="' + rankCls + '">#' + rank + '</span></td>';
+    html += '<td><span class="col-name">' + g.rep.name + '</span>' + countBadge + '</td>';
+    html += '<td><span class="col-badge type-' + g.rep.type + '">' + (TYPE_LABEL[g.rep.type]||'OBJ') + '</span></td>';
+    html += '<td><span class="cat-name">' + catLabel + '</span></td>';
+    html += '<td><span class="lg-total">' + g.count + ' ITEM' + (g.count>1?'S':'') + '</span></td>';
+    html += '<td><span class="col-badge">' + g.coll + '</span></td>';
+    html += '<td class="r"><span class="eth-val">' + g.rep.price.toFixed(4) + ' \u039E</span></td>';
+    html += '<td class="r"><span class="eth-val">' + g.totalEth.toFixed(4) + ' \u039E</span></td>';
+    html += '<td class="r"><span class="usd-val">' + usd + '</span></td>';
+    html += '<td class="r"><span class="usd-val">' + ago(g.ts) + '</span></td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table></div>';
+  el.innerHTML = html;
+}
+/* === end league v2 === */
+
 </script>
 </body>
 </html>
