@@ -509,6 +509,23 @@ th {
 }
 /* === END v3 === */
 
+/* === KODAQ v4 brightness rebalance (text 85%, data 59.5%) === */
+#hdr-logo, .col-name, .sym, .cat-title, .type-res, .type-art, .type-koda,
+.tab, .col-hdr, .league-hdr, .art-hdr, .sales-hdr, .cat-hdr, .col-badge, .cat-sub,
+.ti-name, .ti-sep, th, .dir-tag, .dirs span, .dirs > *,
+.t1c, .t2c, .t3c, .tier-badge-sm,
+.no-data, .pending-notice, .cat-name {
+  filter: brightness(0.85) !important;
+}
+.col-stat, .eth-val, .usd-val, .ti-price, #hdr-meta, #hdr-meta span,
+.sale-up, .sale-dn, .chg-up, .chg-dn, .sale-eq, .chg-eq,
+.lg-total, .lg-count,
+.rank-gold, .rank-silver, .rank-bronze, .rank-rest {
+  filter: brightness(0.595) !important;
+}
+/* === END v4 === */
+
+
 </style>
 </head>
 <body>
@@ -727,7 +744,7 @@ function renderResources(data){
               if(saleEntry){
                 const sp=saleEntry.price_eth;
                 const diff=p-sp;
-                const pct=Math.abs(diff/sp*100).toFixed(1);
+                const pct=Math.abs(diff/p*100).toFixed(1);
                 if(diff>0.0001){
                   html+=`<span class="sale-up">&#9650; ${fe(sp)} (+${pct}%)</span>`;
                 } else if(diff<-0.0001){
@@ -816,7 +833,7 @@ function renderArtifacts(data){
         let chgHtml='<span class="chg-eq">&#9644;</span>';
         if(floorP!=null&&saleP!=null){
           const diff=floorP-saleP;
-          const pct=Math.abs(diff/saleP*100).toFixed(1);
+          const pct=Math.abs(diff/floorP*100).toFixed(1);
           if(diff>0.0001)      chgHtml=`<span class="chg-up">&#9650; +${pct}%</span>`;
           else if(diff<-0.0001) chgHtml=`<span class="chg-dn">&#9660; -${pct}%</span>`;
         } else if(floorP==null&&saleP!=null){ chgHtml='<span class="chg-eq">NO LIST</span>'; }
