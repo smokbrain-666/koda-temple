@@ -3262,12 +3262,23 @@ function renderInvest(data) {
   // 4. Tag .res-cat-section with res-cat-{CAT} class so CSS box can color it
   function tagSections() {
     var sections = document.querySelectorAll('#resources .res-cat-section');
+    var colorMap = {'ORE':'#FFAA00','SHARD':'#00FFFF','ROOT':'#00FF66','ANIMA':'#DD66FF'};
     sections.forEach(function(sec){
       var hdr = sec.querySelector('.res-cat-header');
       if (!hdr) return;
       var cat = (hdr.textContent || '').trim();
       sec.classList.remove('res-cat-ORE','res-cat-SHARD','res-cat-ROOT','res-cat-ANIMA');
       if (cat) sec.classList.add('res-cat-' + cat);
+      var col = colorMap[cat];
+      if (col) {
+        sec.style.setProperty('border-width', '3px', 'important');
+        sec.style.setProperty('border-style', 'solid', 'important');
+        sec.style.setProperty('border-color', col, 'important');
+        // cards inside
+        sec.querySelectorAll('.res-card-v2').forEach(function(card){
+          card.style.setProperty('border-color', col, 'important');
+        });
+      }
     });
   }
 
