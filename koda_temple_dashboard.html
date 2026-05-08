@@ -1373,7 +1373,89 @@ e>
 }
 /* === END v14 === */
 
-  </style>
+ 
+
+/* === KODAQ v15 — bright white card text + lock section box borders === */
+
+/* Force resource card text WHITE — overrides .cat-XXX color rule */
+.res-card-v2 .rcv-name,
+.cat-ORE .rcv-name, .cat-SHARD .rcv-name, .cat-ROOT .rcv-name, .cat-ANIMA .rcv-name,
+.res-card-v2 .rcv-floor,
+.res-card-v2 .rcv-floor-lbl,
+.res-card-v2 .rcv-vwap,
+.res-card-v2 .rcv-vwap-lbl,
+.res-card-v2 .rcv-vel-lbl,
+.res-card-v2 .rcv-velocity,
+.res-card-v2 .rcv-stats-row,
+.res-card-v2 .none-listed {
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000 !important;
+  opacity: 1 !important;
+  -webkit-text-stroke: 0 !important;
+}
+
+/* Resource name bright + bigger */
+.res-card-v2 .rcv-name {
+  font-size: 13px !important;
+  letter-spacing: 1.8px !important;
+}
+
+/* Floor value bigger + crystal clear */
+.res-card-v2 .rcv-floor {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+}
+
+/* VWAP value white not yellow */
+.res-card-v2 .rcv-vwap {
+  color: #FFFFFF !important;
+  font-size: 17px !important;
+}
+
+/* Sub-labels (FLOOR, VWAP 10D, etc.) — white but smaller */
+.res-card-v2 .rcv-floor-lbl,
+.res-card-v2 .rcv-vwap-lbl,
+.res-card-v2 .rcv-vel-lbl {
+  color: rgba(255,255,255,0.85) !important;
+  font-size: 9.5px !important;
+}
+
+/* SECTION HEADER buttons (ORE/SHARD/ROOT/ANIMA labels) — bright WHITE on neon bg */
+.res-cat-header,
+.res-cat-header.cat-ORE,
+.res-cat-header.cat-SHARD,
+.res-cat-header.cat-ROOT,
+.res-cat-header.cat-ANIMA {
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000, 2px 2px 0 #000 !important;
+  -webkit-text-stroke: 0.4px #000 !important;
+}
+
+/* SECTION BOX BORDERS — high-specificity to beat any other rule */
+body div#resources div.res-cat-section.res-cat-ORE   { border: 3px solid #FFAA00 !important; }
+body div#resources div.res-cat-section.res-cat-SHARD { border: 3px solid #00FFFF !important; }
+body div#resources div.res-cat-section.res-cat-ROOT  { border: 3px solid #00FF66 !important; }
+body div#resources div.res-cat-section.res-cat-ANIMA { border: 3px solid #DD66FF !important; }
+
+/* Card borders inside each section (subtle but visible) */
+body div.res-cat-section.res-cat-ORE   .res-card-v2 { border: 2px solid #FFAA00 !important; border-left: 5px solid #FFAA00 !important; }
+body div.res-cat-section.res-cat-SHARD .res-card-v2 { border: 2px solid #00FFFF !important; border-left: 5px solid #00FFFF !important; }
+body div.res-cat-section.res-cat-ROOT  .res-card-v2 { border: 2px solid #00FF66 !important; border-left: 5px solid #00FF66 !important; }
+body div.res-cat-section.res-cat-ANIMA .res-card-v2 { border: 2px solid #DD66FF !important; border-left: 5px solid #DD66FF !important; }
+
+/* Discount pills — keep BUY green / PREM red / FAIR yellow but readable */
+.rcv-discount.disc-buy  { color: #2BFF66 !important; }
+.rcv-discount.disc-prem { color: #FF1A33 !important; }
+.rcv-discount.disc-fair { color: #FFE600 !important; }
+
+/* Rank pill — keep yellow accent */
+.res-card-v2 .rank-pill { color: #FFE600 !important; }
+
+/* Stats row override */
+.res-card-v2 .rcv-stats-row .pix-up { color: #2BFF66 !important; }
+.res-card-v2 .rcv-stats-row .pix-dn { color: #FF1A33 !important; }
+/* === END v15 === */
+ </style>
   </head>
 <body>
 
