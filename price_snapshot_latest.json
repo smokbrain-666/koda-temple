@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-05-26T19:34:11",
-  "eth_usd": 2070.21,
+  "fetched_at": "2026-05-26T23:49:56",
+  "eth_usd": 2073.42,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.104,
-      "volume_eth": 606279.893534547,
+      "volume_eth": 606280.0355305469,
       "num_owners": 13974,
       "listed": null
     },
@@ -3178,91 +3178,96 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.096879,
+      "floor_eth": 0.096548,
       "volume_eth": 18418.474442139755,
       "num_owners": 12123,
       "listed": null
     },
     "raw_traits": {
       "Plot": {
-        "54558": 0.0968789,
-        "54751": 0.09687899
+        "54558": 0.0965476,
+        "54751": 0.09654769,
+        "66832": 0.09654789
       },
       "Category": {
-        "Spirit": 0.0968789,
-        "Harsh": 0.09687899
+        "Spirit": 0.0965476,
+        "Harsh": 0.09654769,
+        "Growth": 0.09654789
       },
       "Sediment": {
-        "Infinite Expanse": 0.0968789
+        "Infinite Expanse": 0.0965476,
+        "Rainbow Atmos": 0.09654789
       },
       "Environment": {
-        "Steppes": 0.0968789,
-        "Splinter": 0.09687899
+        "Steppes": 0.0965476,
+        "Splinter": 0.09654769,
+        "Mystic": 0.09654789
       },
       "Goliath Kills": {
-        "0": 0.0968789,
-        "1": 0.09687899
+        "0": 0.0965476,
+        "1": 0.09654769
       },
       "Obelisk Piece": {
-        "First Trip": 0.0968789,
-        "Koda Origins": 0.0968789
+        "First Trip": 0.0965476,
+        "Koda Origins": 0.0965476
       },
       "Sediment Tier": {
-        "1": 0.0968789,
-        "3": 0.09687899
+        "1": 0.0965476,
+        "3": 0.09654769,
+        "2": 0.09654789
       },
       "Eastern Resource": {
-        "Lunarian": 0.0968789
+        "Lunarian": 0.0965476
       },
       "Environment Tier": {
-        "4": 0.0968789,
-        "2": 0.09687899
+        "4": 0.0965476,
+        "2": 0.09654769
       },
       "Northern Resource": {
-        "Whisper": 0.0968789,
-        "Bonestone": 0.09687899
+        "Whisper": 0.0965476,
+        "Bonestone": 0.09654769
       },
       "Eastern Resource Tier": {
-        "1": 0.0968789
+        "1": 0.0965476
       },
       "Northern Resource Tier": {
-        "1": 0.0968789
+        "1": 0.0965476
       },
       "Western Resource": {
-        "Oblivion": 0.09687899
+        "Oblivion": 0.09654769
       },
       "Southern Resource": {
-        "Kinsoul": 0.09687899
+        "Kinsoul": 0.09654769
       },
       "Western Resource Tier": {
-        "1": 0.09687899
+        "1": 0.09654769
       },
       "Southern Resource Tier": {
-        "1": 0.09687899
+        "1": 0.09654769
       }
     },
     "resource_floors": {
       "Northern": {
         "Whisper": {
-          "1": 0.0968789
+          "1": 0.0965476
         },
         "Bonestone": {
-          "1": 0.09687899
+          "1": 0.09654769
         }
       },
       "Eastern": {
         "Lunarian": {
-          "1": 0.0968789
+          "1": 0.0965476
         }
       },
       "Western": {
         "Oblivion": {
-          "1": 0.09687899
+          "1": 0.09654769
         }
       },
       "Southern": {
         "Kinsoul": {
-          "1": 0.09687899
+          "1": 0.09654769
         }
       }
     },
