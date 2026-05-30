@@ -1,19 +1,19 @@
 {
-  "fetched_at": "2026-05-30T07:59:19",
-  "eth_usd": 2013.36,
+  "fetched_at": "2026-05-30T12:02:37",
+  "eth_usd": 2014.56,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0988322,
+      "floor_eth": 0.0979723,
       "volume_eth": 606283.5866295471,
       "num_owners": 13976,
       "listed": null
     },
     "raw_traits": {
       "Plot": {
-        "55734": 0.0988323,
-        "99872": 0.09883239,
-        "60260": 0.098999,
-        "60261": 0.098999,
+        "55734": 0.0979722,
+        "99872": 0.09797229,
+        "60260": 0.097999,
+        "60261": 0.097999,
         "52782": 0.099,
         "25760": 0.099,
         "76771": 0.099,
@@ -92,7 +92,6 @@
         "83632": 0.33,
         "8852": 0.39,
         "90876": 0.4,
-        "68885": 0.4,
         "7490": 0.41,
         "9936": 0.43,
         "82353": 0.44,
@@ -219,26 +218,26 @@
         "13689": 70.0
       },
       "Category": {
-        "Volcanic": 0.0988323,
-        "Spirit": 0.09883239,
-        "Harsh": 0.098999,
-        "Decay": 0.098999,
+        "Volcanic": 0.0979722,
+        "Spirit": 0.09797229,
+        "Harsh": 0.097999,
+        "Decay": 0.097999,
         "Growth": 0.099,
         "Psychedelic": 0.13,
         "Mineral": 0.175
       },
       "Sediment": {
-        "Infinite Expanse": 0.0988323,
-        "Cosmic Dream": 0.09883239,
+        "Infinite Expanse": 0.0979722,
+        "Cosmic Dream": 0.09797229,
         "Chemical Goo": 0.099,
         "Rainbow Atmos": 0.099,
         "Biogenic Swamp": 0.312
       },
       "Environment": {
-        "Sulfuric": 0.0988323,
-        "Sands": 0.09883239,
-        "Splinter": 0.098999,
-        "Thornwood": 0.098999,
+        "Sulfuric": 0.0979722,
+        "Sands": 0.09797229,
+        "Splinter": 0.097999,
+        "Thornwood": 0.097999,
         "Bog": 0.099,
         "Veldan": 0.099,
         "Wastes": 0.099,
@@ -265,20 +264,20 @@
         "Plague": 4.5
       },
       "Sediment Tier": {
-        "1": 0.0988323,
-        "2": 0.09883239,
+        "1": 0.0979722,
+        "2": 0.09797229,
         "3": 0.099
       },
       "Environment Tier": {
-        "4": 0.0988323,
-        "1": 0.09883239,
-        "2": 0.098999,
+        "4": 0.0979722,
+        "1": 0.09797229,
+        "2": 0.097999,
         "3": 0.10795,
         "5": 0.29
       },
       "Northern Resource": {
-        "Nether": 0.0988323,
-        "Bonestone": 0.09883239,
+        "Nether": 0.0979722,
+        "Bonestone": 0.09797229,
         "Brimstone": 0.099,
         "Moldium": 0.129,
         "Petrified": 0.129,
@@ -299,13 +298,13 @@
         "Fortuna": 10.0
       },
       "Northern Resource Tier": {
-        "1": 0.0988323,
+        "1": 0.0979722,
         "3": 0.129,
         "2": 0.1468
       },
       "Western Resource": {
-        "Moldium": 0.09883239,
-        "Luster": 0.098999,
+        "Moldium": 0.09797229,
+        "Luster": 0.097999,
         "Lunarian": 0.10795,
         "Runa": 0.129,
         "Spikeweed": 0.144896,
@@ -332,7 +331,7 @@
         "Lapidite": 11.0
       },
       "Western Resource Tier": {
-        "2": 0.09883239,
+        "2": 0.09797229,
         "3": 0.10795,
         "1": 0.129
       },
@@ -402,7 +401,6 @@
         "Banana Peel": 0.199,
         "Fire Sale Scroll": 0.2172,
         "Knight's Pail": 0.25,
-        "Mystical Crown": 0.4,
         "Celestial Tear": 0.44,
         "Forged Hammer": 0.5,
         "Rugged Axe": 0.51,
@@ -414,6 +412,7 @@
         "Rugged Shovel": 1.011,
         "Rugged Pickaxe": 1.25,
         "Ancient Coin": 1.5,
+        "Mystical Crown": 1.99,
         "Forged Pickaxe": 2.1,
         "Yellow Orb": 2.5,
         "Sloth Juice": 4.2069,
@@ -447,10 +446,10 @@
     "resource_floors": {
       "Northern": {
         "Nether": {
-          "1": 0.0988323
+          "1": 0.0979722
         },
         "Bonestone": {
-          "1": 0.09883239,
+          "1": 0.09797229,
           "2": 0.199,
           "3": 1.99
         },
@@ -531,11 +530,11 @@
       },
       "Western": {
         "Moldium": {
-          "2": 0.09883239,
+          "2": 0.09797229,
           "1": 0.3
         },
         "Luster": {
-          "2": 0.098999,
+          "2": 0.097999,
           "1": 0.239698,
           "3": 3.5
         },
@@ -573,7 +572,7 @@
         },
         "Oblivion": {
           "2": 0.2,
-          "1": 0.4
+          "1": 1.99
         },
         "Petrified": {
           "1": 0.24,
@@ -3181,24 +3180,24 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.088639,
-      "volume_eth": 18426.23465578975,
+      "floor_eth": 0.0883878,
+      "volume_eth": 18426.34453478975,
       "num_owners": 12117,
       "listed": null
     },
     "raw_traits": {
       "Plot": {
-        "54558": 0.088639,
-        "66832": 0.08863909,
+        "54558": 0.0883878,
+        "66832": 0.08838789,
+        "22085": 0.0884,
+        "74599": 0.088559,
+        "90998": 0.08856,
         "31955": 0.08863934,
-        "74599": 0.088674,
+        "50074": 0.088674,
+        "62902": 0.088674,
         "73097": 0.0886754,
-        "22085": 0.0888,
-        "50074": 0.088959,
-        "62902": 0.088959,
-        "90998": 0.08896,
         "45700": 0.08899889,
-        "82472": 0.0921965,
+        "82472": 0.089,
         "87296": 0.0922965,
         "91225": 0.0922965,
         "92435": 0.0922965,
@@ -3225,7 +3224,6 @@
         "89556": 0.1042,
         "76066": 0.107,
         "10046": 0.1072,
-        "97613": 0.109879,
         "67115": 0.11,
         "65822": 0.11,
         "89555": 0.1102,
@@ -3267,6 +3265,7 @@
         "32476": 0.1282,
         "97792": 0.129,
         "68930": 0.129,
+        "50103": 0.129,
         "31756": 0.1292,
         "62361": 0.12999998,
         "72792": 0.12999999,
@@ -3274,7 +3273,6 @@
         "53871": 0.13,
         "95674": 0.13,
         "31979": 0.1302,
-        "50103": 0.1306,
         "31787": 0.1312,
         "31888": 0.1322,
         "99226": 0.133,
@@ -3290,6 +3288,7 @@
         "31933": 0.136,
         "90273": 0.136,
         "77600": 0.1372,
+        "7187": 0.138,
         "86565": 0.138298,
         "58025": 0.138298,
         "21414": 0.1383,
@@ -3367,7 +3366,6 @@
         "31811": 0.1642,
         "75047": 0.166199,
         "30908": 0.167,
-        "7187": 0.168,
         "7244": 0.169,
         "26623": 0.17,
         "14013": 0.17,
@@ -3388,32 +3386,32 @@
         "98249": 0.18
       },
       "Category": {
-        "Spirit": 0.088639,
-        "Growth": 0.08863909,
+        "Spirit": 0.0883878,
+        "Growth": 0.08838789,
+        "Volcanic": 0.08856,
         "Harsh": 0.08863934,
         "Psychedelic": 0.0886754,
-        "Volcanic": 0.088959,
         "Decay": 0.08899889,
         "Mineral": 0.0922965
       },
       "Sediment": {
-        "Infinite Expanse": 0.088639,
-        "Rainbow Atmos": 0.08863909,
-        "Cosmic Dream": 0.08863934,
-        "Chemical Goo": 0.0888,
-        "Biogenic Swamp": 0.139
+        "Infinite Expanse": 0.0883878,
+        "Rainbow Atmos": 0.08838789,
+        "Chemical Goo": 0.0884,
+        "Cosmic Dream": 0.08856,
+        "Biogenic Swamp": 0.138
       },
       "Environment": {
-        "Steppes": 0.088639,
-        "Mystic": 0.08863909,
+        "Steppes": 0.0883878,
+        "Mystic": 0.08838789,
+        "Sands": 0.0884,
+        "Veldan": 0.088559,
+        "Molten": 0.08856,
         "Bone": 0.08863934,
-        "Veldan": 0.088674,
+        "Obsidian": 0.088674,
         "Mallow": 0.0886754,
-        "Sands": 0.0888,
-        "Obsidian": 0.088959,
-        "Molten": 0.08896,
         "Thornwood": 0.08899889,
-        "Sludge": 0.0921965,
+        "Sludge": 0.089,
         "Biolume": 0.0922965,
         "Crystal": 0.0922965,
         "Sky": 0.0922965,
@@ -3426,58 +3424,58 @@
         "Jungle": 0.1072,
         "Plague": 0.1202,
         "Mycelium": 0.1252,
-        "Splinter": 0.1306,
+        "Splinter": 0.129,
         "Crimson": 0.1312,
         "Wastes": 0.136,
         "Luster": 0.1392
       },
       "Goliath Kills": {
-        "0": 0.088639,
+        "0": 0.0883878,
         "2": 0.11,
         "1": 0.11299401,
         "4": 0.15,
         "3": 0.1612
       },
       "Obelisk Piece": {
-        "First Trip": 0.088639,
-        "Koda Origins": 0.088639
+        "First Trip": 0.0883878,
+        "Koda Origins": 0.0883878
       },
       "Sediment Tier": {
-        "1": 0.088639,
-        "2": 0.08863909,
-        "3": 0.088674
+        "1": 0.0883878,
+        "2": 0.08838789,
+        "3": 0.088559
       },
       "Eastern Resource": {
-        "Lunarian": 0.088639,
-        "Bonestone": 0.088959,
+        "Lunarian": 0.0883878,
+        "Bonestone": 0.088674,
         "Petrified": 0.0922965,
         "Nether": 0.0922965,
         "Lumileaf": 0.0922965,
         "Psychosilk": 0.107,
-        "Oblivion": 0.109879,
         "Runa": 0.11299401,
         "Whisper": 0.1189,
         "Moldium": 0.12,
         "Luster": 0.1212,
         "Brimstone": 0.1232,
         "Spikeweed": 0.12766,
-        "Kinsoul": 0.1312
+        "Kinsoul": 0.1312,
+        "Oblivion": 0.14
       },
       "Environment Tier": {
-        "4": 0.088639,
-        "2": 0.08863909,
-        "3": 0.08863934,
-        "1": 0.088674,
+        "4": 0.0883878,
+        "2": 0.08838789,
+        "1": 0.0884,
+        "3": 0.08856,
         "5": 0.119
       },
       "Northern Resource": {
-        "Whisper": 0.088639,
+        "Whisper": 0.0883878,
         "Brimstone": 0.08863934,
         "Nether": 0.08899889,
         "Moldium": 0.0922965,
-        "Lumileaf": 0.109879,
         "Spikeweed": 0.1122,
         "Luster": 0.1152,
+        "Lumileaf": 0.1192,
         "Oblivion": 0.1232,
         "Petrified": 0.12766,
         "Runa": 0.128,
@@ -3487,22 +3485,22 @@
         "Lunarian": 0.16
       },
       "Eastern Resource Tier": {
-        "1": 0.088639,
+        "1": 0.0883878,
         "2": 0.0922965,
         "3": 0.0966993
       },
       "Northern Resource Tier": {
-        "1": 0.088639,
+        "1": 0.0883878,
         "2": 0.08863934,
         "3": 0.08899889
       },
       "Western Resource": {
+        "Luster": 0.088559,
         "Petrified": 0.08863934,
-        "Luster": 0.088674,
+        "Whisper": 0.088674,
+        "Moldium": 0.088674,
         "Lumileaf": 0.0886754,
-        "Whisper": 0.088959,
-        "Moldium": 0.088959,
-        "Nether": 0.0921965,
+        "Nether": 0.089,
         "Spikeweed": 0.0922965,
         "Runa": 0.0922965,
         "Psychosilk": 0.0922965,
@@ -3513,13 +3511,13 @@
         "Lunarian": 0.1342
       },
       "Western Resource Tier": {
-        "1": 0.08863934,
+        "1": 0.088559,
         "3": 0.0886754,
-        "2": 0.0921965
+        "2": 0.089
       },
       "Southern Resource": {
-        "Psychosilk": 0.088959,
-        "Runa": 0.088959,
+        "Psychosilk": 0.088674,
+        "Runa": 0.088674,
         "Petrified": 0.08899889,
         "Moldium": 0.0922965,
         "Brimstone": 0.0922965,
@@ -3534,14 +3532,14 @@
         "Lunarian": 0.179
       },
       "Southern Resource Tier": {
-        "3": 0.088959,
-        "1": 0.088959,
+        "3": 0.088674,
+        "1": 0.088674,
         "2": 0.08899889
       },
       "Artifact": {
         "Rugged Shovel": 0.1272,
         "Ancient Coin": 0.1272,
-        "Camp Fire": 0.1306,
+        "Camp Fire": 0.129,
         "Relic Card": 0.133,
         "Fire Sale Scroll": 0.1346,
         "Rugged Pickaxe": 0.1372,
@@ -3552,7 +3550,7 @@
     "resource_floors": {
       "Northern": {
         "Whisper": {
-          "1": 0.088639,
+          "1": 0.0883878,
           "2": 0.166199
         },
         "Brimstone": {
@@ -3569,11 +3567,6 @@
           "1": 0.0922965,
           "3": 0.1272
         },
-        "Lumileaf": {
-          "3": 0.109879,
-          "1": 0.1192,
-          "2": 0.12
-        },
         "Spikeweed": {
           "1": 0.1122,
           "2": 0.12,
@@ -3583,6 +3576,11 @@
           "1": 0.1152,
           "3": 0.1162,
           "2": 0.1222
+        },
+        "Lumileaf": {
+          "1": 0.1192,
+          "2": 0.12,
+          "3": 0.15
         },
         "Oblivion": {
           "2": 0.1232,
@@ -3614,11 +3612,11 @@
       },
       "Eastern": {
         "Lunarian": {
-          "1": 0.088639,
+          "1": 0.0883878,
           "2": 0.126
         },
         "Bonestone": {
-          "1": 0.088959,
+          "1": 0.088674,
           "2": 0.1172,
           "3": 0.16
         },
@@ -3639,10 +3637,6 @@
         },
         "Psychosilk": {
           "2": 0.107
-        },
-        "Oblivion": {
-          "2": 0.109879,
-          "1": 0.151
         },
         "Runa": {
           "1": 0.11299401,
@@ -3667,39 +3661,42 @@
         },
         "Spikeweed": {
           "2": 0.12766,
-          "1": 0.168
+          "1": 0.138
         },
         "Kinsoul": {
           "1": 0.1312,
           "2": 0.17044924
+        },
+        "Oblivion": {
+          "2": 0.14,
+          "1": 0.151
         }
       },
       "Western": {
+        "Luster": {
+          "1": 0.088559,
+          "2": 0.11,
+          "3": 0.15
+        },
         "Petrified": {
           "1": 0.08863934,
           "2": 0.1182,
           "3": 0.1472
         },
-        "Luster": {
-          "1": 0.088674,
-          "2": 0.11,
-          "3": 0.15
-        },
-        "Lumileaf": {
-          "3": 0.0886754,
-          "2": 0.109879,
-          "1": 0.11299401
-        },
         "Whisper": {
-          "1": 0.088959,
+          "1": 0.088674,
           "3": 0.1372
         },
         "Moldium": {
-          "1": 0.088959,
+          "1": 0.088674,
           "3": 0.151
         },
+        "Lumileaf": {
+          "3": 0.0886754,
+          "1": 0.11299401
+        },
         "Nether": {
-          "2": 0.0921965,
+          "2": 0.089,
           "1": 0.12766
         },
         "Spikeweed": {
@@ -3737,12 +3734,12 @@
       },
       "Southern": {
         "Psychosilk": {
-          "3": 0.088959,
+          "3": 0.088674,
           "1": 0.0922965,
           "2": 0.151
         },
         "Runa": {
-          "1": 0.088959,
+          "1": 0.088674,
           "2": 0.1392
         },
         "Petrified": {
@@ -3804,6 +3801,10 @@
     },
     "sales_traits": {
       "Plot": {
+        "97613": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
         "73142": {
           "price_eth": 0.119,
           "ts": 1780116167
@@ -4609,6 +4610,508 @@
           "ts": 1778357171
         }
       },
+      "Category": {
+        "Spirit": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Harsh": {
+          "price_eth": 0.119,
+          "ts": 1780116167
+        },
+        "Volcanic": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        },
+        "Growth": {
+          "price_eth": 0.0812,
+          "ts": 1780111055
+        },
+        "Mineral": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "Psychedelic": {
+          "price_eth": 0.262,
+          "ts": 1780069787
+        },
+        "Decay": {
+          "price_eth": 0.0811,
+          "ts": 1780068959
+        }
+      },
+      "Sediment": {
+        "Cosmic Dream": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Rainbow Atmos": {
+          "price_eth": 0.119,
+          "ts": 1780116167
+        },
+        "Biogenic Swamp": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        },
+        "Infinite Expanse": {
+          "price_eth": 0.136,
+          "ts": 1780092647
+        },
+        "Chemical Goo": {
+          "price_eth": 0.262,
+          "ts": 1780069787
+        }
+      },
+      "Environment": {
+        "Veldan": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Wastes": {
+          "price_eth": 0.119,
+          "ts": 1780116167
+        },
+        "Sulfuric": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        },
+        "Botanical": {
+          "price_eth": 0.0812,
+          "ts": 1780111055
+        },
+        "Sands": {
+          "price_eth": 0.136,
+          "ts": 1780092647
+        },
+        "Splinter": {
+          "price_eth": 0.0905,
+          "ts": 1780079867
+        },
+        "Luster": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "Sludge": {
+          "price_eth": 0.262,
+          "ts": 1780069787
+        },
+        "Bog": {
+          "price_eth": 0.0811,
+          "ts": 1780068959
+        },
+        "Molten": {
+          "price_eth": 0.12,
+          "ts": 1780037591
+        },
+        "Jungle": {
+          "price_eth": 0.0934,
+          "ts": 1780035083
+        },
+        "Sky": {
+          "price_eth": 0.092297,
+          "ts": 1780032575
+        },
+        "Ruins": {
+          "price_eth": 0.0811,
+          "ts": 1780029419
+        },
+        "Glacia": {
+          "price_eth": 0.0811,
+          "ts": 1780029419
+        },
+        "Mystic": {
+          "price_eth": 0.081,
+          "ts": 1780029419
+        },
+        "Thornwood": {
+          "price_eth": 0.13,
+          "ts": 1780008095
+        },
+        "Spires": {
+          "price_eth": 0.0821,
+          "ts": 1779999143
+        },
+        "Mycelium": {
+          "price_eth": 0.111,
+          "ts": 1779990827
+        },
+        "Plague": {
+          "price_eth": 0.09,
+          "ts": 1779990827
+        },
+        "Crystal": {
+          "price_eth": 0.092297,
+          "ts": 1779966935
+        },
+        "Bone": {
+          "price_eth": 0.0816,
+          "ts": 1779961835
+        },
+        "Steppes": {
+          "price_eth": 0.092297,
+          "ts": 1779943391
+        },
+        "Biolume": {
+          "price_eth": 0.1042,
+          "ts": 1779862091
+        },
+        "Acid": {
+          "price_eth": 0.17,
+          "ts": 1779720695
+        },
+        "Obsidian": {
+          "price_eth": 0.0841,
+          "ts": 1779670679
+        },
+        "Mallow": {
+          "price_eth": 0.112,
+          "ts": 1779543491
+        },
+        "Crimson": {
+          "price_eth": 0.0988,
+          "ts": 1779398567
+        }
+      },
+      "Goliath Kills": {
+        "0": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "1": {
+          "price_eth": 0.0811,
+          "ts": 1780029419
+        },
+        "2": {
+          "price_eth": 0.117,
+          "ts": 1779964427
+        },
+        "4": {
+          "price_eth": 0.1042,
+          "ts": 1779862091
+        },
+        "3": {
+          "price_eth": 0.17,
+          "ts": 1779720695
+        }
+      },
+      "Obelisk Piece": {
+        "First Trip": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Koda Origins": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        }
+      },
+      "Sediment Tier": {
+        "2": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "1": {
+          "price_eth": 0.119,
+          "ts": 1780116167
+        },
+        "3": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        }
+      },
+      "Eastern Resource": {
+        "Oblivion": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Whisper": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        },
+        "Kinsoul": {
+          "price_eth": 0.0905,
+          "ts": 1780079867
+        },
+        "Moldium": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "Runa": {
+          "price_eth": 0.0811,
+          "ts": 1780068959
+        },
+        "Sulfirica": {
+          "price_eth": 0.135,
+          "ts": 1780035155
+        },
+        "Magentia": {
+          "price_eth": 0.0934,
+          "ts": 1780035083
+        },
+        "Bonestone": {
+          "price_eth": 0.0811,
+          "ts": 1780029419
+        },
+        "Lunarian": {
+          "price_eth": 0.081,
+          "ts": 1780029419
+        },
+        "Brimstone": {
+          "price_eth": 0.13,
+          "ts": 1780008095
+        },
+        "Luster": {
+          "price_eth": 0.17,
+          "ts": 1779720695
+        },
+        "Petrified": {
+          "price_eth": 0.084,
+          "ts": 1779671363
+        },
+        "Psychosilk": {
+          "price_eth": 0.0945,
+          "ts": 1779549671
+        },
+        "Lumileaf": {
+          "price_eth": 0.091,
+          "ts": 1779370763
+        },
+        "Spikeweed": {
+          "price_eth": 0.5,
+          "ts": 1779276827
+        },
+        "Claymer": {
+          "price_eth": 0.15,
+          "ts": 1779142715
+        },
+        "Nether": {
+          "price_eth": 0.108,
+          "ts": 1778778167
+        },
+        "Maltosia": {
+          "price_eth": 0.218917,
+          "ts": 1778398967
+        }
+      },
+      "Environment Tier": {
+        "2": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "4": {
+          "price_eth": 0.119,
+          "ts": 1780116167
+        },
+        "3": {
+          "price_eth": 0.14,
+          "ts": 1780116131
+        },
+        "1": {
+          "price_eth": 0.136,
+          "ts": 1780092647
+        },
+        "5": {
+          "price_eth": 0.0905,
+          "ts": 1780079867
+        }
+      },
+      "Western Resource": {
+        "Lumileaf": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Runa": {
+          "price_eth": 0.0812,
+          "ts": 1780111055
+        },
+        "Psychosilk": {
+          "price_eth": 0.136,
+          "ts": 1780092647
+        },
+        "Spikeweed": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "Brimstone": {
+          "price_eth": 0.262,
+          "ts": 1780069787
+        },
+        "Bonestone": {
+          "price_eth": 0.0934,
+          "ts": 1780035083
+        },
+        "Kinsoul": {
+          "price_eth": 0.0821,
+          "ts": 1779999143
+        },
+        "Nether": {
+          "price_eth": 0.0824,
+          "ts": 1779991523
+        },
+        "Nocturna": {
+          "price_eth": 0.103,
+          "ts": 1779990827
+        },
+        "Whisper": {
+          "price_eth": 0.09,
+          "ts": 1779990827
+        },
+        "Petrified": {
+          "price_eth": 0.09,
+          "ts": 1779990827
+        },
+        "Luster": {
+          "price_eth": 0.128,
+          "ts": 1779913211
+        },
+        "Oblivion": {
+          "price_eth": 0.095228,
+          "ts": 1779887651
+        },
+        "Lunarian": {
+          "price_eth": 0.0997,
+          "ts": 1779804479
+        },
+        "Moldium": {
+          "price_eth": 0.0853,
+          "ts": 1779797255
+        },
+        "Slushia": {
+          "price_eth": 0.155,
+          "ts": 1779243143
+        },
+        "Maltosia": {
+          "price_eth": 0.0931,
+          "ts": 1778959355
+        }
+      },
+      "Northern Resource": {
+        "Lumileaf": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "Brimstone": {
+          "price_eth": 0.0812,
+          "ts": 1780111055
+        },
+        "Lunarian": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "Luster": {
+          "price_eth": 0.262,
+          "ts": 1780069787
+        },
+        "Moldium": {
+          "price_eth": 0.101,
+          "ts": 1780005347
+        },
+        "Spikeweed": {
+          "price_eth": 0.0821,
+          "ts": 1779999143
+        },
+        "Nether": {
+          "price_eth": 0.0824,
+          "ts": 1779991523
+        },
+        "Petrified": {
+          "price_eth": 0.111,
+          "ts": 1779990827
+        },
+        "Whisper": {
+          "price_eth": 0.117,
+          "ts": 1779964427
+        },
+        "Bonestone": {
+          "price_eth": 0.095228,
+          "ts": 1779887651
+        },
+        "Psychosilk": {
+          "price_eth": 0.1042,
+          "ts": 1779862091
+        },
+        "Nebula": {
+          "price_eth": 0.1987,
+          "ts": 1779734903
+        },
+        "Scumbria": {
+          "price_eth": 0.1752,
+          "ts": 1779706979
+        },
+        "Luminite": {
+          "price_eth": 0.142,
+          "ts": 1779669911
+        },
+        "Runa": {
+          "price_eth": 0.17,
+          "ts": 1779460127
+        },
+        "Oblivion": {
+          "price_eth": 0.09888,
+          "ts": 1779333059
+        },
+        "Amberskull": {
+          "price_eth": 0.35,
+          "ts": 1779102815
+        },
+        "Fragmentia": {
+          "price_eth": 0.8,
+          "ts": 1778864507
+        },
+        "Kinsoul": {
+          "price_eth": 0.1073,
+          "ts": 1778778167
+        },
+        "Coralia": {
+          "price_eth": 0.122,
+          "ts": 1778704775
+        },
+        "Rotworth": {
+          "price_eth": 0.48,
+          "ts": 1778660123
+        }
+      },
+      "Eastern Resource Tier": {
+        "2": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "3": {
+          "price_eth": 0.0811,
+          "ts": 1780068959
+        },
+        "1": {
+          "price_eth": 0.0934,
+          "ts": 1780035083
+        }
+      },
+      "Western Resource Tier": {
+        "2": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "1": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "3": {
+          "price_eth": 0.092297,
+          "ts": 1780032575
+        }
+      },
+      "Northern Resource Tier": {
+        "3": {
+          "price_eth": 0.109879,
+          "ts": 1780130663
+        },
+        "1": {
+          "price_eth": 0.185,
+          "ts": 1780074611
+        },
+        "2": {
+          "price_eth": 0.0821,
+          "ts": 1779999143
+        }
+      },
       "Artifact": {
         "Jar of Koda Farts": {
           "price_eth": 0.119,
@@ -4727,236 +5230,6 @@
           "ts": 1778358263
         }
       },
-      "Category": {
-        "Harsh": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "Volcanic": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "Growth": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "Spirit": {
-          "price_eth": 0.136,
-          "ts": 1780092647
-        },
-        "Mineral": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "Psychedelic": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        },
-        "Decay": {
-          "price_eth": 0.0811,
-          "ts": 1780068959
-        }
-      },
-      "Sediment": {
-        "Rainbow Atmos": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "Biogenic Swamp": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "Infinite Expanse": {
-          "price_eth": 0.136,
-          "ts": 1780092647
-        },
-        "Cosmic Dream": {
-          "price_eth": 0.0905,
-          "ts": 1780079867
-        },
-        "Chemical Goo": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        }
-      },
-      "Environment": {
-        "Wastes": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "Sulfuric": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "Botanical": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "Sands": {
-          "price_eth": 0.136,
-          "ts": 1780092647
-        },
-        "Splinter": {
-          "price_eth": 0.0905,
-          "ts": 1780079867
-        },
-        "Luster": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "Sludge": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        },
-        "Bog": {
-          "price_eth": 0.0811,
-          "ts": 1780068959
-        },
-        "Molten": {
-          "price_eth": 0.12,
-          "ts": 1780037591
-        },
-        "Jungle": {
-          "price_eth": 0.0934,
-          "ts": 1780035083
-        },
-        "Sky": {
-          "price_eth": 0.092297,
-          "ts": 1780032575
-        },
-        "Ruins": {
-          "price_eth": 0.0811,
-          "ts": 1780029419
-        },
-        "Glacia": {
-          "price_eth": 0.0811,
-          "ts": 1780029419
-        },
-        "Mystic": {
-          "price_eth": 0.081,
-          "ts": 1780029419
-        },
-        "Thornwood": {
-          "price_eth": 0.13,
-          "ts": 1780008095
-        },
-        "Spires": {
-          "price_eth": 0.0821,
-          "ts": 1779999143
-        },
-        "Mycelium": {
-          "price_eth": 0.111,
-          "ts": 1779990827
-        },
-        "Plague": {
-          "price_eth": 0.09,
-          "ts": 1779990827
-        },
-        "Crystal": {
-          "price_eth": 0.092297,
-          "ts": 1779966935
-        },
-        "Bone": {
-          "price_eth": 0.0816,
-          "ts": 1779961835
-        },
-        "Steppes": {
-          "price_eth": 0.092297,
-          "ts": 1779943391
-        },
-        "Veldan": {
-          "price_eth": 0.0852,
-          "ts": 1779892283
-        },
-        "Biolume": {
-          "price_eth": 0.1042,
-          "ts": 1779862091
-        },
-        "Acid": {
-          "price_eth": 0.17,
-          "ts": 1779720695
-        },
-        "Obsidian": {
-          "price_eth": 0.0841,
-          "ts": 1779670679
-        },
-        "Mallow": {
-          "price_eth": 0.112,
-          "ts": 1779543491
-        },
-        "Crimson": {
-          "price_eth": 0.0988,
-          "ts": 1779398567
-        }
-      },
-      "Goliath Kills": {
-        "0": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "1": {
-          "price_eth": 0.0811,
-          "ts": 1780029419
-        },
-        "2": {
-          "price_eth": 0.117,
-          "ts": 1779964427
-        },
-        "4": {
-          "price_eth": 0.1042,
-          "ts": 1779862091
-        },
-        "3": {
-          "price_eth": 0.17,
-          "ts": 1779720695
-        }
-      },
-      "Obelisk Piece": {
-        "First Trip": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "Koda Origins": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        }
-      },
-      "Sediment Tier": {
-        "1": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "3": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "2": {
-          "price_eth": 0.0905,
-          "ts": 1780079867
-        }
-      },
-      "Environment Tier": {
-        "4": {
-          "price_eth": 0.119,
-          "ts": 1780116167
-        },
-        "3": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "1": {
-          "price_eth": 0.136,
-          "ts": 1780092647
-        },
-        "5": {
-          "price_eth": 0.0905,
-          "ts": 1780079867
-        },
-        "2": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        }
-      },
       "Southern Resource": {
         "Spikeweed": {
           "price_eth": 0.119,
@@ -5044,281 +5317,595 @@
           "price_eth": 0.0812,
           "ts": 1780111055
         }
-      },
-      "Eastern Resource": {
-        "Whisper": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "Kinsoul": {
-          "price_eth": 0.0905,
-          "ts": 1780079867
-        },
-        "Moldium": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "Runa": {
-          "price_eth": 0.0811,
-          "ts": 1780068959
-        },
-        "Sulfirica": {
-          "price_eth": 0.135,
-          "ts": 1780035155
-        },
-        "Magentia": {
-          "price_eth": 0.0934,
-          "ts": 1780035083
-        },
-        "Bonestone": {
-          "price_eth": 0.0811,
-          "ts": 1780029419
-        },
-        "Lunarian": {
-          "price_eth": 0.081,
-          "ts": 1780029419
-        },
-        "Oblivion": {
-          "price_eth": 0.14,
-          "ts": 1780018799
-        },
-        "Brimstone": {
-          "price_eth": 0.13,
-          "ts": 1780008095
-        },
-        "Luster": {
-          "price_eth": 0.17,
-          "ts": 1779720695
-        },
-        "Petrified": {
-          "price_eth": 0.084,
-          "ts": 1779671363
-        },
-        "Psychosilk": {
-          "price_eth": 0.0945,
-          "ts": 1779549671
-        },
-        "Lumileaf": {
-          "price_eth": 0.091,
-          "ts": 1779370763
-        },
-        "Spikeweed": {
-          "price_eth": 0.5,
-          "ts": 1779276827
-        },
-        "Claymer": {
-          "price_eth": 0.15,
-          "ts": 1779142715
-        },
-        "Nether": {
-          "price_eth": 0.108,
-          "ts": 1778778167
-        },
-        "Maltosia": {
-          "price_eth": 0.218917,
-          "ts": 1778398967
-        }
-      },
-      "Eastern Resource Tier": {
-        "2": {
-          "price_eth": 0.14,
-          "ts": 1780116131
-        },
-        "3": {
-          "price_eth": 0.0811,
-          "ts": 1780068959
-        },
-        "1": {
-          "price_eth": 0.0934,
-          "ts": 1780035083
-        }
-      },
-      "Western Resource": {
-        "Runa": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "Psychosilk": {
-          "price_eth": 0.136,
-          "ts": 1780092647
-        },
-        "Spikeweed": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "Brimstone": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        },
-        "Bonestone": {
-          "price_eth": 0.0934,
-          "ts": 1780035083
-        },
-        "Kinsoul": {
-          "price_eth": 0.0821,
-          "ts": 1779999143
-        },
-        "Nether": {
-          "price_eth": 0.0824,
-          "ts": 1779991523
-        },
-        "Nocturna": {
-          "price_eth": 0.103,
-          "ts": 1779990827
-        },
-        "Whisper": {
-          "price_eth": 0.09,
-          "ts": 1779990827
-        },
-        "Petrified": {
-          "price_eth": 0.09,
-          "ts": 1779990827
-        },
-        "Luster": {
-          "price_eth": 0.128,
-          "ts": 1779913211
-        },
-        "Oblivion": {
-          "price_eth": 0.095228,
-          "ts": 1779887651
-        },
-        "Lunarian": {
-          "price_eth": 0.0997,
-          "ts": 1779804479
-        },
-        "Moldium": {
-          "price_eth": 0.0853,
-          "ts": 1779797255
-        },
-        "Lumileaf": {
-          "price_eth": 0.0917,
-          "ts": 1779651947
-        },
-        "Slushia": {
-          "price_eth": 0.155,
-          "ts": 1779243143
-        },
-        "Maltosia": {
-          "price_eth": 0.0931,
-          "ts": 1778959355
-        }
-      },
-      "Northern Resource": {
-        "Brimstone": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "Lunarian": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "Luster": {
-          "price_eth": 0.262,
-          "ts": 1780069787
-        },
-        "Moldium": {
-          "price_eth": 0.101,
-          "ts": 1780005347
-        },
-        "Spikeweed": {
-          "price_eth": 0.0821,
-          "ts": 1779999143
-        },
-        "Nether": {
-          "price_eth": 0.0824,
-          "ts": 1779991523
-        },
-        "Petrified": {
-          "price_eth": 0.111,
-          "ts": 1779990827
-        },
-        "Lumileaf": {
-          "price_eth": 0.103,
-          "ts": 1779990827
-        },
-        "Whisper": {
-          "price_eth": 0.117,
-          "ts": 1779964427
-        },
-        "Bonestone": {
-          "price_eth": 0.095228,
-          "ts": 1779887651
-        },
-        "Psychosilk": {
-          "price_eth": 0.1042,
-          "ts": 1779862091
-        },
-        "Nebula": {
-          "price_eth": 0.1987,
-          "ts": 1779734903
-        },
-        "Scumbria": {
-          "price_eth": 0.1752,
-          "ts": 1779706979
-        },
-        "Luminite": {
-          "price_eth": 0.142,
-          "ts": 1779669911
-        },
-        "Runa": {
-          "price_eth": 0.17,
-          "ts": 1779460127
-        },
-        "Oblivion": {
-          "price_eth": 0.09888,
-          "ts": 1779333059
-        },
-        "Amberskull": {
-          "price_eth": 0.35,
-          "ts": 1779102815
-        },
-        "Fragmentia": {
-          "price_eth": 0.8,
-          "ts": 1778864507
-        },
-        "Kinsoul": {
-          "price_eth": 0.1073,
-          "ts": 1778778167
-        },
-        "Coralia": {
-          "price_eth": 0.122,
-          "ts": 1778704775
-        },
-        "Rotworth": {
-          "price_eth": 0.48,
-          "ts": 1778660123
-        }
-      },
-      "Western Resource Tier": {
-        "2": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "1": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "3": {
-          "price_eth": 0.092297,
-          "ts": 1780032575
-        }
-      },
-      "Northern Resource Tier": {
-        "3": {
-          "price_eth": 0.0812,
-          "ts": 1780111055
-        },
-        "1": {
-          "price_eth": 0.185,
-          "ts": 1780074611
-        },
-        "2": {
-          "price_eth": 0.0821,
-          "ts": 1779999143
-        }
       }
     },
     "resource_sales": {
+      "Western": {
+        "Lumileaf": {
+          "2": {
+            "price_eth": 0.109879,
+            "ts": 1780130663
+          },
+          "1": {
+            "price_eth": 0.17,
+            "ts": 1779460127
+          }
+        },
+        "Runa": {
+          "2": {
+            "price_eth": 0.0812,
+            "ts": 1780111055
+          },
+          "1": {
+            "price_eth": 0.1399,
+            "ts": 1779537119
+          }
+        },
+        "Psychosilk": {
+          "2": {
+            "price_eth": 0.136,
+            "ts": 1780092647
+          },
+          "1": {
+            "price_eth": 0.081,
+            "ts": 1780029419
+          },
+          "3": {
+            "price_eth": 0.106,
+            "ts": 1778511755
+          }
+        },
+        "Spikeweed": {
+          "1": {
+            "price_eth": 0.185,
+            "ts": 1780074611
+          },
+          "3": {
+            "price_eth": 0.232,
+            "ts": 1779862103
+          }
+        },
+        "Brimstone": {
+          "1": {
+            "price_eth": 0.262,
+            "ts": 1780069787
+          },
+          "3": {
+            "price_eth": 0.092297,
+            "ts": 1780032575
+          }
+        },
+        "Bonestone": {
+          "1": {
+            "price_eth": 0.0934,
+            "ts": 1780035083
+          },
+          "2": {
+            "price_eth": 0.0881,
+            "ts": 1779203543
+          }
+        },
+        "Kinsoul": {
+          "1": {
+            "price_eth": 0.0821,
+            "ts": 1779999143
+          }
+        },
+        "Nether": {
+          "2": {
+            "price_eth": 0.0824,
+            "ts": 1779991523
+          },
+          "3": {
+            "price_eth": 0.1886,
+            "ts": 1779713663
+          }
+        },
+        "Nocturna": {
+          "1": {
+            "price_eth": 0.103,
+            "ts": 1779990827
+          }
+        },
+        "Whisper": {
+          "1": {
+            "price_eth": 0.09,
+            "ts": 1779990827
+          },
+          "3": {
+            "price_eth": 0.091,
+            "ts": 1779398483
+          }
+        },
+        "Petrified": {
+          "2": {
+            "price_eth": 0.09,
+            "ts": 1779990827
+          },
+          "1": {
+            "price_eth": 0.0816,
+            "ts": 1779961835
+          },
+          "3": {
+            "price_eth": 0.08,
+            "ts": 1779771227
+          }
+        },
+        "Luster": {
+          "3": {
+            "price_eth": 0.128,
+            "ts": 1779913211
+          },
+          "1": {
+            "price_eth": 0.0841,
+            "ts": 1779670367
+          }
+        },
+        "Oblivion": {
+          "1": {
+            "price_eth": 0.095228,
+            "ts": 1779887651
+          },
+          "2": {
+            "price_eth": 0.084,
+            "ts": 1779671363
+          },
+          "3": {
+            "price_eth": 0.091,
+            "ts": 1779264371
+          }
+        },
+        "Lunarian": {
+          "1": {
+            "price_eth": 0.0997,
+            "ts": 1779804479
+          },
+          "2": {
+            "price_eth": 0.15,
+            "ts": 1779142715
+          }
+        },
+        "Moldium": {
+          "1": {
+            "price_eth": 0.0853,
+            "ts": 1779797255
+          }
+        },
+        "Slushia": {
+          "1": {
+            "price_eth": 0.155,
+            "ts": 1779243143
+          }
+        },
+        "Maltosia": {
+          "1": {
+            "price_eth": 0.0931,
+            "ts": 1778959355
+          }
+        }
+      },
+      "Northern": {
+        "Lumileaf": {
+          "3": {
+            "price_eth": 0.109879,
+            "ts": 1780130663
+          },
+          "1": {
+            "price_eth": 0.103,
+            "ts": 1779990827
+          },
+          "2": {
+            "price_eth": 0.2,
+            "ts": 1778696099
+          }
+        },
+        "Brimstone": {
+          "3": {
+            "price_eth": 0.0812,
+            "ts": 1780111055
+          },
+          "2": {
+            "price_eth": 0.0816,
+            "ts": 1779961835
+          },
+          "1": {
+            "price_eth": 0.0945,
+            "ts": 1779549671
+          }
+        },
+        "Lunarian": {
+          "1": {
+            "price_eth": 0.185,
+            "ts": 1780074611
+          },
+          "2": {
+            "price_eth": 0.129,
+            "ts": 1779557087
+          },
+          "3": {
+            "price_eth": 0.26,
+            "ts": 1779288743
+          }
+        },
+        "Luster": {
+          "1": {
+            "price_eth": 0.262,
+            "ts": 1780069787
+          },
+          "2": {
+            "price_eth": 0.17,
+            "ts": 1779553199
+          },
+          "3": {
+            "price_eth": 0.115,
+            "ts": 1779155243
+          }
+        },
+        "Moldium": {
+          "1": {
+            "price_eth": 0.101,
+            "ts": 1780005347
+          },
+          "3": {
+            "price_eth": 0.092297,
+            "ts": 1779943391
+          }
+        },
+        "Spikeweed": {
+          "2": {
+            "price_eth": 0.0821,
+            "ts": 1779999143
+          },
+          "1": {
+            "price_eth": 0.092297,
+            "ts": 1779966935
+          },
+          "3": {
+            "price_eth": 0.103,
+            "ts": 1778411339
+          }
+        },
+        "Nether": {
+          "3": {
+            "price_eth": 0.0824,
+            "ts": 1779991523
+          },
+          "1": {
+            "price_eth": 0.09,
+            "ts": 1779990827
+          },
+          "2": {
+            "price_eth": 0.128,
+            "ts": 1779007475
+          }
+        },
+        "Petrified": {
+          "3": {
+            "price_eth": 0.111,
+            "ts": 1779990827
+          },
+          "1": {
+            "price_eth": 0.09,
+            "ts": 1779990827
+          },
+          "2": {
+            "price_eth": 0.17,
+            "ts": 1779720695
+          }
+        },
+        "Whisper": {
+          "2": {
+            "price_eth": 0.117,
+            "ts": 1779964427
+          },
+          "1": {
+            "price_eth": 0.0911,
+            "ts": 1779461315
+          }
+        },
+        "Bonestone": {
+          "1": {
+            "price_eth": 0.095228,
+            "ts": 1779887651
+          },
+          "3": {
+            "price_eth": 0.0931,
+            "ts": 1778959355
+          },
+          "2": {
+            "price_eth": 0.10728,
+            "ts": 1778778167
+          }
+        },
+        "Psychosilk": {
+          "2": {
+            "price_eth": 0.1042,
+            "ts": 1779862091
+          },
+          "1": {
+            "price_eth": 0.0932,
+            "ts": 1779670259
+          },
+          "3": {
+            "price_eth": 0.21,
+            "ts": 1778358263
+          }
+        },
+        "Nebula": {
+          "2": {
+            "price_eth": 0.1987,
+            "ts": 1779734903
+          }
+        },
+        "Scumbria": {
+          "1": {
+            "price_eth": 0.1752,
+            "ts": 1779706979
+          },
+          "3": {
+            "price_eth": 0.2,
+            "ts": 1778724023
+          }
+        },
+        "Luminite": {
+          "2": {
+            "price_eth": 0.142,
+            "ts": 1779669911
+          }
+        },
+        "Runa": {
+          "1": {
+            "price_eth": 0.17,
+            "ts": 1779460127
+          },
+          "2": {
+            "price_eth": 0.242,
+            "ts": 1779022247
+          }
+        },
+        "Oblivion": {
+          "1": {
+            "price_eth": 0.09888,
+            "ts": 1779333059
+          }
+        },
+        "Amberskull": {
+          "2": {
+            "price_eth": 0.35,
+            "ts": 1779102815
+          }
+        },
+        "Fragmentia": {
+          "1": {
+            "price_eth": 0.8,
+            "ts": 1778864507
+          }
+        },
+        "Kinsoul": {
+          "2": {
+            "price_eth": 0.1073,
+            "ts": 1778778167
+          },
+          "1": {
+            "price_eth": 0.107279,
+            "ts": 1778753495
+          }
+        },
+        "Coralia": {
+          "1": {
+            "price_eth": 0.122,
+            "ts": 1778704775
+          }
+        },
+        "Rotworth": {
+          "3": {
+            "price_eth": 0.48,
+            "ts": 1778660123
+          }
+        }
+      },
+      "Eastern": {
+        "Oblivion": {
+          "2": {
+            "price_eth": 0.109879,
+            "ts": 1780130663
+          },
+          "3": {
+            "price_eth": 0.128,
+            "ts": 1779913211
+          },
+          "1": {
+            "price_eth": 0.109099,
+            "ts": 1778712899
+          }
+        },
+        "Whisper": {
+          "2": {
+            "price_eth": 0.14,
+            "ts": 1780116131
+          },
+          "3": {
+            "price_eth": 0.0852,
+            "ts": 1779892283
+          },
+          "1": {
+            "price_eth": 0.119,
+            "ts": 1779775343
+          }
+        },
+        "Kinsoul": {
+          "2": {
+            "price_eth": 0.0905,
+            "ts": 1780079867
+          },
+          "3": {
+            "price_eth": 0.232,
+            "ts": 1779862103
+          },
+          "1": {
+            "price_eth": 0.112,
+            "ts": 1779543491
+          }
+        },
+        "Moldium": {
+          "2": {
+            "price_eth": 0.185,
+            "ts": 1780074611
+          },
+          "1": {
+            "price_eth": 0.0917,
+            "ts": 1779651947
+          },
+          "3": {
+            "price_eth": 0.107279,
+            "ts": 1778753495
+          }
+        },
+        "Runa": {
+          "3": {
+            "price_eth": 0.0811,
+            "ts": 1780068959
+          },
+          "2": {
+            "price_eth": 0.101,
+            "ts": 1780005347
+          },
+          "1": {
+            "price_eth": 0.24,
+            "ts": 1779404699
+          }
+        },
+        "Sulfirica": {
+          "3": {
+            "price_eth": 0.135,
+            "ts": 1780035155
+          }
+        },
+        "Magentia": {
+          "1": {
+            "price_eth": 0.0934,
+            "ts": 1780035083
+          }
+        },
+        "Bonestone": {
+          "1": {
+            "price_eth": 0.0811,
+            "ts": 1780029419
+          },
+          "2": {
+            "price_eth": 0.103,
+            "ts": 1779990827
+          },
+          "3": {
+            "price_eth": 0.171,
+            "ts": 1778636687
+          }
+        },
+        "Lunarian": {
+          "1": {
+            "price_eth": 0.081,
+            "ts": 1780029419
+          },
+          "3": {
+            "price_eth": 0.155,
+            "ts": 1779243143
+          },
+          "2": {
+            "price_eth": 0.35,
+            "ts": 1779102815
+          }
+        },
+        "Brimstone": {
+          "1": {
+            "price_eth": 0.13,
+            "ts": 1780008095
+          },
+          "3": {
+            "price_eth": 0.09,
+            "ts": 1779990827
+          },
+          "2": {
+            "price_eth": 0.17,
+            "ts": 1779460127
+          }
+        },
+        "Luster": {
+          "1": {
+            "price_eth": 0.17,
+            "ts": 1779720695
+          },
+          "2": {
+            "price_eth": 0.105,
+            "ts": 1779681539
+          },
+          "3": {
+            "price_eth": 0.1155,
+            "ts": 1778772155
+          }
+        },
+        "Petrified": {
+          "2": {
+            "price_eth": 0.084,
+            "ts": 1779671363
+          },
+          "1": {
+            "price_eth": 0.328,
+            "ts": 1779529247
+          }
+        },
+        "Psychosilk": {
+          "2": {
+            "price_eth": 0.0945,
+            "ts": 1779549671
+          },
+          "3": {
+            "price_eth": 0.26,
+            "ts": 1779288743
+          },
+          "1": {
+            "price_eth": 0.128,
+            "ts": 1779007475
+          }
+        },
+        "Lumileaf": {
+          "1": {
+            "price_eth": 0.091,
+            "ts": 1779370763
+          },
+          "3": {
+            "price_eth": 0.14,
+            "ts": 1778445251
+          }
+        },
+        "Spikeweed": {
+          "2": {
+            "price_eth": 0.5,
+            "ts": 1779276827
+          }
+        },
+        "Claymer": {
+          "1": {
+            "price_eth": 0.15,
+            "ts": 1779142715
+          }
+        },
+        "Nether": {
+          "1": {
+            "price_eth": 0.108,
+            "ts": 1778778167
+          },
+          "2": {
+            "price_eth": 0.2,
+            "ts": 1778724023
+          }
+        },
+        "Maltosia": {
+          "1": {
+            "price_eth": 0.218917,
+            "ts": 1778398967
+          }
+        }
+      },
       "Southern": {
         "Spikeweed": {
           "1": {
@@ -5510,592 +6097,6 @@
           "1": {
             "price_eth": 0.5,
             "ts": 1778616455
-          }
-        }
-      },
-      "Eastern": {
-        "Whisper": {
-          "2": {
-            "price_eth": 0.14,
-            "ts": 1780116131
-          },
-          "3": {
-            "price_eth": 0.0852,
-            "ts": 1779892283
-          },
-          "1": {
-            "price_eth": 0.119,
-            "ts": 1779775343
-          }
-        },
-        "Kinsoul": {
-          "2": {
-            "price_eth": 0.0905,
-            "ts": 1780079867
-          },
-          "3": {
-            "price_eth": 0.232,
-            "ts": 1779862103
-          },
-          "1": {
-            "price_eth": 0.112,
-            "ts": 1779543491
-          }
-        },
-        "Moldium": {
-          "2": {
-            "price_eth": 0.185,
-            "ts": 1780074611
-          },
-          "1": {
-            "price_eth": 0.0917,
-            "ts": 1779651947
-          },
-          "3": {
-            "price_eth": 0.107279,
-            "ts": 1778753495
-          }
-        },
-        "Runa": {
-          "3": {
-            "price_eth": 0.0811,
-            "ts": 1780068959
-          },
-          "2": {
-            "price_eth": 0.101,
-            "ts": 1780005347
-          },
-          "1": {
-            "price_eth": 0.24,
-            "ts": 1779404699
-          }
-        },
-        "Sulfirica": {
-          "3": {
-            "price_eth": 0.135,
-            "ts": 1780035155
-          }
-        },
-        "Magentia": {
-          "1": {
-            "price_eth": 0.0934,
-            "ts": 1780035083
-          }
-        },
-        "Bonestone": {
-          "1": {
-            "price_eth": 0.0811,
-            "ts": 1780029419
-          },
-          "2": {
-            "price_eth": 0.103,
-            "ts": 1779990827
-          },
-          "3": {
-            "price_eth": 0.171,
-            "ts": 1778636687
-          }
-        },
-        "Lunarian": {
-          "1": {
-            "price_eth": 0.081,
-            "ts": 1780029419
-          },
-          "3": {
-            "price_eth": 0.155,
-            "ts": 1779243143
-          },
-          "2": {
-            "price_eth": 0.35,
-            "ts": 1779102815
-          }
-        },
-        "Oblivion": {
-          "2": {
-            "price_eth": 0.14,
-            "ts": 1780018799
-          },
-          "3": {
-            "price_eth": 0.128,
-            "ts": 1779913211
-          },
-          "1": {
-            "price_eth": 0.109099,
-            "ts": 1778712899
-          }
-        },
-        "Brimstone": {
-          "1": {
-            "price_eth": 0.13,
-            "ts": 1780008095
-          },
-          "3": {
-            "price_eth": 0.09,
-            "ts": 1779990827
-          },
-          "2": {
-            "price_eth": 0.17,
-            "ts": 1779460127
-          }
-        },
-        "Luster": {
-          "1": {
-            "price_eth": 0.17,
-            "ts": 1779720695
-          },
-          "2": {
-            "price_eth": 0.105,
-            "ts": 1779681539
-          },
-          "3": {
-            "price_eth": 0.1155,
-            "ts": 1778772155
-          }
-        },
-        "Petrified": {
-          "2": {
-            "price_eth": 0.084,
-            "ts": 1779671363
-          },
-          "1": {
-            "price_eth": 0.328,
-            "ts": 1779529247
-          }
-        },
-        "Psychosilk": {
-          "2": {
-            "price_eth": 0.0945,
-            "ts": 1779549671
-          },
-          "3": {
-            "price_eth": 0.26,
-            "ts": 1779288743
-          },
-          "1": {
-            "price_eth": 0.128,
-            "ts": 1779007475
-          }
-        },
-        "Lumileaf": {
-          "1": {
-            "price_eth": 0.091,
-            "ts": 1779370763
-          },
-          "3": {
-            "price_eth": 0.14,
-            "ts": 1778445251
-          }
-        },
-        "Spikeweed": {
-          "2": {
-            "price_eth": 0.5,
-            "ts": 1779276827
-          }
-        },
-        "Claymer": {
-          "1": {
-            "price_eth": 0.15,
-            "ts": 1779142715
-          }
-        },
-        "Nether": {
-          "1": {
-            "price_eth": 0.108,
-            "ts": 1778778167
-          },
-          "2": {
-            "price_eth": 0.2,
-            "ts": 1778724023
-          }
-        },
-        "Maltosia": {
-          "1": {
-            "price_eth": 0.218917,
-            "ts": 1778398967
-          }
-        }
-      },
-      "Western": {
-        "Runa": {
-          "2": {
-            "price_eth": 0.0812,
-            "ts": 1780111055
-          },
-          "1": {
-            "price_eth": 0.1399,
-            "ts": 1779537119
-          }
-        },
-        "Psychosilk": {
-          "2": {
-            "price_eth": 0.136,
-            "ts": 1780092647
-          },
-          "1": {
-            "price_eth": 0.081,
-            "ts": 1780029419
-          },
-          "3": {
-            "price_eth": 0.106,
-            "ts": 1778511755
-          }
-        },
-        "Spikeweed": {
-          "1": {
-            "price_eth": 0.185,
-            "ts": 1780074611
-          },
-          "3": {
-            "price_eth": 0.232,
-            "ts": 1779862103
-          }
-        },
-        "Brimstone": {
-          "1": {
-            "price_eth": 0.262,
-            "ts": 1780069787
-          },
-          "3": {
-            "price_eth": 0.092297,
-            "ts": 1780032575
-          }
-        },
-        "Bonestone": {
-          "1": {
-            "price_eth": 0.0934,
-            "ts": 1780035083
-          },
-          "2": {
-            "price_eth": 0.0881,
-            "ts": 1779203543
-          }
-        },
-        "Kinsoul": {
-          "1": {
-            "price_eth": 0.0821,
-            "ts": 1779999143
-          }
-        },
-        "Nether": {
-          "2": {
-            "price_eth": 0.0824,
-            "ts": 1779991523
-          },
-          "3": {
-            "price_eth": 0.1886,
-            "ts": 1779713663
-          }
-        },
-        "Nocturna": {
-          "1": {
-            "price_eth": 0.103,
-            "ts": 1779990827
-          }
-        },
-        "Whisper": {
-          "1": {
-            "price_eth": 0.09,
-            "ts": 1779990827
-          },
-          "3": {
-            "price_eth": 0.091,
-            "ts": 1779398483
-          }
-        },
-        "Petrified": {
-          "2": {
-            "price_eth": 0.09,
-            "ts": 1779990827
-          },
-          "1": {
-            "price_eth": 0.0816,
-            "ts": 1779961835
-          },
-          "3": {
-            "price_eth": 0.08,
-            "ts": 1779771227
-          }
-        },
-        "Luster": {
-          "3": {
-            "price_eth": 0.128,
-            "ts": 1779913211
-          },
-          "1": {
-            "price_eth": 0.0841,
-            "ts": 1779670367
-          }
-        },
-        "Oblivion": {
-          "1": {
-            "price_eth": 0.095228,
-            "ts": 1779887651
-          },
-          "2": {
-            "price_eth": 0.084,
-            "ts": 1779671363
-          },
-          "3": {
-            "price_eth": 0.091,
-            "ts": 1779264371
-          }
-        },
-        "Lunarian": {
-          "1": {
-            "price_eth": 0.0997,
-            "ts": 1779804479
-          },
-          "2": {
-            "price_eth": 0.15,
-            "ts": 1779142715
-          }
-        },
-        "Moldium": {
-          "1": {
-            "price_eth": 0.0853,
-            "ts": 1779797255
-          }
-        },
-        "Lumileaf": {
-          "2": {
-            "price_eth": 0.0917,
-            "ts": 1779651947
-          },
-          "1": {
-            "price_eth": 0.17,
-            "ts": 1779460127
-          }
-        },
-        "Slushia": {
-          "1": {
-            "price_eth": 0.155,
-            "ts": 1779243143
-          }
-        },
-        "Maltosia": {
-          "1": {
-            "price_eth": 0.0931,
-            "ts": 1778959355
-          }
-        }
-      },
-      "Northern": {
-        "Brimstone": {
-          "3": {
-            "price_eth": 0.0812,
-            "ts": 1780111055
-          },
-          "2": {
-            "price_eth": 0.0816,
-            "ts": 1779961835
-          },
-          "1": {
-            "price_eth": 0.0945,
-            "ts": 1779549671
-          }
-        },
-        "Lunarian": {
-          "1": {
-            "price_eth": 0.185,
-            "ts": 1780074611
-          },
-          "2": {
-            "price_eth": 0.129,
-            "ts": 1779557087
-          },
-          "3": {
-            "price_eth": 0.26,
-            "ts": 1779288743
-          }
-        },
-        "Luster": {
-          "1": {
-            "price_eth": 0.262,
-            "ts": 1780069787
-          },
-          "2": {
-            "price_eth": 0.17,
-            "ts": 1779553199
-          },
-          "3": {
-            "price_eth": 0.115,
-            "ts": 1779155243
-          }
-        },
-        "Moldium": {
-          "1": {
-            "price_eth": 0.101,
-            "ts": 1780005347
-          },
-          "3": {
-            "price_eth": 0.092297,
-            "ts": 1779943391
-          }
-        },
-        "Spikeweed": {
-          "2": {
-            "price_eth": 0.0821,
-            "ts": 1779999143
-          },
-          "1": {
-            "price_eth": 0.092297,
-            "ts": 1779966935
-          },
-          "3": {
-            "price_eth": 0.103,
-            "ts": 1778411339
-          }
-        },
-        "Nether": {
-          "3": {
-            "price_eth": 0.0824,
-            "ts": 1779991523
-          },
-          "1": {
-            "price_eth": 0.09,
-            "ts": 1779990827
-          },
-          "2": {
-            "price_eth": 0.128,
-            "ts": 1779007475
-          }
-        },
-        "Petrified": {
-          "3": {
-            "price_eth": 0.111,
-            "ts": 1779990827
-          },
-          "1": {
-            "price_eth": 0.09,
-            "ts": 1779990827
-          },
-          "2": {
-            "price_eth": 0.17,
-            "ts": 1779720695
-          }
-        },
-        "Lumileaf": {
-          "1": {
-            "price_eth": 0.103,
-            "ts": 1779990827
-          },
-          "3": {
-            "price_eth": 0.09888,
-            "ts": 1779337175
-          },
-          "2": {
-            "price_eth": 0.2,
-            "ts": 1778696099
-          }
-        },
-        "Whisper": {
-          "2": {
-            "price_eth": 0.117,
-            "ts": 1779964427
-          },
-          "1": {
-            "price_eth": 0.0911,
-            "ts": 1779461315
-          }
-        },
-        "Bonestone": {
-          "1": {
-            "price_eth": 0.095228,
-            "ts": 1779887651
-          },
-          "3": {
-            "price_eth": 0.0931,
-            "ts": 1778959355
-          },
-          "2": {
-            "price_eth": 0.10728,
-            "ts": 1778778167
-          }
-        },
-        "Psychosilk": {
-          "2": {
-            "price_eth": 0.1042,
-            "ts": 1779862091
-          },
-          "1": {
-            "price_eth": 0.0932,
-            "ts": 1779670259
-          },
-          "3": {
-            "price_eth": 0.21,
-            "ts": 1778358263
-          }
-        },
-        "Nebula": {
-          "2": {
-            "price_eth": 0.1987,
-            "ts": 1779734903
-          }
-        },
-        "Scumbria": {
-          "1": {
-            "price_eth": 0.1752,
-            "ts": 1779706979
-          },
-          "3": {
-            "price_eth": 0.2,
-            "ts": 1778724023
-          }
-        },
-        "Luminite": {
-          "2": {
-            "price_eth": 0.142,
-            "ts": 1779669911
-          }
-        },
-        "Runa": {
-          "1": {
-            "price_eth": 0.17,
-            "ts": 1779460127
-          },
-          "2": {
-            "price_eth": 0.242,
-            "ts": 1779022247
-          }
-        },
-        "Oblivion": {
-          "1": {
-            "price_eth": 0.09888,
-            "ts": 1779333059
-          }
-        },
-        "Amberskull": {
-          "2": {
-            "price_eth": 0.35,
-            "ts": 1779102815
-          }
-        },
-        "Fragmentia": {
-          "1": {
-            "price_eth": 0.8,
-            "ts": 1778864507
-          }
-        },
-        "Kinsoul": {
-          "2": {
-            "price_eth": 0.1073,
-            "ts": 1778778167
-          },
-          "1": {
-            "price_eth": 0.107279,
-            "ts": 1778753495
-          }
-        },
-        "Coralia": {
-          "1": {
-            "price_eth": 0.122,
-            "ts": 1778704775
-          }
-        },
-        "Rotworth": {
-          "3": {
-            "price_eth": 0.48,
-            "ts": 1778660123
           }
         }
       }
