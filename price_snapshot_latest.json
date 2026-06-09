@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-06-09T14:49:17",
-  "eth_usd": 1636.25,
+  "fetched_at": "2026-06-09T18:04:25",
+  "eth_usd": 1641.88,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.1047027747,
+      "floor_eth": 0.1046948947,
       "volume_eth": 606292.0449933567,
       "num_owners": 13982,
       "listed": null
@@ -15,9 +15,9 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.08714899,
-      "volume_eth": 18443.014712388525,
-      "num_owners": 12105,
+      "floor_eth": 0.08714799,
+      "volume_eth": 18443.107008888524,
+      "num_owners": 12104,
       "listed": null
     },
     "raw_traits": {},
