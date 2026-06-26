@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-06-26T19:46:07",
-  "eth_usd": 1577.29,
+  "fetched_at": "2026-06-26T21:17:41",
+  "eth_usd": 1570.55,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.083884959889,
@@ -15,7 +15,7 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0859999,
+      "floor_eth": 0.0859987,
       "volume_eth": 18461.959168858524,
       "num_owners": 12102,
       "listed": null
