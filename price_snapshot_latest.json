@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-07-09T19:44:18",
-  "eth_usd": 1749.16,
+  "fetched_at": "2026-07-09T21:21:44",
+  "eth_usd": 1747.77,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0867624499,
+      "floor_eth": 0.0867478,
       "volume_eth": 606308.635558476,
       "num_owners": 13983,
       "listed": null
@@ -15,94 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0840135,
+      "floor_eth": 0.0837722999,
       "volume_eth": 18474.98200209852,
       "num_owners": 12106,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "32162": 0.0840122,
-        "31661": 0.0840122999,
-        "32181": 0.0840122999,
-        "32499": 0.0840124,
-        "32053": 0.0840131999,
-        "95715": 0.08401349,
-        "72363": 0.08401359,
-        "32166": 0.0840135999
-      },
-      "Category": {
-        "Harsh": 0.0840122,
-        "Decay": 0.0840122999,
-        "Mineral": 0.0840124,
-        "Spirit": 0.08401359
-      },
-      "Sediment": {
-        "Cosmic Dream": 0.0840122,
-        "Rainbow Atmos": 0.08401359
-      },
-      "Environment": {
-        "Glacia": 0.0840122,
-        "Plague": 0.0840122999,
-        "Spires": 0.0840124,
-        "Wastes": 0.0840131999,
-        "Steppes": 0.08401359,
-        "Ruins": 0.0840135999
-      },
-      "Goliath Kills": {
-        "0": 0.0840122,
-        "2": 0.08401359
-      },
-      "Obelisk Piece": {
-        "First Trip": 0.0840122,
-        "Koda Origins": 0.0840122
-      },
-      "Sediment Tier": {
-        "1": 0.0840122,
-        "3": 0.0840122999,
-        "2": 0.0840122999
-      },
-      "Environment Tier": {
-        "3": 0.0840122,
-        "1": 0.0840122999,
-        "2": 0.0840131999
-      },
-      "Northern Resource": {
-        "Brimstone": 0.0840122999
-      },
-      "Northern Resource Tier": {
-        "1": 0.0840122999
-      },
-      "Eastern Resource": {
-        "Luster": 0.0840122999
-      },
-      "Eastern Resource Tier": {
-        "1": 0.0840122999
-      },
-      "Western Resource": {
-        "Kinsoul": 0.0840135999
-      },
-      "Western Resource Tier": {
-        "2": 0.0840135999
-      }
-    },
-    "resource_floors": {
-      "Northern": {
-        "Brimstone": {
-          "1": 0.0840122999
-        }
-      },
-      "Eastern": {
-        "Luster": {
-          "1": 0.0840122999
-        }
-      },
-      "Western": {
-        "Kinsoul": {
-          "2": 0.0840135999
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
