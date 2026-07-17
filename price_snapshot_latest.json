@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-07-17T17:09:47",
-  "eth_usd": 1841.77,
+  "fetched_at": "2026-07-17T19:05:48",
+  "eth_usd": 1844.41,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0848265099,
-      "volume_eth": 606311.2468726457,
-      "num_owners": 13977,
+      "floor_eth": 0.08398993,
+      "volume_eth": 606311.3267726457,
+      "num_owners": 13976,
       "listed": null
     },
     "raw_traits": {},
@@ -15,13 +15,51 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0787978999,
+      "floor_eth": 0.0787971899,
       "volume_eth": 18481.984703986614,
       "num_owners": 12099,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "25183": 0.0863
+      },
+      "Category": {
+        "Spirit": 0.0863
+      },
+      "Sediment": {
+        "Chemical Goo": 0.0863
+      },
+      "Environment": {
+        "Sky": 0.0863
+      },
+      "Goliath Kills": {
+        "0": 0.0863
+      },
+      "Obelisk Piece": {
+        "First Trip": 0.0863,
+        "Koda Origins": 0.0863
+      },
+      "Sediment Tier": {
+        "1": 0.0863
+      },
+      "Environment Tier": {
+        "3": 0.0863
+      },
+      "Western Resource": {
+        "Brimstone": 0.0863
+      },
+      "Western Resource Tier": {
+        "3": 0.0863
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Brimstone": {
+          "3": 0.0863
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
