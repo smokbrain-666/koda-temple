@@ -1,23 +1,65 @@
 {
-  "fetched_at": "2026-07-26T06:35:12",
-  "eth_usd": 1877.96,
+  "fetched_at": "2026-07-26T09:57:44",
+  "eth_usd": 1882.84,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.104399,
-      "volume_eth": 606319.4639248147,
+      "floor_eth": 0.1043989,
+      "volume_eth": 606393.6593014738,
       "num_owners": 13954,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "59591": 0.1043989
+      },
+      "Category": {
+        "Decay": 0.1043989
+      },
+      "Sediment": {
+        "Infinite Expanse": 0.1043989
+      },
+      "Environment": {
+        "Bog": 0.1043989
+      },
+      "Sediment Tier": {
+        "2": 0.1043989
+      },
+      "Eastern Resource": {
+        "Lunarian": 0.1043989
+      },
+      "Environment Tier": {
+        "2": 0.1043989
+      },
+      "Western Resource": {
+        "Kinsoul": 0.1043989
+      },
+      "Eastern Resource Tier": {
+        "3": 0.1043989
+      },
+      "Western Resource Tier": {
+        "1": 0.1043989
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Kinsoul": {
+          "1": 0.1043989
+        }
+      },
+      "Eastern": {
+        "Lunarian": {
+          "3": 0.1043989
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   },
   "expanded": {
     "collection": {
       "floor_eth": 0.0999999,
-      "volume_eth": 18507.64994753536,
-      "num_owners": 12111,
+      "volume_eth": 18507.83464743536,
+      "num_owners": 12109,
       "listed": null
     },
     "raw_traits": {},
