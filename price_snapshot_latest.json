@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-07-25T22:54:19",
-  "eth_usd": 1875.6,
+  "fetched_at": "2026-07-26T02:40:41",
+  "eth_usd": 1877.24,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.104398,
-      "volume_eth": 606319.2223268147,
+      "floor_eth": 0.104399,
+      "volume_eth": 606319.4639248147,
       "num_owners": 13954,
       "listed": null
     },
@@ -15,62 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.1057729,
-      "volume_eth": 18506.238265311633,
-      "num_owners": 12101,
+      "floor_eth": 0.0949999999,
+      "volume_eth": 18506.07464757546,
+      "num_owners": 12109,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "93629": 0.1060489
-      },
-      "Category": {
-        "Harsh": 0.1060489
-      },
-      "Sediment": {
-        "Cosmic Dream": 0.1060489
-      },
-      "Environment": {
-        "Bone": 0.1060489
-      },
-      "Goliath Kills": {
-        "1": 0.1060489
-      },
-      "Obelisk Piece": {
-        "Koda Origins": 0.1060489,
-        "First Trip": 0.1060489
-      },
-      "Sediment Tier": {
-        "1": 0.1060489
-      },
-      "Eastern Resource": {
-        "Bonestone": 0.1060489
-      },
-      "Environment Tier": {
-        "2": 0.1060489
-      },
-      "Southern Resource": {
-        "Whisper": 0.1060489
-      },
-      "Eastern Resource Tier": {
-        "1": 0.1060489
-      },
-      "Southern Resource Tier": {
-        "1": 0.1060489
-      }
-    },
-    "resource_floors": {
-      "Eastern": {
-        "Bonestone": {
-          "1": 0.1060489
-        }
-      },
-      "Southern": {
-        "Whisper": {
-          "1": 0.1060489
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
