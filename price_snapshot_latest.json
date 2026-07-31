@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-07-31T10:37:15",
-  "eth_usd": 1885.63,
+  "fetched_at": "2026-07-31T14:02:37",
+  "eth_usd": 1865.28,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.107317,
-      "volume_eth": 606326.8365778048,
-      "num_owners": 13951,
+      "floor_eth": 0.1068925,
+      "volume_eth": 606327.0593778047,
+      "num_owners": 13950,
       "listed": null
     },
     "raw_traits": {},
@@ -15,50 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0919,
-      "volume_eth": 18523.68312790537,
-      "num_owners": 12085,
+      "floor_eth": 0.0905,
+      "volume_eth": 18524.137727905367,
+      "num_owners": 12087,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "90716": 0.0919
-      },
-      "Category": {
-        "Harsh": 0.0919
-      },
-      "Sediment": {
-        "Cosmic Dream": 0.0919
-      },
-      "Environment": {
-        "Glacia": 0.0919
-      },
-      "Goliath Kills": {
-        "0": 0.0919
-      },
-      "Obelisk Piece": {
-        "Koda Origins": 0.0919
-      },
-      "Sediment Tier": {
-        "3": 0.0919
-      },
-      "Environment Tier": {
-        "2": 0.0919
-      },
-      "Northern Resource": {
-        "Petrified": 0.0919
-      },
-      "Northern Resource Tier": {
-        "1": 0.0919
-      }
-    },
-    "resource_floors": {
-      "Northern": {
-        "Petrified": {
-          "1": 0.0919
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
