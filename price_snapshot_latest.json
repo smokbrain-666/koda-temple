@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-08-02T06:31:45",
-  "eth_usd": 1875.98,
+  "fetched_at": "2026-08-02T09:55:04",
+  "eth_usd": 1869.39,
   "otherdeed": {
     "collection": {
-      "floor_eth": null,
-      "volume_eth": null,
-      "num_owners": null,
+      "floor_eth": 0.09878883,
+      "volume_eth": 606314.5698744773,
+      "num_owners": 13947,
       "listed": null
     },
     "raw_traits": {},
@@ -15,54 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.089,
-      "volume_eth": 18529.13746846536,
-      "num_owners": 12099,
+      "floor_eth": 0.093,
+      "volume_eth": 18529.59329845536,
+      "num_owners": 12095,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "21791": 0.162696
-      },
-      "Artifact": {
-        "Rugged Axe": 0.162696
-      },
-      "Category": {
-        "Spirit": 0.162696
-      },
-      "Sediment": {
-        "Chemical Goo": 0.162696
-      },
-      "Environment": {
-        "Steppes": 0.162696
-      },
-      "Goliath Kills": {
-        "0": 0.162696
-      },
-      "Obelisk Piece": {
-        "First Trip": 0.162696,
-        "Koda Origins": 0.162696
-      },
-      "Sediment Tier": {
-        "1": 0.162696
-      },
-      "Eastern Resource": {
-        "Bonestone": 0.162696
-      },
-      "Environment Tier": {
-        "4": 0.162696
-      },
-      "Eastern Resource Tier": {
-        "2": 0.162696
-      }
-    },
-    "resource_floors": {
-      "Eastern": {
-        "Bonestone": {
-          "2": 0.162696
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
