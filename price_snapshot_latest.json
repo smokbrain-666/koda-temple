@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-08-02T15:00:10",
-  "eth_usd": 1853.86,
+  "fetched_at": "2026-08-02T16:56:27",
+  "eth_usd": 1862.06,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0987839,
+      "floor_eth": 0.09878172,
       "volume_eth": 606327.5450679049,
       "num_owners": 13947,
       "listed": null
@@ -15,13 +15,54 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.091,
-      "volume_eth": 18529.77139845536,
-      "num_owners": 12096,
+      "floor_eth": 0.089999,
+      "volume_eth": 18530.01629845536,
+      "num_owners": 12101,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "49436": 0.1333
+      },
+      "Artifact": {
+        "Camp Fire": 0.1333
+      },
+      "Category": {
+        "Growth": 0.1333
+      },
+      "Sediment": {
+        "Infinite Expanse": 0.1333
+      },
+      "Environment": {
+        "Jungle": 0.1333
+      },
+      "Goliath Kills": {
+        "0": 0.1333
+      },
+      "Obelisk Piece": {
+        "Koda Origins": 0.1333,
+        "First Trip": 0.1333
+      },
+      "Sediment Tier": {
+        "3": 0.1333
+      },
+      "Eastern Resource": {
+        "Nether": 0.1333
+      },
+      "Environment Tier": {
+        "1": 0.1333
+      },
+      "Eastern Resource Tier": {
+        "1": 0.1333
+      }
+    },
+    "resource_floors": {
+      "Eastern": {
+        "Nether": {
+          "1": 0.1333
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
