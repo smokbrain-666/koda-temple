@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-08-11T03:42:18",
-  "eth_usd": 1879.19,
+  "fetched_at": "2026-08-11T05:06:32",
+  "eth_usd": 1874.61,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.1025661,
+      "floor_eth": 0.1023737,
       "volume_eth": 606334.403825118,
       "num_owners": 13938,
       "listed": null
@@ -15,13 +15,61 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.097047064,
-      "volume_eth": 18558.20183899857,
+      "floor_eth": 0.0969049,
+      "volume_eth": 18558.386638998574,
       "num_owners": 12074,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "85869": 0.0969049
+      },
+      "Category": {
+        "Mineral": 0.0969049
+      },
+      "Sediment": {
+        "Rainbow Atmos": 0.0969049
+      },
+      "Environment": {
+        "Biolume": 0.0969049
+      },
+      "Goliath Kills": {
+        "0": 0.0969049
+      },
+      "Obelisk Piece": {
+        "Koda Origins": 0.0969049
+      },
+      "Sediment Tier": {
+        "3": 0.0969049
+      },
+      "Eastern Resource": {
+        "Brimstone": 0.0969049
+      },
+      "Environment Tier": {
+        "1": 0.0969049
+      },
+      "Southern Resource": {
+        "Spikeweed": 0.0969049
+      },
+      "Eastern Resource Tier": {
+        "1": 0.0969049
+      },
+      "Southern Resource Tier": {
+        "1": 0.0969049
+      }
+    },
+    "resource_floors": {
+      "Eastern": {
+        "Brimstone": {
+          "1": 0.0969049
+        }
+      },
+      "Southern": {
+        "Spikeweed": {
+          "1": 0.0969049
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
