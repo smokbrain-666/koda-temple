@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-08-18T06:39:51",
-  "eth_usd": 1899.54,
+  "fetched_at": "2026-08-18T08:34:20",
+  "eth_usd": 1896.77,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.096889,
-      "volume_eth": 606336.9525966746,
-      "num_owners": 13938,
+      "volume_eth": 606337.0718966746,
+      "num_owners": 13939,
       "listed": null
     },
     "raw_traits": {},
@@ -15,61 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.08241164,
-      "volume_eth": 18574.554541553327,
-      "num_owners": 12069,
+      "floor_eth": 0.0815212,
+      "volume_eth": 18575.197541553323,
+      "num_owners": 12075,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "98069": 0.0824074
-      },
-      "Category": {
-        "Harsh": 0.0824074
-      },
-      "Sediment": {
-        "Cosmic Dream": 0.0824074
-      },
-      "Environment": {
-        "Wastes": 0.0824074
-      },
-      "Goliath Kills": {
-        "0": 0.0824074
-      },
-      "Obelisk Piece": {
-        "Koda Origins": 0.0824074
-      },
-      "Sediment Tier": {
-        "1": 0.0824074
-      },
-      "Environment Tier": {
-        "2": 0.0824074
-      },
-      "Northern Resource": {
-        "Moldium": 0.0824074
-      },
-      "Southern Resource": {
-        "Runa": 0.0824074
-      },
-      "Northern Resource Tier": {
-        "2": 0.0824074
-      },
-      "Southern Resource Tier": {
-        "1": 0.0824074
-      }
-    },
-    "resource_floors": {
-      "Northern": {
-        "Moldium": {
-          "2": 0.0824074
-        }
-      },
-      "Southern": {
-        "Runa": {
-          "1": 0.0824074
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
