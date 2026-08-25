@@ -1,15 +1,60 @@
 {
-  "fetched_at": "2026-08-25T04:36:40",
-  "eth_usd": 2493.42,
+  "fetched_at": "2026-08-25T06:43:09",
+  "eth_usd": 2501.28,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.08332999,
-      "volume_eth": 606342.3148795866,
-      "num_owners": 13939,
+      "volume_eth": 606342.5578795866,
+      "num_owners": 13940,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "60717": 0.08332998
+      },
+      "Category": {
+        "Psychedelic": 0.08332998
+      },
+      "Sediment": {
+        "Infinite Expanse": 0.08332998
+      },
+      "Environment": {
+        "Mallow": 0.08332998
+      },
+      "Obelisk Piece": {
+        "First Trip": 0.08332998
+      },
+      "Sediment Tier": {
+        "1": 0.08332998
+      },
+      "Environment Tier": {
+        "2": 0.08332998
+      },
+      "Western Resource": {
+        "Moldium": 0.08332998
+      },
+      "Northern Resource": {
+        "Spikeweed": 0.08332998
+      },
+      "Western Resource Tier": {
+        "3": 0.08332998
+      },
+      "Northern Resource Tier": {
+        "1": 0.08332998
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Moldium": {
+          "3": 0.08332998
+        }
+      },
+      "Northern": {
+        "Spikeweed": {
+          "1": 0.08332998
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   },
@@ -17,7 +62,7 @@
     "collection": {
       "floor_eth": 0.07399999,
       "volume_eth": 18591.460857712933,
-      "num_owners": 12078,
+      "num_owners": 12076,
       "listed": null
     },
     "raw_traits": {},
