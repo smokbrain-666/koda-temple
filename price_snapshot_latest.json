@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-09-05T08:03:32",
-  "eth_usd": 2457.2,
+  "fetched_at": "2026-09-05T13:15:07",
+  "eth_usd": 2458.61,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0749647,
-      "volume_eth": 606349.935692676,
-      "num_owners": 13934,
+      "floor_eth": null,
+      "volume_eth": null,
+      "num_owners": null,
       "listed": null
     },
     "raw_traits": {},
@@ -16,12 +16,85 @@
   "expanded": {
     "collection": {
       "floor_eth": 0.0679999,
-      "volume_eth": 18612.920759942914,
-      "num_owners": 12070,
+      "volume_eth": 18617.71230367865,
+      "num_owners": 12074,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "65846": 0.1181,
+        "65573": 0.119
+      },
+      "Artifact": {
+        "Whale Statue": 0.1181,
+        "Glass Eye": 0.119
+      },
+      "Category": {
+        "Spirit": 0.1181,
+        "Volcanic": 0.119
+      },
+      "Sediment": {
+        "Rainbow Atmos": 0.1181
+      },
+      "Environment": {
+        "Steppes": 0.1181,
+        "Sulfuric": 0.119
+      },
+      "Goliath Kills": {
+        "0": 0.1181,
+        "1": 0.119
+      },
+      "Obelisk Piece": {
+        "Koda Origins": 0.1181,
+        "First Trip": 0.119
+      },
+      "Sediment Tier": {
+        "1": 0.1181,
+        "3": 0.119
+      },
+      "Eastern Resource": {
+        "Bonestone": 0.1181,
+        "Whisper": 0.119
+      },
+      "Environment Tier": {
+        "3": 0.1181
+      },
+      "Western Resource": {
+        "Kinsoul": 0.1181
+      },
+      "Eastern Resource Tier": {
+        "1": 0.1181
+      },
+      "Western Resource Tier": {
+        "3": 0.1181
+      },
+      "Northern Resource": {
+        "Petrified": 0.119
+      },
+      "Northern Resource Tier": {
+        "2": 0.119
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Kinsoul": {
+          "3": 0.1181
+        }
+      },
+      "Eastern": {
+        "Bonestone": {
+          "1": 0.1181
+        },
+        "Whisper": {
+          "1": 0.119
+        }
+      },
+      "Northern": {
+        "Petrified": {
+          "2": 0.119
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
