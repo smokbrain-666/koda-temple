@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-09-10T03:13:09",
-  "eth_usd": 2475.88,
+  "fetched_at": "2026-09-10T08:39:35",
+  "eth_usd": 2472.33,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0941972,
-      "volume_eth": 606356.3000952845,
-      "num_owners": 13920,
+      "floor_eth": 0.0936302,
+      "volume_eth": 606356.7092952846,
+      "num_owners": 13922,
       "listed": null
     },
     "raw_traits": {},
@@ -15,12 +15,37 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.079998,
-      "volume_eth": 18643.859279678447,
-      "num_owners": 12083,
+      "floor_eth": 0.0868,
+      "volume_eth": 18646.323564678354,
+      "num_owners": 12076,
       "listed": null
     },
-    "raw_traits": {},
+    "raw_traits": {
+      "Plot": {
+        "49435": 0.0868
+      },
+      "Category": {
+        "Harsh": 0.0868
+      },
+      "Sediment": {
+        "Infinite Expanse": 0.0868
+      },
+      "Environment": {
+        "Wastes": 0.0868
+      },
+      "Goliath Kills": {
+        "0": 0.0868
+      },
+      "Obelisk Piece": {
+        "Koda Origins": 0.0868
+      },
+      "Sediment Tier": {
+        "1": 0.0868
+      },
+      "Environment Tier": {
+        "4": 0.0868
+      }
+    },
     "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
