@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-09-10T18:57:19",
-  "eth_usd": 2465.58,
+  "fetched_at": "2026-09-10T22:15:48",
+  "eth_usd": 2457.82,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.09379989,
-      "volume_eth": 606360.3908291846,
-      "num_owners": 13917,
+      "floor_eth": 0.0935244,
+      "volume_eth": 606360.4773291845,
+      "num_owners": 13918,
       "listed": null
     },
     "raw_traits": {},
@@ -15,50 +15,13 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0845999,
-      "volume_eth": 18649.69915457835,
-      "num_owners": 12077,
+      "floor_eth": 0.0818999,
+      "volume_eth": 18650.492075578346,
+      "num_owners": 12080,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "47910": 0.0845999
-      },
-      "Category": {
-        "Harsh": 0.0845999
-      },
-      "Sediment": {
-        "Infinite Expanse": 0.0845999
-      },
-      "Environment": {
-        "Wastes": 0.0845999
-      },
-      "Goliath Kills": {
-        "1": 0.0845999
-      },
-      "Obelisk Piece": {
-        "Koda Origins": 0.0845999
-      },
-      "Sediment Tier": {
-        "1": 0.0845999
-      },
-      "Environment Tier": {
-        "4": 0.0845999
-      },
-      "Southern Resource": {
-        "Luster": 0.0845999
-      },
-      "Southern Resource Tier": {
-        "3": 0.0845999
-      }
-    },
-    "resource_floors": {
-      "Southern": {
-        "Luster": {
-          "3": 0.0845999
-        }
-      }
-    },
+    "raw_traits": {},
+    "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   }
