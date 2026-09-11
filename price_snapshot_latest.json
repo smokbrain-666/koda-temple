@@ -1,10 +1,10 @@
 {
-  "fetched_at": "2026-09-11T03:08:46",
-  "eth_usd": 2442.84,
+  "fetched_at": "2026-09-11T08:35:12",
+  "eth_usd": 2480.56,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.0929488,
-      "volume_eth": 606360.7272291845,
+      "floor_eth": 0.0894795,
+      "volume_eth": 606360.8069291845,
       "num_owners": 13918,
       "listed": null
     },
@@ -15,13 +15,76 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0818986,
-      "volume_eth": 18651.023575078347,
-      "num_owners": 12079,
+      "floor_eth": 0.08189748,
+      "volume_eth": 18651.286672078346,
+      "num_owners": 12080,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "31750": 0.1322,
+        "25635": 0.14,
+        "31844": 0.1412
+      },
+      "Artifact": {
+        "Monkey Barrel": 0.1322,
+        "Rugged Axe": 0.14,
+        "Celestial Tear": 0.1412
+      },
+      "Category": {
+        "Harsh": 0.1322,
+        "Psychedelic": 0.14,
+        "Spirit": 0.1412
+      },
+      "Sediment": {
+        "Cosmic Dream": 0.1322,
+        "Chemical Goo": 0.14
+      },
+      "Environment": {
+        "Glacia": 0.1322,
+        "Mallow": 0.14,
+        "Sands": 0.1412
+      },
+      "Goliath Kills": {
+        "0": 0.1322
+      },
+      "Obelisk Piece": {
+        "First Trip": 0.1322,
+        "Koda Origins": 0.1322
+      },
+      "Sediment Tier": {
+        "3": 0.1322,
+        "1": 0.14
+      },
+      "Environment Tier": {
+        "3": 0.1322,
+        "1": 0.14
+      },
+      "Western Resource": {
+        "Kinsoul": 0.14
+      },
+      "Southern Resource": {
+        "Psychosilk": 0.14
+      },
+      "Western Resource Tier": {
+        "3": 0.14
+      },
+      "Southern Resource Tier": {
+        "1": 0.14
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Kinsoul": {
+          "3": 0.14
+        }
+      },
+      "Southern": {
+        "Psychosilk": {
+          "1": 0.14
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
