@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-09-20T13:57:10",
-  "eth_usd": 2579.55,
+  "fetched_at": "2026-09-20T17:20:44",
+  "eth_usd": 2636.73,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.0945795,
-      "volume_eth": 606366.695690484,
-      "num_owners": 13896,
+      "volume_eth": 606366.795690484,
+      "num_owners": 13895,
       "listed": null
     },
     "raw_traits": {},
@@ -15,13 +15,62 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.09689,
-      "volume_eth": 18675.305866145052,
-      "num_owners": 12072,
+      "floor_eth": 0.0948799,
+      "volume_eth": 18675.484256145053,
+      "num_owners": 12074,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "14516": 0.0948793
+      },
+      "Category": {
+        "Decay": 0.0948793
+      },
+      "Sediment": {
+        "Chemical Goo": 0.0948793
+      },
+      "Environment": {
+        "Plague": 0.0948793
+      },
+      "Goliath Kills": {
+        "0": 0.0948793
+      },
+      "Obelisk Piece": {
+        "First Trip": 0.0948793,
+        "Koda Origins": 0.0948793
+      },
+      "Sediment Tier": {
+        "1": 0.0948793
+      },
+      "Eastern Resource": {
+        "Kinsoul": 0.0948793
+      },
+      "Environment Tier": {
+        "1": 0.0948793
+      },
+      "Northern Resource": {
+        "Kinsoul": 0.0948793
+      },
+      "Eastern Resource Tier": {
+        "3": 0.0948793
+      },
+      "Northern Resource Tier": {
+        "1": 0.0948793
+      }
+    },
+    "resource_floors": {
+      "Northern": {
+        "Kinsoul": {
+          "1": 0.0948793
+        }
+      },
+      "Eastern": {
+        "Kinsoul": {
+          "3": 0.0948793
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
