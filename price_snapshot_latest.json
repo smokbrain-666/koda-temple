@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-09-21T21:43:12",
-  "eth_usd": 2776.49,
+  "fetched_at": "2026-09-22T00:35:52",
+  "eth_usd": 2774.94,
   "otherdeed": {
     "collection": {
       "floor_eth": 0.094578,
@@ -20,42 +20,7 @@
       "num_owners": 12065,
       "listed": null
     },
-    "raw_traits": {
-      "Plot": {
-        "57549": 0.1392,
-        "58407": 0.153684
-      },
-      "Artifact": {
-        "Ancient Coin": 0.1392,
-        "Slime Juice": 0.153684
-      },
-      "Category": {
-        "Spirit": 0.1392,
-        "Decay": 0.153684
-      },
-      "Sediment": {
-        "Infinite Expanse": 0.1392
-      },
-      "Environment": {
-        "Steppes": 0.1392,
-        "Plague": 0.153684
-      },
-      "Goliath Kills": {
-        "0": 0.1392,
-        "1": 0.153684
-      },
-      "Obelisk Piece": {
-        "Koda Origins": 0.1392,
-        "First Trip": 0.153684
-      },
-      "Sediment Tier": {
-        "1": 0.1392
-      },
-      "Environment Tier": {
-        "1": 0.1392,
-        "2": 0.153684
-      }
-    },
+    "raw_traits": {},
     "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
