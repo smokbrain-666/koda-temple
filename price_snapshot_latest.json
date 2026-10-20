@@ -1,9 +1,9 @@
 {
-  "fetched_at": "2026-10-20T19:49:41",
-  "eth_usd": 2437.5,
+  "fetched_at": "2026-10-20T22:55:50",
+  "eth_usd": 2455.72,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.080212,
+      "floor_eth": 0.08014,
       "volume_eth": 606392.774822964,
       "num_owners": 13789,
       "listed": null
@@ -15,13 +15,62 @@
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0623936,
-      "volume_eth": 18747.43489176441,
-      "num_owners": 11684,
+      "floor_eth": 0.062420499,
+      "volume_eth": 18747.49727636441,
+      "num_owners": 11686,
       "listed": null
     },
-    "raw_traits": {},
-    "resource_floors": {},
+    "raw_traits": {
+      "Plot": {
+        "7029": 0.097
+      },
+      "Category": {
+        "Harsh": 0.097
+      },
+      "Sediment": {
+        "Biogenic Swamp": 0.097
+      },
+      "Environment": {
+        "Wastes": 0.097
+      },
+      "Goliath Kills": {
+        "0": 0.097
+      },
+      "Obelisk Piece": {
+        "First Trip": 0.097,
+        "Koda Origins": 0.097
+      },
+      "Sediment Tier": {
+        "1": 0.097
+      },
+      "Environment Tier": {
+        "2": 0.097
+      },
+      "Western Resource": {
+        "Lumileaf": 0.097
+      },
+      "Northern Resource": {
+        "Nether": 0.097
+      },
+      "Western Resource Tier": {
+        "1": 0.097
+      },
+      "Northern Resource Tier": {
+        "1": 0.097
+      }
+    },
+    "resource_floors": {
+      "Western": {
+        "Lumileaf": {
+          "1": 0.097
+        }
+      },
+      "Northern": {
+        "Nether": {
+          "1": 0.097
+        }
+      }
+    },
     "sales_traits": {},
     "resource_sales": {}
   }
