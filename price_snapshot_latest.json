@@ -1,23 +1,42 @@
 {
-  "fetched_at": "2026-11-16T14:51:26",
-  "eth_usd": 1845.81,
+  "fetched_at": "2026-11-16T23:58:40",
+  "eth_usd": 1819.37,
   "otherdeed": {
     "collection": {
-      "floor_eth": 0.07889998,
-      "volume_eth": 605507.5099197708,
+      "floor_eth": 0.07889985,
+      "volume_eth": 606406.4234916342,
       "num_owners": 13772,
       "listed": null
     },
-    "raw_traits": {},
+    "raw_traits": {
+      "Plot": {
+        "54151": 0.07889986
+      },
+      "Category": {
+        "Decay": 0.07889986
+      },
+      "Sediment": {
+        "Infinite Expanse": 0.07889986
+      },
+      "Environment": {
+        "Thornwood": 0.07889986
+      },
+      "Sediment Tier": {
+        "2": 0.07889986
+      },
+      "Environment Tier": {
+        "2": 0.07889986
+      }
+    },
     "resource_floors": {},
     "sales_traits": {},
     "resource_sales": {}
   },
   "expanded": {
     "collection": {
-      "floor_eth": 0.0761999,
-      "volume_eth": 18807.325109744834,
-      "num_owners": 11909,
+      "floor_eth": 0.0761998,
+      "volume_eth": 18788.285748786835,
+      "num_owners": 11910,
       "listed": null
     },
     "raw_traits": {},
